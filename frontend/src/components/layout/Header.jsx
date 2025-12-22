@@ -4,7 +4,7 @@ import { useApp } from '@/context/AppContext';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet';
 import { FiMenu, FiX, FiSun, FiMoon, FiHome, FiBook, FiHelpCircle, FiArrowLeft } from 'react-icons/fi';
-import { TbCube, Tb3DCubeSphere } from 'react-icons/tb';
+import { TbCube, TbCube3dSphere } from 'react-icons/tb';
 
 const Header = () => {
   const location = useLocation();
