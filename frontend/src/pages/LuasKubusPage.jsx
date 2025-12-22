@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
 import { Heading1, Heading2, Paragraph, HighlightBox, MathBlock } from '@/components/ui/Typography';
-import Viewer3D from '@/components/features/Viewer3D';
+import StaticViewer from '@/components/features/StaticViewer';
 import ImageDisplay from '@/components/ui/ImageDisplay';
 import InputAnswer from '@/components/ui/InputAnswer';
 import NavFooter from '@/components/layout/NavFooter';
-import { AR_URLS, MODELS } from '@/constants/urls';
+import { AR_URLS, MODEL_ARRAYS } from '@/constants/urls';
 
 const LuasKubusPage = () => {
   const { setPageNumber } = useApp();
@@ -19,53 +19,89 @@ const LuasKubusPage = () => {
     <div className="max-w-3xl mx-auto animate-fade-in">
       <Heading1>Luas Permukaan Bangun Ruang</Heading1>
       
+      <ImageDisplay src="kardus-img.png" nama="Gambar 13. Kardus" />
+      
       <Heading2>A. Luas Permukaan Kubus</Heading2>
 
       <Paragraph>
-        Untuk menghitung luas permukaan kubus, kita perlu memahami jaring-jaring kubus terlebih dahulu. 
-        Jaring-jaring kubus adalah rangkaian dari 6 persegi yang jika dilipat akan membentuk kubus.
+        Pernahkah kamu membongkar kardus atau menggunting kardus di bagian tepinya? 
+        Tentu, saat kecil hal ini lumrah dilakukan anak-anak saat bermain. 
+        Pernahkah kamu bertanya, bagaimana cara perusahaan menentukan luas minimal bahan 
+        untuk membuat kardus?
       </Paragraph>
 
-      <Viewer3D
-        modelPath={MODELS.KUBUS_JARING}
+      <Paragraph>
+        Kali ini, kamu akan menggunakan teknologi augmented reality untuk melihat seperti apa 
+        bentuk kardus saat dibongkar, serta kemungkinan bentuk potongan yang terjadi. 
+        Kamu akan mulai dari kardus berbentuk kubus, yaitu yang memiliki enam sisi dengan luas yang sama.
+      </Paragraph>
+
+      <StaticViewer
+        models={MODEL_ARRAYS.JARING_KUBUS}
         urlAR={AR_URLS.KUBUS_JARING}
-        scale={1}
-        title="Jaring-jaring Kubus"
+        scale={1.4}
+        title="Objek 6. Jaring-jaring Kubus"
       />
 
       <Paragraph>
-        Dari animasi di atas, dapat dilihat bahwa kubus memiliki 6 sisi yang berbentuk persegi 
-        dengan ukuran yang sama. Jika panjang rusuk kubus adalah s, maka:
+        Bongkaran kubus tadi disebut sebagai jaring-jaring. Jaring-jaring adalah susunan 
+        sisi-sisi bangun ruang yang direntangkan menjadi bangun datar, sehingga dapat dilipat 
+        kembali membentuk bangun ruang semula. Berikut beberapa jaring-jaring yang dapat 
+        dibentuk menjadi kubus.
       </Paragraph>
 
+      <ImageDisplay src="jaring-kubus-1.png" />
+      <ImageDisplay src="jaring-kubus-2.png" />
+      <ImageDisplay src="jaring-kubus-3.png" />
+      <ImageDisplay src="jaring-kubus-4.png" nama="Gambar 14. Macam jaring-jaring kubus" />
+
+      <Paragraph>
+        Dapat dilihat bahwa jaring-jaring kubus terdiri atas enam buah persegi yang berukuran sama. 
+        Dengan demikian, luas jaring-jaring dapat dihitung dengan mencari luas salah satu persegi, 
+        kemudian dikalikan enam.
+      </Paragraph>
+
+      <ImageDisplay src="jaring-kubus-L1-6.png" nama="Gambar 15. Jaring kubus" scale={1.5} />
+
       <HighlightBox variant="info">
-        <ul className="space-y-2 text-sm text-foreground">
-          <li>Luas satu sisi = s × s = s²</li>
-          <li>Jumlah sisi = 6</li>
-          <li>Luas permukaan = 6 × s²</li>
+        <p className="text-foreground font-medium mb-2">Karena semua sisi kubus sama:</p>
+        <ul className="space-y-1 text-sm text-foreground">
+          <li>L₁ = L₂ = L₃ = L₄ = L₅ = L₆ = r × r = r²</li>
+          <li>Luas permukaan = L₁ + L₂ + L₃ + L₄ + L₅ + L₆</li>
+          <li>Luas permukaan = 6 × r²</li>
         </ul>
       </HighlightBox>
 
       <HighlightBox variant="formula">
         <p className="text-foreground font-medium mb-2">Rumus Luas Permukaan Kubus:</p>
-        <MathBlock>L = 6s²</MathBlock>
+        <MathBlock>L = 6 × r²</MathBlock>
         <p className="text-sm text-muted-foreground mt-2">
-          dengan s = panjang rusuk kubus
+          dengan r = panjang rusuk kubus
         </p>
       </HighlightBox>
 
       <Paragraph>
-        Contoh: Jika panjang rusuk kubus adalah 5 cm, maka luas permukaannya adalah:
+        <strong>Contoh:</strong> Diketahui sebuah kubus dengan panjang rusuk 7 cm. 
+        Tentukan luas permukaan bangun tersebut!
       </Paragraph>
 
+      <ImageDisplay src="kubus7cm.png" nama="Gambar 16. Kubus dengan rusuk 7 cm" />
+
       <div className="p-4 bg-muted/50 rounded-xl my-4">
+        <p className="text-sm font-medium text-foreground mb-2">Pembahasan:</p>
         <p className="text-sm text-foreground font-mono">
-          L = 6 × 5² = 6 × 25 = 150 cm²
+          L = 6 × r²<br/>
+          L = 6 × 7²<br/>
+          L = 6 × 49 = 294 cm²
         </p>
       </div>
 
-      <Paragraph>Latihan: Hitunglah luas permukaan kubus dengan rusuk 7 cm!</Paragraph>
-      <InputAnswer answerKey="294" placeholder="Luas permukaan = ..." />
+      <Paragraph>Jadi, luas permukaan kubus tersebut adalah 294 cm².</Paragraph>
+
+      <Paragraph>
+        <strong>Latihan:</strong> Hitunglah luas permukaan kubus dengan rusuk 5 cm!
+      </Paragraph>
+      <InputAnswer answerKey="150" placeholder="Luas permukaan = ..." />
 
       <NavFooter prev="/luas-permukaan" next="/luas-permukaan/balok" />
     </div>
