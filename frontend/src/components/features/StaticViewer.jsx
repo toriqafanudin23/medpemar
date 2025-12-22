@@ -4,6 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2, FiPlay, FiPause, FiRotateCcw, FiZoomIn, FiZoomOut, FiMove } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
+import ARViewer from '@/components/features/ARViewer';
 import { URL_ANIM } from '@/constants/urls';
 
 // Static Viewer with model switching using vanilla Three.js
@@ -464,13 +465,8 @@ const StaticViewer = ({
               style={{ display: 'block' }}
             />
           </>
-        ) : mode === 'AR' && urlAR ? (
-          <iframe
-            src={urlAR}
-            className="w-full h-full border-none"
-            allow="camera; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; microphone"
-            title="WebAR Viewer"
-          />
+        ) : mode === 'AR' && currentModelUrl ? (
+          <ARViewer modelPath={currentModelUrl} scale={scale} />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-muted">
             <p className="text-muted-foreground">Model tidak tersedia</p>
@@ -553,7 +549,7 @@ const StaticViewer = ({
         )}
 
         {/* AR button - moved to top right for mobile */}
-        {showARButton && urlAR && (
+        {showARButton && currentModelUrl && (
           <button
             onClick={() => setMode(mode === '3D' ? 'AR' : '3D')}
             className="viewer-button absolute top-3 right-3 z-10"

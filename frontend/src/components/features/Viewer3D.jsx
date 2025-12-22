@@ -4,6 +4,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { FiPlay, FiPause, FiMaximize2, FiMinimize2, FiRotateCcw, FiZoomIn, FiZoomOut, FiMove } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
+import ARViewer from '@/components/features/ARViewer';
 import { URL_ANIM } from '@/constants/urls';
 
 // Main Viewer Component using vanilla Three.js
@@ -347,14 +348,7 @@ const Viewer3D = ({
             />
           </>
         ) : (
-          <div className="w-full h-full bg-muted">
-            <iframe
-              src={urlAR}
-              className="w-full h-full border-none"
-              allow="camera; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; microphone"
-              title="WebAR Viewer"
-            />
-          </div>
+          <ARViewer modelPath={modelUrl} scale={scale} />
         )}
 
         {/* Control buttons */}
@@ -427,7 +421,7 @@ const Viewer3D = ({
         )}
 
         {/* Mode switch button - moved to top right for mobile */}
-        {showARButton && urlAR && (
+        {showARButton && modelUrl && (
           <button
             onClick={() => setMode(mode === '3D' ? 'AR' : '3D')}
             className="viewer-button absolute top-3 right-3 z-10"
