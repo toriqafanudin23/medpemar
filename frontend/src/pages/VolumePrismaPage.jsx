@@ -48,7 +48,7 @@ const VolumePrismaPage = () => {
       </HighlightBox>
 
       <Paragraph>
-        Karena prisma dapat dianggap sebagai "setengah balok", maka:
+        Karena prisma dapat dianggap sebagai &quot;setengah balok&quot;, maka:
       </Paragraph>
 
       <HighlightBox variant="formula">
