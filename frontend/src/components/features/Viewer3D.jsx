@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -24,16 +24,25 @@ const Viewer3D = ({
   const cameraRef = useRef(null);
   const controlsRef = useRef(null);
   const mixerRef = useRef(null);
+  const actionsRef = useRef([]);
   const clockRef = useRef(new THREE.Clock());
   const animationIdRef = useRef(null);
+  const modelRef = useRef(null);
+  const isPlayingRef = useRef(false);
 
   const [mode, setMode] = useState('3D');
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [hasAnimation, setHasAnimation] = useState(false);
   const [error, setError] = useState(null);
 
   const modelUrl = modelPath.startsWith('http') ? modelPath : URL_ANIM + modelPath;
+
+  // Keep ref in sync with state
+  useEffect(() => {
+    isPlayingRef.current = isPlaying;
+  }, [isPlaying]);
 
   // Initialize Three.js scene
   useEffect(() => {
@@ -41,7 +50,7 @@ const Viewer3D = ({
 
     // Scene setup
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xf1f5f9); // bg-muted equivalent
+    scene.background = new THREE.Color(0xf1f5f9);
     sceneRef.current = scene;
 
     // Camera setup
@@ -109,21 +118,27 @@ const Viewer3D = ({
         model.position.sub(center);
         
         scene.add(model);
+        modelRef.current = model;
 
         // Setup animations if available
         if (gltf.animations && gltf.animations.length > 0) {
           mixerRef.current = new THREE.AnimationMixer(model);
-          gltf.animations.forEach((clip) => {
+          actionsRef.current = gltf.animations.map((clip) => {
             const action = mixerRef.current.clipAction(clip);
             action.setLoop(THREE.LoopRepeat);
+            action.clampWhenFinished = false;
+            return action;
           });
+          setHasAnimation(true);
+          console.log('Found animations:', gltf.animations.length);
+        } else {
+          setHasAnimation(false);
         }
 
         setIsLoading(false);
       },
       (progress) => {
-        // Loading progress
-        console.log('Loading:', (progress.loaded / progress.total * 100) + '%');
+        console.log('Loading:', (progress.loaded / progress.total * 100).toFixed(0) + '%');
       },
       (err) => {
         console.error('Error loading model:', err);
@@ -138,8 +153,8 @@ const Viewer3D = ({
 
       const delta = clockRef.current.getDelta();
 
-      // Update mixer for animations
-      if (mixerRef.current && isPlaying) {
+      // Update mixer for animations - use ref to get current value
+      if (mixerRef.current && isPlayingRef.current) {
         mixerRef.current.update(delta);
       }
 
@@ -178,6 +193,13 @@ const Viewer3D = ({
         cancelAnimationFrame(animationIdRef.current);
       }
       
+      if (mixerRef.current) {
+        mixerRef.current.stopAllAction();
+        mixerRef.current = null;
+      }
+      
+      actionsRef.current = [];
+      
       if (rendererRef.current) {
         rendererRef.current.dispose();
       }
@@ -188,24 +210,50 @@ const Viewer3D = ({
     };
   }, [modelUrl, scale, mode]);
 
-  // Handle animation play/pause
-  useEffect(() => {
-    if (mixerRef.current) {
-      const actions = mixerRef.current._actions;
-      actions.forEach((action) => {
-        if (isPlaying) {
-          action.play();
-        } else {
-          action.stop();
-        }
-      });
-    }
+  // Handle play/pause animation
+  const handlePlayPause = () => {
+    if (!mixerRef.current || actionsRef.current.length === 0) return;
 
-    // Toggle auto-rotate based on playing state
-    if (controlsRef.current) {
-      controlsRef.current.autoRotate = !isPlaying;
+    if (isPlaying) {
+      // Pause - stop all actions
+      actionsRef.current.forEach(action => {
+        action.paused = true;
+      });
+      setIsPlaying(false);
+      
+      // Enable auto-rotate when paused
+      if (controlsRef.current) {
+        controlsRef.current.autoRotate = true;
+      }
+    } else {
+      // Play - start all actions
+      actionsRef.current.forEach(action => {
+        action.paused = false;
+        action.play();
+      });
+      setIsPlaying(true);
+      
+      // Disable auto-rotate when playing animation
+      if (controlsRef.current) {
+        controlsRef.current.autoRotate = false;
+      }
     }
-  }, [isPlaying]);
+  };
+
+  // Reset animation to beginning
+  const handleReset = () => {
+    if (!mixerRef.current || actionsRef.current.length === 0) return;
+
+    actionsRef.current.forEach(action => {
+      action.reset();
+      action.paused = true;
+    });
+    setIsPlaying(false);
+    
+    if (controlsRef.current) {
+      controlsRef.current.autoRotate = true;
+    }
+  };
 
   // Handle fullscreen
   const toggleFullscreen = async () => {
@@ -233,10 +281,6 @@ const Viewer3D = ({
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
-
-  const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
-  };
 
   return (
     <div className="my-6">
@@ -303,19 +347,28 @@ const Viewer3D = ({
               )}
             </button>
 
-            {/* Animation controls */}
-            {showAnimation && mode === '3D' && (
-              <button
-                onClick={handlePlayPause}
-                className="viewer-button"
-                title={isPlaying ? 'Pause Animasi' : 'Play Animasi'}
-              >
-                {isPlaying ? (
-                  <FiPause className="w-5 h-5" />
-                ) : (
-                  <FiPlay className="w-5 h-5" />
-                )}
-              </button>
+            {/* Animation controls - only show if model has animations */}
+            {showAnimation && hasAnimation && mode === '3D' && (
+              <>
+                <button
+                  onClick={handleReset}
+                  className="viewer-button"
+                  title="Reset Animasi"
+                >
+                  <FiRotateCcw className="w-5 h-5" />
+                </button>
+                <button
+                  onClick={handlePlayPause}
+                  className="viewer-button"
+                  title={isPlaying ? 'Pause Animasi' : 'Play Animasi'}
+                >
+                  {isPlaying ? (
+                    <FiPause className="w-5 h-5" />
+                  ) : (
+                    <FiPlay className="w-5 h-5" />
+                  )}
+                </button>
+              </>
             )}
           </div>
         )}
