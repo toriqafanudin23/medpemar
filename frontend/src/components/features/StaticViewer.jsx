@@ -153,8 +153,8 @@ const StaticViewer = ({
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
-    controls.minDistance = 2;
-    controls.maxDistance = 20;
+    controls.minDistance = 1;
+    controls.maxDistance = 50;
 
     controlsRef.current = controls;
 
@@ -380,14 +380,18 @@ const StaticViewer = ({
     }
   };
 
-  // Zoom controls
+  // Zoom controls - use dolly for proper distance-based zoom
   const handleZoomIn = () => {
     if (!cameraRef.current || !controlsRef.current) return;
     const camera = cameraRef.current;
     const controls = controlsRef.current;
-    const direction = new THREE.Vector3();
-    camera.getWorldDirection(direction);
-    camera.position.addScaledVector(direction, 1);
+    const target = controls.target;
+    const distance = camera.position.distanceTo(target);
+    
+    // Zoom in by 20%, respect minDistance
+    const newDistance = Math.max(distance * 0.8, controls.minDistance);
+    const direction = new THREE.Vector3().subVectors(camera.position, target).normalize();
+    camera.position.copy(target).addScaledVector(direction, newDistance);
     controls.update();
   };
 
@@ -395,9 +399,13 @@ const StaticViewer = ({
     if (!cameraRef.current || !controlsRef.current) return;
     const camera = cameraRef.current;
     const controls = controlsRef.current;
-    const direction = new THREE.Vector3();
-    camera.getWorldDirection(direction);
-    camera.position.addScaledVector(direction, -1);
+    const target = controls.target;
+    const distance = camera.position.distanceTo(target);
+    
+    // Zoom out by 20%, respect maxDistance
+    const newDistance = Math.min(distance * 1.25, controls.maxDistance);
+    const direction = new THREE.Vector3().subVectors(camera.position, target).normalize();
+    camera.position.copy(target).addScaledVector(direction, newDistance);
     controls.update();
   };
 
@@ -469,7 +477,7 @@ const StaticViewer = ({
           </div>
         )}
 
-        {/* Controls */}
+        {/* Controls - Bottom Left (Fullscreen, Animation, Navigation) */}
         <div className="absolute bottom-3 left-3 flex gap-2 z-10">
           <button onClick={toggleFullscreen} className="viewer-button" title="Fullscreen">
             {isFullscreen ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
@@ -494,33 +502,6 @@ const StaticViewer = ({
               </button>
             </>
           )}
-
-          {/* Zoom and Pan controls - always show in 3D mode */}
-          {mode === '3D' && (
-            <>
-              <button 
-                onClick={handleZoomIn} 
-                className="viewer-button" 
-                title="Zoom In"
-              >
-                <FiZoomIn className="w-5 h-5" />
-              </button>
-              <button 
-                onClick={handleZoomOut} 
-                className="viewer-button" 
-                title="Zoom Out"
-              >
-                <FiZoomOut className="w-5 h-5" />
-              </button>
-              <button 
-                onClick={togglePanMode} 
-                className={`viewer-button ${isPanMode ? 'bg-primary text-primary-foreground' : ''}`}
-                title={isPanMode ? 'Mode Geser (Aktif)' : 'Mode Geser'}
-              >
-                <FiMove className="w-5 h-5" />
-              </button>
-            </>
-          )}
           
           {/* Navigation buttons for multiple models */}
           {models.length > 1 && (
@@ -534,6 +515,33 @@ const StaticViewer = ({
             </>
           )}
         </div>
+
+        {/* Zoom and Pan controls - Right side, vertically centered */}
+        {mode === '3D' && (
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-10">
+            <button 
+              onClick={handleZoomIn} 
+              className="viewer-button" 
+              title="Zoom In"
+            >
+              <FiZoomIn className="w-5 h-5" />
+            </button>
+            <button 
+              onClick={handleZoomOut} 
+              className="viewer-button" 
+              title="Zoom Out"
+            >
+              <FiZoomOut className="w-5 h-5" />
+            </button>
+            <button 
+              onClick={togglePanMode} 
+              className={`viewer-button ${isPanMode ? 'bg-primary text-primary-foreground' : ''}`}
+              title={isPanMode ? 'Mode Geser (Aktif)' : 'Mode Geser'}
+            >
+              <FiMove className="w-5 h-5" />
+            </button>
+          </div>
+        )}
 
         {/* Model indicator */}
         {models.length > 1 && (
