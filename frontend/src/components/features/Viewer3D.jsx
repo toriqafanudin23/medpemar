@@ -1,38 +1,41 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react';
+import React, { Suspense, useEffect, useRef, useState, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Environment, Center } from '@react-three/drei';
+import { OrbitControls, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import { FiPlay, FiPause, FiRefreshCw, FiMaximize2, FiMinimize2 } from 'react-icons/fi';
+import { FiPlay, FiPause, FiMaximize2, FiMinimize2 } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
 import { URL_ANIM } from '@/constants/urls';
-import { Skeleton } from '@/components/ui/skeleton';
 
 // 3D Model Component with animation support
 const Model = ({ url, scale = 1, isPlaying = false, playDirection = 1 }) => {
-  const gltf = useGLTF(url);
+  const { scene, animations } = useGLTF(url);
   const mixer = useRef(null);
-  const actions = useRef([]);
+  const groupRef = useRef();
+  
+  // Clone scene to avoid modification issues
+  const clonedScene = useMemo(() => scene.clone(), [scene]);
 
   useEffect(() => {
-    if (gltf.animations && gltf.animations.length > 0 && gltf.scene) {
-      mixer.current = new THREE.AnimationMixer(gltf.scene);
-      actions.current = gltf.animations.map((clip) => {
+    if (animations && animations.length > 0 && clonedScene) {
+      mixer.current = new THREE.AnimationMixer(clonedScene);
+      animations.forEach((clip) => {
         const action = mixer.current.clipAction(clip);
+        action.timeScale = playDirection * 0.5;
         action.play();
-        return action;
       });
     }
 
     return () => {
       if (mixer.current) {
         mixer.current.stopAllAction();
+        mixer.current = null;
       }
     };
-  }, [gltf]);
+  }, [clonedScene, animations]);
 
   useEffect(() => {
-    if (actions.current.length > 0) {
-      actions.current.forEach((action) => {
+    if (mixer.current) {
+      mixer.current._actions.forEach((action) => {
         action.timeScale = playDirection * 0.5;
       });
     }
@@ -45,9 +48,9 @@ const Model = ({ url, scale = 1, isPlaying = false, playDirection = 1 }) => {
   });
 
   return (
-    <Center>
-      <primitive object={gltf.scene} scale={scale} />
-    </Center>
+    <group ref={groupRef}>
+      <primitive object={clonedScene} scale={scale} />
+    </group>
   );
 };
 
