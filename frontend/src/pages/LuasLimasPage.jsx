@@ -24,11 +24,19 @@ const LuasLimasPage = () => {
       </Paragraph>
 
       <Viewer3D
-        modelPath={MODELS.LIMAS_JARING}
+        modelPath={MODELS.JARING_LIMAS}
         urlAR={AR_URLS.LIMAS_JARING}
         scale={1}
-        title="Jaring-jaring Limas Segiempat"
+        title="Objek 9. Jaring-jaring Limas Segiempat"
       />
+
+      <HighlightBox variant="info">
+        <p className="text-foreground font-medium mb-2">Komponen Luas Permukaan Limas:</p>
+        <ul className="space-y-1 text-sm text-foreground">
+          <li>Luas alas (segiempat)</li>
+          <li>Jumlah luas sisi tegak (segitiga-segitiga)</li>
+        </ul>
+      </HighlightBox>
 
       <HighlightBox variant="formula">
         <p className="text-foreground font-medium mb-2">Rumus Luas Permukaan Limas:</p>
@@ -39,11 +47,12 @@ const LuasLimasPage = () => {
       </HighlightBox>
 
       <Paragraph>
-        Contoh: Limas segiempat dengan alas persegi sisi 6 cm dan tinggi segitiga pada sisi tegak 
+        <strong>Contoh:</strong> Limas segiempat dengan alas persegi sisi 6 cm dan tinggi segitiga pada sisi tegak 
         (apotema) 5 cm.
       </Paragraph>
 
       <div className="p-4 bg-muted/50 rounded-xl my-4">
+        <p className="text-sm font-medium text-foreground mb-2">Pembahasan:</p>
         <p className="text-sm text-foreground font-mono">
           Luas alas = 6 × 6 = 36 cm²<br/>
           Luas sisi tegak = 4 × (½ × 6 × 5) = 4 × 15 = 60 cm²<br/>
@@ -51,7 +60,10 @@ const LuasLimasPage = () => {
         </p>
       </div>
 
-      <Paragraph>Latihan: Limas dengan alas persegi sisi 8 cm dan apotema 6 cm. Hitung luas permukaannya!</Paragraph>
+      <Paragraph>
+        <strong>Latihan:</strong> Limas dengan alas persegi sisi 8 cm dan apotema 6 cm. 
+        Hitung luas permukaannya!
+      </Paragraph>
       <InputAnswer answerKey="160" placeholder="Luas permukaan = ..." />
 
       <NavFooter prev="/luas-permukaan/prisma" next="/quiz/surface" nextLabel="Quiz Luas Permukaan" />
