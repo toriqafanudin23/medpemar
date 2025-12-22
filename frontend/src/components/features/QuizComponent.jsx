@@ -25,7 +25,9 @@ const QuizComponent = ({ questions, title, onComplete }) => {
         audioRef.current.src = isCorrect ? SOUNDS.CORRECT : SOUNDS.WRONG;
         audioRef.current.play().catch(() => {});
       }
-    } catch (e) {}
+    } catch (e) {
+      // Ignore audio playback errors
+    }
   };
 
   const handleSelectAnswer = (index) => {
