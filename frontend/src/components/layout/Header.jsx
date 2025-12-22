@@ -18,7 +18,7 @@ const Header = () => {
   const navItems = [
     { path: '/home', label: 'Beranda', icon: FiHome },
     { path: '/volume', label: 'Volume', icon: TbCube },
-    { path: '/luas-permukaan', label: 'Luas Permukaan', icon: Tb3DCubeSphere },
+    { path: '/luas-permukaan', label: 'Luas Permukaan', icon: TbCube3dSphere },
     { path: '/quiz', label: 'Quiz', icon: FiHelpCircle },
     { path: '/petunjuk', label: 'Petunjuk', icon: FiBook },
   ];
