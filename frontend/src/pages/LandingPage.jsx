@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { motion } from 'framer-motion';
-import { TbCube, Tb3DCubeSphere, TbAugmentedReality, TbBook } from 'react-icons/tb';
+import { TbCube, TbCube3dSphere, TbAugmentedReality, TbBook } from 'react-icons/tb';
 import { FiArrowRight, FiPlay, FiBookOpen } from 'react-icons/fi';
 
 const LandingPage = () => {
