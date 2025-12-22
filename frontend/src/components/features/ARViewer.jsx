@@ -15,7 +15,7 @@ const getARViewerUrl = (modelUrl, scale = 1) => {
   return `${viewerPath}?${params.toString()}`;
 };
 
-const ARViewer = ({ modelPath, title, scale = 0.3, onClose }) => {
+const ARViewer = ({ modelPath, title, scale = 0.15, onClose }) => {
   return (
     <div className="w-full h-full relative bg-slate-900">
       {/* Close button */}
@@ -32,7 +32,8 @@ const ARViewer = ({ modelPath, title, scale = 0.3, onClose }) => {
       <iframe
         src={getARViewerUrl(modelPath, scale)}
         className="w-full h-full border-none"
-        allow="camera; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; microphone"
+        allow="camera; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; microphone; fullscreen"
+        allowFullScreen
         title="AR Marker Viewer"
       />
       
@@ -49,7 +50,7 @@ const ARViewer = ({ modelPath, title, scale = 0.3, onClose }) => {
 };
 
 // AR Button with Dialog
-export const ARButton = ({ modelPath, title, scale = 0.3 }) => {
+export const ARButton = ({ modelPath, title, scale = 0.15 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showMarkerInfo, setShowMarkerInfo] = useState(false);
   

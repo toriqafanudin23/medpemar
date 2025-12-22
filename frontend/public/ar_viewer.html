@@ -144,8 +144,8 @@
       const urlParams = new URLSearchParams(window.location.search);
       const modelUrl = urlParams.get("model");
       // Default to smaller scale (0.3) as requested
-      let currentScale = parseFloat(urlParams.get("scale")) || 0.3;
-      if (isNaN(currentScale)) currentScale = 0.3;
+      let currentScale = parseFloat(urlParams.get("scale")) || 0.15;
+      if (isNaN(currentScale)) currentScale = 0.15;
       
       let currentRotationY = 0;
       let isPlaying = false;
@@ -272,7 +272,7 @@
           id="model"
           model-loader
           position="0 0 0"
-          scale="0.3 0.3 0.3"
+          scale="0.15 0.15 0.15"
           rotation="0 0 0"
           animation-mixer="timeScale: 0;"
         ></a-entity>
