@@ -4,7 +4,7 @@ import { Heading1, Heading2, Paragraph, HighlightBox } from '@/components/ui/Typ
 import { Card, CardContent } from '@/components/ui/card';
 import NavFooter from '@/components/layout/NavFooter';
 import { FiSmartphone, FiMonitor, FiRotateCw, FiMaximize, FiZoomIn, FiCamera } from 'react-icons/fi';
-import { TbAugmentedReality, TbCube, Tb3DCubeSphere } from 'react-icons/tb';
+import { TbAugmentedReality, TbCube, TbCube3dSphere } from 'react-icons/tb';
 
 const GuidePage = () => {
   const { setPageNumber } = useApp();
@@ -26,7 +26,7 @@ const GuidePage = () => {
       description: 'Lihat bangun ruang di dunia nyata melalui kamera smartphone.'
     },
     {
-      icon: <Tb3DCubeSphere className="w-6 h-6" />,
+      icon: <TbCube3dSphere className="w-6 h-6" />,
       title: 'Animasi',
       description: 'Putar animasi untuk melihat pembentukan volume dan jaring-jaring.'
     }

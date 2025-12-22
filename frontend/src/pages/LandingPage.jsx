@@ -139,7 +139,7 @@ const LandingPage = () => {
                     {/* Center icon */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                       <div className="w-24 h-24 sm:w-32 sm:h-32 bg-primary rounded-3xl flex items-center justify-center shadow-xl">
-                        <Tb3DCubeSphere className="w-12 h-12 sm:w-16 sm:h-16 text-primary-foreground" />
+                        <TbCube3dSphere className="w-12 h-12 sm:w-16 sm:h-16 text-primary-foreground" />
                       </div>
                     </div>
                   </div>
@@ -257,7 +257,7 @@ const LandingPage = () => {
               <Card className="card-base">
                 <CardContent className="p-6">
                   <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
-                    <Tb3DCubeSphere className="w-5 h-5 text-primary" />
+                    <TbCube3dSphere className="w-5 h-5 text-primary" />
                     Luas Permukaan
                   </h3>
                   <p className="text-sm text-muted-foreground">

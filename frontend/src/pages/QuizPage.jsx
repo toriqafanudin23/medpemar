@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import NavFooter from '@/components/layout/NavFooter';
 import { FiArrowRight } from 'react-icons/fi';
-import { TbCube, Tb3DCubeSphere } from 'react-icons/tb';
+import { TbCube, TbCube3dSphere } from 'react-icons/tb';
 
 const QuizPage = () => {
   const { type } = useParams();
@@ -62,7 +62,7 @@ const QuizPage = () => {
             <CardContent className="p-6">
               <div className="flex items-center gap-4 mb-4">
                 <div className="w-14 h-14 bg-accent/10 rounded-xl flex items-center justify-center">
-                  <Tb3DCubeSphere className="w-8 h-8 text-accent" />
+                  <TbCube3dSphere className="w-8 h-8 text-accent" />
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold text-foreground">Quiz Luas Permukaan</h3>

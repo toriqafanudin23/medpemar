@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
 import MenuCard from '@/components/ui/MenuCard';
 import { URL_ICON } from '@/constants/urls';
-import { TbCube, Tb3DCubeSphere, TbBook } from 'react-icons/tb';
+import { TbCube, TbCube3dSphere, TbBook } from 'react-icons/tb';
 import { FiHelpCircle, FiBookOpen } from 'react-icons/fi';
 
 const HomePage = () => {
