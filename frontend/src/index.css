@@ -208,6 +208,19 @@
     height: 450px;
   }
 
+  /* Fullscreen mode - override height */
+  .viewer-container:fullscreen {
+    height: 100vh !important;
+    width: 100vw !important;
+    border-radius: 0;
+    border: none;
+  }
+
+  .viewer-container:fullscreen canvas {
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
   .viewer-button {
     @apply bg-card/90 backdrop-blur-sm border border-border p-2.5 rounded-lg shadow-md;
     @apply hover:bg-card hover:border-primary/50 hover:shadow-lg;

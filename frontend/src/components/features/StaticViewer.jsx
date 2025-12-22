@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2, FiPlay, FiPause, FiRotateCcw } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2, FiPlay, FiPause, FiRotateCcw, FiZoomIn, FiZoomOut, FiMove } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
 import { URL_ANIM } from '@/constants/urls';
 
@@ -28,6 +28,7 @@ const StaticViewer = ({
   const animationIdRef = useRef(null);
   const isPlayingRef = useRef(false);
   const loaderRef = useRef(new GLTFLoader());
+  const loadingUrlRef = useRef(null); // Track which URL is currently being loaded
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mode, setMode] = useState('3D');
@@ -36,6 +37,7 @@ const StaticViewer = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasAnimation, setHasAnimation] = useState(false);
   const [error, setError] = useState(null);
+  const [isPanMode, setIsPanMode] = useState(false);
 
   const currentModelUrl = models.length > 0 
     ? (models[currentIndex].startsWith('http') ? models[currentIndex] : URL_ANIM + models[currentIndex])
@@ -51,7 +53,9 @@ const StaticViewer = ({
     // Stop animations first
     if (mixerRef.current) {
       mixerRef.current.stopAllAction();
-      mixerRef.current.uncacheRoot(modelRef.current);
+      if (modelRef.current) {
+        mixerRef.current.uncacheRoot(modelRef.current);
+      }
       mixerRef.current = null;
     }
     actionsRef.current = [];
@@ -79,6 +83,36 @@ const StaticViewer = ({
       
       sceneRef.current.remove(modelRef.current);
       modelRef.current = null;
+    }
+    
+    // Safety: Also remove any other non-light objects from scene
+    if (sceneRef.current) {
+      const objectsToRemove = [];
+      sceneRef.current.children.forEach((child) => {
+        // Keep only lights, remove everything else (like stale models)
+        if (!child.isLight) {
+          objectsToRemove.push(child);
+        }
+      });
+      objectsToRemove.forEach((obj) => {
+        obj.traverse((child) => {
+          if (child.isMesh) {
+            if (child.geometry) child.geometry.dispose();
+            if (child.material) {
+              if (Array.isArray(child.material)) {
+                child.material.forEach(mat => {
+                  if (mat.map) mat.map.dispose();
+                  mat.dispose();
+                });
+              } else {
+                if (child.material.map) child.material.map.dispose();
+                child.material.dispose();
+              }
+            }
+          }
+        });
+        sceneRef.current.remove(obj);
+      });
     }
     
     setHasAnimation(false);
@@ -121,8 +155,7 @@ const StaticViewer = ({
     controls.dampingFactor = 0.05;
     controls.minDistance = 2;
     controls.maxDistance = 20;
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 1;
+
     controlsRef.current = controls;
 
     // Lighting
@@ -171,11 +204,18 @@ const StaticViewer = ({
       rendererRef.current.setSize(width, height);
     };
 
+    // Handle fullscreen change - need small delay for DOM to update
+    const handleFullscreenChange = () => {
+      setTimeout(handleResize, 100);
+    };
+
     window.addEventListener('resize', handleResize);
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
 
     // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
       
       if (animationIdRef.current) {
         cancelAnimationFrame(animationIdRef.current);
@@ -197,17 +237,41 @@ const StaticViewer = ({
   useEffect(() => {
     if (!currentModelUrl || !sceneRef.current || mode !== '3D') return;
 
+    // Flag to track if this effect has been cancelled (e.g., by StrictMode remount)
+    let cancelled = false;
+
     // Remove previous model COMPLETELY
     removeCurrentModel();
 
     setIsLoading(true);
     setError(null);
+    
+    // Track which URL we're loading
+    loadingUrlRef.current = currentModelUrl;
 
     loaderRef.current.load(
       currentModelUrl,
       (gltf) => {
+        // Check if this effect was cancelled (StrictMode cleanup or URL changed)
+        if (cancelled) {
+          console.log('Load cancelled (effect cleanup):', currentModelUrl);
+          return;
+        }
+        
+        // Check if this load is still relevant (user hasn't switched to another model)
+        if (loadingUrlRef.current !== currentModelUrl) {
+          console.log('Skipping stale model load:', currentModelUrl);
+          return;
+        }
+        
         // Double check scene still exists
         if (!sceneRef.current) return;
+        
+        // Also check if there's already a model loaded with the same URL (prevent duplicates)
+        if (modelRef.current) {
+          console.log('Model already exists, skipping duplicate add');
+          return;
+        }
 
         const model = gltf.scene;
         model.scale.set(scale, scale, scale);
@@ -241,11 +305,19 @@ const StaticViewer = ({
       },
       undefined,
       (err) => {
+        // Only show error if not cancelled and this is still the current loading URL
+        if (cancelled || loadingUrlRef.current !== currentModelUrl) return;
+        
         console.error('Error loading model:', err);
         setError('Gagal memuat model 3D');
         setIsLoading(false);
       }
     );
+    
+    // Cleanup function - cancels this load when effect re-runs or unmounts
+    return () => {
+      cancelled = true;
+    };
   }, [currentModelUrl, scale, mode, removeCurrentModel]);
 
   // Handle play/pause animation
@@ -259,9 +331,7 @@ const StaticViewer = ({
       });
       setIsPlaying(false);
       
-      if (controlsRef.current) {
-        controlsRef.current.autoRotate = true;
-      }
+
     } else {
       // Play
       actionsRef.current.forEach(action => {
@@ -270,9 +340,7 @@ const StaticViewer = ({
       });
       setIsPlaying(true);
       
-      if (controlsRef.current) {
-        controlsRef.current.autoRotate = false;
-      }
+
     }
   };
 
@@ -286,9 +354,7 @@ const StaticViewer = ({
     });
     setIsPlaying(false);
     
-    if (controlsRef.current) {
-      controlsRef.current.autoRotate = true;
-    }
+
   };
 
   const handleNext = () => {
@@ -312,6 +378,41 @@ const StaticViewer = ({
     } catch (err) {
       console.warn('Fullscreen error:', err);
     }
+  };
+
+  // Zoom controls
+  const handleZoomIn = () => {
+    if (!cameraRef.current || !controlsRef.current) return;
+    const camera = cameraRef.current;
+    const controls = controlsRef.current;
+    const direction = new THREE.Vector3();
+    camera.getWorldDirection(direction);
+    camera.position.addScaledVector(direction, 1);
+    controls.update();
+  };
+
+  const handleZoomOut = () => {
+    if (!cameraRef.current || !controlsRef.current) return;
+    const camera = cameraRef.current;
+    const controls = controlsRef.current;
+    const direction = new THREE.Vector3();
+    camera.getWorldDirection(direction);
+    camera.position.addScaledVector(direction, -1);
+    controls.update();
+  };
+
+  // Toggle pan mode
+  const togglePanMode = () => {
+    if (!controlsRef.current) return;
+    const newPanMode = !isPanMode;
+    setIsPanMode(newPanMode);
+    
+    // When pan mode is on, left mouse becomes pan instead of rotate
+    controlsRef.current.mouseButtons = {
+      LEFT: newPanMode ? THREE.MOUSE.PAN : THREE.MOUSE.ROTATE,
+      MIDDLE: THREE.MOUSE.DOLLY,
+      RIGHT: newPanMode ? THREE.MOUSE.ROTATE : THREE.MOUSE.PAN,
+    };
   };
 
   return (
@@ -384,6 +485,33 @@ const StaticViewer = ({
                 title={isPlaying ? 'Pause Animasi' : 'Play Animasi'}
               >
                 {isPlaying ? <FiPause className="w-5 h-5" /> : <FiPlay className="w-5 h-5" />}
+              </button>
+            </>
+          )}
+
+          {/* Zoom and Pan controls - always show in 3D mode */}
+          {mode === '3D' && (
+            <>
+              <button 
+                onClick={handleZoomIn} 
+                className="viewer-button" 
+                title="Zoom In"
+              >
+                <FiZoomIn className="w-5 h-5" />
+              </button>
+              <button 
+                onClick={handleZoomOut} 
+                className="viewer-button" 
+                title="Zoom Out"
+              >
+                <FiZoomOut className="w-5 h-5" />
+              </button>
+              <button 
+                onClick={togglePanMode} 
+                className={`viewer-button ${isPanMode ? 'bg-primary text-primary-foreground' : ''}`}
+                title={isPanMode ? 'Mode Geser (Aktif)' : 'Mode Geser'}
+              >
+                <FiMove className="w-5 h-5" />
               </button>
             </>
           )}
