@@ -264,8 +264,36 @@
         // Initial set
         updateTransform();
       } else {
-        alert("Tidak ada URL model yang diberikan.");
+        // Only show alert if no model provided AND no postMessage expected (could be initial blank state)
+        // alert("Tidak ada URL model yang diberikan.");
       }
+
+      // Handle dynamic model switching via postMessage from React
+      window.addEventListener('message', (event) => {
+        if (event.data && event.data.type === 'loadModel') {
+          const { model, scale } = event.data;
+          console.log("Received new model:", model, "scale:", scale);
+          
+          if (model) {
+            const entity = document.getElementById("model");
+            
+            // 1. Reset animation first
+            entity.setAttribute('animation-mixer', 'timeScale: 0');
+            isPlaying = false;
+            document.getElementById("btn-anim").classList.remove('active');
+            document.getElementById("btn-anim").querySelector('svg').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+
+            // 2. Update model
+            entity.setAttribute("gltf-model", model);
+            
+            // 3. Update scale if provided, otherwise keep current or default
+            if (scale) {
+              currentScale = parseFloat(scale);
+            }
+            updateTransform();
+          }
+        }
+      });
     </script>
   </body>
 </html>

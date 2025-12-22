@@ -5,17 +5,42 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 // Helper to construct AR URL
+// Helper to construct AR URL
 const getARViewerUrl = (modelUrl, scale = 1) => {
   // Use current origin + public file path
+  // REMOVED cache buster to prevent reload
   const viewerPath = '/ar_viewer.html';
   const params = new URLSearchParams({
     model: modelUrl,
     scale: scale
   });
-  return `${viewerPath}?${params.toString()}&t=${Date.now()}`;
+  return `${viewerPath}?${params.toString()}`;
 };
 
 const ARViewer = ({ modelPath, title, scale = 0.15, onClose }) => {
+  const iframeRef = React.useRef(null);
+  const previousModelRef = React.useRef(modelPath);
+
+  // Initial load is handled by src prop.
+  // Subsequent changes are handled by postMessage.
+  React.useEffect(() => {
+    // Only send message if model actually changed and iframe is ready
+    if (iframeRef.current && iframeRef.current.contentWindow) {
+      // Small timeout to ensure iframe has loaded script
+      const timer = setTimeout(() => {
+        iframeRef.current.contentWindow.postMessage(
+          { 
+            type: 'loadModel', 
+            model: modelPath, 
+            scale: scale 
+          }, 
+          '*'
+        );
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [modelPath, scale]);
+
   return (
     <div className="w-full h-full relative bg-slate-900">
       {/* Close button */}
@@ -30,6 +55,7 @@ const ARViewer = ({ modelPath, title, scale = 0.15, onClose }) => {
 
       {/* Iframe to static AR HTML file */}
       <iframe
+        ref={iframeRef}
         src={getARViewerUrl(modelPath, scale)}
         className="w-full h-full border-none"
         allow="camera; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; microphone; fullscreen"
@@ -37,7 +63,6 @@ const ARViewer = ({ modelPath, title, scale = 0.15, onClose }) => {
         title="AR Marker Viewer"
       />
       
-
     </div>
   );
 };
