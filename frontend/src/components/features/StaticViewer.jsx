@@ -1,9 +1,56 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { Suspense, useState, useRef, useMemo, useEffect } from 'react';
+import { Canvas, useThree } from '@react-three/fiber';
+import { OrbitControls, useGLTF } from '@react-three/drei';
 import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2 } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
 import { URL_ANIM } from '@/constants/urls';
 
-// Static Viewer with model switching using model-viewer
+// Static Model (no animation, just display)
+const StaticModel = ({ url, scale = 1 }) => {
+  const { scene } = useGLTF(url);
+  
+  const clonedScene = useMemo(() => {
+    const clone = scene.clone();
+    clone.traverse((child) => {
+      if (child.isMesh) {
+        child.material = child.material.clone();
+      }
+    });
+    return clone;
+  }, [scene]);
+
+  return (
+    <group>
+      <primitive object={clonedScene} scale={scale} />
+    </group>
+  );
+};
+
+// Camera controller
+const CameraController = () => {
+  const { camera } = useThree();
+  
+  useEffect(() => {
+    camera.position.set(5, 5, 5);
+    camera.lookAt(0, 0, 0);
+  }, [camera]);
+
+  return null;
+};
+
+// Loading component
+const LoadingIndicator = () => (
+  <div className="absolute inset-0 flex items-center justify-center bg-muted z-10">
+    <div className="text-center space-y-3">
+      <div className="w-12 h-12 mx-auto bg-primary/20 rounded-xl flex items-center justify-center animate-pulse">
+        <TbCube className="w-6 h-6 text-primary" />
+      </div>
+      <p className="text-sm text-muted-foreground">Memuat model 3D...</p>
+    </div>
+  </div>
+);
+
+// Static Viewer with model switching
 const StaticViewer = ({
   models = [],
   urlAR,
@@ -15,11 +62,22 @@ const StaticViewer = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mode, setMode] = useState('3D');
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const containerRef = useRef(null);
 
   const currentModelUrl = models.length > 0 
     ? (models[currentIndex].startsWith('http') ? models[currentIndex] : URL_ANIM + models[currentIndex])
     : null;
+
+  // Preload current model
+  useEffect(() => {
+    if (currentModelUrl) {
+      setIsLoading(true);
+      useGLTF.preload(currentModelUrl);
+      const timer = setTimeout(() => setIsLoading(false), 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [currentModelUrl]);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % models.length);
@@ -44,13 +102,6 @@ const StaticViewer = ({
     }
   };
 
-  // Import model-viewer
-  useEffect(() => {
-    import('@google/model-viewer').catch(err => {
-      console.warn('Model viewer import error:', err);
-    });
-  }, []);
-
   return (
     <div className="my-6">
       <div
@@ -59,32 +110,35 @@ const StaticViewer = ({
         style={{ height: isFullscreen ? '100vh' : height }}
       >
         {mode === '3D' && currentModelUrl ? (
-          <model-viewer
-            key={currentModelUrl}
-            src={currentModelUrl}
-            alt="3D Model"
-            camera-controls
-            touch-action="pan-y"
-            auto-rotate
-            shadow-intensity="1"
-            style={{
-              width: '100%',
-              height: '100%',
-              backgroundColor: 'hsl(var(--muted))',
-            }}
-          >
-            <div 
-              slot="progress-bar" 
-              className="w-full h-full flex items-center justify-center bg-muted"
+          <>
+            {isLoading && <LoadingIndicator />}
+            <Canvas
+              camera={{ position: [5, 5, 5], fov: 50 }}
+              gl={{ antialias: true, alpha: true }}
+              dpr={[1, 2]}
+              onCreated={() => setIsLoading(false)}
             >
-              <div className="text-center space-y-3">
-                <div className="w-12 h-12 mx-auto bg-primary/20 rounded-xl flex items-center justify-center animate-pulse">
-                  <TbCube className="w-6 h-6 text-primary" />
-                </div>
-                <p className="text-sm text-muted-foreground">Memuat model 3D...</p>
-              </div>
-            </div>
-          </model-viewer>
+              <CameraController />
+              <ambientLight intensity={0.6} />
+              <directionalLight position={[10, 10, 5]} intensity={1} />
+              <directionalLight position={[-10, -10, -5]} intensity={0.4} />
+              <hemisphereLight intensity={0.4} />
+              
+              <Suspense fallback={null}>
+                <StaticModel url={currentModelUrl} scale={scale} />
+              </Suspense>
+              
+              <OrbitControls
+                enablePan={true}
+                enableZoom={true}
+                enableRotate={true}
+                minDistance={2}
+                maxDistance={20}
+                autoRotate={true}
+                autoRotateSpeed={1}
+              />
+            </Canvas>
+          </>
         ) : mode === 'AR' && urlAR ? (
           <iframe
             src={urlAR}
