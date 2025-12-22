@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { FiPlay, FiPause, FiMaximize2, FiMinimize2, FiRotateCcw } from 'react-icons/fi';
+import { FiPlay, FiPause, FiMaximize2, FiMinimize2, FiRotateCcw, FiZoomIn, FiZoomOut, FiMove } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
 import { URL_ANIM } from '@/constants/urls';
 
@@ -36,6 +36,7 @@ const Viewer3D = ({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasAnimation, setHasAnimation] = useState(false);
   const [error, setError] = useState(null);
+  const [isPanMode, setIsPanMode] = useState(false);
 
   const modelUrl = modelPath.startsWith('http') ? modelPath : URL_ANIM + modelPath;
 
@@ -81,8 +82,6 @@ const Viewer3D = ({
     controls.dampingFactor = 0.05;
     controls.minDistance = 2;
     controls.maxDistance = 20;
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 1;
     controlsRef.current = controls;
 
     // Lighting
@@ -220,11 +219,6 @@ const Viewer3D = ({
         action.paused = true;
       });
       setIsPlaying(false);
-      
-      // Enable auto-rotate when paused
-      if (controlsRef.current) {
-        controlsRef.current.autoRotate = true;
-      }
     } else {
       // Play - start all actions
       actionsRef.current.forEach(action => {
@@ -232,11 +226,6 @@ const Viewer3D = ({
         action.play();
       });
       setIsPlaying(true);
-      
-      // Disable auto-rotate when playing animation
-      if (controlsRef.current) {
-        controlsRef.current.autoRotate = false;
-      }
     }
   };
 
@@ -249,10 +238,6 @@ const Viewer3D = ({
       action.paused = true;
     });
     setIsPlaying(false);
-    
-    if (controlsRef.current) {
-      controlsRef.current.autoRotate = true;
-    }
   };
 
   // Handle fullscreen
@@ -281,6 +266,41 @@ const Viewer3D = ({
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
+
+  // Zoom controls
+  const handleZoomIn = () => {
+    if (!cameraRef.current || !controlsRef.current) return;
+    const camera = cameraRef.current;
+    const controls = controlsRef.current;
+    const direction = new THREE.Vector3();
+    camera.getWorldDirection(direction);
+    camera.position.addScaledVector(direction, 1);
+    controls.update();
+  };
+
+  const handleZoomOut = () => {
+    if (!cameraRef.current || !controlsRef.current) return;
+    const camera = cameraRef.current;
+    const controls = controlsRef.current;
+    const direction = new THREE.Vector3();
+    camera.getWorldDirection(direction);
+    camera.position.addScaledVector(direction, -1);
+    controls.update();
+  };
+
+  // Toggle pan mode
+  const togglePanMode = () => {
+    if (!controlsRef.current) return;
+    const newPanMode = !isPanMode;
+    setIsPanMode(newPanMode);
+    
+    // When pan mode is on, left mouse becomes pan instead of rotate
+    controlsRef.current.mouseButtons = {
+      LEFT: newPanMode ? THREE.MOUSE.PAN : THREE.MOUSE.ROTATE,
+      MIDDLE: THREE.MOUSE.DOLLY,
+      RIGHT: newPanMode ? THREE.MOUSE.ROTATE : THREE.MOUSE.PAN,
+    };
+  };
 
   return (
     <div className="my-6">
@@ -367,6 +387,33 @@ const Viewer3D = ({
                   ) : (
                     <FiPlay className="w-5 h-5" />
                   )}
+                </button>
+              </>
+            )}
+
+            {/* Zoom and Pan controls - always show in 3D mode */}
+            {mode === '3D' && (
+              <>
+                <button 
+                  onClick={handleZoomIn} 
+                  className="viewer-button" 
+                  title="Zoom In"
+                >
+                  <FiZoomIn className="w-5 h-5" />
+                </button>
+                <button 
+                  onClick={handleZoomOut} 
+                  className="viewer-button" 
+                  title="Zoom Out"
+                >
+                  <FiZoomOut className="w-5 h-5" />
+                </button>
+                <button 
+                  onClick={togglePanMode} 
+                  className={`viewer-button ${isPanMode ? 'bg-primary text-primary-foreground' : ''}`}
+                  title={isPanMode ? 'Mode Geser (Aktif)' : 'Mode Geser'}
+                >
+                  <FiMove className="w-5 h-5" />
                 </button>
               </>
             )}
