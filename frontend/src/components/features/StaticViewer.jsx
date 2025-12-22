@@ -473,50 +473,58 @@ const StaticViewer = ({
           </div>
         )}
 
-        {/* Controls - Bottom Left (Fullscreen, Animation, Navigation) - Only in 3D mode */}
-        {mode === '3D' && (
-          <div className="absolute bottom-3 left-3 flex gap-2 z-10">
-            <button onClick={toggleFullscreen} className="viewer-button" title="Fullscreen">
-              {isFullscreen ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
-            </button>
+        {/* Fullscreen Button - Top Left */}
+        <button 
+          onClick={toggleFullscreen} 
+          className="viewer-button absolute top-3 left-3 z-10" 
+          title="Fullscreen"
+        >
+          {isFullscreen ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
+        </button>
 
-            {/* Animation controls - only show if model has animations */}
-            {hasAnimation && (
-              <>
-                <button 
-                  onClick={handleReset} 
-                  className="viewer-button" 
-                  title="Reset Animasi"
-                >
-                  <FiRotateCcw className="w-5 h-5" />
-                </button>
-                <button 
-                  onClick={handlePlayPause} 
-                  className="viewer-button" 
-                  title={isPlaying ? 'Pause Animasi' : 'Play Animasi'}
-                >
-                  {isPlaying ? <FiPause className="w-5 h-5" /> : <FiPlay className="w-5 h-5" />}
-                </button>
-              </>
-            )}
-            
-            {/* Navigation buttons for multiple models */}
-            {models.length > 1 && (
-              <>
-                <button onClick={handlePrev} className="viewer-button" title="Model Sebelumnya">
-                  <FiChevronLeft className="w-5 h-5" />
-                </button>
-                <button onClick={handleNext} className="viewer-button" title="Model Selanjutnya">
-                  <FiChevronRight className="w-5 h-5" />
-                </button>
-              </>
-            )}
+        {/* Navigation Buttons - Side Centered */}
+        {models.length > 1 && (
+          <>
+            <button 
+              onClick={handlePrev} 
+              className="viewer-button absolute left-3 top-1/2 -translate-y-1/2 z-10" 
+              title="Model Sebelumnya"
+            >
+              <FiChevronLeft className="w-5 h-5" />
+            </button>
+            <button 
+              onClick={handleNext} 
+              className="viewer-button absolute right-3 top-1/2 -translate-y-1/2 z-10" 
+              title="Model Selanjutnya"
+            >
+              <FiChevronRight className="w-5 h-5" />
+            </button>
+          </>
+        )}
+
+        {/* Bottom Left Controls (Animation) - Only in 3D mode */}
+        {mode === '3D' && hasAnimation && (
+          <div className="absolute bottom-3 left-3 flex gap-2 z-10">
+            <button 
+              onClick={handleReset} 
+              className="viewer-button" 
+              title="Reset Animasi"
+            >
+              <FiRotateCcw className="w-5 h-5" />
+            </button>
+            <button 
+              onClick={handlePlayPause} 
+              className="viewer-button" 
+              title={isPlaying ? 'Pause Animasi' : 'Play Animasi'}
+            >
+              {isPlaying ? <FiPause className="w-5 h-5" /> : <FiPlay className="w-5 h-5" />}
+            </button>
           </div>
         )}
 
-        {/* Zoom and Pan controls - Right side, vertically centered */}
+        {/* Zoom and Pan controls - Bottom Right (Only in 3D mode) */}
         {mode === '3D' && (
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 flex flex-col gap-2 z-10">
+          <div className="absolute bottom-3 right-3 flex flex-col gap-2 z-10">
             <button 
               onClick={handleZoomIn} 
               className="viewer-button" 
@@ -543,7 +551,7 @@ const StaticViewer = ({
 
         {/* Model indicator */}
         {models.length > 1 && (
-          <div className="absolute top-3 left-3 z-10 px-3 py-1.5 bg-card/90 backdrop-blur-sm rounded-lg border border-border">
+          <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 px-3 py-1.5 bg-card/90 backdrop-blur-sm rounded-lg border border-border">
             <span className="text-sm font-medium text-foreground">
               {currentIndex + 1} / {models.length}
             </span>

@@ -12,7 +12,7 @@ const getARViewerUrl = (modelUrl, scale = 1) => {
     model: modelUrl,
     scale: scale
   });
-  return `${viewerPath}?${params.toString()}`;
+  return `${viewerPath}?${params.toString()}&t=${Date.now()}`;
 };
 
 const ARViewer = ({ modelPath, title, scale = 0.15, onClose }) => {

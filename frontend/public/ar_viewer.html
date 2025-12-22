@@ -112,12 +112,6 @@
       </div>
     </div>
 
-    <!-- Fullscreen Button -->
-    <button class="btn" id="fullscreen-btn" onclick="toggleFullscreen()">
-      <svg id="icon-maximize" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
-      <svg id="icon-minimize" viewBox="0 0 24 24" style="display:none"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path></svg>
-    </button>
-
     <!-- UI Controls -->
     <div id="controls">
       <button class="btn" id="btn-zoom-out" onclick="zoomOut()">
@@ -130,13 +124,6 @@
       <button class="btn" id="btn-anim" onclick="toggleAnimation()">
         <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
       </button>
-      <div style="width: 1px; background: #ccc; margin: 0 4px;"></div>
-      <button class="btn" id="btn-rotate-left" onclick="rotateLeft()">
-        <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg>
-      </button>
-      <button class="btn" id="btn-rotate-right" onclick="rotateRight()">
-        <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg>
-      </button>
     </div>
 
     <script>
@@ -147,7 +134,6 @@
       let currentScale = parseFloat(urlParams.get("scale")) || 0.15;
       if (isNaN(currentScale)) currentScale = 0.15;
       
-      let currentRotationY = 0;
       let isPlaying = false;
 
       // Handle loading state
@@ -176,7 +162,6 @@
         const entity = document.getElementById("model");
         if (entity) {
             entity.object3D.scale.set(currentScale, currentScale, currentScale);
-            entity.object3D.rotation.y = THREE.Math.degToRad(currentRotationY);
         }
       }
       
@@ -215,16 +200,6 @@
 
       function zoomOut() {
         currentScale *= 0.9; // Decrease by 10%
-        updateTransform();
-      }
-
-      function rotateLeft() {
-        currentRotationY -= 15; // Rotate 15 degrees left
-        updateTransform();
-      }
-
-      function rotateRight() {
-        currentRotationY += 15; // Rotate 15 degrees right
         updateTransform();
       }
       
