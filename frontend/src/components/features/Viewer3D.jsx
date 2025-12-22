@@ -352,7 +352,7 @@ const Viewer3D = ({
         )}
 
         {/* Control buttons */}
-        {showControls && (
+        {showControls && mode === '3D' && (
           <div className="absolute bottom-3 left-3 flex gap-2 z-10">
             {/* Fullscreen toggle */}
             <button

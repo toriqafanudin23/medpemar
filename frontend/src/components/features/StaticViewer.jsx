@@ -473,44 +473,46 @@ const StaticViewer = ({
           </div>
         )}
 
-        {/* Controls - Bottom Left (Fullscreen, Animation, Navigation) */}
-        <div className="absolute bottom-3 left-3 flex gap-2 z-10">
-          <button onClick={toggleFullscreen} className="viewer-button" title="Fullscreen">
-            {isFullscreen ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
-          </button>
+        {/* Controls - Bottom Left (Fullscreen, Animation, Navigation) - Only in 3D mode */}
+        {mode === '3D' && (
+          <div className="absolute bottom-3 left-3 flex gap-2 z-10">
+            <button onClick={toggleFullscreen} className="viewer-button" title="Fullscreen">
+              {isFullscreen ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
+            </button>
 
-          {/* Animation controls - only show if model has animations */}
-          {hasAnimation && mode === '3D' && (
-            <>
-              <button 
-                onClick={handleReset} 
-                className="viewer-button" 
-                title="Reset Animasi"
-              >
-                <FiRotateCcw className="w-5 h-5" />
-              </button>
-              <button 
-                onClick={handlePlayPause} 
-                className="viewer-button" 
-                title={isPlaying ? 'Pause Animasi' : 'Play Animasi'}
-              >
-                {isPlaying ? <FiPause className="w-5 h-5" /> : <FiPlay className="w-5 h-5" />}
-              </button>
-            </>
-          )}
-          
-          {/* Navigation buttons for multiple models */}
-          {models.length > 1 && (
-            <>
-              <button onClick={handlePrev} className="viewer-button" title="Model Sebelumnya">
-                <FiChevronLeft className="w-5 h-5" />
-              </button>
-              <button onClick={handleNext} className="viewer-button" title="Model Selanjutnya">
-                <FiChevronRight className="w-5 h-5" />
-              </button>
-            </>
-          )}
-        </div>
+            {/* Animation controls - only show if model has animations */}
+            {hasAnimation && (
+              <>
+                <button 
+                  onClick={handleReset} 
+                  className="viewer-button" 
+                  title="Reset Animasi"
+                >
+                  <FiRotateCcw className="w-5 h-5" />
+                </button>
+                <button 
+                  onClick={handlePlayPause} 
+                  className="viewer-button" 
+                  title={isPlaying ? 'Pause Animasi' : 'Play Animasi'}
+                >
+                  {isPlaying ? <FiPause className="w-5 h-5" /> : <FiPlay className="w-5 h-5" />}
+                </button>
+              </>
+            )}
+            
+            {/* Navigation buttons for multiple models */}
+            {models.length > 1 && (
+              <>
+                <button onClick={handlePrev} className="viewer-button" title="Model Sebelumnya">
+                  <FiChevronLeft className="w-5 h-5" />
+                </button>
+                <button onClick={handleNext} className="viewer-button" title="Model Selanjutnya">
+                  <FiChevronRight className="w-5 h-5" />
+                </button>
+              </>
+            )}
+          </div>
+        )}
 
         {/* Zoom and Pan controls - Right side, vertically centered */}
         {mode === '3D' && (
