@@ -1,17 +1,19 @@
-import React, { Suspense, useState, useRef } from 'react';
+import React, { Suspense, useState, useRef, useMemo } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Center } from '@react-three/drei';
+import { OrbitControls, useGLTF } from '@react-three/drei';
 import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2 } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
 import { URL_ANIM } from '@/constants/urls';
 
 // Static Model (no animation)
 const StaticModel = ({ url, scale = 1 }) => {
-  const gltf = useGLTF(url);
+  const { scene } = useGLTF(url);
+  const clonedScene = useMemo(() => scene.clone(), [scene]);
+  
   return (
-    <Center>
-      <primitive object={gltf.scene} scale={scale} />
-    </Center>
+    <group>
+      <primitive object={clonedScene} scale={scale} />
+    </group>
   );
 };
 
