@@ -1,23 +1,9 @@
-import React, { Suspense, useState, useRef, useMemo } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import React, { useState, useRef, useEffect } from 'react';
 import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2 } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
 import { URL_ANIM } from '@/constants/urls';
 
-// Static Model (no animation)
-const StaticModel = ({ url, scale = 1 }) => {
-  const { scene } = useGLTF(url);
-  const clonedScene = useMemo(() => scene.clone(), [scene]);
-  
-  return (
-    <group>
-      <primitive object={clonedScene} scale={scale} />
-    </group>
-  );
-};
-
-// Static Viewer with model switching
+// Static Viewer with model switching using model-viewer
 const StaticViewer = ({
   models = [],
   urlAR,
@@ -58,6 +44,13 @@ const StaticViewer = ({
     }
   };
 
+  // Import model-viewer
+  useEffect(() => {
+    import('@google/model-viewer').catch(err => {
+      console.warn('Model viewer import error:', err);
+    });
+  }, []);
+
   return (
     <div className="my-6">
       <div
@@ -66,8 +59,24 @@ const StaticViewer = ({
         style={{ height: isFullscreen ? '100vh' : height }}
       >
         {mode === '3D' && currentModelUrl ? (
-          <Suspense fallback={
-            <div className="w-full h-full flex items-center justify-center bg-muted">
+          <model-viewer
+            key={currentModelUrl}
+            src={currentModelUrl}
+            alt="3D Model"
+            camera-controls
+            touch-action="pan-y"
+            auto-rotate
+            shadow-intensity="1"
+            style={{
+              width: '100%',
+              height: '100%',
+              backgroundColor: 'hsl(var(--muted))',
+            }}
+          >
+            <div 
+              slot="progress-bar" 
+              className="w-full h-full flex items-center justify-center bg-muted"
+            >
               <div className="text-center space-y-3">
                 <div className="w-12 h-12 mx-auto bg-primary/20 rounded-xl flex items-center justify-center animate-pulse">
                   <TbCube className="w-6 h-6 text-primary" />
@@ -75,15 +84,7 @@ const StaticViewer = ({
                 <p className="text-sm text-muted-foreground">Memuat model 3D...</p>
               </div>
             </div>
-          }>
-            <Canvas camera={{ position: [6, 6, 6], fov: 50 }}>
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[5, 5, 5]} intensity={1} />
-              <hemisphereLight intensity={0.3} />
-              <StaticModel url={currentModelUrl} scale={scale} />
-              <OrbitControls enablePan enableZoom enableRotate minDistance={3} maxDistance={20} />
-            </Canvas>
-          </Suspense>
+          </model-viewer>
         ) : mode === 'AR' && urlAR ? (
           <iframe
             src={urlAR}
