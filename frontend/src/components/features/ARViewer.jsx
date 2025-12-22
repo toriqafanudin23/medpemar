@@ -15,7 +15,7 @@ const getARViewerUrl = (modelUrl, scale = 1) => {
   return `${viewerPath}?${params.toString()}`;
 };
 
-const ARViewer = ({ modelPath, title, scale = 0.5, onClose }) => {
+const ARViewer = ({ modelPath, title, scale = 0.3, onClose }) => {
   return (
     <div className="w-full h-full relative bg-slate-900">
       {/* Close button */}
@@ -49,7 +49,7 @@ const ARViewer = ({ modelPath, title, scale = 0.5, onClose }) => {
 };
 
 // AR Button with Dialog
-export const ARButton = ({ modelPath, title, scale = 0.5 }) => {
+export const ARButton = ({ modelPath, title, scale = 0.3 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showMarkerInfo, setShowMarkerInfo] = useState(false);
   

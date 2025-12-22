@@ -10,6 +10,8 @@
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
     <!-- AR.js for A-Frame -->
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <!-- A-Frame Extras for Animation Mixer -->
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.4.0/dist/aframe-extras.min.js"></script>
     <style>
       body {
         margin: 0;
@@ -57,6 +59,14 @@
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       }
       
+      /* Fullscreen Button - Top Left */
+      #fullscreen-btn {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+      }
+      
       .btn {
         width: 44px;
         height: 44px;
@@ -78,6 +88,11 @@
         background: #f0f0f0;
       }
       
+      .btn.active {
+        background: #3498db;
+        color: white;
+      }
+      
       .btn svg {
         width: 24px;
         height: 24px;
@@ -97,6 +112,12 @@
       </div>
     </div>
 
+    <!-- Fullscreen Button -->
+    <button class="btn" id="fullscreen-btn" onclick="toggleFullscreen()">
+      <svg id="icon-maximize" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+      <svg id="icon-minimize" viewBox="0 0 24 24" style="display:none"><path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"></path></svg>
+    </button>
+
     <!-- UI Controls -->
     <div id="controls">
       <button class="btn" id="btn-zoom-out" onclick="zoomOut()">
@@ -104,6 +125,10 @@
       </button>
       <button class="btn" id="btn-zoom-in" onclick="zoomIn()">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+      </button>
+      <div style="width: 1px; background: #ccc; margin: 0 4px;"></div>
+      <button class="btn" id="btn-anim" onclick="toggleAnimation()">
+        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
       </button>
       <div style="width: 1px; background: #ccc; margin: 0 4px;"></div>
       <button class="btn" id="btn-rotate-left" onclick="rotateLeft()">
@@ -118,10 +143,12 @@
       // Parse query parameters
       const urlParams = new URLSearchParams(window.location.search);
       const modelUrl = urlParams.get("model");
-      let currentScale = parseFloat(urlParams.get("scale")) || 0.5;
-      if (isNaN(currentScale)) currentScale = 0.5;
+      // Default to smaller scale (0.3) as requested
+      let currentScale = parseFloat(urlParams.get("scale")) || 0.3;
+      if (isNaN(currentScale)) currentScale = 0.3;
       
       let currentRotationY = 0;
+      let isPlaying = false;
 
       // Handle loading state
       window.addEventListener("load", () => {
@@ -152,6 +179,34 @@
             entity.object3D.rotation.y = THREE.Math.degToRad(currentRotationY);
         }
       }
+      
+      function toggleAnimation() {
+        const entity = document.getElementById("model");
+        const btn = document.getElementById("btn-anim");
+        const svg = btn.querySelector('svg');
+        
+        if (!entity) return;
+        
+        // Check if animation-mixer exists, if not add it
+        if (!entity.getAttribute('animation-mixer')) {
+           entity.setAttribute('animation-mixer', 'loop: repeat; timeScale: 0;');
+           // We start paused (timeScale 0) effectively, or we can just not set it yet
+        }
+
+        isPlaying = !isPlaying;
+        
+        if (isPlaying) {
+          entity.setAttribute('animation-mixer', 'timeScale: 1; loop: repeat;');
+          btn.classList.add('active');
+          // Change icon to Pause
+          svg.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+        } else {
+          entity.setAttribute('animation-mixer', 'timeScale: 0;');
+          btn.classList.remove('active');
+          // Change icon to Play
+          svg.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
+        }
+      }
 
       function zoomIn() {
         currentScale *= 1.1; // Increase by 10%
@@ -172,6 +227,25 @@
         currentRotationY += 15; // Rotate 15 degrees right
         updateTransform();
       }
+      
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          document.documentElement.requestFullscreen().catch(err => {
+            console.error(`Error attempting to enable fullscreen: ${err.message}`);
+          });
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          }
+        }
+      }
+      
+      // Listen for fullscreen change to update icon
+      document.addEventListener('fullscreenchange', () => {
+        const isFull = !!document.fullscreenElement;
+        document.getElementById('icon-maximize').style.display = isFull ? 'none' : 'block';
+        document.getElementById('icon-minimize').style.display = isFull ? 'block' : 'none';
+      });
     </script>
 
     <a-scene
@@ -198,8 +272,9 @@
           id="model"
           model-loader
           position="0 0 0"
-          scale="0.5 0.5 0.5"
+          scale="0.3 0.3 0.3"
           rotation="0 0 0"
+          animation-mixer="timeScale: 0;"
         ></a-entity>
       </a-marker>
 
@@ -211,7 +286,6 @@
       if (modelUrl) {
         const entity = document.getElementById("model");
         entity.setAttribute("gltf-model", modelUrl);
-        
         // Initial set
         updateTransform();
       } else {
