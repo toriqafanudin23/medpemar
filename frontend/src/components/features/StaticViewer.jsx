@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2 } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2, FiPlay, FiPause } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
 import { URL_ANIM } from '@/constants/urls';
 
@@ -22,19 +22,55 @@ const StaticViewer = ({
   const cameraRef = useRef(null);
   const controlsRef = useRef(null);
   const modelRef = useRef(null);
+  const mixerRef = useRef(null);
+  const clockRef = useRef(new THREE.Clock());
   const animationIdRef = useRef(null);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mode, setMode] = useState('3D');
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [hasAnimation, setHasAnimation] = useState(false);
   const [error, setError] = useState(null);
 
   const currentModelUrl = models.length > 0 
     ? (models[currentIndex].startsWith('http') ? models[currentIndex] : URL_ANIM + models[currentIndex])
     : null;
 
-  // Initialize Three.js scene
+  // Function to completely remove model from scene
+  const removeCurrentModel = useCallback(() => {
+    if (modelRef.current && sceneRef.current) {
+      // Dispose of all geometries and materials
+      modelRef.current.traverse((child) => {
+        if (child.isMesh) {
+          if (child.geometry) child.geometry.dispose();
+          if (child.material) {
+            if (Array.isArray(child.material)) {
+              child.material.forEach(mat => mat.dispose());
+            } else {
+              child.material.dispose();
+            }
+          }
+        }
+      });
+      
+      // Remove from scene
+      sceneRef.current.remove(modelRef.current);
+      modelRef.current = null;
+    }
+    
+    // Stop and dispose mixer
+    if (mixerRef.current) {
+      mixerRef.current.stopAllAction();
+      mixerRef.current = null;
+    }
+    
+    setHasAnimation(false);
+    setIsPlaying(false);
+  }, []);
+
+  // Initialize Three.js scene (only once)
   useEffect(() => {
     if (!canvasRef.current || mode !== '3D') return;
 
@@ -89,6 +125,13 @@ const StaticViewer = ({
     const animate = () => {
       animationIdRef.current = requestAnimationFrame(animate);
 
+      const delta = clockRef.current.getDelta();
+
+      // Update animation mixer
+      if (mixerRef.current && isPlaying) {
+        mixerRef.current.update(delta);
+      }
+
       if (controlsRef.current) {
         controlsRef.current.update();
       }
@@ -122,6 +165,8 @@ const StaticViewer = ({
         cancelAnimationFrame(animationIdRef.current);
       }
       
+      removeCurrentModel();
+      
       if (rendererRef.current) {
         rendererRef.current.dispose();
       }
@@ -130,17 +175,30 @@ const StaticViewer = ({
         controlsRef.current.dispose();
       }
     };
-  }, [mode]);
+  }, [mode, removeCurrentModel]);
+
+  // Update animation loop when isPlaying changes
+  useEffect(() => {
+    if (mixerRef.current) {
+      if (isPlaying) {
+        mixerRef.current._actions.forEach(action => action.play());
+      } else {
+        mixerRef.current._actions.forEach(action => action.stop());
+      }
+    }
+    
+    // Toggle auto-rotate based on playing state
+    if (controlsRef.current) {
+      controlsRef.current.autoRotate = !isPlaying;
+    }
+  }, [isPlaying]);
 
   // Load model when URL changes
   useEffect(() => {
     if (!currentModelUrl || !sceneRef.current || mode !== '3D') return;
 
-    // Remove previous model
-    if (modelRef.current) {
-      sceneRef.current.remove(modelRef.current);
-      modelRef.current = null;
-    }
+    // Remove previous model FIRST
+    removeCurrentModel();
 
     setIsLoading(true);
     setError(null);
@@ -157,8 +215,22 @@ const StaticViewer = ({
         const center = box.getCenter(new THREE.Vector3());
         model.position.sub(center);
         
+        // Add to scene
         sceneRef.current.add(model);
         modelRef.current = model;
+
+        // Setup animations if available
+        if (gltf.animations && gltf.animations.length > 0) {
+          mixerRef.current = new THREE.AnimationMixer(model);
+          gltf.animations.forEach((clip) => {
+            const action = mixerRef.current.clipAction(clip);
+            action.setLoop(THREE.LoopRepeat);
+          });
+          setHasAnimation(true);
+        } else {
+          setHasAnimation(false);
+        }
+
         setIsLoading(false);
       },
       undefined,
@@ -168,7 +240,7 @@ const StaticViewer = ({
         setIsLoading(false);
       }
     );
-  }, [currentModelUrl, scale, mode]);
+  }, [currentModelUrl, scale, mode, removeCurrentModel]);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % models.length);
@@ -176,6 +248,10 @@ const StaticViewer = ({
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + models.length) % models.length);
+  };
+
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying);
   };
 
   const toggleFullscreen = async () => {
@@ -246,6 +322,17 @@ const StaticViewer = ({
           <button onClick={toggleFullscreen} className="viewer-button" title="Fullscreen">
             {isFullscreen ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
           </button>
+
+          {/* Animation play/pause button */}
+          {hasAnimation && mode === '3D' && (
+            <button 
+              onClick={handlePlayPause} 
+              className="viewer-button" 
+              title={isPlaying ? 'Pause Animasi' : 'Play Animasi'}
+            >
+              {isPlaying ? <FiPause className="w-5 h-5" /> : <FiPlay className="w-5 h-5" />}
+            </button>
+          )}
           
           {models.length > 1 && (
             <>
