@@ -19,7 +19,7 @@ const LandingPage = () => {
       description: 'Lihat bangun ruang di dunia nyata melalui kamera smartphone'
     },
     {
-      icon: <Tb3DCubeSphere className="w-8 h-8" />,
+      icon: <TbCube3dSphere className="w-8 h-8" />,
       title: 'Animasi Edukatif',
       description: 'Pahami konsep volume dan luas permukaan dengan animasi step-by-step'
     },
