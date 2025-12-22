@@ -22,7 +22,7 @@ const VolumeKubusPage = () => {
       
       <Heading2>A. Volume Kubus</Heading2>
 
-      <ImageDisplay src="rubik2.png" nama="Gambar 1. Rubik" />
+      <ImageDisplay src="rubik3x3.png" nama="Gambar 1. Rubik" />
 
       <Paragraph>
         Pernahkah kamu bermain rubik? Rubik merupakan permainan puzzle warna berbentuk kubus 
@@ -38,7 +38,7 @@ const VolumeKubusPage = () => {
       <Viewer3D
         modelPath={MODELS.KUBUS_WARNA_ANIM}
         urlAR={AR_URLS.KUBUS_VOLUME}
-        scale={0.8}
+        scale={0.5}
         title="Objek 1. Volume Kubus"
       />
 
@@ -63,7 +63,7 @@ const VolumeKubusPage = () => {
       <Viewer3D
         modelPath={MODELS.KUBUS_2X2}
         urlAR={AR_URLS.KUBUS_2X2}
-        scale={1.2}
+        scale={0.7}
         title="Objek 2. Kubus 2x2x2"
         showAnimation={false}
       />
@@ -76,7 +76,7 @@ const VolumeKubusPage = () => {
         sekarang coba hitung jumlah kubus satuan penyusun kubus pada Gambar 2.
       </Paragraph>
 
-      <ImageDisplay src="4x4x4.png" nama="Gambar 2. Kubus" />
+      <ImageDisplay src="kubussatuan4x4.png" nama="Gambar 2. Kubus" />
 
       <Paragraph>Jumlah kubus satuan pada Gambar 2:</Paragraph>
       <InputAnswer answerKey="64" placeholder="Masukkan jawaban..." />
@@ -92,14 +92,14 @@ const VolumeKubusPage = () => {
         Sekarang, bagaimana jika kubus satuan penyusun kubus memiliki panjang rusuk 1 cm?
       </Paragraph>
 
-      <ImageDisplay src="1cm3.png" nama="Gambar 3. Kubus 1 cm³" scale={0.8} />
+      <ImageDisplay src="kubus1x1x1.png" nama="Gambar 3. Kubus 1 cm³" scale={0.8} />
 
       <Paragraph>
         Pada Gambar 3, kubus memiliki volume 1 cm³. Sedangkan pada Gambar 4, 
         kubus memiliki volume 8 cm³.
       </Paragraph>
 
-      <ImageDisplay src="2cm.png" nama="Gambar 4. Kubus 2 cm" scale={0.8} />
+      <ImageDisplay src="kubus2cm.png" nama="Gambar 4. Kubus 2 cm" scale={0.8} />
 
       <HighlightBox variant="formula">
         <p className="text-foreground font-medium mb-2">Rumus Volume Kubus:</p>
@@ -115,7 +115,7 @@ const VolumeKubusPage = () => {
         penyusun rusuk panjang, rusuk lebar, dan rusuk tinggi.
       </Paragraph>
 
-      <ImageDisplay src="4x4plt.png" nama="Gambar 5. Kubus" width="300px" />
+      <ImageDisplay src="kubusplt.png" nama="Gambar 5. Kubus" width="300px" />
 
       <div className="space-y-2 my-4">
         <Paragraph>p: banyaknya kubus satuan yang menyusun rusuk panjang.</Paragraph>
@@ -141,10 +141,10 @@ const VolumeKubusPage = () => {
         </p>
       </HighlightBox>
 
-      <ImageDisplay src="4x4rrr.png" nama="Gambar 6. Kubus" width="300px" />
+      <ImageDisplay src="kubusrrr.png" nama="Gambar 6. Kubus" width="300px" />
 
       <Paragraph>Sebagai latihan, hitunglah volume kubus berikut!</Paragraph>
-      <ImageDisplay src="kubus-9x9x9x.png" />
+      <ImageDisplay src="kubus9cm.png" />
       <InputAnswer answerKey="729" placeholder="Volume kubus = ..." />
 
       <NavFooter prev="/volume" next="/volume/balok" />
