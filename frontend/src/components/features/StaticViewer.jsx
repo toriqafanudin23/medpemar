@@ -1,56 +1,12 @@
-import React, { Suspense, useState, useRef, useMemo, useEffect } from 'react';
-import { Canvas, useThree } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
+import React, { useEffect, useRef, useState } from 'react';
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2 } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
 import { URL_ANIM } from '@/constants/urls';
 
-// Static Model (no animation, just display)
-const StaticModel = ({ url, scale = 1 }) => {
-  const { scene } = useGLTF(url);
-  
-  const clonedScene = useMemo(() => {
-    const clone = scene.clone();
-    clone.traverse((child) => {
-      if (child.isMesh) {
-        child.material = child.material.clone();
-      }
-    });
-    return clone;
-  }, [scene]);
-
-  return (
-    <group>
-      <primitive object={clonedScene} scale={scale} />
-    </group>
-  );
-};
-
-// Camera controller
-const CameraController = () => {
-  const { camera } = useThree();
-  
-  useEffect(() => {
-    camera.position.set(5, 5, 5);
-    camera.lookAt(0, 0, 0);
-  }, [camera]);
-
-  return null;
-};
-
-// Loading component
-const LoadingIndicator = () => (
-  <div className="absolute inset-0 flex items-center justify-center bg-muted z-10">
-    <div className="text-center space-y-3">
-      <div className="w-12 h-12 mx-auto bg-primary/20 rounded-xl flex items-center justify-center animate-pulse">
-        <TbCube className="w-6 h-6 text-primary" />
-      </div>
-      <p className="text-sm text-muted-foreground">Memuat model 3D...</p>
-    </div>
-  </div>
-);
-
-// Static Viewer with model switching
+// Static Viewer with model switching using vanilla Three.js
 const StaticViewer = ({
   models = [],
   urlAR,
@@ -59,25 +15,160 @@ const StaticViewer = ({
   showARButton = true,
   height = '450px',
 }) => {
+  const containerRef = useRef(null);
+  const canvasRef = useRef(null);
+  const sceneRef = useRef(null);
+  const rendererRef = useRef(null);
+  const cameraRef = useRef(null);
+  const controlsRef = useRef(null);
+  const modelRef = useRef(null);
+  const animationIdRef = useRef(null);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mode, setMode] = useState('3D');
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const containerRef = useRef(null);
+  const [error, setError] = useState(null);
 
   const currentModelUrl = models.length > 0 
     ? (models[currentIndex].startsWith('http') ? models[currentIndex] : URL_ANIM + models[currentIndex])
     : null;
 
-  // Preload current model
+  // Initialize Three.js scene
   useEffect(() => {
-    if (currentModelUrl) {
-      setIsLoading(true);
-      useGLTF.preload(currentModelUrl);
-      const timer = setTimeout(() => setIsLoading(false), 1000);
-      return () => clearTimeout(timer);
+    if (!canvasRef.current || mode !== '3D') return;
+
+    // Scene setup
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xf1f5f9);
+    sceneRef.current = scene;
+
+    // Camera setup
+    const camera = new THREE.PerspectiveCamera(
+      50,
+      canvasRef.current.clientWidth / canvasRef.current.clientHeight,
+      0.1,
+      1000
+    );
+    camera.position.set(5, 5, 5);
+    cameraRef.current = camera;
+
+    // Renderer setup
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvasRef.current,
+      antialias: true,
+      alpha: true,
+    });
+    renderer.setSize(canvasRef.current.clientWidth, canvasRef.current.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    rendererRef.current = renderer;
+
+    // Controls setup
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.minDistance = 2;
+    controls.maxDistance = 20;
+    controls.autoRotate = true;
+    controls.autoRotateSpeed = 1;
+    controlsRef.current = controls;
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(10, 10, 5);
+    scene.add(directionalLight);
+
+    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+    directionalLight2.position.set(-10, -10, -5);
+    scene.add(directionalLight2);
+
+    // Animation loop
+    const animate = () => {
+      animationIdRef.current = requestAnimationFrame(animate);
+
+      if (controlsRef.current) {
+        controlsRef.current.update();
+      }
+
+      if (rendererRef.current && sceneRef.current && cameraRef.current) {
+        rendererRef.current.render(sceneRef.current, cameraRef.current);
+      }
+    };
+
+    animate();
+
+    // Handle resize
+    const handleResize = () => {
+      if (!canvasRef.current || !cameraRef.current || !rendererRef.current) return;
+      
+      const width = canvasRef.current.clientWidth;
+      const height = canvasRef.current.clientHeight;
+      
+      cameraRef.current.aspect = width / height;
+      cameraRef.current.updateProjectionMatrix();
+      rendererRef.current.setSize(width, height);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      
+      if (animationIdRef.current) {
+        cancelAnimationFrame(animationIdRef.current);
+      }
+      
+      if (rendererRef.current) {
+        rendererRef.current.dispose();
+      }
+      
+      if (controlsRef.current) {
+        controlsRef.current.dispose();
+      }
+    };
+  }, [mode]);
+
+  // Load model when URL changes
+  useEffect(() => {
+    if (!currentModelUrl || !sceneRef.current || mode !== '3D') return;
+
+    // Remove previous model
+    if (modelRef.current) {
+      sceneRef.current.remove(modelRef.current);
+      modelRef.current = null;
     }
-  }, [currentModelUrl]);
+
+    setIsLoading(true);
+    setError(null);
+
+    const loader = new GLTFLoader();
+    loader.load(
+      currentModelUrl,
+      (gltf) => {
+        const model = gltf.scene;
+        model.scale.set(scale, scale, scale);
+        
+        // Center the model
+        const box = new THREE.Box3().setFromObject(model);
+        const center = box.getCenter(new THREE.Vector3());
+        model.position.sub(center);
+        
+        sceneRef.current.add(model);
+        modelRef.current = model;
+        setIsLoading(false);
+      },
+      undefined,
+      (err) => {
+        console.error('Error loading model:', err);
+        setError('Gagal memuat model 3D');
+        setIsLoading(false);
+      }
+    );
+  }, [currentModelUrl, scale, mode]);
 
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % models.length);
@@ -111,33 +202,31 @@ const StaticViewer = ({
       >
         {mode === '3D' && currentModelUrl ? (
           <>
-            {isLoading && <LoadingIndicator />}
-            <Canvas
-              camera={{ position: [5, 5, 5], fov: 50 }}
-              gl={{ antialias: true, alpha: true }}
-              dpr={[1, 2]}
-              onCreated={() => setIsLoading(false)}
-            >
-              <CameraController />
-              <ambientLight intensity={0.6} />
-              <directionalLight position={[10, 10, 5]} intensity={1} />
-              <directionalLight position={[-10, -10, -5]} intensity={0.4} />
-              <hemisphereLight intensity={0.4} />
-              
-              <Suspense fallback={null}>
-                <StaticModel url={currentModelUrl} scale={scale} />
-              </Suspense>
-              
-              <OrbitControls
-                enablePan={true}
-                enableZoom={true}
-                enableRotate={true}
-                minDistance={2}
-                maxDistance={20}
-                autoRotate={true}
-                autoRotateSpeed={1}
-              />
-            </Canvas>
+            {isLoading && (
+              <div className="absolute inset-0 flex items-center justify-center bg-muted z-20">
+                <div className="text-center space-y-3">
+                  <div className="w-12 h-12 mx-auto bg-primary/20 rounded-xl flex items-center justify-center animate-pulse">
+                    <TbCube className="w-6 h-6 text-primary" />
+                  </div>
+                  <p className="text-sm text-muted-foreground">Memuat model 3D...</p>
+                </div>
+              </div>
+            )}
+
+            {error && (
+              <div className="absolute inset-0 flex items-center justify-center bg-muted z-20">
+                <div className="text-center space-y-2">
+                  <TbCube className="w-12 h-12 mx-auto text-destructive" />
+                  <p className="text-sm text-destructive">{error}</p>
+                </div>
+              </div>
+            )}
+
+            <canvas
+              ref={canvasRef}
+              className="w-full h-full"
+              style={{ display: 'block' }}
+            />
           </>
         ) : mode === 'AR' && urlAR ? (
           <iframe
