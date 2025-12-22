@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2, FiPlay, FiPause } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2, FiPlay, FiPause, FiRotateCcw } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
 import { URL_ANIM } from '@/constants/urls';
 
@@ -23,8 +23,11 @@ const StaticViewer = ({
   const controlsRef = useRef(null);
   const modelRef = useRef(null);
   const mixerRef = useRef(null);
+  const actionsRef = useRef([]);
   const clockRef = useRef(new THREE.Clock());
   const animationIdRef = useRef(null);
+  const isPlayingRef = useRef(false);
+  const loaderRef = useRef(new GLTFLoader());
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mode, setMode] = useState('3D');
@@ -38,36 +41,49 @@ const StaticViewer = ({
     ? (models[currentIndex].startsWith('http') ? models[currentIndex] : URL_ANIM + models[currentIndex])
     : null;
 
+  // Keep ref in sync with state
+  useEffect(() => {
+    isPlayingRef.current = isPlaying;
+  }, [isPlaying]);
+
   // Function to completely remove model from scene
   const removeCurrentModel = useCallback(() => {
+    // Stop animations first
+    if (mixerRef.current) {
+      mixerRef.current.stopAllAction();
+      mixerRef.current.uncacheRoot(modelRef.current);
+      mixerRef.current = null;
+    }
+    actionsRef.current = [];
+    
+    // Remove model from scene and dispose
     if (modelRef.current && sceneRef.current) {
-      // Dispose of all geometries and materials
       modelRef.current.traverse((child) => {
         if (child.isMesh) {
-          if (child.geometry) child.geometry.dispose();
+          if (child.geometry) {
+            child.geometry.dispose();
+          }
           if (child.material) {
             if (Array.isArray(child.material)) {
-              child.material.forEach(mat => mat.dispose());
+              child.material.forEach(mat => {
+                if (mat.map) mat.map.dispose();
+                mat.dispose();
+              });
             } else {
+              if (child.material.map) child.material.map.dispose();
               child.material.dispose();
             }
           }
         }
       });
       
-      // Remove from scene
       sceneRef.current.remove(modelRef.current);
       modelRef.current = null;
     }
     
-    // Stop and dispose mixer
-    if (mixerRef.current) {
-      mixerRef.current.stopAllAction();
-      mixerRef.current = null;
-    }
-    
     setHasAnimation(false);
     setIsPlaying(false);
+    isPlayingRef.current = false;
   }, []);
 
   // Initialize Three.js scene (only once)
@@ -127,8 +143,8 @@ const StaticViewer = ({
 
       const delta = clockRef.current.getDelta();
 
-      // Update animation mixer
-      if (mixerRef.current && isPlaying) {
+      // Update animation mixer - use ref for current playing state
+      if (mixerRef.current && isPlayingRef.current) {
         mixerRef.current.update(delta);
       }
 
@@ -177,36 +193,22 @@ const StaticViewer = ({
     };
   }, [mode, removeCurrentModel]);
 
-  // Update animation loop when isPlaying changes
-  useEffect(() => {
-    if (mixerRef.current) {
-      if (isPlaying) {
-        mixerRef.current._actions.forEach(action => action.play());
-      } else {
-        mixerRef.current._actions.forEach(action => action.stop());
-      }
-    }
-    
-    // Toggle auto-rotate based on playing state
-    if (controlsRef.current) {
-      controlsRef.current.autoRotate = !isPlaying;
-    }
-  }, [isPlaying]);
-
   // Load model when URL changes
   useEffect(() => {
     if (!currentModelUrl || !sceneRef.current || mode !== '3D') return;
 
-    // Remove previous model FIRST
+    // Remove previous model COMPLETELY
     removeCurrentModel();
 
     setIsLoading(true);
     setError(null);
 
-    const loader = new GLTFLoader();
-    loader.load(
+    loaderRef.current.load(
       currentModelUrl,
       (gltf) => {
+        // Double check scene still exists
+        if (!sceneRef.current) return;
+
         const model = gltf.scene;
         model.scale.set(scale, scale, scale);
         
@@ -222,13 +224,17 @@ const StaticViewer = ({
         // Setup animations if available
         if (gltf.animations && gltf.animations.length > 0) {
           mixerRef.current = new THREE.AnimationMixer(model);
-          gltf.animations.forEach((clip) => {
+          actionsRef.current = gltf.animations.map((clip) => {
             const action = mixerRef.current.clipAction(clip);
             action.setLoop(THREE.LoopRepeat);
+            action.clampWhenFinished = false;
+            return action;
           });
           setHasAnimation(true);
+          console.log('Model loaded with', gltf.animations.length, 'animations');
         } else {
           setHasAnimation(false);
+          console.log('Model loaded without animations');
         }
 
         setIsLoading(false);
@@ -242,16 +248,55 @@ const StaticViewer = ({
     );
   }, [currentModelUrl, scale, mode, removeCurrentModel]);
 
+  // Handle play/pause animation
+  const handlePlayPause = () => {
+    if (!mixerRef.current || actionsRef.current.length === 0) return;
+
+    if (isPlaying) {
+      // Pause
+      actionsRef.current.forEach(action => {
+        action.paused = true;
+      });
+      setIsPlaying(false);
+      
+      if (controlsRef.current) {
+        controlsRef.current.autoRotate = true;
+      }
+    } else {
+      // Play
+      actionsRef.current.forEach(action => {
+        action.paused = false;
+        action.play();
+      });
+      setIsPlaying(true);
+      
+      if (controlsRef.current) {
+        controlsRef.current.autoRotate = false;
+      }
+    }
+  };
+
+  // Reset animation
+  const handleReset = () => {
+    if (!mixerRef.current || actionsRef.current.length === 0) return;
+
+    actionsRef.current.forEach(action => {
+      action.reset();
+      action.paused = true;
+    });
+    setIsPlaying(false);
+    
+    if (controlsRef.current) {
+      controlsRef.current.autoRotate = true;
+    }
+  };
+
   const handleNext = () => {
     setCurrentIndex((prev) => (prev + 1) % models.length);
   };
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + models.length) % models.length);
-  };
-
-  const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
   };
 
   const toggleFullscreen = async () => {
@@ -323,23 +368,33 @@ const StaticViewer = ({
             {isFullscreen ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
           </button>
 
-          {/* Animation play/pause button */}
+          {/* Animation controls - only show if model has animations */}
           {hasAnimation && mode === '3D' && (
-            <button 
-              onClick={handlePlayPause} 
-              className="viewer-button" 
-              title={isPlaying ? 'Pause Animasi' : 'Play Animasi'}
-            >
-              {isPlaying ? <FiPause className="w-5 h-5" /> : <FiPlay className="w-5 h-5" />}
-            </button>
+            <>
+              <button 
+                onClick={handleReset} 
+                className="viewer-button" 
+                title="Reset Animasi"
+              >
+                <FiRotateCcw className="w-5 h-5" />
+              </button>
+              <button 
+                onClick={handlePlayPause} 
+                className="viewer-button" 
+                title={isPlaying ? 'Pause Animasi' : 'Play Animasi'}
+              >
+                {isPlaying ? <FiPause className="w-5 h-5" /> : <FiPlay className="w-5 h-5" />}
+              </button>
+            </>
           )}
           
+          {/* Navigation buttons for multiple models */}
           {models.length > 1 && (
             <>
-              <button onClick={handlePrev} className="viewer-button" title="Sebelumnya">
+              <button onClick={handlePrev} className="viewer-button" title="Model Sebelumnya">
                 <FiChevronLeft className="w-5 h-5" />
               </button>
-              <button onClick={handleNext} className="viewer-button" title="Selanjutnya">
+              <button onClick={handleNext} className="viewer-button" title="Model Selanjutnya">
                 <FiChevronRight className="w-5 h-5" />
               </button>
             </>
