@@ -64,7 +64,7 @@ const VolumeKubusPage = () => {
         modelPath={MODELS.KUBUS_2X2}
         urlAR={AR_URLS.KUBUS_2X2}
         scale={1.2}
-        title="Objek 2. Kubus"
+        title="Objek 2. Kubus 2x2x2"
         showAnimation={false}
       />
 
