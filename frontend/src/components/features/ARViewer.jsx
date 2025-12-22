@@ -37,7 +37,7 @@ const ARViewer = ({ modelPath, title, scale = 0.5, onClose }) => {
       />
       
       {/* Instructions overlay */}
-      <div className="absolute bottom-8 left-4 right-4 z-40 pointer-events-none">
+      <div className="absolute top-4 left-4 right-16 z-40 pointer-events-none">
         <div className="bg-black/60 backdrop-blur-sm rounded-lg p-3 text-center max-w-sm mx-auto">
           <p className="text-sm text-white font-medium">
             Arahkan kamera ke marker <strong>HIRO</strong>
