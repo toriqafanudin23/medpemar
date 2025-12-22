@@ -42,6 +42,15 @@ const VolumeKubusPage = () => {
         title="Objek 1. Volume Kubus"
       />
 
+      {/* AR Button untuk melihat dengan marker */}
+      <div className="flex justify-center my-4">
+        <ARButton 
+          modelPath={URL_ANIM + MODELS.KUBUS_WARNA_ANIM}
+          markerType="hiro"
+          title="Volume Kubus AR"
+        />
+      </div>
+
       <Paragraph>Masukkan jumlah kubus satuan:</Paragraph>
       <InputAnswer answerKey="27" placeholder="Masukkan jawaban..." />
 
