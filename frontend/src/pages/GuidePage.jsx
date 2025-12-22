@@ -3,8 +3,8 @@ import { useApp } from '@/context/AppContext';
 import { Heading1, Heading2, Paragraph, HighlightBox } from '@/components/ui/Typography';
 import { Card, CardContent } from '@/components/ui/card';
 import NavFooter from '@/components/layout/NavFooter';
-import { FiSmartphone, FiMonitor, FiRotateCw, FiMaximize, FiZoomIn, FiCamera } from 'react-icons/fi';
-import { TbAugmentedReality, TbCube, TbCube3dSphere } from 'react-icons/tb';
+import { FiSmartphone, FiMonitor, FiRotateCw, FiMaximize, FiZoomIn, FiZoomOut, FiCamera, FiMove, FiPlay, FiPause, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { TbAugmentedReality, TbCube, TbCube3dSphere, TbRotateClockwise } from 'react-icons/tb';
 
 const GuidePage = () => {
   const { setPageNumber } = useApp();
@@ -33,9 +33,14 @@ const GuidePage = () => {
   ];
 
   const controls = [
-    { icon: <FiRotateCw />, text: 'Geser untuk memutar model 3D' },
-    { icon: <FiZoomIn />, text: 'Cubit (pinch) untuk memperbesar/memperkecil' },
+    { icon: <FiRotateCw />, text: 'Geser layar untuk memutar model 3D' },
+    { icon: <FiZoomIn />, text: 'Cubit (pinch) atau gunakan tombol + untuk memperbesar' },
+    { icon: <FiZoomOut />, text: 'Cubit (pinch) atau gunakan tombol - untuk memperkecil' },
+    { icon: <FiMove />, text: 'Klik tombol geser untuk mengaktifkan mode geser/pan' },
     { icon: <FiMaximize />, text: 'Klik tombol fullscreen untuk layar penuh' },
+    { icon: <FiPlay />, text: 'Klik tombol play untuk memutar animasi (jika tersedia)' },
+    { icon: <TbRotateClockwise />, text: 'Klik tombol reset untuk mengulang animasi dari awal' },
+    { icon: <FiChevronLeft />, text: 'Klik tombol panah untuk beralih antar model (jika ada beberapa model)' },
     { icon: <FiCamera />, text: 'Izinkan akses kamera untuk mode AR' },
   ];
 
