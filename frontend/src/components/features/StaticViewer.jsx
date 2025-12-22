@@ -413,6 +413,12 @@ const StaticViewer = ({
       MIDDLE: THREE.MOUSE.DOLLY,
       RIGHT: newPanMode ? THREE.MOUSE.ROTATE : THREE.MOUSE.PAN,
     };
+    
+    // For mobile touch: swap one-finger behavior
+    controlsRef.current.touches = {
+      ONE: newPanMode ? THREE.TOUCH.PAN : THREE.TOUCH.ROTATE,
+      TWO: THREE.TOUCH.DOLLY_PAN,
+    };
   };
 
   return (
@@ -538,11 +544,11 @@ const StaticViewer = ({
           </div>
         )}
 
-        {/* AR button */}
+        {/* AR button - moved to top right for mobile */}
         {showARButton && urlAR && (
           <button
             onClick={() => setMode(mode === '3D' ? 'AR' : '3D')}
-            className="viewer-button absolute bottom-3 right-3 z-10"
+            className="viewer-button absolute top-3 right-3 z-10"
             title={mode === '3D' ? 'Mode AR' : 'Mode 3D'}
           >
             {mode === '3D' ? <TbAugmentedReality className="w-6 h-6" /> : <TbCube className="w-6 h-6" />}
