@@ -126,6 +126,25 @@
       </button>
     </div>
 
+    <a-scene
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true; precision: medium;"
+    >
+      <a-marker preset="hiro">
+        <a-entity
+          id="model"
+          position="0 0 0"
+          rotation="0 0 0"
+          scale="0.15 0.15 0.15"
+          animation-mixer="timeScale: 0"
+          model-loader
+        ></a-entity>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+
     <script>
       // Parse query parameters
       const urlParams = new URLSearchParams(window.location.search);
