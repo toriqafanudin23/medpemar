@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
 import { Heading1, Heading2, Paragraph, HighlightBox, MathBlock } from '@/components/ui/Typography';
 import Viewer3D from '@/components/features/Viewer3D';
+import { ARButton } from '@/components/features/ARViewer';
 import ImageDisplay from '@/components/ui/ImageDisplay';
 import InputAnswer from '@/components/ui/InputAnswer';
 import NavFooter from '@/components/layout/NavFooter';
-import { AR_URLS, MODELS } from '@/constants/urls';
+import { AR_URLS, MODELS, URL_ANIM } from '@/constants/urls';
 
 const VolumeKubusPage = () => {
   const { setPageNumber } = useApp();
