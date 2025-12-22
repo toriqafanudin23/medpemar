@@ -1,80 +1,9 @@
-import React, { Suspense, useEffect, useRef, useState, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
-import * as THREE from 'three';
+import React, { useState, useRef, useEffect } from 'react';
 import { FiPlay, FiPause, FiMaximize2, FiMinimize2 } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
 import { URL_ANIM } from '@/constants/urls';
 
-// 3D Model Component with animation support
-const Model = ({ url, scale = 1, isPlaying = false, playDirection = 1 }) => {
-  const { scene, animations } = useGLTF(url);
-  const mixer = useRef(null);
-  const groupRef = useRef();
-  
-  // Clone scene to avoid modification issues
-  const clonedScene = useMemo(() => scene.clone(), [scene]);
-
-  useEffect(() => {
-    if (animations && animations.length > 0 && clonedScene) {
-      mixer.current = new THREE.AnimationMixer(clonedScene);
-      animations.forEach((clip) => {
-        const action = mixer.current.clipAction(clip);
-        action.timeScale = playDirection * 0.5;
-        action.play();
-      });
-    }
-
-    return () => {
-      if (mixer.current) {
-        mixer.current.stopAllAction();
-        mixer.current = null;
-      }
-    };
-  }, [clonedScene, animations]);
-
-  useEffect(() => {
-    if (mixer.current) {
-      mixer.current._actions.forEach((action) => {
-        action.timeScale = playDirection * 0.5;
-      });
-    }
-  }, [playDirection]);
-
-  useFrame((_, delta) => {
-    if (isPlaying && mixer.current) {
-      mixer.current.update(delta);
-    }
-  });
-
-  return (
-    <group ref={groupRef}>
-      <primitive object={clonedScene} scale={scale} />
-    </group>
-  );
-};
-
-// Loading fallback for 3D scene
-const ModelLoading = () => (
-  <mesh>
-    <boxGeometry args={[1, 1, 1]} />
-    <meshStandardMaterial color="#3b82f6" wireframe />
-  </mesh>
-);
-
-// AR Mode Component (iframe-based)
-const ARMode = ({ urlAR }) => (
-  <div className="w-full h-full bg-muted flex items-center justify-center">
-    <iframe
-      src={urlAR}
-      className="w-full h-full border-none"
-      allow="camera; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; microphone"
-      title="WebAR Viewer"
-    />
-  </div>
-);
-
-// Main Viewer Component
+// Main Viewer Component using model-viewer
 const Viewer3D = ({
   modelPath,
   urlAR,
@@ -87,9 +16,9 @@ const Viewer3D = ({
 }) => {
   const [mode, setMode] = useState('3D');
   const [isPlaying, setIsPlaying] = useState(false);
-  const [playDirection, setPlayDirection] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const containerRef = useRef(null);
+  const modelViewerRef = useRef(null);
 
   const modelUrl = modelPath.startsWith('http') ? modelPath : URL_ANIM + modelPath;
 
@@ -120,19 +49,28 @@ const Viewer3D = ({
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
 
+  // Animation controls for model-viewer
   const handlePlay = () => {
-    setPlayDirection(1);
-    setIsPlaying(true);
-  };
-
-  const handleReverse = () => {
-    setPlayDirection(-1);
-    setIsPlaying(true);
+    if (modelViewerRef.current) {
+      modelViewerRef.current.play();
+      setIsPlaying(true);
+    }
   };
 
   const handlePause = () => {
-    setIsPlaying(false);
+    if (modelViewerRef.current) {
+      modelViewerRef.current.pause();
+      setIsPlaying(false);
+    }
   };
+
+  // Custom element registration for model-viewer
+  useEffect(() => {
+    // model-viewer is a web component, we need to import it
+    import('@google/model-viewer').catch(err => {
+      console.warn('Model viewer import error:', err);
+    });
+  }, []);
 
   return (
     <div className="my-6">
@@ -142,8 +80,27 @@ const Viewer3D = ({
         style={{ height: isFullscreen ? '100vh' : height }}
       >
         {mode === '3D' ? (
-          <Suspense fallback={
-            <div className="w-full h-full flex items-center justify-center bg-muted">
+          <model-viewer
+            ref={modelViewerRef}
+            src={modelUrl}
+            alt="3D Model"
+            camera-controls
+            touch-action="pan-y"
+            auto-rotate={!isPlaying}
+            animation-name="*"
+            autoplay={isPlaying}
+            shadow-intensity="1"
+            style={{
+              width: '100%',
+              height: '100%',
+              backgroundColor: 'hsl(var(--muted))',
+            }}
+          >
+            {/* Loading indicator */}
+            <div 
+              slot="progress-bar" 
+              className="w-full h-full flex items-center justify-center bg-muted"
+            >
               <div className="text-center space-y-3">
                 <div className="w-12 h-12 mx-auto bg-primary/20 rounded-xl flex items-center justify-center animate-pulse">
                   <TbCube className="w-6 h-6 text-primary" />
@@ -151,32 +108,16 @@ const Viewer3D = ({
                 <p className="text-sm text-muted-foreground">Memuat model 3D...</p>
               </div>
             </div>
-          }>
-            <Canvas
-              camera={{ position: [6, 6, 6], fov: 50 }}
-              className="canvas-wrapper"
-            >
-              <ambientLight intensity={0.5} />
-              <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-              <directionalLight position={[-5, 5, -5]} intensity={0.5} />
-              <hemisphereLight intensity={0.3} />
-              <Model
-                url={modelUrl}
-                scale={scale}
-                isPlaying={isPlaying}
-                playDirection={playDirection}
-              />
-              <OrbitControls
-                enablePan={true}
-                enableZoom={true}
-                enableRotate={true}
-                minDistance={3}
-                maxDistance={20}
-              />
-            </Canvas>
-          </Suspense>
+          </model-viewer>
         ) : (
-          <ARMode urlAR={urlAR} />
+          <div className="w-full h-full bg-muted">
+            <iframe
+              src={urlAR}
+              className="w-full h-full border-none"
+              allow="camera; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; microphone"
+              title="WebAR Viewer"
+            />
+          </div>
         )}
 
         {/* Control buttons */}
@@ -197,26 +138,17 @@ const Viewer3D = ({
 
             {/* Animation controls */}
             {showAnimation && mode === '3D' && (
-              <>
-                <button
-                  onClick={handleReverse}
-                  className="viewer-button"
-                  title="Mundur"
-                >
-                  <FiPlay className="w-5 h-5 rotate-180" />
-                </button>
-                <button
-                  onClick={isPlaying ? handlePause : handlePlay}
-                  className="viewer-button"
-                  title={isPlaying ? 'Pause' : 'Play'}
-                >
-                  {isPlaying ? (
-                    <FiPause className="w-5 h-5" />
-                  ) : (
-                    <FiPlay className="w-5 h-5" />
-                  )}
-                </button>
-              </>
+              <button
+                onClick={isPlaying ? handlePause : handlePlay}
+                className="viewer-button"
+                title={isPlaying ? 'Pause' : 'Play'}
+              >
+                {isPlaying ? (
+                  <FiPause className="w-5 h-5" />
+                ) : (
+                  <FiPlay className="w-5 h-5" />
+                )}
+              </button>
             )}
           </div>
         )}
