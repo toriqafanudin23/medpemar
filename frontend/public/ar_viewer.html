@@ -165,135 +165,67 @@
         }
       }
       
-      function toggleAnimation() {
-        const entity = document.getElementById("model");
+      // Function to replace the model entity completely
+      function setModel(url, scale) {
+        const marker = document.querySelector("a-marker");
+        const oldEntity = document.getElementById("model");
+        
+        // Remove old entity if it exists
+        if (oldEntity) {
+          marker.removeChild(oldEntity);
+        }
+        
+        // Create new entity
+        const newEntity = document.createElement("a-entity");
+        newEntity.setAttribute("id", "model");
+        newEntity.setAttribute("position", "0 0 0");
+        newEntity.setAttribute("rotation", "0 0 0");
+        newEntity.setAttribute("scale", `${scale} ${scale} ${scale}`);
+        newEntity.setAttribute("gltf-model", url);
+        newEntity.setAttribute("animation-mixer", "timeScale: 0");
+        newEntity.setAttribute("model-loader", ""); // Attach our error handler
+        
+        marker.appendChild(newEntity);
+        
+        // Reset UI
+        isPlaying = false;
         const btn = document.getElementById("btn-anim");
-        const svg = btn.querySelector('svg');
-        
-        if (!entity) return;
-        
-        // Check if animation-mixer exists, if not add it
-        if (!entity.getAttribute('animation-mixer')) {
-           entity.setAttribute('animation-mixer', 'loop: repeat; timeScale: 0;');
-           // We start paused (timeScale 0) effectively, or we can just not set it yet
+        if (btn) {
+            btn.classList.remove('active');
+            const svg = btn.querySelector('svg');
+            if (svg) svg.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
         }
-
-        isPlaying = !isPlaying;
         
-        if (isPlaying) {
-          entity.setAttribute('animation-mixer', 'timeScale: 1; loop: repeat;');
-          btn.classList.add('active');
-          // Change icon to Pause
-          svg.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
-        } else {
-          entity.setAttribute('animation-mixer', 'timeScale: 0;');
-          btn.classList.remove('active');
-          // Change icon to Play
-          svg.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
-        }
+        console.log("Model set to:", url);
       }
 
-      function zoomIn() {
-        currentScale *= 1.1; // Increase by 10%
-        updateTransform();
-      }
-
-      function zoomOut() {
-        currentScale *= 0.9; // Decrease by 10%
-        updateTransform();
-      }
-      
-      function toggleFullscreen() {
-        if (!document.fullscreenElement) {
-          document.documentElement.requestFullscreen().catch(err => {
-            console.error(`Error attempting to enable fullscreen: ${err.message}`);
-          });
-        } else {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          }
-        }
-      }
-      
-      // Listen for fullscreen change to update icon
-      document.addEventListener('fullscreenchange', () => {
-        const isFull = !!document.fullscreenElement;
-        document.getElementById('icon-maximize').style.display = isFull ? 'none' : 'block';
-        document.getElementById('icon-minimize').style.display = isFull ? 'block' : 'none';
-      });
-    </script>
-
-    <a-scene
-      embedded
-      arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
-      renderer="logarithmicDepthBuffer: true; antialias: true; alpha: true; precision: medium;"
-      vr-mode-ui="enabled: false"
-    >
-      <!-- Lighting -->
-      <a-entity light="type: ambient; intensity: 1;"></a-entity>
-      <a-entity
-        light="type: directional; intensity: 1.5; position: 1 1 1"
-      ></a-entity>
-
-      <!-- Marker -->
-      <a-marker
-        preset="hiro"
-        smooth="true"
-        smoothCount="5"
-        smoothTolerance="0.01"
-        smoothThreshold="2"
-      >
-        <a-entity
-          id="model"
-          model-loader
-          position="0 0 0"
-          scale="0.15 0.15 0.15"
-          rotation="0 0 0"
-          animation-mixer="timeScale: 0;"
-        ></a-entity>
-      </a-marker>
-
-      <a-entity camera></a-entity>
-    </a-scene>
-
-    <script>
-      // Dynamically set model directly
-      if (modelUrl) {
-        const entity = document.getElementById("model");
-        entity.setAttribute("gltf-model", modelUrl);
-        // Initial set
-        updateTransform();
-      } else {
-        // Only show alert if no model provided AND no postMessage expected (could be initial blank state)
-        // alert("Tidak ada URL model yang diberikan.");
-      }
-
-      // Handle dynamic model switching via postMessage from React
       window.addEventListener('message', (event) => {
         if (event.data && event.data.type === 'loadModel') {
           const { model, scale } = event.data;
           console.log("Received new model:", model, "scale:", scale);
           
           if (model) {
-            const entity = document.getElementById("model");
-            
-            // 1. Reset animation first
-            entity.setAttribute('animation-mixer', 'timeScale: 0');
-            isPlaying = false;
-            document.getElementById("btn-anim").classList.remove('active');
-            document.getElementById("btn-anim").querySelector('svg').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"></polygon>';
-
-            // 2. Update model
-            entity.setAttribute("gltf-model", model);
-            
-            // 3. Update scale if provided, otherwise keep current or default
+            // Update current scale reference
             if (scale) {
               currentScale = parseFloat(scale);
             }
-            updateTransform();
+            setModel(model, currentScale);
           }
         }
       });
+
+      // Initial Load
+      if (modelUrl) {
+         // We can use the existing one or replace it. 
+         // Since the hardcoded one is in HTML, let's just use setModel to be consistent if we want, 
+         // but the HTML one is fine for first load.
+         // Actually, let's use the HTML one for first load, but ensure we update it if needed.
+         const entity = document.getElementById("model");
+         if(entity) {
+            entity.setAttribute("gltf-model", modelUrl);
+            updateTransform();
+         }
+      }
     </script>
   </body>
 </html>
