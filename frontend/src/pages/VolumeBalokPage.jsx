@@ -22,7 +22,7 @@ const VolumeBalokPage = () => {
         perhatikan Gambar 7 berikut.
       </Paragraph>
 
-      <ImageDisplay src="kubusbalokAB.png" nama="Gambar 7. Kubus dan Balok" />
+      <ImageDisplay src="balokkubusAB.png" nama="Gambar 7. Kubus dan Balok" />
 
       <Paragraph>
         Dapat dilihat bahwa pada bangun A, jumlah kubus satuan yang menyusun rusuk panjang, 
