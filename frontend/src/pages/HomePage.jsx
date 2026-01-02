@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
 import MenuCard from '@/components/ui/MenuCard';
-import { URL_ICON } from '@/constants/urls';
-import { TbCube, TbCube3dSphere, TbBook } from 'react-icons/tb';
+import { TbCube, TbCube3dSphere, TbLayoutGrid, TbClipboardList } from 'react-icons/tb';
 import { FiHelpCircle, FiBookOpen } from 'react-icons/fi';
 
 const HomePage = () => {
@@ -15,19 +14,19 @@ const HomePage = () => {
 
   const menuItems = [
     {
-      icon: URL_ICON + 'icon-volume.png',
+      icon: <TbCube3dSphere className="w-10 h-10 text-primary" />,
       title: 'Volume Bangun Ruang',
       description: 'Pelajari cara menghitung volume kubus, balok, prisma, dan limas secara interaktif.',
       to: '/volume'
     },
     {
-      icon: URL_ICON + 'icon-jaring.png',
+      icon: <TbLayoutGrid className="w-10 h-10 text-primary" />,
       title: 'Luas Permukaan',
       description: 'Pahami konsep luas permukaan dengan bantuan visualisasi jaring-jaring.',
       to: '/luas-permukaan'
     },
     {
-      icon: URL_ICON + 'icon-tanya.png',
+      icon: <TbClipboardList className="w-10 h-10 text-primary" />,
       title: 'Latihan Soal',
       description: 'Uji pemahamanmu melalui kuis interaktif tentang volume dan luas permukaan.',
       to: '/quiz'
@@ -47,7 +46,7 @@ const HomePage = () => {
           Materi Bangun Ruang
         </h1>
         <p className="body-text max-w-2xl mx-auto">
-          Pilih topik pembelajaran di bawah ini untuk mulai belajar bangun ruang 
+          Pilih topik pembelajaran di bawah ini untuk mulai belajar bangun ruang
           sisi datar dengan pengalaman Augmented Reality.
         </p>
       </header>
@@ -55,7 +54,7 @@ const HomePage = () => {
       {/* Menu Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {menuItems.map((item, index) => (
-          <div 
+          <div
             key={item.to}
             className="animate-slide-up"
             style={{ animationDelay: `${(index + 1) * 100}ms` }}
