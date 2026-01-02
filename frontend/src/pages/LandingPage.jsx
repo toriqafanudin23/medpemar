@@ -79,7 +79,7 @@ const LandingPage = () => {
                   <span className="block text-primary">Sisi Datar</span>
                 </h1>
                 <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-                  Pelajari konsep volume dan luas permukaan bangun ruang dengan teknologi 
+                  Pelajari konsep volume dan luas permukaan bangun ruang dengan teknologi
                   Augmented Reality dan visualisasi 3D yang interaktif.
                 </p>
               </div>
@@ -135,7 +135,7 @@ const LandingPage = () => {
                     <div className="absolute bottom-1/4 right-1/4 w-24 h-24 sm:w-32 sm:h-32">
                       <div className="w-full h-full bg-primary/10 border-2 border-primary/30 rounded-xl rotate-3" style={{ animationDelay: '1s' }} />
                     </div>
-                    
+
                     {/* Center icon */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                       <div className="w-24 h-24 sm:w-32 sm:h-32 bg-primary rounded-3xl flex items-center justify-center shadow-xl">
@@ -212,11 +212,11 @@ const LandingPage = () => {
                 </h2>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Media pembelajaran ini dirancang khusus untuk siswa SMP Kelas VIII dalam mempelajari 
+                    Media pembelajaran ini dirancang khusus untuk siswa SMP Kelas VIII dalam mempelajari
                     materi Bangun Ruang Sisi Datar yang meliputi Kubus, Balok, Prisma, dan Limas.
                   </p>
                   <p>
-                    Dengan memanfaatkan teknologi Augmented Reality (AR) dan visualisasi 3D, 
+                    Dengan memanfaatkan teknologi Augmented Reality (AR) dan visualisasi 3D,
                     siswa dapat memahami konsep matematika dengan cara yang lebih menyenangkan dan interaktif.
                   </p>
                 </div>
@@ -248,7 +248,7 @@ const LandingPage = () => {
                     Volume Bangun Ruang
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    Pelajari cara menghitung volume kubus, balok, prisma, dan limas 
+                    Pelajari cara menghitung volume kubus, balok, prisma, dan limas
                     dengan bantuan visualisasi 3D dan animasi interaktif.
                   </p>
                 </CardContent>
@@ -261,7 +261,7 @@ const LandingPage = () => {
                     Luas Permukaan
                   </h3>
                   <p className="text-sm text-muted-foreground">
-                    Pahami konsep jaring-jaring dan luas permukaan bangun ruang 
+                    Pahami konsep jaring-jaring dan luas permukaan bangun ruang
                     dengan animasi pembukaan jaring-jaring.
                   </p>
                 </CardContent>
@@ -285,7 +285,7 @@ const LandingPage = () => {
               Siap Mulai Belajar?
             </h2>
             <p className="text-primary-foreground/80 max-w-2xl mx-auto">
-              Jelajahi dunia bangun ruang dengan cara yang menyenangkan dan interaktif. 
+              Jelajahi dunia bangun ruang dengan cara yang menyenangkan dan interaktif.
               Mulai perjalanan belajarmu sekarang!
             </p>
             <Button asChild size="lg" variant="secondary" className="gap-2">
@@ -301,8 +301,8 @@ const LandingPage = () => {
       <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-border">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Media Pembelajaran AR - Bangun Ruang Sisi Datar. 
-            Dibuat untuk Pendidikan Indonesia.
+            © {new Date().getFullYear()} Media Pembelajaran AR - Bangun Ruang Sisi Datar.
+            Dibuat untuk Pendidikan Indonesia oleh <Link to="/developer-bio" className="text-primary hover:underline">Toriq Afanudin</Link>.
           </p>
         </div>
       </footer>

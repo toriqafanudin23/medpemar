@@ -21,6 +21,7 @@ const LuasPrismaPage = lazy(() => import('@/pages/LuasPrismaPage'));
 const LuasLimasPage = lazy(() => import('@/pages/LuasLimasPage'));
 const QuizPage = lazy(() => import('@/pages/QuizPage'));
 const GuidePage = lazy(() => import('@/pages/GuidePage'));
+const DeveloperBioPage = lazy(() => import('@/pages/DeveloperBioPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Suspense fallback={<LoadingScreen />}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/developer-bio" element={<DeveloperBioPage />} />
             <Route element={<Layout />}>
               <Route path="/home" element={<HomePage />} />
               <Route path="/petunjuk" element={<GuidePage />} />
