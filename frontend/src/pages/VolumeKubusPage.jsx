@@ -19,19 +19,19 @@ const VolumeKubusPage = () => {
   return (
     <div className="max-w-3xl mx-auto animate-fade-in">
       <Heading1>Volume Bangun Ruang Sisi Datar</Heading1>
-      
+
       <Heading2>A. Volume Kubus</Heading2>
 
-      <ImageDisplay src="rubik3x3.png" nama="Gambar 1. Rubik" />
+      <ImageDisplay src="rubik4.png" nama="Gambar 1. Rubik" />
 
       <Paragraph>
-        Pernahkah kamu bermain rubik? Rubik merupakan permainan puzzle warna berbentuk kubus 
-        dengan ukuran tertentu. Jika rubik pada Gambar 1 tersusun dari kubus satuan, 
+        Pernahkah kamu bermain rubik? Rubik merupakan permainan puzzle warna berbentuk kubus
+        dengan ukuran tertentu. Jika rubik pada Gambar 1 tersusun dari kubus satuan,
         maka berapakah banyaknya kubus satuan yang menyusun Rubik di atas?
       </Paragraph>
 
       <Paragraph>
-        Untuk membantumu menghitung banyaknya kubus satuan penyusun Rubik pada Gambar 1, 
+        Untuk membantumu menghitung banyaknya kubus satuan penyusun Rubik pada Gambar 1,
         perhatikan simulasi berikut.
       </Paragraph>
 
@@ -44,7 +44,7 @@ const VolumeKubusPage = () => {
 
       {/* AR Button untuk melihat dengan marker */}
       <div className="flex justify-center my-4">
-        <ARButton 
+        <ARButton
           modelPath={URL_ANIM + MODELS.KUBUS_WARNA_ANIM}
           markerType="hiro"
           title="Volume Kubus AR"
@@ -55,8 +55,8 @@ const VolumeKubusPage = () => {
       <InputAnswer answerKey="27" placeholder="Masukkan jawaban..." />
 
       <Paragraph>
-        Setelah menghitung dengan bantuan Augmented Reality, tentu kamu sudah tahu jumlah 
-        kubus satuan yang menyusun rubik. Selanjutnya, tanpa bantuan animasi, hitunglah 
+        Setelah menghitung dengan bantuan Augmented Reality, tentu kamu sudah tahu jumlah
+        kubus satuan yang menyusun rubik. Selanjutnya, tanpa bantuan animasi, hitunglah
         jumlah kubus satuan pada Objek 2 berikut!
       </Paragraph>
 
@@ -72,30 +72,30 @@ const VolumeKubusPage = () => {
       <InputAnswer answerKey="8" placeholder="Masukkan jawaban..." />
 
       <Paragraph>
-        Setelah kamu berhasil menghitung jumlah kubus dengan bantuan animasi, 
+        Setelah kamu berhasil menghitung jumlah kubus dengan bantuan animasi,
         sekarang coba hitung jumlah kubus satuan penyusun kubus pada Gambar 2.
       </Paragraph>
 
-      <ImageDisplay src="kubussatuan4x4.png" nama="Gambar 2. Kubus" />
+      <ImageDisplay src="kubussatuan444.png" nama="Gambar 2. Kubus" />
 
       <Paragraph>Jumlah kubus satuan pada Gambar 2:</Paragraph>
       <InputAnswer answerKey="64" placeholder="Masukkan jawaban..." />
 
       <Paragraph>
-        Dari perhitungan yang telah kamu lakukan, dapat disimpulkan bahwa kubus yang tersusun 
-        dari 27 kubus satuan memiliki volume sebesar 27 satuan kubik. Sementara itu, 
+        Dari perhitungan yang telah kamu lakukan, dapat disimpulkan bahwa kubus yang tersusun
+        dari 27 kubus satuan memiliki volume sebesar 27 satuan kubik. Sementara itu,
         kubus yang tersusun dari 64 kubus satuan memiliki volume sebesar 64 satuan kubik.
       </Paragraph>
 
       <Paragraph>
-        Sebelumnya, kamu telah menggunakan satuan kubik untuk menyatakan volume. 
+        Sebelumnya, kamu telah menggunakan satuan kubik untuk menyatakan volume.
         Sekarang, bagaimana jika kubus satuan penyusun kubus memiliki panjang rusuk 1 cm?
       </Paragraph>
 
       <ImageDisplay src="kubus1x1x1.png" nama="Gambar 3. Kubus 1 cm³" scale={0.8} />
 
       <Paragraph>
-        Pada Gambar 3, kubus memiliki volume 1 cm³. Sedangkan pada Gambar 4, 
+        Pada Gambar 3, kubus memiliki volume 1 cm³. Sedangkan pada Gambar 4,
         kubus memiliki volume 8 cm³.
       </Paragraph>
 
@@ -110,8 +110,8 @@ const VolumeKubusPage = () => {
       </HighlightBox>
 
       <Paragraph>
-        Terdapat cara yang lebih mudah untuk menghitung volume kubus tanpa harus menghitung 
-        satu per satu kubus satuannya, yaitu dengan mengalikan banyaknya kubus satuan 
+        Terdapat cara yang lebih mudah untuk menghitung volume kubus tanpa harus menghitung
+        satu per satu kubus satuannya, yaitu dengan mengalikan banyaknya kubus satuan
         penyusun rusuk panjang, rusuk lebar, dan rusuk tinggi.
       </Paragraph>
 
@@ -130,7 +130,7 @@ const VolumeKubusPage = () => {
       </Paragraph>
 
       <Paragraph>
-        Pada kubus, banyaknya kubus satuan yang menyusun rusuk panjang, rusuk lebar, 
+        Pada kubus, banyaknya kubus satuan yang menyusun rusuk panjang, rusuk lebar,
         dan rusuk tinggi jumlahnya sama, sehingga untuk mempermudah perhitungan digunakanlah rumus:
       </Paragraph>
 

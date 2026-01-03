@@ -32,8 +32,8 @@ export const SHAPES = [
   },
   {
     id: 'prisma',
-    name: 'Prisma Segitiga',
-    description: 'Bangun ruang dengan alas dan tutup berbentuk segitiga yang kongruen',
+    name: 'Prisma',
+    description: 'Bangun ruang yang memiliki dua alas berbentuk segi-n yang kongruen dan sejajar yang dihubungkan oleh sisi-sisi tegak berbentuk persegi panjang.',
     formula: {
       volume: 'V = Luas alas × tinggi',
       surface: 'L = 2 × Luas alas + Keliling alas × tinggi'
@@ -47,8 +47,8 @@ export const SHAPES = [
   },
   {
     id: 'limas',
-    name: 'Limas Segiempat',
-    description: 'Bangun ruang dengan alas berbentuk segiempat dan sisi tegak berbentuk segitiga',
+    name: 'Limas',
+    description: 'Bangun ruang dengan alas berbentuk segi banyak dan sisi-sisi tegak berbentuk segitiga yang semuanya bertemu di satu titik puncak.',
     formula: {
       volume: 'V = ⅓ × Luas alas × tinggi',
       surface: 'L = Luas alas + Jumlah luas sisi tegak'

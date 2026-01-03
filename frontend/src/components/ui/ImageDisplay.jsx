@@ -15,7 +15,7 @@ const ImageDisplay = ({ src, nama, alt, width, scale = 1, className = '' }) => {
   return (
     <>
       <figure className={`my-6 ${className}`}>
-        <div 
+        <div
           className="relative group cursor-pointer overflow-hidden rounded-xl border border-border bg-muted/50"
           onClick={() => setIsOpen(true)}
         >
