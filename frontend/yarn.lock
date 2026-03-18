@@ -7411,6 +7411,13 @@ jsonpointer@^5.0.0:
     object.assign "^4.1.4"
     object.values "^1.1.6"
 
+katex@^0.16.0:
+  version "0.16.38"
+  resolved "https://registry.yarnpkg.com/katex/-/katex-0.16.38.tgz#45f7b9253ac6b6a80fd168ee893fe0209b755338"
+  integrity sha512-cjHooZUmIAUmDsHBN+1n8LaZdpmbj03LtYeYPyuYB7OuloiaeaV6N4LcfjcnHVzGWjVQmKrxxTrpDcmSzEZQwQ==
+  dependencies:
+    commander "^8.3.0"
+
 katex@^0.16.27:
   version "0.16.27"
   resolved "https://registry.yarnpkg.com/katex/-/katex-0.16.27.tgz#4ecf6f620e0ca1c1a5de722e85fcdcec49086a48"
@@ -9066,6 +9073,13 @@ react-is@^18.0.0:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.3.1.tgz#e83557dc12eae63a99e003a46388b1dcbb44db7e"
   integrity sha512-/LLMVyas0ljjAtoYiPqYiL8VWXzUUdThrmU5+n20DZv+a+ClRoevUzw5JxU+Ieh5/c87ytoTBV9G1FiKfNJdmg==
+
+react-katex@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/react-katex/-/react-katex-3.1.0.tgz#825559010b599f9a6ba8c035982771fe2e2a3347"
+  integrity sha512-At9uLOkC75gwn2N+ZXc5HD8TlATsB+3Hkp9OGs6uA8tM3dwZ3Wljn74Bk3JyHFPgSnesY/EMrIAB1WJwqZqejA==
+  dependencies:
+    katex "^0.16.0"
 
 react-reconciler@^0.31.0:
   version "0.31.0"

@@ -5,6 +5,7 @@ import Layout from '@/components/layout/Layout';
 import LoadingScreen from '@/components/ui/LoadingScreen';
 import { Toaster } from '@/components/ui/sonner';
 import '@/App.css';
+import 'katex/dist/katex.min.css';
 
 // Lazy load pages for better performance
 const LandingPage = lazy(() => import('@/pages/LandingPage'));

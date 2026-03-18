@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
-import { Heading1, Heading2, Paragraph, HighlightBox, MathBlock } from '@/components/ui/Typography';
+import { Heading1, Heading2, Paragraph, HighlightBox, MathBlock, MathInline } from '@/components/ui/Typography';
 import Viewer3D from '@/components/features/Viewer3D';
 import { ARButton } from '@/components/features/ARViewer';
 import ImageDisplay from '@/components/ui/ImageDisplay';
@@ -28,6 +28,12 @@ const VolumeKubusPage = () => {
         Pernahkah kamu bermain rubik? Rubik merupakan permainan puzzle warna berbentuk kubus
         dengan ukuran tertentu. Jika rubik pada Gambar 1 tersusun dari kubus satuan,
         maka berapakah banyaknya kubus satuan yang menyusun Rubik di atas?
+      </Paragraph>
+      <MathBlock>
+        {`a^2 + b^2 = c^2`}
+      </MathBlock>
+      <Paragraph>
+        Jika <MathInline>{`a = 3 \\text{ dan } b = \\sqrt{5}, \\text{ maka hasil dari } a+b \\text{ adalah}`}</MathInline>, maka
       </Paragraph>
 
       <Paragraph>

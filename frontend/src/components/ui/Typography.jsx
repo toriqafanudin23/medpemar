@@ -1,4 +1,18 @@
 import React from 'react';
+import {InlineMath,BlockMath} from 'react-katex'
+
+// Math block for formulas
+export const MathBlock = ({ children, className = '' }) => (
+  <div className={`math-block my-4 ${className}`}>
+    <BlockMath math={children} />
+  </div>
+);
+
+export const MathInline = ({ children, className = '' }) => (
+  <span className={className}>
+    <InlineMath math={children} />
+  </span>
+);
 
 // Heading 1 - Page title
 export const Heading1 = ({ children, className = '' }) => (
@@ -32,11 +46,11 @@ export const Paragraph = ({ children, className = '' }) => (
 );
 
 // Math block for formulas
-export const MathBlock = ({ children, className = '' }) => (
-  <div className={`math-block ${className}`}>
-    <span className="text-lg font-mono text-foreground">{children}</span>
-  </div>
-);
+// export const MathBlock = ({ children, className = '' }) => (
+//   <div className={`math-block ${className}`}>
+//     <span className="text-lg font-mono text-foreground">{children}</span>
+//   </div>
+// );
 
 // Highlighted text box
 export const HighlightBox = ({ children, variant = 'info', className = '' }) => {
