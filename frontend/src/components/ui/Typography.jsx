@@ -13,7 +13,11 @@ export const MathInline = ({ children, className = '' }) => (
     <InlineMath math={children} />
   </span>
 );
-
+export const MathCaption = ({ nama, className = '' }) => (
+  <figcaption className={`text-center text-sm text-muted-foreground mt-3 font-medium ${className}`}>
+    <InlineMath math={nama} />
+  </figcaption>
+);
 // Heading 1 - Page title
 export const Heading1 = ({ children, className = '' }) => (
   <h1 className={`heading-1 mb-6 ${className}`}>

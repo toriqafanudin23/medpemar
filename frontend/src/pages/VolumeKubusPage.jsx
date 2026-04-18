@@ -80,7 +80,7 @@ const VolumeKubusPage = () => {
         Wah, sepertinya kamu sudah mulai mahir menghitung kubus satuan! Sekarang coba kamu hitung banyaknya kubus satuan yang menyusun rubik pada Gambar 2, rubik dengan ukuran <MathInline>{`4 \\times 4 \\times 4.`}</MathInline>
       </Paragraph>
 
-      <ImageDisplay src="rubik444.png" nama="Gambar 2. Kubus" scale={0.7}/>
+      <ImageDisplay src="rubik4444.png" nama="Gambar 2. Kubus" scale={0.9}/>
 
       <Paragraph>Jumlah kubus satuan pada Gambar 2:</Paragraph>
       <InputAnswer answerKey="64" placeholder="Masukkan jawaban..." />
@@ -105,6 +105,13 @@ const VolumeKubusPage = () => {
       <ImageDisplay src="9cm.png" nama="Gambar 5. Kubus rusuk 9 cm" scale={0.8} />
       <Paragraph>Volume kubus pada Gambar 5:</Paragraph>
       <InputAnswer answerKey="729" placeholder="Volume kubus = ..." />
+      <Paragraph>Secara umum, kubus dengan panjang rusuk <MathInline>{`r,`}</MathInline> dapat dihitung volumenya dengan<MathBlock>{`V=r \\times r \\times r = r^3`}</MathBlock></Paragraph>
+      <ImageDisplay src="kubusr.png" nama="Gambar 6. Kubus rusuk r" scale={0.8} />
+      <Heading3>Contoh:</Heading3>
+      <Paragraph>Diketahui sebuah kubus dengan panjang rusuk 5 cm. Hitunglah volume kubus tersebut!</Paragraph>
+      <MathBlock>{`V=r \\times r \\times r \\\\ V=5\\times 5 \\times 5 \\\\ V=125 `}</MathBlock>
+      <Paragraph>Jadi, volume kubus tersebut adalah <MathInline>{`125 \\text{ cm}^3`}</MathInline>.</Paragraph>
+
 
 
 

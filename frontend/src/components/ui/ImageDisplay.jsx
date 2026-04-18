@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { URL_IMAGE } from '@/constants/urls';
 import { FiZoomIn, FiX } from 'react-icons/fi';
 import { Dialog, DialogContent, DialogClose, DialogTitle } from '@/components/ui/dialog';
+import { MathInline } from './Typography';
 
 const ImageDisplay = ({ src, nama, alt, width, scale = 1, className = '' }) => {
   const [isOpen, setIsOpen] = useState(false);
