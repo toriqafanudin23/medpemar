@@ -86,7 +86,7 @@ const VolumeKubusPage = () => {
       <Paragraph>
         Dari perhitungan yang telah kamu lakukan, dapat disimpulkan bahwa kubus yang tersusun
         dari 27 kubus satuan memiliki volume sebesar 27 satuan kubik. Sementara itu,
-        kubus yang tersusun dari 64 kubus satuan memiliki volume sebesar 64 satuan kubik.
+        kubus yang tersusun dari 64 kubus satuan memiliki volume sebesar 64 satuan kubik. Sehingga dapat diartikan bahwa, <b>banyaknya kubus satuan penyusun suatu kubus, merupakan volume dari kubus itu sendiri.</b>
       </Paragraph>
 
       <Paragraph>
