@@ -28,7 +28,7 @@ const VolumeKubusPage = () => {
 
       <Paragraph>
         Pernahkah kamu bermain rubik? Rubik merupakan permainan puzzle warna berbentuk kubus
-        dengan ukuran tertentu. Rubik adalah objek paling sederhana, untuk menjelaskan konsep volume bangun kubus. Perhatikan Gambar 1, jika rubik pada Gambar 1 tersusun dari kubus-kubus satuan,
+        dengan ukuran tertentu. Rubik adalah objek paling sederhana, untuk menjelaskan konsep volume bangun kubus. Perhatikan <MathInline>{`\\text{Gambar 1}`}</MathInline>, jika rubik pada <MathInline>{`\\text{Gambar 1}`}</MathInline> tersusun dari kubus-kubus satuan,
         maka berapakah banyaknya kubus satuan yang menyusun Rubik di tersebut?
       </Paragraph>
       {/* <MathBlock>
@@ -62,7 +62,7 @@ const VolumeKubusPage = () => {
       <InputAnswer answerKey="27" placeholder="Masukkan jawaban..." />
 
       <Paragraph>
-        Selanjutnya, hitunglah banyaknya kubus satuan pada Objek 2, dimana ukuran kubusnya adalah <MathInline>{`2 \\times 2 \\times 2 \\text{ satuan}^3.`}</MathInline>
+        Selanjutnya, hitunglah banyaknya kubus satuan pada <MathInline>{`\\text{Objek 2}`}</MathInline>, dimana ukuran kubusnya adalah <MathInline>{`2 \\times 2 \\times 2 \\text{ satuan}^3.`}</MathInline>
       </Paragraph>
 
       <Viewer3D
@@ -77,12 +77,12 @@ const VolumeKubusPage = () => {
       <InputAnswer answerKey="8" placeholder="Masukkan jawaban..." />
 
       <Paragraph>
-        Wah, sepertinya kamu sudah mulai mahir menghitung kubus satuan! Sekarang coba kamu hitung banyaknya kubus satuan yang menyusun rubik pada Gambar 2, rubik dengan ukuran <MathInline>{`4 \\times 4 \\times 4.`}</MathInline>
+        Wah, sepertinya kamu sudah mulai mahir menghitung kubus satuan! Sekarang coba kamu hitung banyaknya kubus satuan yang menyusun rubik pada <MathInline>{`\\text{Gambar 2}`}</MathInline>, rubik dengan ukuran <MathInline>{`4 \\times 4 \\times 4.`}</MathInline>
       </Paragraph>
 
       <ImageDisplay src="rubik4444.png" nama="Gambar 2. Kubus" scale={0.9}/>
 
-      <Paragraph>Jumlah kubus satuan pada Gambar 2:</Paragraph>
+      <Paragraph>Jumlah kubus satuan pada <MathInline>{`\\text{Gambar 2}`}</MathInline>:</Paragraph>
       <InputAnswer answerKey="64" placeholder="Masukkan jawaban..." />
 
       <Paragraph>
@@ -92,18 +92,18 @@ const VolumeKubusPage = () => {
       </Paragraph>
       <Heading3>Kubus dengan Ukuran</Heading3>
 
-      <Paragraph>Sebelumnya kamu telah menghitung volume kubus dengan menghitung kubus satuannya. Nah sekarang bagaimana dengan kubus yang tidak terbentuk dari kubus satuan, namun memiliki ukuran panjang tertentu, seperti centimeter, milimeter, desimeter, dll. Perhatikan Gambar 3, kubus dengan ukuran <MathInline>{`\\text{1 cm} \\times\\text{1 cm} \\times\\text{1 cm} .`}</MathInline></Paragraph>
+      <Paragraph>Sebelumnya kamu telah menghitung volume kubus dengan menghitung kubus satuannya. Nah sekarang bagaimana dengan kubus yang tidak terbentuk dari kubus satuan, namun memiliki ukuran panjang tertentu, seperti centimeter, milimeter, desimeter, dll. Perhatikan <MathInline>{`\\text{Gambar 3}`}</MathInline>, kubus dengan ukuran <MathInline>{`\\text{1 cm} \\times\\text{1 cm} \\times\\text{1 cm} .`}</MathInline></Paragraph>
 
-      <ImageDisplay src="1cm.png" nama="Gambar 3. Kubus 1 cm³" scale={0.8} />
+      <ImageDisplay src="1cm.png" nama="Gambar 3. Kubus rusuk 1 cm" scale={0.8} />
 
       <Paragraph>
-        Pada Gambar 3, volume kubus dapat dihitung dengan <MathBlock>{`\\text{1 cm} \\times\\text{1 cm} \\times\\text{1 cm}=\\text{1 cm}^3.`}</MathBlock>Sedangkan pada Gambar 4, volume kubus dapat dicari dengan <MathBlock>{`\\text{2 cm} \\times\\text{2 cm} \\times\\text{2 cm}=\\text{8 cm}^3.`}</MathBlock>
+        Pada <MathInline>{`\\text{Gambar 3}`}</MathInline>, volume kubus dapat dihitung dengan <MathBlock>{`\\text{1 cm} \\times\\text{1 cm} \\times\\text{1 cm}=\\text{1 cm}^3.`}</MathBlock>Sedangkan pada <MathInline>{`\\text{Gambar 4}`}</MathInline>, volume kubus dapat dicari dengan <MathBlock>{`\\text{2 cm} \\times\\text{2 cm} \\times\\text{2 cm}=\\text{8 cm}^3.`}</MathBlock>
       </Paragraph>
 
       <ImageDisplay src="2cm.png" nama="Gambar 4. Kubus rusuk 2 cm" scale={0.8} />
-      <Paragraph>Sebagai latihan, cobalah hitung volume kubus pada Gambar 5 berikut.</Paragraph>
+      <Paragraph>Sebagai latihan, cobalah hitung volume kubus pada <MathInline>{`\\text{Gambar 5}`}</MathInline> berikut.</Paragraph>
       <ImageDisplay src="9cm.png" nama="Gambar 5. Kubus rusuk 9 cm" scale={0.8} />
-      <Paragraph>Volume kubus pada Gambar 5:</Paragraph>
+      <Paragraph>Volume kubus pada <MathInline>{`\\text{Gambar 5}`}</MathInline>:</Paragraph>
       <InputAnswer answerKey="729" placeholder="Volume kubus = ..." />
       <Paragraph>Secara umum, kubus dengan panjang rusuk <MathInline>{`r,`}</MathInline> dapat dihitung volumenya dengan<MathBlock>{`V=r \\times r \\times r = r^3`}</MathBlock></Paragraph>
       <ImageDisplay src="kubusr.png" nama="Gambar 6. Kubus rusuk r" scale={0.8} />
