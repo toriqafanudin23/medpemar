@@ -29,12 +29,12 @@ const VolumeKubusPage = () => {
         dengan ukuran tertentu. Jika rubik pada Gambar 1 tersusun dari kubus satuan,
         maka berapakah banyaknya kubus satuan yang menyusun Rubik di atas?
       </Paragraph>
-      <MathBlock>
+      {/* <MathBlock>
         {`a^2 + b^2 = c^2`}
       </MathBlock>
       <Paragraph>
         Jika <MathInline>{`a = 3 \\text{ dan } b = \\sqrt{5}, \\text{ maka hasil dari } a+b \\text{ adalah}`}</MathInline>, maka
-      </Paragraph>
+      </Paragraph> */}
 
       <Paragraph>
         Untuk membantumu menghitung banyaknya kubus satuan penyusun Rubik pada Gambar 1,
