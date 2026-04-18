@@ -26,8 +26,8 @@ const VolumeKubusPage = () => {
 
       <Paragraph>
         Pernahkah kamu bermain rubik? Rubik merupakan permainan puzzle warna berbentuk kubus
-        dengan ukuran tertentu. Jika rubik pada Gambar 1 tersusun dari kubus satuan,
-        maka berapakah banyaknya kubus satuan yang menyusun Rubik di atas?
+        dengan ukuran tertentu. Rubik adalah objek paling sederhana, untuk menjelaskan konsep volume bangun kubus. Perhatikan Gambar 1, jika rubik pada Gambar 1 tersusun dari kubus-kubus satuan,
+        maka berapakah banyaknya kubus satuan yang menyusun Rubik di tersebut?
       </Paragraph>
       {/* <MathBlock>
         {`a^2 + b^2 = c^2`}
@@ -37,8 +37,7 @@ const VolumeKubusPage = () => {
       </Paragraph> */}
 
       <Paragraph>
-        Untuk membantumu menghitung banyaknya kubus satuan penyusun Rubik pada Gambar 1,
-        perhatikan simulasi berikut.
+        Simulasi berikut bisa kamu gunakan untuk menghitung banyaknya kubus satuan pada rubik <MathInline>{`3 \\times 3 \\times 3.`}</MathInline>
       </Paragraph>
 
       <Viewer3D
@@ -57,13 +56,11 @@ const VolumeKubusPage = () => {
         />
       </div>
 
-      <Paragraph>Masukkan jumlah kubus satuan:</Paragraph>
+      <Paragraph>Setelah selesai menghitung banyaknya kubus satuan pada rubik, masukan jawabannya pada kolom berikut: </Paragraph>
       <InputAnswer answerKey="27" placeholder="Masukkan jawaban..." />
 
       <Paragraph>
-        Setelah menghitung dengan bantuan Augmented Reality, tentu kamu sudah tahu jumlah
-        kubus satuan yang menyusun rubik. Selanjutnya, tanpa bantuan animasi, hitunglah
-        jumlah kubus satuan pada Objek 2 berikut!
+        Selanjutnya, hitunglah banyaknya kubus satuan pada Objek 2, dimana ukuran kubusnya adalah <MathInline>{`2 \\times 2 \\times 2 \\text{ satuan}^3.`}</MathInline>
       </Paragraph>
 
       <Viewer3D
@@ -74,12 +71,11 @@ const VolumeKubusPage = () => {
         showAnimation={false}
       />
 
-      <Paragraph>Masukkan jumlah kubus satuan pada Objek 2:</Paragraph>
+      <Paragraph>Masukkan jumlah kubus satuan pada kubus <MathInline>{`2 \\times 2 \\times 2`}</MathInline>:</Paragraph>
       <InputAnswer answerKey="8" placeholder="Masukkan jawaban..." />
 
       <Paragraph>
-        Setelah kamu berhasil menghitung jumlah kubus dengan bantuan animasi,
-        sekarang coba hitung jumlah kubus satuan penyusun kubus pada Gambar 2.
+        Wah, sepertinya kamu sudah mulai mahir menghitung kubus satuan! Sekarang coba kamu hitung banyaknya kubus satuan pada Gambar 2, kubus dengan ukuran <MathInline>{`4 \\times 4 \\times 4 \\text{ satuan}^3.`}</MathInline>
       </Paragraph>
 
       <ImageDisplay src="kubussatuan444.png" nama="Gambar 2. Kubus" />
