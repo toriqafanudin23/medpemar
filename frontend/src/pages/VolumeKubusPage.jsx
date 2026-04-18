@@ -94,7 +94,7 @@ const VolumeKubusPage = () => {
         Sekarang, bagaimana jika kubus satuan penyusun kubus memiliki panjang rusuk 1 cm?
       </Paragraph>
 
-      <ImageDisplay src="kubus1x1x1.png" nama="Gambar 3. Kubus 1 cm³" scale={0.8} />
+      <ImageDisplay src="1cm.png" nama="Gambar 3. Kubus 1 cm³" scale={0.8} />
 
       <Paragraph>
         Pada Gambar 3, kubus memiliki volume 1 cm³. Sedangkan pada Gambar 4,
