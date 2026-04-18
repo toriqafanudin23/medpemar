@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
-import { Heading1, Heading2, Paragraph, HighlightBox, MathBlock, MathInline } from '@/components/ui/Typography';
+import { Heading1, Heading2, Paragraph, HighlightBox, MathBlock, MathInline, Heading3 } from '@/components/ui/Typography';
 import Viewer3D from '@/components/features/Viewer3D';
 import { ARButton } from '@/components/features/ARViewer';
 import ImageDisplay from '@/components/ui/ImageDisplay';
@@ -23,6 +23,8 @@ const VolumeKubusPage = () => {
       <Heading2>A. Volume Kubus</Heading2>
 
       <ImageDisplay src="rubik4.png" nama="Gambar 1. Rubik" />
+      <Heading3>Menghitung Kubus Satuan</Heading3>
+
 
       <Paragraph>
         Pernahkah kamu bermain rubik? Rubik merupakan permainan puzzle warna berbentuk kubus
@@ -88,20 +90,17 @@ const VolumeKubusPage = () => {
         dari 27 kubus satuan memiliki volume sebesar 27 satuan kubik. Sementara itu,
         kubus yang tersusun dari 64 kubus satuan memiliki volume sebesar 64 satuan kubik. Sehingga dapat diartikan bahwa, <b>banyaknya kubus satuan penyusun suatu kubus, merupakan volume dari kubus itu sendiri.</b>
       </Paragraph>
+      <Heading3>Kubus dengan Ukuran</Heading3>
 
-      <Paragraph>
-        Sebelumnya, kamu telah menggunakan satuan kubik untuk menyatakan volume.
-        Sekarang, bagaimana jika kubus satuan penyusun kubus memiliki panjang rusuk 1 cm?
-      </Paragraph>
+      <Paragraph>Sebelumnya kamu telah menghitung volume kubus dengan menghitung kubus satuannya. Nah sekarang bagaimana dengan kubus yang tidak terbentuk dari kubus satuan, namun memiliki ukuran panjang tertentu, seperti centimeter, milimeter, desimeter, dll. Perhatikan Gambar 3, kubus dengan ukuran <MathInline>{`\\text{1 cm} \\times\\text{1 cm} \\times\\text{1 cm} .`}</MathInline></Paragraph>
 
       <ImageDisplay src="1cm.png" nama="Gambar 3. Kubus 1 cm³" scale={0.8} />
 
       <Paragraph>
-        Pada Gambar 3, kubus memiliki volume 1 cm³. Sedangkan pada Gambar 4,
-        kubus memiliki volume 8 cm³.
+        Pada Gambar 3, volume kubus dapat dihitung dengan <MathBlock>{`\\text{1 cm} \\times\\text{1 cm} \\times\\text{1 cm}=\\text{1 cm}^3.`}</MathBlock>Sedangkan pada Gambar 4, volume kubus dapat dicari dengan <MathBlock>{`\\text{2 cm} \\times\\text{2 cm} \\times\\text{2 cm}=\\text{8 cm}^3.`}</MathBlock>
       </Paragraph>
 
-      <ImageDisplay src="kubus2cm.png" nama="Gambar 4. Kubus 2 cm" scale={0.8} />
+      <ImageDisplay src="2cm.png" nama="Gambar 4. Kubus 2 cm" scale={0.8} />
 
       <HighlightBox variant="formula">
         <p className="text-foreground font-medium mb-2">Rumus Volume Kubus:</p>
