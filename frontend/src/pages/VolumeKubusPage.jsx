@@ -62,14 +62,14 @@ const VolumeKubusPage = () => {
       <InputAnswer answerKey="27" placeholder="Masukkan jawaban..." />
 
       <Paragraph>
-        Selanjutnya, hitunglah banyaknya kubus satuan pada <MathInline>{`\\text{Objek 2}`}</MathInline>, dimana ukuran kubusnya adalah <MathInline>{`2 \\times 2 \\times 2 \\text{ satuan}^3.`}</MathInline>
+        Selanjutnya, hitunglah banyaknya kubus satuan pada <MathInline>{`\\text{Objek 2}`}</MathInline>, dimana ukuran kubusnya adalah <MathInline>{`2 \\times 2 \\times 2.`}</MathInline>
       </Paragraph>
 
       <Viewer3D
         modelPath={MODELS.KUBUS_2X2}
         urlAR={AR_URLS.KUBUS_2X2}
         scale={0.7}
-        title="Objek 2. Kubus 2x2x2"
+        title="Objek 2. Kubus"
         showAnimation={false}
       />
 
@@ -88,7 +88,7 @@ const VolumeKubusPage = () => {
       <Paragraph>
         Dari perhitungan yang telah kamu lakukan, dapat disimpulkan bahwa kubus yang tersusun
         dari 27 kubus satuan memiliki volume sebesar 27 satuan kubik. Sementara itu,
-        kubus yang tersusun dari 64 kubus satuan memiliki volume sebesar 64 satuan kubik. Sehingga dapat diartikan bahwa, <b>banyaknya kubus satuan penyusun suatu kubus, merupakan volume dari kubus itu sendiri.</b>
+        kubus yang tersusun dari 64 kubus satuan memiliki volume sebesar 64 satuan kubik. Sehingga dapat disimpulkan bahwa, <b>banyaknya kubus satuan penyusun suatu kubus, merupakan volume dari kubus itu sendiri.</b>
       </Paragraph>
       <Heading3>Kubus dengan Ukuran</Heading3>
 
