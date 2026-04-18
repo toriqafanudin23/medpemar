@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
-import { Heading2, Paragraph, HighlightBox, MathBlock } from '@/components/ui/Typography';
+import { Heading2, Paragraph, HighlightBox, MathBlock, Heading3, MathInline } from '@/components/ui/Typography';
 import StaticViewer from '@/components/features/StaticViewer';
 import ImageDisplay from '@/components/ui/ImageDisplay';
 import InputAnswer from '@/components/ui/InputAnswer';
@@ -18,12 +18,9 @@ const VolumePrismaPage = () => {
   return (
     <div className="max-w-3xl mx-auto animate-fade-in">
       <Heading2>C. Volume Prisma</Heading2>
+      <Heading3>Prisma dan Jenis-jenisnya</Heading3>
 
-      <Paragraph>
-        Sebelumnya kamu sudah belajar cara menghitung volume kubus dan balok. 
-        Volume kubus dan balok dapat diartikan sebagai banyaknya kubus satuan yang menyusunnya.
-        Nah, sekarang bagaimana jika bentuk bangun yang ingin kamu hitung volumenya seperti berikut ini?
-      </Paragraph>
+      <Paragraph>Prisma sendiri adalah bangun ruang yang memiliki dua sisi yang kongruen dan sejajar, serta sisi tegak berbentuk persegi panjang. Dapat dilihat beberapa contoh prisma pada <MathInline>{`\\text{Objek 3}`}</MathInline> berikut.</Paragraph>
 
       <StaticViewer
         models={MODEL_ARRAYS.PRISMA_TYPES}
@@ -31,6 +28,10 @@ const VolumePrismaPage = () => {
         scale={2.8}
         title="Objek 3. Jenis-jenis Prisma"
       />
+      <ImageDisplay src="prismasegitiga3.png" scale={0.7} nama="Gambar 9. Prisma Segitiga" />
+      <ImageDisplay src="prismasegilima.png" scale={0.7} nama="Gambar 10. Prisma Segilima" />
+
+
 
       <ImageDisplay src="prisma-sikusiku.png" scale={1.5} />
       <ImageDisplay src="prisma-segilima-2.png" scale={1.5} nama="Gambar 9. Contoh prisma" />
