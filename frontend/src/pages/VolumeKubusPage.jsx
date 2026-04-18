@@ -77,10 +77,10 @@ const VolumeKubusPage = () => {
       <InputAnswer answerKey="8" placeholder="Masukkan jawaban..." />
 
       <Paragraph>
-        Wah, sepertinya kamu sudah mulai mahir menghitung kubus satuan! Sekarang coba kamu hitung banyaknya kubus satuan pada Gambar 2, kubus dengan ukuran <MathInline>{`4 \\times 4 \\times 4 \\text{ satuan}^3.`}</MathInline>
+        Wah, sepertinya kamu sudah mulai mahir menghitung kubus satuan! Sekarang coba kamu hitung banyaknya kubus satuan yang menyusun rubik pada Gambar 2, rubik dengan ukuran <MathInline>{`4 \\times 4 \\times 4.`}</MathInline>
       </Paragraph>
 
-      <ImageDisplay src="kubussatuan444.png" nama="Gambar 2. Kubus" />
+      <ImageDisplay src="rubik444.png" nama="Gambar 2. Kubus" scale={0.7}/>
 
       <Paragraph>Jumlah kubus satuan pada Gambar 2:</Paragraph>
       <InputAnswer answerKey="64" placeholder="Masukkan jawaban..." />
@@ -100,53 +100,23 @@ const VolumeKubusPage = () => {
         Pada Gambar 3, volume kubus dapat dihitung dengan <MathBlock>{`\\text{1 cm} \\times\\text{1 cm} \\times\\text{1 cm}=\\text{1 cm}^3.`}</MathBlock>Sedangkan pada Gambar 4, volume kubus dapat dicari dengan <MathBlock>{`\\text{2 cm} \\times\\text{2 cm} \\times\\text{2 cm}=\\text{8 cm}^3.`}</MathBlock>
       </Paragraph>
 
-      <ImageDisplay src="2cm.png" nama="Gambar 4. Kubus 2 cm" scale={0.8} />
+      <ImageDisplay src="2cm.png" nama="Gambar 4. Kubus rusuk 2 cm" scale={0.8} />
+      <Paragraph>Sebagai latihan, cobalah hitung volume kubus pada Gambar 5 berikut.</Paragraph>
+      <ImageDisplay src="9cm.png" nama="Gambar 5. Kubus rusuk 9 cm" scale={0.8} />
+      <Paragraph>Volume kubus pada Gambar 5:</Paragraph>
+      <InputAnswer answerKey="729" placeholder="Volume kubus = ..." />
 
-      <HighlightBox variant="formula">
+
+
+      {/* <HighlightBox variant="formula">
         <p className="text-foreground font-medium mb-2">Rumus Volume Kubus:</p>
         <MathBlock>V = s × s × s = s³</MathBlock>
         <p className="text-sm text-muted-foreground mt-2">
           dengan s = panjang rusuk kubus
         </p>
-      </HighlightBox>
+      </HighlightBox> */}
 
-      <Paragraph>
-        Terdapat cara yang lebih mudah untuk menghitung volume kubus tanpa harus menghitung
-        satu per satu kubus satuannya, yaitu dengan mengalikan banyaknya kubus satuan
-        penyusun rusuk panjang, rusuk lebar, dan rusuk tinggi.
-      </Paragraph>
-
-      <ImageDisplay src="kubusplt.png" nama="Gambar 5. Kubus" width="300px" />
-
-      <div className="space-y-2 my-4">
-        <Paragraph>p: banyaknya kubus satuan yang menyusun rusuk panjang.</Paragraph>
-        <Paragraph>l: banyaknya kubus satuan yang menyusun rusuk lebar.</Paragraph>
-        <Paragraph>t: banyaknya kubus satuan yang menyusun rusuk tinggi.</Paragraph>
-      </div>
-
-      <MathBlock>V = p × l × t = 4 × 4 × 4 = 64 satuan³</MathBlock>
-
-      <Paragraph>
-        Jadi, volume kubus pada Gambar 5 adalah 64 satuan³.
-      </Paragraph>
-
-      <Paragraph>
-        Pada kubus, banyaknya kubus satuan yang menyusun rusuk panjang, rusuk lebar,
-        dan rusuk tinggi jumlahnya sama, sehingga untuk mempermudah perhitungan digunakanlah rumus:
-      </Paragraph>
-
-      <HighlightBox variant="info">
-        <MathBlock>V = r × r × r = r³</MathBlock>
-        <p className="text-sm text-muted-foreground text-center mt-2">
-          r = jumlah kubus satuan penyusun rusuk kubus (panjang, lebar, atau tinggi)
-        </p>
-      </HighlightBox>
-
-      <ImageDisplay src="kubusrrr.png" nama="Gambar 6. Kubus" width="300px" />
-
-      <Paragraph>Sebagai latihan, hitunglah volume kubus berikut!</Paragraph>
-      <ImageDisplay src="kubus9cm.png" />
-      <InputAnswer answerKey="729" placeholder="Volume kubus = ..." />
+      
 
       <NavFooter prev="/volume" next="/volume/balok" />
     </div>
