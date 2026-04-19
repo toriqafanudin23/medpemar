@@ -26,6 +26,11 @@ const VolumeBalokPage = () => {
       <Paragraph>Pembahasan:</Paragraph>
       <MathBlock>{`V = p \\times l \\times t \\\\ V=5\\times 3 \\times 2 \\\\ V=30`}</MathBlock>
       <Paragraph>Jadi volume balok tersebut adalah <MathInline>{`30 \\text{ cm}^3`}</MathInline>.</Paragraph>
+      <Heading3>Latihan:</Heading3>
+      <Paragraph>Hitunglah volume balok dengan panjang 4 cm, lebar 3 cm, dan tinggi 6 cm!</Paragraph>
+      <ImageDisplay src="balok436.png"  scale={0.8} />
+      <InputAnswer answerKey="72" placeholder="Volume balok = ..." />
+      
 
 
       <NavFooter prev="/volume/kubus" next="/volume/prisma" />
