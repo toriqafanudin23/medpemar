@@ -45,7 +45,12 @@ const VolumePrismaPage = () => {
       <Paragraph>Volume prisma secara umum dapat dicari dengan</Paragraph>
       <MathBlock>{`V = \\text{Luas Alas} \\times \\text{Tinggi}`}</MathBlock>
       <Paragraph>Dimana alas prisma bisa berbentuk segitiga, segi lima, segi delapan, atau bentuk lainnya.</Paragraph>
-
+      <Heading3>Contoh:</Heading3>
+      <Paragraph>Diketahui sebuah prisma segitiga sama sisi dengan panjang sisi alas 6 cm dan tinggi prisma 5 cm. Jika tinggi segitiga adalah <MathInline>{`3 \\sqrt{3} \\text{ cm},`}</MathInline> maka volume prisma tersebut adalah ...</Paragraph>
+      <ImageDisplay src="prismasegitigasoal.png" scale={0.7} />
+      <Paragraph>Pembahasan:</Paragraph>
+      <MathBlock>{`V = \\text{Luas Alas} \\times \\text{Tinggi} \\\\ V = \\frac{1}{2} \\times 6 \\times 3\\sqrt{3} \\times 5 \\\\ V = 45\\sqrt{3}`}</MathBlock>
+      <Paragraph>Jadi volume prisma segitiga tersebut adalah <MathInline>{`45\\sqrt{3} \\text{ cm}^3`}</MathInline>.</Paragraph>
 
 
 
