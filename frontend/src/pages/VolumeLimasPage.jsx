@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
-import { Heading2, Paragraph, HighlightBox, MathBlock } from '@/components/ui/Typography';
+import { Heading2, Heading3, Paragraph, HighlightBox, MathBlock, MathInline } from '@/components/ui/Typography';
 import Viewer3D from '@/components/features/Viewer3D';
 import StaticViewer from '@/components/features/StaticViewer';
 import ImageDisplay from '@/components/ui/ImageDisplay';
@@ -19,37 +19,29 @@ const VolumeLimasPage = () => {
   return (
     <div className="max-w-3xl mx-auto animate-fade-in">
       <Heading2>D. Volume Limas</Heading2>
-
-      <Paragraph>
-        Sebelumnya, kita telah mempelajari cara mencari volume bangun ruang yang memiliki 
-        bentuk alas dan tutup yang sama, seperti kubus, balok, dan prisma. 
-        Sekarang, bagaimana jika bentuk bangun ruangnya seperti berikut?
-      </Paragraph>
+      <ImageDisplay src="bangunanlimas.webp" scale={1} nama="Gambar 13. Bangunan Berbentuk Limas" />
+      <Heading3>Jenis-jenis Limas</Heading3>
+      <Paragraph>Limas adalah bangun ruang yang dibatasi oleh alas berbentuk segi-n (segitiga, segiempat, dll) dan sisi-sisi tegak berbentuk segitiga yang bertemu pada satu titik puncak. Adapun beberapa jenis limas dapat kamu lihat di <MathInline>{`\\text{Objek 4}.`}</MathInline></Paragraph>
 
       <StaticViewer
         models={MODEL_ARRAYS.LIMAS_TYPES}
         scale={0.8}
         title="Objek 4. Jenis-jenis Limas"
       />
+      <ImageDisplay src="limassegiempat.png" scale={0.7} nama="Gambar 14. Limas Segiempat" />
+      <ImageDisplay src="limassegitiga.png" scale={0.7} nama="Gambar 15. Limas Segitiga" />
+      <ImageDisplay src="limassegilima.png" scale={0.7} nama="Gambar 16. Limas Segilima" />
+      <Paragraph>Dari jenis-jenis limas yang ada, tentu yang paling kamu kenal adalah limas segiempat. Karena bentuk ini menyerupai pyramid bangun kuno yang terkenal. Namun, apakah titik puncak limas selalu ada di tengah? Bagaimana dengan bangun yang ada di <MathInline>{`\\text{Gambar 17}`}</MathInline>, apakah tetap disebut sebagai limas? Dimana <MathInline>{`\\angle BAT = \\angle DAT = 90^{\\circ}`}</MathInline>.</Paragraph>
+      <ImageDisplay src="limasaneh.png" scale={0.7} nama="Gambar 17. Limas" />
 
-      <Paragraph>
-        Bangun di atas disebut limas. Limas adalah bangun ruang yang memiliki alas 
-        berbentuk segi banyak dan satu titik puncak yang tidak terletak pada bidang alas.
-      </Paragraph>
 
-      <HighlightBox variant="info">
-        <p className="text-foreground font-medium mb-2">Sifat Limas:</p>
-        <ul className="space-y-1 text-sm text-muted-foreground list-disc list-inside">
-          <li>Memiliki satu bidang alas berbentuk segi-n</li>
-          <li>Sisi tegak berbentuk segitiga</li>
-          <li>Memiliki satu titik puncak</li>
-          <li>Limas dinamai sesuai bentuk alasnya</li>
-        </ul>
-      </HighlightBox>
+      <Heading3>Volume Limas</Heading3>
 
-      <Paragraph>
-        Untuk memahami cara menghitung volume limas, perhatikan simulasi berikut:
-      </Paragraph>
+
+
+
+
+
 
       <Viewer3D
         modelPath={MODELS.LIMAS_VOLUME_SCENE}
