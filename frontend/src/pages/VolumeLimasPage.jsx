@@ -28,11 +28,11 @@ const VolumeLimasPage = () => {
         scale={0.6}
         title="Objek 4. Jenis-jenis Limas"
       />
-      <ImageDisplay src="limassegiempat.png" scale={0.7} nama="Gambar 14. Limas Segiempat" />
-      <ImageDisplay src="limassegitiga.png" scale={0.7} nama="Gambar 15. Limas Segitiga" />
-      <ImageDisplay src="limassegilima.png" scale={0.7} nama="Gambar 16. Limas Segilima" />
+      <ImageDisplay src="limassegiempat.png" scale={1} nama="Gambar 14. Limas Segiempat" />
+      <ImageDisplay src="limassegitiga.png" scale={1} nama="Gambar 15. Limas Segitiga" />
+      <ImageDisplay src="limassegilima.png" scale={1} nama="Gambar 16. Limas Segilima" />
       <Paragraph>Dari jenis-jenis limas yang ada diatas, tentu memiliki kesamaan, yaitu titik puncaknya berada di tengah. Namun, apakah titik puncak limas selalu berada di tengah? Bagaimana dengan bangun yang ada di <MathInline>{`\\text{Gambar 17}`}</MathInline>, apakah tetap disebut sebagai limas? Dimana <MathInline>{`\\angle BAT = \\angle DAT = 90^{\\circ}`}</MathInline>.</Paragraph>
-      <ImageDisplay src="limasaneh.png" scale={0.7} nama="Gambar 17. Limas" />
+      <ImageDisplay src="limasaneh.png" scale={1} nama="Gambar 17. Limas" />
 
 
       <Heading3>Simulasi Volume Limas</Heading3>
