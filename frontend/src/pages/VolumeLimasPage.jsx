@@ -31,7 +31,7 @@ const VolumeLimasPage = () => {
       <ImageDisplay src="limassegiempat.png" scale={1} nama="Gambar 14. Limas Segiempat" />
       <ImageDisplay src="limassegitiga.png" scale={1} nama="Gambar 15. Limas Segitiga" />
       <ImageDisplay src="limassegilima.png" scale={1} nama="Gambar 16. Limas Segilima" />
-      <Paragraph>Dari jenis-jenis limas yang ada diatas, tentu memiliki kesamaan, yaitu titik puncaknya berada di tengah. Namun, apakah titik puncak limas selalu berada di tengah? Bagaimana dengan bangun yang ada di <MathInline>{`\\text{Gambar 17}`}</MathInline>, apakah tetap disebut sebagai limas? Dimana <MathInline>{`\\angle BAT = \\angle DAT = 90^{\\circ}`}</MathInline>.</Paragraph>
+      <Paragraph>Dari jenis-jenis limas yang ada diatas, tentu memiliki kesamaan, yaitu titik puncaknya berada di tengah. Namun, apakah titik puncak limas selalu berada di tengah? Bagaimana dengan bangun pada <MathInline>{`\\text{Gambar 17}`}</MathInline>, apakah tetap disebut sebagai limas? Dimana <MathInline>{`\\angle BAT = \\angle DAT = 90^{\\circ}`}</MathInline>.</Paragraph>
       <ImageDisplay src="limasaneh.png" scale={1} nama="Gambar 17. Limas" />
 
 
@@ -52,9 +52,13 @@ const VolumeLimasPage = () => {
       <Heading3>Contoh Soal:</Heading3>
       <Paragraph>Diketahui sebuah limas <MathInline>{`T.ABCD`}</MathInline> dengan alas berbentuk persegi. Panjang <MathInline>{`AB=BC= \\text{5 cm}`}</MathInline>. Titik <MathInline>{`O`}</MathInline> adalah perpotongan diagonal <MathInline>{`AC \\text{ dengan } BD`}</MathInline>. Jika jarak titik <MathInline>{`O`}</MathInline> ke titik <MathInline>{`T`}</MathInline> adalah 6 cm, maka volume limas tersebut adalah <MathInline>{`\\dots`}</MathInline></Paragraph>
       <ImageDisplay src="limasabcdt.png" scale={1} />
-
-
-
+      <Paragraph>Pembahasan:</Paragraph>
+      <MathBlock>{`V= \\frac{1}{3} \\times \\text{Luas Alas} \\times \\text{Tinggi} \\\\ V= \\frac{1}{3} \\times (5 \\times 5) \\times 6 \\\\ V= \\frac{1}{3} \\times 25 \\times 6 \\\\ V= \\frac{150}{3} \\\\ V= 50`}</MathBlock>
+      <Paragraph>Jadi volume limas tersebut adalah <MathInline>{`50 \\text{ cm}^3`}</MathInline>.</Paragraph>
+      <Heading3>Latihan Soal:</Heading3>
+      <Paragraph>Sebuah limas dengan alas berbentuk persegi memiliki volume <MathInline>{`147 \\text{ cm}^3`}</MathInline>. Jika tinggi limas tersebut adalah 9 cm, maka panjang rusuk alasnya adalah ...</Paragraph>
+      <InputAnswer answerKey="7" placeholder="Panjang rusuk alas = ..." />
+      
       <NavFooter prev="/volume/prisma" next="/quiz/volume" nextLabel="Quiz Volume" />
     </div>
   );
