@@ -27,13 +27,13 @@ const LuasKubusPage = () => {
       <Paragraph>Jaring-jaring adalah gabungan bangun datar (seperti persegi, persegi panjang, segitiga) yang menyusun
         sebuah bangun ruang. Jika sisi-sisi bangun ruang direbahkan pada rusuk-rusuknya, akan terlihat rangkaian
         bidang datar yang membentuk jaring-jaring tersebut. Misalnya saja pada kubus, enam buah persegi yang disusun
-        secara tepat, akan membentuk sebuah kubus. Perhatikan beberapa contoh jaring-jaring kubus pada <MathInline>{`\\text{Objek 6}`}</MathInline> berikut.</Paragraph>
+        secara tepat, akan membentuk sebuah jaring-jaring kubus. Perhatikan beberapa contoh jaring-jaring kubus pada <MathInline>{`\\text{Objek 6}`}</MathInline> berikut.</Paragraph>
 
 
       <StaticViewer
         models={MODEL_ARRAYS.JARING_KUBUS}
         urlAR={AR_URLS.KUBUS_JARING}
-        scale={1.4}
+        scale={1}
         title="Objek 6. Jaring-jaring Kubus"
       />
 
@@ -43,7 +43,7 @@ const LuasKubusPage = () => {
       <ImageDisplay src="jaring-kubus-4.png" nama="Gambar 18. Macam jaring-jaring kubus" />
 
       <Paragraph>Jaring-jaring digunakan untuk memahami struktur tiga dimensi secara dua dimensi. Misalnya saja untuk
-        mencari luas permukaan suatu bangun ruang.</Paragraph>
+        mencari luas permukaan suatu bangun ruang. Nah, coba sekarang kamu buat contoh lain dari jaring-jaring kubus!</Paragraph>
 
       <Heading3>Luas Permukaan Kubus</Heading3>
       <ImageDisplay src="jaringkubusrr.png" nama="Gambar 19. Jaring-jaring kubus" />
