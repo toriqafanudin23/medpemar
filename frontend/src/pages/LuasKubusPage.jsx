@@ -33,7 +33,7 @@ const LuasKubusPage = () => {
       <StaticViewer
         models={MODEL_ARRAYS.JARING_KUBUS}
         urlAR={AR_URLS.KUBUS_JARING}
-        scale={1}
+        scale={0.8}
         title="Objek 6. Jaring-jaring Kubus"
       />
 
@@ -42,10 +42,12 @@ const LuasKubusPage = () => {
       <ImageDisplay src="jaring-kubus-3.png" />
       <ImageDisplay src="jaring-kubus-4.png" nama="Gambar 18. Macam jaring-jaring kubus" />
 
-      <Paragraph>Jaring-jaring digunakan untuk memahami struktur tiga dimensi secara dua dimensi. Misalnya saja untuk
-        mencari luas permukaan suatu bangun ruang. Nah, coba sekarang kamu buat contoh lain dari jaring-jaring kubus!</Paragraph>
+      <Paragraph>Tentu masih banyak contoh jaring-jaring kubus yang lain. Nah, coba sekarang kamu buat contoh lain dari jaring-jaring kubus!</Paragraph>
+
 
       <Heading3>Luas Permukaan Kubus</Heading3>
+      <Paragraph>Jaring-jaring sendiri digunakan untuk memahami struktur tiga dimensi secara dua dimensi. Misalnya saja untuk
+        mencari luas permukaan suatu bangun ruang. </Paragraph>
       <ImageDisplay src="jaringkubusrr.png" nama="Gambar 19. Jaring-jaring kubus" />
       <Paragraph>Luas permukaan adalah total jumlah luas yang menutupi bagian luar suatu objek tiga dimensi,
         termasuk semua sisi, alas, dan tutupnya. Mencari luas permukaan suatu bangun ruang sama halnya dengan mencari
