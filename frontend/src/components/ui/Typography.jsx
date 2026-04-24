@@ -9,7 +9,7 @@ export const MathBlock = ({ children, className = '' }) => (
 );
 
 export const MathInline = ({ children, className = '' }) => (
-  <span className={`text-sm ${className}`}>
+  <span className={`text-md ${className}`}>
     <InlineMath math={children} />
   </span>
 );
@@ -34,7 +34,7 @@ export const Heading2 = ({ children, className = '' }) => (
 
 // Heading 3 - Subsection title
 export const Heading3 = ({ children, className = '' }) => (
-  <h3 className={`heading-2 mb-3 mt-6 text-sky-500 text-xl ${className}`}>
+  <h3 className={`heading-2 mb-3 mt-6 text-sky-600 text-xl ${className}`}>
     {children}
   </h3>
 );
