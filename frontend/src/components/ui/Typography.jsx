@@ -42,7 +42,7 @@ export const Heading3 = ({ children, className = '' }) => (
 // Paragraph - Body text
 export const Paragraph = ({ children, className = '' }) => (
   <p 
-    className={`body-text mb-4 text-slate-700 dark:text-slate-100 ${className}`}
+    className={`body-text mb-4 ${className}`}
     dangerouslySetInnerHTML={typeof children === 'string' ? { __html: children } : undefined}
   >
     {typeof children !== 'string' ? children : undefined}

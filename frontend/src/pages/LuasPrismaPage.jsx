@@ -46,16 +46,13 @@ const LuasPrismaPage = () => {
       <Paragraph>Sebuah prisma <MathInline>{`\\text{ABC.DEF}`}</MathInline> mempunyai alas berbentuk segitiga siku-siku. Diketahui panjang <MathInline>{`\\text{AB} =\\text{3 cm dan BC}=\\text{4 cm}`}</MathInline>. Jika tinggi prisma adalah <MathInline>{`\\text{7 cm dan }\\angle \\text{ABC}=90^{\\circ}`}</MathInline>, maka tentukanlah luas permukaan prisma tersebut!</Paragraph>
       <Paragraph>Pembahasan:</Paragraph>
       <ImageDisplay src="alasprismasegi3.png" />
-      <MathBlock>{`AC^2 = AB^2 + BC^2 \\\\ AC^2 = 3^2 + 4^2 \\\\ AC^2 = 9 + 16 = 25 \\\\ AC=\\sqrt{25} = 5 \\\\ \\text{Keliling Alas}=AB+BC+AC \\\\ \\text{Keliling Alas}=3+4+5=12\\\\L=2 \\times \\text{Luas Alas} + \\text{Keliling Alas} \\times t \\\\ L=2 \\times \\frac{1}{2} \\times 3 \\times 4 + 12 \\times 7 \\\\ L=12+12 \\times 7 =96`}</MathBlock>
+      <MathBlock>{`\\text{AC}^2 = \\text{AB}^2 + \\text{BC}^2 \\\\ \\text{AC}^2 = 3^2 + 4^2 \\\\ \\text{AC}^2 = 9 + 16 = 25 \\\\ \\text{AC}=\\sqrt{25} = 5 \\\\ \\text{Keliling Alas}=\\text{AB}+\\text{BC}+\\text{AC} \\\\ \\text{Keliling Alas}=3+4+5=12\\\\L=2 \\times \\text{Luas Alas} + \\text{Keliling Alas} \\times t \\\\ L=2 \\times \\frac{1}{2} \\times 3 \\times 4 + 12 \\times 7 \\\\ L=12+12 \\times 7 =96`}</MathBlock>
       <Paragraph>Jadi luas permukaan prisma tersebut adalah <MathInline>{`\\text{96 cm}^2`}</MathInline>.</Paragraph>
-
-
-
-
-
-
-
-
+      <Heading3>Latihan:</Heading3>
+      <Paragraph>Sebuah prisma <MathInline>{`\\text{ABCD.EFGH}`}</MathInline> memiliki alas berbentuk trapesium sama kaki. Diketahui panjang <MathInline>{`\\text{AB}=\\text{13 cm dan CD}=\\text{5 cm}`}</MathInline>, serta 
+        keliling alasnya adalah <MathInline>{`\\text{35 cm}`}</MathInline>. Jika tinggi trapesium <MathInline>{`\\text{7,5 cm}`}</MathInline> dan tinggi prisma <MathInline>{`\\text{10 cm}`}</MathInline>, maka tentukanlah luas permukaan prisma tersebut!</Paragraph>
+      <InputAnswer answerKey="485" placeholder="Luas permukaan = ..." />
+      
       <NavFooter prev="/luas-permukaan/balok" next="/luas-permukaan/limas" />
     </div>
   );
