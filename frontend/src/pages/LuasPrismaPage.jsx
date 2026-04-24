@@ -27,9 +27,18 @@ const LuasPrismaPage = () => {
       <Viewer3D
         modelPath={MODELS.JARING_PRISMA}
         urlAR={AR_URLS.PRISMA_JARING}
-        scale={0.6}
+        scale={0.5}
         title="Objek 8. Jaring-jaring Prisma Segitiga"
       />
+      <ImageDisplay src="jaringprismasegi3ke2.png" />
+      <ImageDisplay src="jaringprismasegi3.png" nama="Gambar 22. Contoh Jaring-jaring Prisma Segitiga" />
+      <ImageDisplay src="jaringprismasegi5.png" nama="Gambar 23. Contoh Jaring-jaring Prisma Segilima" />
+      <Paragraph>Tentu semakin rumit bentuk alas prisma, semakin rumit juga jaring-jaring yang harus dibuat. Untuk latihan, buatlah 
+        jaring-jaring prisma segitiga, yang berbeda dari contoh yang sudah ada!</Paragraph>
+      <Heading3>Luas Permukaan Prisma</Heading3>
+      <Paragraph>Untuk memahami cara mencari luas permukaan prisma, perhatikanlah contoh jaring-jaring prisma berikut!</Paragraph>
+
+
 
 
       <NavFooter prev="/luas-permukaan/balok" next="/luas-permukaan/limas" />
