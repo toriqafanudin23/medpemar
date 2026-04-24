@@ -19,7 +19,7 @@ const LuasKubusPage = () => {
     <div className="max-w-3xl mx-auto animate-fade-in">
       <Heading1>Luas Permukaan Bangun Ruang</Heading1>
       
-      <ImageDisplay src="kardus-img.png" nama="Gambar 13. Kardus" />
+      <ImageDisplay src="kardus-img.png" nama="Gambar 18. Kardus" />
       
       <Heading2>A. Luas Permukaan Kubus</Heading2>
       <Heading3>Jaring-jaring Kubus</Heading3>
@@ -40,7 +40,7 @@ const LuasKubusPage = () => {
       <ImageDisplay src="jaring-kubus-1.png" />
       <ImageDisplay src="jaring-kubus-2.png" />
       <ImageDisplay src="jaring-kubus-3.png" />
-      <ImageDisplay src="jaring-kubus-4.png" nama="Gambar 18. Macam jaring-jaring kubus" />
+      <ImageDisplay src="jaring-kubus-4.png" nama="Gambar 19. Macam jaring-jaring kubus" />
 
       <Paragraph>Tentu masih banyak contoh jaring-jaring kubus yang lain. Nah, coba sekarang kamu buat contoh lain dari jaring-jaring kubus!</Paragraph>
 
@@ -48,7 +48,7 @@ const LuasKubusPage = () => {
       <Heading3>Luas Permukaan Kubus</Heading3>
       <Paragraph>Jaring-jaring sendiri digunakan untuk memahami struktur tiga dimensi secara dua dimensi. Misalnya saja untuk
         mencari luas permukaan suatu bangun ruang. </Paragraph>
-      <ImageDisplay src="jaringkubusrr.png" nama="Gambar 19. Jaring-jaring kubus" />
+      <ImageDisplay src="jaringkubusrr.png" nama="Gambar 20. Jaring-jaring kubus" />
       <Paragraph>Luas permukaan adalah total jumlah luas yang menutupi bagian luar suatu objek tiga dimensi,
         termasuk semua sisi, alas, dan tutupnya. Mencari luas permukaan suatu bangun ruang sama halnya dengan mencari
         luas jaring-jaring dari bangun ruang tersebut. Misalnya saja pada kubus, terlihat bahwa jaring-jaring kubus 
