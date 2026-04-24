@@ -9,12 +9,12 @@ export const MathBlock = ({ children, className = '' }) => (
 );
 
 export const MathInline = ({ children, className = '' }) => (
-  <span className={`text-md ${className}`}>
+  <span className={`text-md text-slate-500 ${className}`}>
     <InlineMath math={children} />
   </span>
 );
 export const MathCaption = ({ nama, className = '' }) => (
-  <figcaption className={`text-center text-sm text-muted-foreground mt-3 font-medium ${className}`}>
+  <figcaption className={`text-center text-sm text-muted-foreground mt-3 font-medium text-slate-500 ${className}`}>
     <InlineMath math={nama} />
   </figcaption>
 );

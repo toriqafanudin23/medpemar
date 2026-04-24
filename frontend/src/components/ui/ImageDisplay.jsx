@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { URL_IMAGE } from '@/constants/urls';
 import { FiZoomIn, FiX } from 'react-icons/fi';
 import { Dialog, DialogContent, DialogClose, DialogTitle } from '@/components/ui/dialog';
-import { MathInline } from './Typography';
+import { MathCaption } from './Typography';
 
-const ImageDisplay = ({ src, nama, alt, width, scale = 1, className = '' }) => {
+const ImageDisplay = ({ src, nama, caption, alt, width, scale = 1, className = '' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const imageSrc = src.startsWith('http') ? src : URL_IMAGE + src;
 
@@ -34,11 +34,13 @@ const ImageDisplay = ({ src, nama, alt, width, scale = 1, className = '' }) => {
             </div>
           </div>
         </div>
-        {nama && (
+        {caption ? (
+          <MathCaption nama={caption} className="mt-3" />
+        ) : nama ? (
           <figcaption className="text-center text-sm text-muted-foreground mt-3 font-medium">
             {nama}
           </figcaption>
-        )}
+        ) : null}
       </figure>
 
       {/* Zoom Dialog */}
@@ -54,11 +56,15 @@ const ImageDisplay = ({ src, nama, alt, width, scale = 1, className = '' }) => {
               alt={alt || nama || 'Gambar'}
               className="w-full h-auto max-h-[80vh] object-contain"
             />
-            {nama && (
+            {caption ? (
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background/80 to-transparent">
+                <MathCaption nama={caption} className="text-foreground" />
+              </div>
+            ) : nama ? (
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background/80 to-transparent">
                 <p className="text-center text-sm font-medium text-foreground">{nama}</p>
               </div>
-            )}
+            ) : null}
           </div>
         </DialogContent>
       </Dialog>
