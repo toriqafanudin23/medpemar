@@ -27,7 +27,7 @@ const LuasPrismaPage = () => {
       <Viewer3D
         modelPath={MODELS.JARING_PRISMA}
         urlAR={AR_URLS.PRISMA_JARING}
-        scale={1}
+        scale={0.6}
         title="Objek 8. Jaring-jaring Prisma Segitiga"
       />
 
