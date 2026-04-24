@@ -27,14 +27,14 @@ export const Heading1 = ({ children, className = '' }) => (
 
 // Heading 2 - Section title
 export const Heading2 = ({ children, className = '' }) => (
-  <h2 className={`heading-2 mb-4 mt-8 ${className}`}>
+  <h2 className={`heading-2 mb-4 mt-8 text-2xl ${className}`}>
     {children}
   </h2>
 );
 
 // Heading 3 - Subsection title
 export const Heading3 = ({ children, className = '' }) => (
-  <h3 className={`heading-2 mb-3 mt-6 text-sky-500 text-2xl ${className}`}>
+  <h3 className={`heading-2 mb-3 mt-6 text-sky-500 text-xl ${className}`}>
     {children}
   </h3>
 );
