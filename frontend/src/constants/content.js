@@ -3,9 +3,9 @@ export const SHAPES = [
   {
     id: 'kubus',
     name: 'Kubus',
-    description: 'Bangun ruang dengan 6 sisi berbentuk persegi yang kongruen',
+    description: 'Bangun ruang tiga dimensi yang dibatasi oleh enam bidang sisi berbentuk persegi kongruen.',
     formula: {
-      volume: 'V = s³',
+      volume: 'V = r x r x r',
       surface: 'L = 6s²'
     },
     properties: [

@@ -28,12 +28,12 @@ const VolumePrismaPage = () => {
         scale={2}
         title="Objek 3. Jenis-jenis Prisma"
       />
-      <ImageDisplay src="prismasegitiga3.png" scale={0.7} nama="Gambar 9. Prisma Segitiga" />
-      <ImageDisplay src="prismasegilima.png" scale={0.7} nama="Gambar 10. Prisma Segilima" />
-      <ImageDisplay src="prismasegi8.png" scale={0.7} nama="Gambar 11. Prisma Segidelapan" />
+      <ImageDisplay src="prismasegitiga3.png" scale={1} nama="Gambar 9. Prisma Segitiga" />
+      <ImageDisplay src="prismasegilima.png" scale={1} nama="Gambar 10. Prisma Segilima" />
+      <ImageDisplay src="prismasegi8.png" scale={1} nama="Gambar 11. Prisma Segidelapan" />
 
       <Paragraph>Tentu masih banyak jenis prisma lainnya. Bayangkan setiap bangun yang memiliki dua sisi, alas dan tutup yang sama, kemudian kedua sisi dihubungkan dengan persegi panjang, bisa kita sebut sebagai prisma. Nah sekarang coba kamu perhatikan bangun pada <MathInline>{`\\text{Gambar 12}`}</MathInline>, apakah bisa disebut sebagai prisma?</Paragraph>
-      <ImageDisplay src="tabung.png" scale={0.7} nama="Gambar 12. Tabung" />
+      <ImageDisplay src="tabung.png" scale={1} nama="Gambar 12. Tabung" />
       <Heading3>Volume Prisma</Heading3>
       <Paragraph>Sebelum menghitung volume prisma, kamu perlu mengingat kembali cara mencari volume kubus dan balok. Volume kubus dapat dicari dengan</Paragraph>
       <MathBlock>{`V = r \\times r \\times r`}</MathBlock>
@@ -47,17 +47,10 @@ const VolumePrismaPage = () => {
       <Paragraph>Dimana alas prisma bisa berbentuk segitiga, segi lima, segi delapan, atau bentuk lainnya.</Paragraph>
       <Heading3>Contoh:</Heading3>
       <Paragraph>Diketahui sebuah prisma segitiga sama sisi dengan panjang sisi alas 6 cm dan tinggi prisma 5 cm. Jika tinggi segitiga adalah <MathInline>{`3 \\sqrt{3} \\text{ cm},`}</MathInline> maka volume prisma tersebut adalah ...</Paragraph>
-      <ImageDisplay src="prismasegitigasoal.png" scale={0.7} />
+      <ImageDisplay src="prismasegitigasoal.png" scale={1} />
       <Paragraph>Pembahasan:</Paragraph>
       <MathBlock>{`V = \\text{Luas Alas} \\times \\text{Tinggi} \\\\ V = \\frac{1}{2} \\times 6 \\times 3\\sqrt{3} \\times 5 \\\\ V = 45\\sqrt{3}`}</MathBlock>
       <Paragraph>Jadi volume prisma segitiga tersebut adalah <MathInline>{`45\\sqrt{3} \\text{ cm}^3`}</MathInline>.</Paragraph>
-
-
-
-
-
-    
-
 
       <NavFooter prev="/volume/balok" next="/volume/limas" />
     </div>
