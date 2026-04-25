@@ -142,11 +142,11 @@
   }
 
   .body-text {
-    @apply text-base leading-relaxed text-muted-foreground;
+    @apply text-base leading-relaxed text-muted-foreground font-sans;
   }
 
   .body-text-sm {
-    @apply text-sm leading-relaxed text-muted-foreground;
+    @apply text-sm leading-relaxed text-muted-foreground font-sans;
   }
 }
 

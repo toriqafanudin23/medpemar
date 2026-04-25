@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
-import { Heading2, Paragraph, HighlightBox, MathBlock } from '@/components/ui/Typography';
+import { Heading2, Heading3, Paragraph, HighlightBox, MathBlock, MathInline } from '@/components/ui/Typography';
+import ImageDisplay from '@/components/ui/ImageDisplay';
 import Viewer3D from '@/components/features/Viewer3D';
 import InputAnswer from '@/components/ui/InputAnswer';
 import NavFooter from '@/components/layout/NavFooter';
@@ -17,53 +18,25 @@ const LuasLimasPage = () => {
   return (
     <div className="max-w-3xl mx-auto animate-fade-in">
       <Heading2>D. Luas Permukaan Limas</Heading2>
+      <Heading3>Jaring-jaring Limas</Heading3>
 
-      <Paragraph>
-        Limas segiempat memiliki 1 sisi alas berbentuk segiempat dan 4 sisi tegak berbentuk segitiga. 
-        Mari kita lihat jaring-jaringnya.
-      </Paragraph>
+      <Paragraph>Jaring-jaring yang akan dipelajari terakhir kali adalah limas. Jaring-jaring limas tersusun dari alas berbentuk segi-<MathInline>{`n`}</MathInline> dan segitiga sejumlah <MathInline>{`n`}</MathInline>. Kamu bisa 
+        melihat contoh jaring-jaring limas segiempat pada <MathInline>{`\\text{Objek 9}`}</MathInline>.</Paragraph>
 
       <Viewer3D
         modelPath={MODELS.JARING_LIMAS}
         urlAR={AR_URLS.LIMAS_JARING}
-        scale={1}
+        scale={0.6}
         title="Objek 9. Jaring-jaring Limas Segiempat"
       />
+      <ImageDisplay src="jaringlimassegi3.png" />
+      <ImageDisplay src="jaringlimassegi4.png" />
+      <ImageDisplay src="jaringlimassegi6.png" nama="Gambar 25. Contoh Jaring-jaring Limas" />
 
-      <HighlightBox variant="info">
-        <p className="text-foreground font-medium mb-2">Komponen Luas Permukaan Limas:</p>
-        <ul className="space-y-1 text-sm text-foreground">
-          <li>Luas alas (segiempat)</li>
-          <li>Jumlah luas sisi tegak (segitiga-segitiga)</li>
-        </ul>
-      </HighlightBox>
 
-      <HighlightBox variant="formula">
-        <p className="text-foreground font-medium mb-2">Rumus Luas Permukaan Limas:</p>
-        <MathBlock>L = Luas alas + Jumlah luas sisi tegak</MathBlock>
-        <p className="text-sm text-muted-foreground mt-2">
-          Luas sisi tegak = ½ × alas × tinggi segitiga (apotema)
-        </p>
-      </HighlightBox>
 
-      <Paragraph>
-        <strong>Contoh:</strong> Limas segiempat dengan alas persegi sisi 6 cm dan tinggi segitiga pada sisi tegak 
-        (apotema) 5 cm.
-      </Paragraph>
 
-      <div className="p-4 bg-muted/50 rounded-xl my-4">
-        <p className="text-sm font-medium text-foreground mb-2">Pembahasan:</p>
-        <p className="text-sm text-foreground font-mono">
-          Luas alas = 6 × 6 = 36 cm²<br/>
-          Luas sisi tegak = 4 × (½ × 6 × 5) = 4 × 15 = 60 cm²<br/>
-          L = 36 + 60 = 96 cm²
-        </p>
-      </div>
-
-      <Paragraph>
-        <strong>Latihan:</strong> Limas dengan alas persegi sisi 8 cm dan apotema 6 cm. 
-        Hitung luas permukaannya!
-      </Paragraph>
+      
       <InputAnswer answerKey="160" placeholder="Luas permukaan = ..." />
 
       <NavFooter prev="/luas-permukaan/prisma" next="/quiz/surface" nextLabel="Quiz Luas Permukaan" />

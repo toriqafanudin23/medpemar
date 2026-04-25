@@ -30,16 +30,15 @@ const LuasPrismaPage = () => {
         scale={0.5}
         title="Objek 8. Jaring-jaring Prisma Segitiga"
       />
+
       <ImageDisplay src="jaringprismasegi3ke2.png" />
-      <ImageDisplay src="jaringprismasegi3.png" caption="\text{Gambar 22. Contoh Jaring-jaring Prisma Segitiga}" />
-      <ImageDisplay src="jaringprismasegi5.png" caption="\text{Gambar 23. Contoh Jaring-jaring Prisma Segilima}" />
-
-
+      <ImageDisplay src="jaringprismasegi3.png" nama="Gambar 22. Contoh Jaring-jaring Prisma Segitiga" />
+      <ImageDisplay src="jaringprismasegi5.png" nama="Gambar 23. Contoh Jaring-jaring Prisma Segilima" />
       <Paragraph>Tentu semakin rumit bentuk alas prisma, semakin rumit juga jaring-jaring yang harus dibuat. Untuk latihan, buatlah 
         jaring-jaring prisma segitiga, yang berbeda dari contoh yang sudah ada!</Paragraph>
       <Heading3>Luas Permukaan Prisma</Heading3>
       <Paragraph>Untuk memahami cara mencari luas permukaan prisma, perhatikanlah contoh jaring-jaring prisma berikut!</Paragraph>
-      <ImageDisplay src="ilustrasiluasprisma.png" caption="\text{Gambar 24. Ilustrasi Luas Permukaan Prisma}" />
+      <ImageDisplay src="ilustrasiluasprisma.png" nama="Gambar 24. Ilustrasi Luas Permukaan Prisma" />
       <Paragraph>Dari <MathInline>{`\\text{Gambar 24}`}</MathInline> terlihat bahwa alas dan tutup prisma berbentuk sama, dan juga panjang rusuk <MathInline>{`a+b+c`}</MathInline> dapat disebut sebagai keliling alas. 
         Sehingga luas permukaan prisma dapat dirumuskan sebagai</Paragraph>
       <MathBlock>{`L=2 \\times \\text{Luas Alas} + \\text{Keliling Alas} \\times t`}</MathBlock>
