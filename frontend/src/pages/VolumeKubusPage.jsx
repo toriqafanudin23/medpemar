@@ -105,10 +105,19 @@ const VolumeKubusPage = () => {
       <Paragraph>Diketahui sebuah kubus dengan panjang rusuk 5 cm. Hitunglah volume kubus tersebut!</Paragraph>
       <MathBlock>{`V=r \\times r \\times r \\\\ V=5\\times 5 \\times 5 \\\\ V=125 `}</MathBlock>
       <Paragraph>Jadi, volume kubus tersebut adalah <MathInline>{`125 \\text{ cm}^3`}</MathInline>.</Paragraph>
+      <Heading3>Latihan Soal:</Heading3>
+      <Paragraph>Diketahui sebuah kubus memiliki volume <MathInline>{`\\text{343 cm}^3`}</MathInline>, berapakah panjang rusuk kubus tersebut?</Paragraph>
+      <InputAnswer answerKey="7" placeholder="Panjang rusuk = ..." />
+      <Paragraph>Diketahui sebuah bak mandi dengan ukuran <MathInline>{`\\text{80 cm}\\times \\text{80 cm} \\times \\text{80 cm}`}</MathInline> terisi penuh. Jika Andi menggunakan air di bak mandi sebanyak <MathInline>{`\\text{128.000 cm}^3`}</MathInline>, berapa <MathInline>{`\\text{cm}`}</MathInline> tinggi air di bak mandi sekarang?</Paragraph>
+      <ImageDisplay src="bakmandi60.png" scale={1} />
+      <InputAnswer answerKey="60" placeholder="Tinggi bak mandi = ..." />
+
+
+
 
       {/* <HighlightBox variant="formula">
         <p className="text-foreground font-medium mb-2">Rumus Volume Kubus:</p>
-        <MathBlock>V = s × s × s = s³</MathBlock>
+        <MathBlock>{`V = s \\times s \\times s = s^3`}</MathBlock>
         <p className="text-sm text-muted-foreground mt-2">
           dengan s = panjang rusuk kubus
         </p>

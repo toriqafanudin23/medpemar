@@ -6,6 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { FiCheck, FiX, FiChevronRight, FiRefreshCw, FiAward } from 'react-icons/fi';
 import { SOUNDS } from '@/constants/urls';
 import { toast } from 'sonner';
+import { MathInline, MathBlock } from '@/components/ui/Typography';
 
 const QuizComponent = ({ questions, title, onComplete }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -199,7 +200,7 @@ const QuizComponent = ({ questions, title, onComplete }) => {
         {isAnswered && question.explanation && (
           <div className="p-4 bg-primary/5 rounded-xl border border-primary/20">
             <p className="text-sm font-medium text-primary mb-1">Penjelasan:</p>
-            <p className="text-sm text-foreground">{question.explanation}</p>
+            <MathBlock>{question.explanation}</MathBlock>
           </div>
         )}
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { MathInline } from '@/components/ui/Typography';
 import { FiArrowRight, FiLock } from 'react-icons/fi';
 
 const ShapeCard = ({ 
@@ -41,15 +42,15 @@ const ShapeCard = ({
           <div className="space-y-2 mb-4">
             <div className="flex items-center gap-2 text-xs">
               <span className="text-muted-foreground">Volume:</span>
-              <code className="px-2 py-0.5 bg-muted rounded text-foreground font-mono">
+              <MathInline className="px-2 py-0.5 bg-muted rounded text-foreground">
                 {shape.formula.volume}
-              </code>
+              </MathInline>
             </div>
             <div className="flex items-center gap-2 text-xs">
               <span className="text-muted-foreground">Luas:</span>
-              <code className="px-2 py-0.5 bg-muted rounded text-foreground font-mono">
+              <MathInline className="px-2 py-0.5 bg-muted rounded text-foreground">
                 {shape.formula.surface}
-              </code>
+              </MathInline>
             </div>
           </div>
 
