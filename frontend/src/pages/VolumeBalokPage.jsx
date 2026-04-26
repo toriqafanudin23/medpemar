@@ -33,12 +33,6 @@ const VolumeBalokPage = () => {
       <Paragraph>Sebuah wadah berukuran <MathInline>{`\\text{24 cm} \\times \\text{18 cm} \\times \\text{12 cm}`}</MathInline> akan diisi penuh dengan sabun batang berbentuk balok dengan ukuran <MathInline>{`\\text{6 cm} \\times \\text{3 cm} \\times \\text{2 cm}`}</MathInline>. Berapa banyak sabun batang yang dapat masuk ke dalam wadah?</Paragraph>
       <ImageDisplay src="wadahsabun.png" scale={1} />
       <InputAnswer answerKey="132" placeholder="Banyak sabun batang = ..." />
-
-
-
-      
-
-
       <NavFooter prev="/volume/kubus" next="/volume/prisma" />
     </div>
   );
