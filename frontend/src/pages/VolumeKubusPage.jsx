@@ -101,7 +101,7 @@ const VolumeKubusPage = () => {
       <InputAnswer answerKey="729" placeholder="Volume kubus = ..." />
       <Paragraph>Secara umum, kubus dengan panjang rusuk <MathInline>{`r,`}</MathInline> dapat dihitung volumenya dengan<MathBlock>{`V=r \\times r \\times r = r^3`}</MathBlock></Paragraph>
       <ImageDisplay src="kubusr.png" nama="Gambar 6. Kubus rusuk r" scale={1} />
-      <Heading3>Contoh:</Heading3>
+      <Heading3>Contoh Soal:</Heading3>
       <Paragraph>Diketahui sebuah kubus dengan panjang rusuk 5 cm. Hitunglah volume kubus tersebut!</Paragraph>
       <MathBlock>{`V=r \\times r \\times r \\\\ V=5\\times 5 \\times 5 \\\\ V=125 `}</MathBlock>
       <Paragraph>Jadi, volume kubus tersebut adalah <MathInline>{`125 \\text{ cm}^3`}</MathInline>.</Paragraph>
@@ -110,7 +110,7 @@ const VolumeKubusPage = () => {
       <InputAnswer answerKey="7" placeholder="Panjang rusuk = ..." />
       <Paragraph>Diketahui sebuah bak mandi dengan ukuran <MathInline>{`\\text{80 cm}\\times \\text{80 cm} \\times \\text{80 cm}`}</MathInline> terisi penuh. Jika Andi menggunakan air di bak mandi sebanyak <MathInline>{`\\text{128.000 cm}^3`}</MathInline>, berapa <MathInline>{`\\text{cm}`}</MathInline> tinggi air di bak mandi sekarang?</Paragraph>
       <ImageDisplay src="bakmandi60.png" scale={1} />
-      <InputAnswer answerKey="60" placeholder="Tinggi bak mandi = ..." />
+      <InputAnswer answerKey="60" placeholder="Tinggi air di bak mandi = ..." />
 
 
 
