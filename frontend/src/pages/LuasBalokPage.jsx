@@ -55,11 +55,41 @@ const LuasBalokPage = () => {
       </HighlightBox>
 
        <Heading3>Contoh Soal</Heading3>
-       <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
-         <Paragraph>Diketahui sebuah balok memiliki ukuran panjang 4 cm, lebar 3 cm, dan tinggi 2 cm. Berapakah luas permukaan balok tersebut?</Paragraph>
-         <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
-         <MathBlock>{`L = 2(pl + pt + lt) \\\\ L = 2(4 \\times 3 + 4 \\times 2 + 3 \\times 2) \\\\ L = 2(12 + 8 + 6) \\\\ L = 2(26) = 52`}</MathBlock>
-         <Paragraph>Jadi, luas permukaan balok tersebut adalah <MathInline>{`52 \\text{ cm}^2`}</MathInline>.</Paragraph>
+       <div className="space-y-6">
+         <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
+           <Paragraph>Diketahui sebuah balok memiliki ukuran panjang 4 cm, lebar 3 cm, dan tinggi 2 cm. Berapakah luas permukaan balok tersebut?</Paragraph>
+           <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
+           <MathBlock>{`L = 2(pl + pt + lt) \\\\ L = 2(4 \\times 3 + 4 \\times 2 + 3 \\times 2) \\\\ L = 2(12 + 8 + 6) \\\\ L = 2(26) = 52`}</MathBlock>
+           <Paragraph>Jadi, luas permukaan balok tersebut adalah <MathInline>{`52 \\text{ cm}^2`}</MathInline>.</Paragraph>
+         </div>
+
+         <div className="bg-warning/5 p-5 rounded-xl border border-warning/20">
+           <div className="flex items-center gap-2 mb-2">
+             <span className="bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold">Level 4: Sulit</span>
+           </div>
+           <Paragraph>Sebuah kotak balok memiliki perbandingan panjang : lebar : tinggi = 4 : 3 : 2. Jika luas permukaan balok tersebut adalah <MathInline>{`468 \\text{ cm}^2`}</MathInline>, berapakah volumenya?</Paragraph>
+           <p className="font-semibold text-warning mt-4 mb-2">Penyelesaian:</p>
+           <Paragraph className="mb-2">Misalkan <MathInline>{`p = 4x`}</MathInline>, <MathInline>{`l = 3x`}</MathInline>, dan <MathInline>{`t = 2x`}</MathInline>. Masukkan ke rumus luas permukaan:</Paragraph>
+           <MathBlock>{`L = 2(pl + pt + lt) \\\\ 468 = 2((4x)(3x) + (4x)(2x) + (3x)(2x)) \\\\ 468 = 2(12x^2 + 8x^2 + 6x^2) \\\\ 468 = 2(26x^2) = 52x^2`}</MathBlock>
+           <Paragraph className="mb-2">Selesaikan persamaan tersebut untuk mencari nilai <MathInline>{`x`}</MathInline>:</Paragraph>
+           <MathBlock>{`x^2 = \\frac{468}{52} = 9 \\implies x = 3`}</MathBlock>
+           <Paragraph className="mb-2">Maka ukuran aslinya adalah <MathInline>{`p = 12`}</MathInline>, <MathInline>{`l = 9`}</MathInline>, dan <MathInline>{`t = 6`}</MathInline>. Volumenya adalah:</Paragraph>
+           <MathBlock>{`V = p \\times l \\times t = 12 \\times 9 \\times 6 = 648 \\text{ cm}^3`}</MathBlock>
+           <Paragraph>Jadi, volume balok tersebut adalah <MathInline>{`648 \\text{ cm}^3`}</MathInline>.</Paragraph>
+         </div>
+
+         <div className="bg-destructive/5 p-5 rounded-xl border border-destructive/20">
+           <div className="flex items-center gap-2 mb-2">
+             <span className="bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold">Level 5: HOTS</span>
+           </div>
+           <Paragraph>Ruang kelas 8 berukuran panjang 10 m, lebar 8 m, dan tinggi tembok 4 m. Dinding bagian dalam kelas tersebut akan dicat, kecuali bagian pintu dan jendela yang total luas permukaannya <MathInline>{`14 \\text{ m}^2`}</MathInline>. Jika biaya pengecatan adalah Rp25.000,00 per meter persegi, berapa total dana yang harus disiapkan sekolah?</Paragraph>
+           <p className="font-semibold text-destructive mt-4 mb-2">Penyelesaian:</p>
+           <Paragraph className="mb-2">Dinding kelas adalah bagian sisi depan-belakang dan kanan-kiri (tanpa lantai dan atap). Hitung luas keempat sisi dinding:</Paragraph>
+           <MathBlock>{`\\text{Luas Dinding} = 2(pt) + 2(lt) \\\\ = 2(10 \\times 4) + 2(8 \\times 4) \\\\ = 80 + 64 = 144 \\text{ m}^2`}</MathBlock>
+           <Paragraph className="mb-2">Kurangi dengan luas pintu dan jendela, lalu kalikan dengan harga per meter persegi:</Paragraph>
+           <MathBlock>{`\\text{Luas yang dicat} = 144 - 14 = 130 \\text{ m}^2 \\\\ \\text{Total Biaya} = 130 \\times 25.000 = 3.250.000`}</MathBlock>
+           <Paragraph>Jadi, total dana pengecatan yang dibutuhkan adalah <MathInline>{`\\text{Rp } 3.250.000,00`}</MathInline>.</Paragraph>
+         </div>
        </div>
 
        <Heading3>Latihan Soal</Heading3>

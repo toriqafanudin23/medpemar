@@ -41,7 +41,7 @@ const LuasLimasPage = () => {
 
       <Heading3>Menghitung Luas Permukaan Limas</Heading3>
       <Paragraph>Mencari luas permukaan limas pada dasarnya adalah menjumlahkan luas alas dengan luas seluruh sisi tegak (selimut) limas tersebut.</Paragraph>
-      <ImageDisplay src="ilustrasiluaslimas.png" nama="Gambar 27. Ilustrasi Luas Permukaan Limas" />
+      <ImageDisplay src="jaringlimassegi4.png" nama="Gambar 27. Ilustrasi Luas Permukaan Limas" />
       
       <Paragraph>Berdasarkan <MathInline>{`\\text{Gambar 27}`}</MathInline>, luas permukaan limas dirumuskan sebagai berikut:</Paragraph>
       
@@ -51,16 +51,48 @@ const LuasLimasPage = () => {
       </HighlightBox>
 
       <Heading3>Contoh Soal</Heading3>
-      <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
-        <Paragraph>Sebuah limas <MathInline>{`\\text{T.ABCD}`}</MathInline> memiliki alas berbentuk persegi dengan panjang sisi <MathInline>{`10 \\text{ cm}`}</MathInline>. Jika tinggi sisi tegak (segitiga) adalah <MathInline>{`12 \\text{ cm}`}</MathInline>, berapakah luas permukaan limas tersebut?</Paragraph>
-        <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
-        <Paragraph className="mb-2">Luas Alas (Persegi):</Paragraph>
-        <MathBlock>{`\\text{Luas Alas} = 10 \\times 10 = 100`}</MathBlock>
-        <Paragraph className="mb-2">Luas 4 Sisi Tegak (Segitiga):</Paragraph>
-        <MathBlock>{`\\text{Luas 4 Segitiga} = 4 \\times (\\frac{1}{2} \\times \\text{alas} \\times \\text{tinggi}) \\\\ = 4 \\times (\\frac{1}{2} \\times 10 \\times 12) = 4 \\times 60 = 240`}</MathBlock>
-        <Paragraph className="mb-2">Total Luas Permukaan:</Paragraph>
-        <MathBlock>{`L = \\text{Luas Alas} + \\text{Luas 4 Segitiga} \\\\ L = 100 + 240 = 340`}</MathBlock>
-        <Paragraph>Jadi, luas permukaan limas tersebut adalah <MathInline>{`340 \\text{ cm}^2`}</MathInline>.</Paragraph>
+      <div className="space-y-6">
+        <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
+          <Paragraph>Sebuah limas <MathInline>{`\\text{T.ABCD}`}</MathInline> memiliki alas berbentuk persegi dengan panjang sisi <MathInline>{`10 \\text{ cm}`}</MathInline>. Jika tinggi sisi tegak (segitiga) adalah <MathInline>{`12 \\text{ cm}`}</MathInline>, berapakah luas permukaan limas tersebut?</Paragraph>
+          <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Luas Alas (Persegi):</Paragraph>
+          <MathBlock>{`\\text{Luas Alas} = 10 \\times 10 = 100`}</MathBlock>
+          <Paragraph className="mb-2">Luas 4 Sisi Tegak (Segitiga):</Paragraph>
+          <MathBlock>{`\\text{Luas 4 Segitiga} = 4 \\times (\\frac{1}{2} \\times \\text{alas} \\times \\text{tinggi}) \\\\ = 4 \\times (\\frac{1}{2} \\times 10 \\times 12) = 4 \\times 60 = 240`}</MathBlock>
+          <Paragraph className="mb-2">Total Luas Permukaan:</Paragraph>
+          <MathBlock>{`L = \\text{Luas Alas} + \\text{Luas 4 Segitiga} \\\\ L = 100 + 240 = 340`}</MathBlock>
+          <Paragraph>Jadi, luas permukaan limas tersebut adalah <MathInline>{`340 \\text{ cm}^2`}</MathInline>.</Paragraph>
+        </div>
+
+        <div className="bg-warning/5 p-5 rounded-xl border border-warning/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold">Level 4: Sulit</span>
+          </div>
+          <Paragraph>Sebuah bangun berbentuk limas memiliki alas berbentuk persegi dengan keliling alas 40 cm. Jika diketahui volume limas tersebut adalah <MathInline>{`400 \\text{ cm}^3`}</MathInline>, tentukanlah luas permukaannya!</Paragraph>
+          <p className="font-semibold text-warning mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Dari keliling alas, kita bisa mencari sisi alas. Sisi alas = <MathInline>{`40 \\div 4 = 10 \\text{ cm}`}</MathInline>. Luas Alas = <MathInline>{`100 \\text{ cm}^2`}</MathInline>. Dari volume, kita bisa mencari tinggi limas (t):</Paragraph>
+          <MathBlock>{`V = \\frac{1}{3} \\times \\text{Luas Alas} \\times t \\\\ 400 = \\frac{1}{3} \\times 100 \\times t \\implies t = 12 \\text{ cm}`}</MathBlock>
+          <Paragraph className="mb-2">Gunakan Pythagoras untuk mencari tinggi sisi tegak selimut (segitiga):</Paragraph>
+          <MathBlock>{`\\text{Tinggi Segitiga} = \\sqrt{12^2 + 5^2} = 13 \\text{ cm}`}</MathBlock>
+          <Paragraph className="mb-2">Hitung luas permukaan total:</Paragraph>
+          <MathBlock>{`L = \\text{Luas Alas} + 4 \\times (\\text{Luas Segitiga}) \\\\ L = 100 + 4 \\times (\\frac{1}{2} \\times 10 \\times 13) \\\\ L = 100 + 260 = 360`}</MathBlock>
+          <Paragraph>Jadi, luas permukaan limas tersebut adalah <MathInline>{`360 \\text{ cm}^2`}</MathInline>.</Paragraph>
+        </div>
+
+        <div className="bg-destructive/5 p-5 rounded-xl border border-destructive/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold">Level 5: HOTS</span>
+          </div>
+          <Paragraph>Sebuah bangunan monumen berbentuk piramida (limas segi empat beraturan). Panjang sisi alas monumen tersebut adalah 12 meter, sedangkan panjang rusuk tegak (garis pertemuan antar atap) adalah 10 meter. Hanya seluruh permukaan dinding luar piramida (selimutnya) yang akan dilapisi kaca. Jika harga kaca adalah Rp100.000,00 per meter persegi, berapa estimasi total biaya kacanya?</Paragraph>
+          <p className="font-semibold text-destructive mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Gunakan Pythagoras pada salah satu sisi miring (segitiga). Sisi bawah segitiga adalah 12 m (setengahnya 6 m), dan miringnya 10 m.</Paragraph>
+          <MathBlock>{`\\text{Tinggi Segitiga} = \\sqrt{10^2 - 6^2} = \\sqrt{100 - 36} = \\sqrt{64} = 8 \\text{ m}`}</MathBlock>
+          <Paragraph className="mb-2">Hitung luas selimut (hanya 4 dinding miring, alas tidak ikut):</Paragraph>
+          <MathBlock>{`\\text{Luas Selimut} = 4 \\times (\\frac{1}{2} \\times 12 \\times 8) \\\\ = 4 \\times 48 = 192 \\text{ m}^2`}</MathBlock>
+          <Paragraph className="mb-2">Kalikan dengan harga per meter persegi:</Paragraph>
+          <MathBlock>{`\\text{Total Biaya} = 192 \\times 100.000 = 19.200.000`}</MathBlock>
+          <Paragraph>Jadi, total biaya yang dibutuhkan adalah <MathInline>{`\\text{Rp } 19.200.000,00`}</MathInline>.</Paragraph>
+        </div>
       </div>
 
       <Heading3>Latihan Soal</Heading3>

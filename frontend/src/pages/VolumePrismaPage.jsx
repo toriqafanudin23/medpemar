@@ -54,12 +54,40 @@ const VolumePrismaPage = () => {
       </HighlightBox>
 
       <Heading3>Contoh Soal</Heading3>
-      <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
-        <Paragraph>Diketahui sebuah prisma segitiga sama sisi memiliki panjang sisi alas 6 cm dan tinggi prisma 5 cm. Jika tinggi segitiga alas tersebut adalah <MathInline>{`3\\sqrt{3} \\text{ cm},`}</MathInline> berapakah volume prisma tersebut?</Paragraph>
-        <ImageDisplay src="soalprismasegitiga2.png" scale={1} />
-        <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
-        <MathBlock>{`V = \\text{Luas Alas} \\times \\text{Tinggi} \\\\ V = \\left(\\frac{1}{2} \\times \\text{alas segitiga} \\times \\text{tinggi segitiga}\\right) \\times \\text{tinggi prisma} \\\\ V = \\left(\\frac{1}{2} \\times 6 \\times 3\\sqrt{3}\\right) \\times 5 \\\\ V = 9\\sqrt{3} \\times 5 = 45\\sqrt{3}`}</MathBlock>
-        <Paragraph>Jadi, volume prisma segitiga tersebut adalah <MathInline>{`45\\sqrt{3} \\text{ cm}^3`}</MathInline>.</Paragraph>
+      <div className="space-y-6">
+        <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
+          <Paragraph>Diketahui sebuah prisma segitiga sama sisi memiliki panjang sisi alas 6 cm dan tinggi prisma 5 cm. Jika tinggi segitiga alas tersebut adalah <MathInline>{`3\\sqrt{3} \\text{ cm},`}</MathInline> berapakah volume prisma tersebut?</Paragraph>
+          <ImageDisplay src="soalprismasegitiga2.png" scale={1} />
+          <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
+          <MathBlock>{`V = \\text{Luas Alas} \\times \\text{Tinggi} \\\\ V = \\left(\\frac{1}{2} \\times \\text{alas segitiga} \\times \\text{tinggi segitiga}\\right) \\times \\text{tinggi prisma} \\\\ V = \\left(\\frac{1}{2} \\times 6 \\times 3\\sqrt{3}\\right) \\times 5 \\\\ V = 9\\sqrt{3} \\times 5 = 45\\sqrt{3}`}</MathBlock>
+          <Paragraph>Jadi, volume prisma segitiga tersebut adalah <MathInline>{`45\\sqrt{3} \\text{ cm}^3`}</MathInline>.</Paragraph>
+        </div>
+
+        <div className="bg-warning/5 p-5 rounded-xl border border-warning/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold">Level 4: Sulit</span>
+          </div>
+          <Paragraph>Sebuah prisma memiliki alas berbentuk belah ketupat dengan panjang masing-masing diagonalnya adalah 12 cm dan 16 cm. Jika tinggi prisma tersebut adalah 20 cm, berapakah volume prisma itu?</Paragraph>
+          <p className="font-semibold text-warning mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Pertama, hitung luas alas belah ketupat:</Paragraph>
+          <MathBlock>{`\\text{Luas Alas} = \\frac{1}{2} \\times d_1 \\times d_2 \\\\ = \\frac{1}{2} \\times 12 \\times 16 = 96 \\text{ cm}^2`}</MathBlock>
+          <Paragraph className="mb-2">Kemudian hitung volume prisma:</Paragraph>
+          <MathBlock>{`V = \\text{Luas Alas} \\times \\text{Tinggi Prisma} \\\\ V = 96 \\times 20 = 1.920 \\text{ cm}^3`}</MathBlock>
+          <Paragraph>Jadi, volume prisma tersebut adalah <MathInline>{`1.920 \\text{ cm}^3`}</MathInline>.</Paragraph>
+        </div>
+
+        <div className="bg-destructive/5 p-5 rounded-xl border border-destructive/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold">Level 5: HOTS</span>
+          </div>
+          <Paragraph>Atap sebuah rumah digambarkan sebagai bangun prisma segitiga tegak mendatar. Bagian penampang depan atap berbentuk segitiga sama kaki dengan panjang alas 8 meter dan tinggi segitiga 3 meter. Jika panjang ke belakang rumah tersebut adalah 15 meter, berapa meter kubik volume ruangan di bawah atap tersebut?</Paragraph>
+          <p className="font-semibold text-destructive mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Meskipun posisinya mendatar, atap rumah tersebut tetaplah sebuah prisma dengan "alas" berupa segitiga di bagian depan, dan "tinggi prisma" berupa panjang rumah ke belakang.</Paragraph>
+          <MathBlock>{`\\text{Luas Segitiga Depan (Alas Prisma)} = \\frac{1}{2} \\times \\text{alas} \\times \\text{tinggi} \\\\ = \\frac{1}{2} \\times 8 \\times 3 = 12 \\text{ m}^2`}</MathBlock>
+          <Paragraph className="mb-2">Volume ruangan di bawah atap (Volume Prisma):</Paragraph>
+          <MathBlock>{`V = \\text{Luas Alas Prisma} \\times \\text{Tinggi Prisma} \\\\ V = 12 \\times 15 = 180 \\text{ m}^3`}</MathBlock>
+          <Paragraph>Jadi, kapasitas volume ruangan di bawah atap tersebut adalah <MathInline>{`180 \\text{ m}^3`}</MathInline>.</Paragraph>
+        </div>
       </div>
 
       <Heading3>Latihan Soal</Heading3>

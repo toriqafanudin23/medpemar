@@ -56,15 +56,43 @@ const LuasPrismaPage = () => {
       <Paragraph>Rumus di atas berlaku universal untuk prisma dengan bentuk alas apa pun.</Paragraph>
 
       <Heading3>Contoh Soal</Heading3>
-      <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
-        <Paragraph>Sebuah prisma <MathInline>{`\\text{ABC.DEF}`}</MathInline> mempunyai alas berbentuk segitiga siku-siku. Diketahui panjang <MathInline>{`\\text{AB} = 3 \\text{ cm dan BC} = 4 \\text{ cm}`}</MathInline>. Jika sudut <MathInline>{`\\text{ABC}`}</MathInline> siku-siku (<MathInline>{`90^{\\circ}`}</MathInline>) dan tinggi prisma adalah <MathInline>{`7 \\text{ cm}`}</MathInline>, tentukanlah luas permukaan prisma tersebut!</Paragraph>
-        <ImageDisplay src="alasprismasegi3.png" scale={0.7} />
-        <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
-        <Paragraph className="mb-2">Pertama, cari sisi miring alas (AC) dengan rumus Pythagoras:</Paragraph>
-        <MathBlock>{`\\text{AC}^2 = 3^2 + 4^2 = 9 + 16 = 25 \\implies \\text{AC} = 5`}</MathBlock>
-        <Paragraph className="mb-2">Selanjutnya, hitung keliling alas dan masukkan ke rumus luas:</Paragraph>
-        <MathBlock>{`\\text{Keliling} = 3 + 4 + 5 = 12 \\\\ L = 2 \\times \\text{Luas Alas} + \\text{Keliling} \\times t \\\\ L = 2 \\times (\\frac{1}{2} \\times 3 \\times 4) + (12 \\times 7) \\\\ L = 12 + 84 = 96`}</MathBlock>
-        <Paragraph>Jadi, luas permukaan prisma tersebut adalah <MathInline>{`96 \\text{ cm}^2`}</MathInline>.</Paragraph>
+      <div className="space-y-6">
+        <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
+          <Paragraph>Sebuah prisma <MathInline>{`\\text{ABC.DEF}`}</MathInline> mempunyai alas berbentuk segitiga siku-siku. Diketahui panjang <MathInline>{`\\text{AB} = 3 \\text{ cm dan BC} = 4 \\text{ cm}`}</MathInline>. Jika sudut <MathInline>{`\\text{ABC}`}</MathInline> siku-siku (<MathInline>{`90^{\\circ}`}</MathInline>) dan tinggi prisma adalah <MathInline>{`7 \\text{ cm}`}</MathInline>, tentukanlah luas permukaan prisma tersebut!</Paragraph>
+          <ImageDisplay src="alasprismasegi3.png" scale={0.7} />
+          <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Pertama, cari sisi miring alas (AC) dengan rumus Pythagoras:</Paragraph>
+          <MathBlock>{`\\text{AC}^2 = 3^2 + 4^2 = 9 + 16 = 25 \\implies \\text{AC} = 5`}</MathBlock>
+          <Paragraph className="mb-2">Selanjutnya, hitung keliling alas dan masukkan ke rumus luas:</Paragraph>
+          <MathBlock>{`\\text{Keliling} = 3 + 4 + 5 = 12 \\\\ L = 2 \\times \\text{Luas Alas} + \\text{Keliling} \\times t \\\\ L = 2 \\times (\\frac{1}{2} \\times 3 \\times 4) + (12 \\times 7) \\\\ L = 12 + 84 = 96`}</MathBlock>
+          <Paragraph>Jadi, luas permukaan prisma tersebut adalah <MathInline>{`96 \\text{ cm}^2`}</MathInline>.</Paragraph>
+        </div>
+
+        <div className="bg-warning/5 p-5 rounded-xl border border-warning/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold">Level 4: Sulit</span>
+          </div>
+          <Paragraph>Sebuah prisma tegak memiliki alas berbentuk segitiga siku-siku dengan panjang sisi siku-sikunya 5 cm dan 12 cm. Jika tinggi prisma tersebut adalah 10 cm, tentukan luas permukaannya!</Paragraph>
+          <p className="font-semibold text-warning mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Gunakan Tripel Pythagoras untuk mencari sisi miring segitiga alas:</Paragraph>
+          <MathBlock>{`\\text{Sisi Miring} = \\sqrt{5^2 + 12^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13 \\text{ cm}`}</MathBlock>
+          <Paragraph className="mb-2">Hitung luas alas dan luas permukaan prisma:</Paragraph>
+          <MathBlock>{`\\text{Luas Alas} = \\frac{1}{2} \\times 5 \\times 12 = 30 \\text{ cm}^2 \\\\ \\text{Keliling} = 5 + 12 + 13 = 30 \\text{ cm} \\\\ L = 2 \\times \\text{Luas Alas} + \\text{Keliling} \\times t \\\\ L = 2 \\times 30 + 30 \\times 10 = 60 + 300 = 360`}</MathBlock>
+          <Paragraph>Jadi, luas permukaan prisma tersebut adalah <MathInline>{`360 \\text{ cm}^2`}</MathInline>.</Paragraph>
+        </div>
+
+        <div className="bg-destructive/5 p-5 rounded-xl border border-destructive/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold">Level 5: HOTS</span>
+          </div>
+          <Paragraph>Sebuah tenda pramuka berbentuk prisma segitiga tegak (posisi mendatar). Alas tenda (bagian depan) berbentuk segitiga sama kaki dengan lebar 3 meter dan tinggi 2 meter (sehingga sisi miring atapnya 2,5 meter). Jika panjang tenda ke belakang adalah 4 meter, berapakah luas minimal kain terpal yang menutupi seluruh tenda tersebut (termasuk alas lantainya)?</Paragraph>
+          <p className="font-semibold text-destructive mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Tenda ini merupakan prisma segitiga utuh. Kain terpal menyusun 5 sisi tenda (1 lantai, 2 sisi atap miring, 1 segitiga depan, 1 segitiga belakang):</Paragraph>
+          <MathBlock>{`\\text{Luas Lantai} = 3 \\times 4 = 12 \\text{ m}^2 \\\\ \\text{Luas Atap Miring (2 sisi)} = 2 \\times (2,5 \\times 4) = 20 \\text{ m}^2 \\\\ \\text{Luas Segitiga Depan-Belakang (2 alas prisma)} = 2 \\times (\\frac{1}{2} \\times 3 \\times 2) = 6 \\text{ m}^2`}</MathBlock>
+          <Paragraph className="mb-2">Jumlahkan semua luas sisi tersebut:</Paragraph>
+          <MathBlock>{`\\text{Total Kain Terpal} = 12 + 20 + 6 = 38 \\text{ m}^2`}</MathBlock>
+          <Paragraph>Jadi, luas minimal kain terpal yang digunakan adalah <MathInline>{`38 \\text{ m}^2`}</MathInline>.</Paragraph>
+        </div>
       </div>
 
       <Heading3>Latihan Soal</Heading3>
@@ -98,7 +126,7 @@ const LuasPrismaPage = () => {
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
           <Paragraph className="mb-3">
             <span className="inline-block bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold mb-2">Level 4: Sulit</span><br/>
-            <b>Soal 4:</b> Pak Budi membuat sebuah papan nama meja yang berbentuk prisma segitiga siku-siku dari karton utuh (tertutup di semua sisi). Sisi siku-siku alasnya <MathInline>{`6 \\text{ cm}`}</MathInline> dan <MathInline>{`8 \\text{ cm}`}</MathInline> (sisi miringnya <MathInline>{`10 \\text{ cm}`}</MathInline>). Panjang papan nama tersebut (<MathInline>{`tinggi prisma`}</MathInline>) adalah <MathInline>{`20 \\text{ cm}`}</MathInline>. Berapakah luas minimal karton yang dibutuhkan Pak Budi?
+            <b>Soal 4:</b> Pak Budi membuat sebuah papan nama meja yang berbentuk prisma segitiga siku-siku dari karton utuh (tertutup di semua sisi). Sisi siku-siku alasnya <MathInline>{`6 \\text{ cm}`}</MathInline> dan <MathInline>{`8 \\text{ cm}`}</MathInline> (sisi miringnya <MathInline>{`10 \\text{ cm}`}</MathInline>). Panjang papan nama tersebut (<MathInline>{`\\text{tinggi prisma}`}</MathInline>) adalah <MathInline>{`20 \\text{ cm}`}</MathInline>. Berapakah luas minimal karton yang dibutuhkan Pak Budi?
           </Paragraph>
           <InputAnswer answerKey="528" placeholder="Luas karton = ..." satuan="cm²" />
         </div>

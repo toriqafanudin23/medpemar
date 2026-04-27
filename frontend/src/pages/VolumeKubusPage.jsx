@@ -117,11 +117,41 @@ const VolumeKubusPage = () => {
       <ImageDisplay src="kubusr.png" nama="Gambar 6. Kubus rusuk r" scale={1} />
       
       <Heading3>Contoh Soal</Heading3>
-      <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
-        <Paragraph>Diketahui sebuah kubus dengan panjang rusuk 5 cm. Hitunglah volume kubus tersebut!</Paragraph>
-        <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
-        <MathBlock>{`V=r \\times r \\times r \\\\ V=5 \\times 5 \\times 5 \\\\ V=125 `}</MathBlock>
-        <Paragraph>Jadi, volume kubus tersebut adalah <MathInline>{`125 \\text{ cm}^3`}</MathInline>.</Paragraph>
+      <div className="space-y-6">
+        <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
+          <Paragraph>Diketahui sebuah kubus dengan panjang rusuk 5 cm. Hitunglah volume kubus tersebut!</Paragraph>
+          <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
+          <MathBlock>{`V=r \\times r \\times r \\\\ V=5 \\times 5 \\times 5 \\\\ V=125 `}</MathBlock>
+          <Paragraph>Jadi, volume kubus tersebut adalah <MathInline>{`125 \\text{ cm}^3`}</MathInline>.</Paragraph>
+        </div>
+
+        <div className="bg-warning/5 p-5 rounded-xl border border-warning/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold">Level 4: Sulit</span>
+          </div>
+          <Paragraph>Sebuah bak mandi berbentuk kubus sedang terisi air setengahnya. Jika volume air di dalam bak tersebut adalah 500 liter, berapakah panjang rusuk bagian dalam bak mandi tersebut dalam satuan cm?</Paragraph>
+          <p className="font-semibold text-warning mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Pertama, kita harus mencari volume bak mandi saat terisi penuh:</Paragraph>
+          <MathBlock>{`\\text{Volume air (setengah)} = 500 \\text{ liter} = 500 \\text{ dm}^3 \\\\ \\text{Volume penuh (V)} = 2 \\times 500 = 1.000 \\text{ dm}^3`}</MathBlock>
+          <Paragraph className="mb-2">Karena 1 dm³ = 1.000 cm³:</Paragraph>
+          <MathBlock>{`V = 1.000 \\times 1.000 = 1.000.000 \\text{ cm}^3`}</MathBlock>
+          <Paragraph className="mb-2">Sekarang kita cari panjang rusuk (r) dari volume penuh:</Paragraph>
+          <MathBlock>{`V = r^3 \\\\ 1.000.000 = r^3 \\\\ r = \\sqrt[3]{1.000.000} = 100 \\text{ cm}`}</MathBlock>
+          <Paragraph>Jadi, panjang rusuk bak mandi tersebut adalah <MathInline>{`100 \\text{ cm}`}</MathInline>.</Paragraph>
+        </div>
+
+        <div className="bg-destructive/5 p-5 rounded-xl border border-destructive/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold">Level 5: HOTS</span>
+          </div>
+          <Paragraph>Budi ingin membuat sebuah kerangka kubus besar dari kawat, yang ruang di dalamnya (volumenya) dirancang tepat sebesar <MathInline>{`3.375 \\text{ cm}^3`}</MathInline>. Berapa total panjang kawat minimal yang dibutuhkan Budi untuk membuat satu kerangka kubus tersebut?</Paragraph>
+          <p className="font-semibold text-destructive mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Pertama, cari panjang satu rusuk (r) dari kubus besar tersebut:</Paragraph>
+          <MathBlock>{`V = r^3 \\\\ 3.375 = r^3 \\\\ r = \\sqrt[3]{3.375} = 15 \\text{ cm}`}</MathBlock>
+          <Paragraph className="mb-2">Sebuah kubus memiliki 12 buah rusuk kawat. Maka total kawat yang dibutuhkan:</Paragraph>
+          <MathBlock>{`\\text{Panjang total kawat} = 12 \\times r \\\\ = 12 \\times 15 = 180 \\text{ cm}`}</MathBlock>
+          <Paragraph>Jadi, Budi membutuhkan kawat sepanjang <MathInline>{`180 \\text{ cm}`}</MathInline>.</Paragraph>
+        </div>
       </div>
 
       <Heading3>Latihan Soal</Heading3>

@@ -58,11 +58,39 @@ const LuasKubusPage = () => {
       </HighlightBox>
 
        <Heading3>Contoh Soal</Heading3>
-       <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
-         <Paragraph>Sebuah kubus memiliki panjang rusuk 7 cm. Tentukanlah luas permukaan kubus tersebut!</Paragraph>
-         <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
-         <MathBlock>{`L = 6 \\times r^2 \\\\ L = 6 \\times 7^2 \\\\ L = 6 \\times 49 = 294`}</MathBlock>
-         <Paragraph>Jadi, luas permukaan kubus tersebut adalah <MathInline>{`294 \\text{ cm}^2`}</MathInline>.</Paragraph>
+       <div className="space-y-6">
+         <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
+           <Paragraph>Sebuah kubus memiliki panjang rusuk 7 cm. Tentukanlah luas permukaan kubus tersebut!</Paragraph>
+           <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
+           <MathBlock>{`L = 6 \\times r^2 \\\\ L = 6 \\times 7^2 \\\\ L = 6 \\times 49 = 294`}</MathBlock>
+           <Paragraph>Jadi, luas permukaan kubus tersebut adalah <MathInline>{`294 \\text{ cm}^2`}</MathInline>.</Paragraph>
+         </div>
+
+         <div className="bg-warning/5 p-5 rounded-xl border border-warning/20">
+           <div className="flex items-center gap-2 mb-2">
+             <span className="bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold">Level 4: Sulit</span>
+           </div>
+           <Paragraph>Luas seluruh permukaan sebuah dadu raksasa berbentuk kubus adalah <MathInline>{`864 \\text{ cm}^2`}</MathInline>. Berapakah volume dari dadu tersebut?</Paragraph>
+           <p className="font-semibold text-warning mt-4 mb-2">Penyelesaian:</p>
+           <Paragraph className="mb-2">Pertama, kita harus mencari panjang rusuk (r) dari luas permukaannya:</Paragraph>
+           <MathBlock>{`L = 6 \\times r^2 \\\\ 864 = 6 \\times r^2 \\\\ r^2 = \\frac{864}{6} = 144 \\\\ r = \\sqrt{144} = 12 \\text{ cm}`}</MathBlock>
+           <Paragraph className="mb-2">Setelah panjang rusuk diketahui, kita bisa menghitung volumenya:</Paragraph>
+           <MathBlock>{`V = r^3 = 12 \\times 12 \\times 12 = 1.728 \\text{ cm}^3`}</MathBlock>
+           <Paragraph>Jadi, volume dadu raksasa tersebut adalah <MathInline>{`1.728 \\text{ cm}^3`}</MathInline>.</Paragraph>
+         </div>
+
+         <div className="bg-destructive/5 p-5 rounded-xl border border-destructive/20">
+           <div className="flex items-center gap-2 mb-2">
+             <span className="bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold">Level 5: HOTS</span>
+           </div>
+           <Paragraph>Budi memiliki 3 buah kubus besi yang rusuknya berturut-turut berukuran 10 cm, 15 cm, dan 20 cm. Budi ingin mengecat seluruh permukaan ketiga kubus besi tersebut. Jika satu kaleng cat semprot hanya cukup untuk menutupi area seluas <MathInline>{`0,2 \\text{ m}^2`}</MathInline> (atau <MathInline>{`2.000 \\text{ cm}^2`}</MathInline>), berapa kaleng cat minimal yang harus dibeli Budi?</Paragraph>
+           <p className="font-semibold text-destructive mt-4 mb-2">Penyelesaian:</p>
+           <Paragraph className="mb-2">Pertama, hitung total luas permukaan ketiga kubus tersebut:</Paragraph>
+           <MathBlock>{`L_1 = 6 \\times 10^2 = 600 \\text{ cm}^2 \\\\ L_2 = 6 \\times 15^2 = 1.350 \\text{ cm}^2 \\\\ L_3 = 6 \\times 20^2 = 2.400 \\text{ cm}^2 \\\\ \\text{Total Luas} = 600 + 1.350 + 2.400 = 4.350 \\text{ cm}^2`}</MathBlock>
+           <Paragraph className="mb-2">Hitung berapa kaleng cat yang dibutuhkan:</Paragraph>
+           <MathBlock>{`\\text{Jumlah Kaleng} = \\frac{4.350}{2.000} = 2,175 \\text{ kaleng}`}</MathBlock>
+           <Paragraph>Karena cat tidak bisa dibeli dalam bentuk pecahan kaleng, Budi harus membulatkan ke atas. Jadi, Budi harus membeli minimal <MathInline>{`3 \\text{ kaleng}`}</MathInline> cat semprot.</Paragraph>
+         </div>
        </div>
 
        <Heading3>Latihan Soal</Heading3>

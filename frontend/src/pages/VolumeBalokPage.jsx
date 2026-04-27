@@ -34,12 +34,40 @@ const VolumeBalokPage = () => {
       <ImageDisplay src="balokplt.png" nama="Gambar 7. Balok" scale={1} />
       
       <Heading3>Contoh Soal</Heading3>
-      <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
-        <Paragraph>Sebuah balok memiliki panjang 5 cm, lebar 3 cm, dan tinggi 2 cm. Hitunglah volume balok tersebut!</Paragraph>
-        <ImageDisplay src="balok532.png" nama="Gambar 8. Balok" scale={1} />
-        <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
-        <MathBlock>{`V = p \\times l \\times t \\\\ V = 5 \\times 3 \\times 2 \\\\ V = 30`}</MathBlock>
-        <Paragraph>Jadi, volume balok tersebut adalah <MathInline>{`30 \\text{ cm}^3`}</MathInline>.</Paragraph>
+      <div className="space-y-6">
+        <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
+          <Paragraph>Sebuah balok memiliki panjang 5 cm, lebar 3 cm, dan tinggi 2 cm. Hitunglah volume balok tersebut!</Paragraph>
+          <ImageDisplay src="balok532.png" nama="Gambar 8. Balok" scale={1} />
+          <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
+          <MathBlock>{`V = p \\times l \\times t \\\\ V = 5 \\times 3 \\times 2 \\\\ V = 30`}</MathBlock>
+          <Paragraph>Jadi, volume balok tersebut adalah <MathInline>{`30 \\text{ cm}^3`}</MathInline>.</Paragraph>
+        </div>
+
+        <div className="bg-warning/5 p-5 rounded-xl border border-warning/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold">Level 4: Sulit</span>
+          </div>
+          <Paragraph>Sebuah akuarium berbentuk balok memiliki panjang 80 cm dan lebar 40 cm. Saat sebuah batu karang hiasan dimasukkan hingga tenggelam seluruhnya ke dalam akuarium, tinggi permukaan air naik sebesar 3 cm. Berapakah volume batu karang hiasan tersebut?</Paragraph>
+          <p className="font-semibold text-warning mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Berdasarkan prinsip Archimedes, volume benda yang tercelup sama dengan volume air yang didesaknya (kenaikan air).</Paragraph>
+          <MathBlock>{`\\text{Volume batu} = \\text{Luas Alas Akuarium} \\times \\text{Kenaikan air} \\\\ = (80 \\times 40) \\times 3 \\\\ = 3.200 \\times 3 = 9.600 \\text{ cm}^3`}</MathBlock>
+          <Paragraph>Jadi, volume batu karang hiasan tersebut adalah <MathInline>{`9.600 \\text{ cm}^3`}</MathInline>.</Paragraph>
+        </div>
+
+        <div className="bg-destructive/5 p-5 rounded-xl border border-destructive/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold">Level 5: HOTS</span>
+          </div>
+          <Paragraph>Sebuah wadah berbentuk balok dengan ukuran 50 cm × 40 cm × 30 cm telah terisi air setinggi 20 cm. Jika sebuah balok besi pejal berukuran 20 cm × 20 cm × 20 cm dimasukkan ke dasar wadah tersebut, berapakah ketinggian air dalam wadah sekarang?</Paragraph>
+          <p className="font-semibold text-destructive mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Pertama, hitung volume air mula-mula dan volume balok besi:</Paragraph>
+          <MathBlock>{`\\text{Volume air awal} = 50 \\times 40 \\times 20 = 40.000 \\text{ cm}^3 \\\\ \\text{Volume besi} = 20 \\times 20 \\times 20 = 8.000 \\text{ cm}^3`}</MathBlock>
+          <Paragraph className="mb-2">Total volume (air + benda) di dalam wadah sekarang adalah:</Paragraph>
+          <MathBlock>{`\\text{Total Volume} = 40.000 + 8.000 = 48.000 \\text{ cm}^3`}</MathBlock>
+          <Paragraph className="mb-2">Ketinggian air yang baru dapat dihitung dengan membagi total volume dengan luas alas wadah:</Paragraph>
+          <MathBlock>{`\\text{Tinggi baru} = \\frac{\\text{Total Volume}}{\\text{Luas Alas}} = \\frac{48.000}{50 \\times 40} = \\frac{48.000}{2.000} = 24 \\text{ cm}`}</MathBlock>
+          <Paragraph>Jadi, ketinggian air dalam wadah sekarang adalah <MathInline>{`24 \\text{ cm}`}</MathInline>.</Paragraph>
+        </div>
       </div>
 
       <Heading3>Latihan Soal</Heading3>

@@ -65,12 +65,40 @@ const VolumeLimasPage = () => {
       </HighlightBox>
 
       <Heading3>Contoh Soal</Heading3>
-      <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
-        <Paragraph>Diketahui sebuah limas <MathInline>{`\\text{T.ABCD}`}</MathInline> dengan alas berbentuk persegi. Panjang <MathInline>{`\\text{AB}=\\text{BC}= 5 \\text{ cm}`}</MathInline>. Titik <MathInline>{`\\text{O}`}</MathInline> adalah perpotongan diagonal alas. Jika jarak titik <MathInline>{`\\text{O}`}</MathInline> ke titik puncak <MathInline>{`\\text{T}`}</MathInline> (tinggi limas) adalah 6 cm, berapakah volume limas tersebut?</Paragraph>
-        <ImageDisplay src="limasabcdt.png" scale={1} />
-        <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
-        <MathBlock>{`V = \\frac{1}{3} \\times \\text{Luas Alas} \\times \\text{Tinggi} \\\\ V = \\frac{1}{3} \\times (5 \\times 5) \\times 6 \\\\ V = \\frac{1}{3} \\times 25 \\times 6 \\\\ V = 25 \\times 2 \\\\ V = 50`}</MathBlock>
-        <Paragraph>Jadi, volume limas tersebut adalah <MathInline>{`50 \\text{ cm}^3`}</MathInline>.</Paragraph>
+      <div className="space-y-6">
+        <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
+          <Paragraph>Diketahui sebuah limas <MathInline>{`\\text{T.ABCD}`}</MathInline> dengan alas berbentuk persegi. Panjang <MathInline>{`\\text{AB}=\\text{BC}= 5 \\text{ cm}`}</MathInline>. Titik <MathInline>{`\\text{O}`}</MathInline> adalah perpotongan diagonal alas. Jika jarak titik <MathInline>{`\\text{O}`}</MathInline> ke titik puncak <MathInline>{`\\text{T}`}</MathInline> (tinggi limas) adalah 6 cm, berapakah volume limas tersebut?</Paragraph>
+          <ImageDisplay src="limasabcdt.png" scale={1} />
+          <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
+          <MathBlock>{`V = \\frac{1}{3} \\times \\text{Luas Alas} \\times \\text{Tinggi} \\\\ V = \\frac{1}{3} \\times (5 \\times 5) \\times 6 \\\\ V = \\frac{1}{3} \\times 25 \\times 6 \\\\ V = 25 \\times 2 \\\\ V = 50`}</MathBlock>
+          <Paragraph>Jadi, volume limas tersebut adalah <MathInline>{`50 \\text{ cm}^3`}</MathInline>.</Paragraph>
+        </div>
+
+        <div className="bg-warning/5 p-5 rounded-xl border border-warning/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold">Level 4: Sulit</span>
+          </div>
+          <Paragraph>Sebuah limas memiliki alas berbentuk persegi dengan panjang sisi 10 cm. Jika tinggi sisi tegak (tinggi segitiga pada selimutnya) adalah 13 cm, berapakah volume limas tersebut?</Paragraph>
+          <p className="font-semibold text-warning mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Untuk mencari volume, kita membutuhkan tinggi limas (jarak puncak ke pusat alas). Kita dapat mencarinya menggunakan Teorema Pythagoras. Setengah dari panjang sisi alas adalah 5 cm.</Paragraph>
+          <MathBlock>{`\\text{Tinggi Limas} = \\sqrt{13^2 - 5^2} \\\\ = \\sqrt{169 - 25} = \\sqrt{144} = 12 \\text{ cm}`}</MathBlock>
+          <Paragraph className="mb-2">Setelah tinggi limas diketahui, hitung volumenya:</Paragraph>
+          <MathBlock>{`V = \\frac{1}{3} \\times \\text{Luas Alas} \\times \\text{Tinggi} \\\\ = \\frac{1}{3} \\times (10 \\times 10) \\times 12 \\\\ = \\frac{1}{3} \\times 100 \\times 12 = 400 \\text{ cm}^3`}</MathBlock>
+          <Paragraph>Jadi, volume limas tersebut adalah <MathInline>{`400 \\text{ cm}^3`}</MathInline>.</Paragraph>
+        </div>
+
+        <div className="bg-destructive/5 p-5 rounded-xl border border-destructive/20">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold">Level 5: HOTS</span>
+          </div>
+          <Paragraph>Sebuah pabrik cokelat ingin memproduksi cokelat berbentuk miniatur piramida pejal (limas persegi). Alas piramida memiliki sisi 5 cm dan tinggi 6 cm. Pabrik tersebut memiliki adonan cokelat cair sebanyak <MathInline>{`2.500 \\text{ cm}^3`}</MathInline>. Berapa buah miniatur cokelat maksimal yang dapat dicetak secara utuh?</Paragraph>
+          <p className="font-semibold text-destructive mt-4 mb-2">Penyelesaian:</p>
+          <Paragraph className="mb-2">Pertama, hitung volume yang dibutuhkan untuk membuat 1 buah miniatur piramida:</Paragraph>
+          <MathBlock>{`V_{1 \\text{ cokelat}} = \\frac{1}{3} \\times \\text{Luas Alas} \\times \\text{Tinggi} \\\\ = \\frac{1}{3} \\times (5 \\times 5) \\times 6 \\\\ = \\frac{1}{3} \\times 25 \\times 6 = 50 \\text{ cm}^3`}</MathBlock>
+          <Paragraph className="mb-2">Kemudian, hitung berapa banyak cokelat yang dapat dicetak dari total adonan:</Paragraph>
+          <MathBlock>{`\\text{Jumlah Cokelat} = \\frac{\\text{Total Adonan}}{V_{1 \\text{ cokelat}}} \\\\ = \\frac{2.500}{50} = 50 \\text{ buah}`}</MathBlock>
+          <Paragraph>Jadi, pabrik tersebut dapat mencetak maksimal sebanyak <MathInline>{`50 \\text{ buah}`}</MathInline> miniatur cokelat utuh.</Paragraph>
+        </div>
       </div>
 
       <Heading3>Latihan Soal</Heading3>
