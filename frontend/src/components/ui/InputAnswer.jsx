@@ -73,7 +73,7 @@ const InputAnswer = ({ answerKey, placeholder = 'Masukkan jawaban...', satuan = 
             value={value}
             onChange={handleChange}
             placeholder={placeholder}
-            className={getInputClasses()}
+            className={`${getInputClasses()} h-12 text-base md:text-sm`}
             disabled={status === 'correct'}
           />
           {satuan && (
@@ -85,7 +85,7 @@ const InputAnswer = ({ answerKey, placeholder = 'Masukkan jawaban...', satuan = 
         <Button
           type="submit"
           disabled={!value.trim() || isChecking || status === 'correct'}
-          className="shrink-0"
+          className="shrink-0 h-12 w-12"
           size="icon"
         >
           {status === 'correct' ? (

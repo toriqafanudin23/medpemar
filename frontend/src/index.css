@@ -205,7 +205,13 @@
 @layer components {
   .viewer-container {
     @apply relative w-full rounded-xl overflow-hidden border-2 border-border bg-muted;
-    height: 450px;
+    height: 300px;
+  }
+
+  @media (min-width: 768px) {
+    .viewer-container {
+      height: 450px;
+    }
   }
 
   /* Fullscreen mode - override height */
