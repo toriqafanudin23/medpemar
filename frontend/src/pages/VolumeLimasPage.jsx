@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
-import { Heading2, Heading3, Paragraph, HighlightBox, MathBlock, MathInline } from '@/components/ui/Typography';
+import { Heading1, Heading2, Heading3, Paragraph, HighlightBox, MathBlock, MathInline } from '@/components/ui/Typography';
 import Viewer3D from '@/components/features/Viewer3D';
 import StaticViewer from '@/components/features/StaticViewer';
 import ImageDisplay from '@/components/ui/ImageDisplay';
@@ -17,26 +17,34 @@ const VolumeLimasPage = () => {
   }, [setPageNumber]);
 
   return (
-    <div className="max-w-3xl mx-auto animate-fade-in">
-      <Heading2>D. Volume Limas</Heading2>
+    <div className="max-w-3xl mx-auto animate-fade-in space-y-6 pb-8">
+      <div>
+        <Heading1>Volume Bangun Ruang Sisi Datar</Heading1>
+        <Heading2>D. Volume Limas</Heading2>
+      </div>
+
       <ImageDisplay src="bangunanlimas.webp" scale={1} nama="Gambar 13. Bangunan Berbentuk Limas" />
+      
       <Heading3>Jenis-jenis Limas</Heading3>
-      <Paragraph>Limas adalah bangun ruang yang dibatasi oleh alas berbentuk segi-n (segitiga, segiempat, dll) dan sisi-sisi tegak berbentuk segitiga yang bertemu pada satu titik puncak. Adapun beberapa jenis limas dapat kamu lihat pada <MathInline>{`\\text{Objek 4}`}</MathInline> berikut.</Paragraph>
+      <Paragraph>Limas adalah bangun ruang yang dibatasi oleh alas berbentuk segi-n (segitiga, segiempat, segilima, dll) dan sisi-sisi tegak berbentuk segitiga yang semuanya bertemu pada satu titik puncak. Coba perhatikan beberapa jenis limas pada <MathInline>{`\\text{Objek 4}`}</MathInline> berikut ini.</Paragraph>
 
       <StaticViewer
         models={MODEL_ARRAYS.LIMAS_TYPES}
         scale={0.6}
         title="Objek 4. Jenis-jenis Limas"
       />
-      <ImageDisplay src="limassegiempat.png" scale={1} nama="Gambar 14. Limas Segiempat" />
-      <ImageDisplay src="limassegitiga.png" scale={1} nama="Gambar 15. Limas Segitiga" />
-      <ImageDisplay src="limassegilima.png" scale={1} nama="Gambar 16. Limas Segilima" />
-      <Paragraph>Dari jenis-jenis limas yang ada diatas, tentu memiliki kesamaan, yaitu titik puncaknya berada di tengah. Namun, apakah titik puncak limas selalu berada di tengah? Bagaimana dengan bangun pada <MathInline>{`\\text{Gambar 17}`}</MathInline>, apakah tetap disebut sebagai limas? Dimana <MathInline>{`\\angle BAT = \\angle DAT = 90^{\\circ}`}</MathInline>.</Paragraph>
-      <ImageDisplay src="limasaneh.png" scale={1} nama="Gambar 17. Limas" />
+      
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <ImageDisplay src="limassegiempat.png" scale={1} nama="Gambar 14. Limas Segiempat" />
+        <ImageDisplay src="limassegitiga.png" scale={1} nama="Gambar 15. Limas Segitiga" />
+        <ImageDisplay src="limassegilima.png" scale={1} nama="Gambar 16. Limas Segilima" />
+      </div>
 
+      <Paragraph>Dari jenis-jenis limas di atas, semuanya memiliki kesamaan yaitu titik puncaknya berada di tengah tepat di atas pusat alas. Namun, apakah titik puncak limas selalu berada di tengah? Bagaimana dengan bangun pada <MathInline>{`\\text{Gambar 17}`}</MathInline>, apakah tetap bisa disebut sebagai limas? Pada bangun tersebut diketahui <MathInline>{`\\angle BAT = \\angle DAT = 90^{\\circ}`}</MathInline>.</Paragraph>
+      <ImageDisplay src="limasaneh.png" scale={1} nama="Gambar 17. Limas dengan Puncak di Sudut" />
 
       <Heading3>Simulasi Volume Limas</Heading3>
-      <Paragraph>Volume limas tentu berbeda dengan volume bangun yang telah kamu pelajari sebelumnya. Hal ini dikarenakan bangun yang telah kamu pelajari sebelumnya, seperti kubus, balok, dan prisma memiliki alas dan tutup yang sama. Sedangkan limas sendiri, hanya memiliki alas dan titik puncak. Untuk memahami volume limas, kamu perlu melihat simulasi pada <MathInline>{`\\text{Objek 5}`}</MathInline> berikut.</Paragraph>
+      <Paragraph>Volume limas tentu berbeda dengan volume prisma atau balok yang telah kamu pelajari sebelumnya, karena limas tidak memiliki tutup yang kongruen dengan alasnya. Limas meruncing ke satu titik puncak. Untuk memahami darimana rumus volume limas berasal, perhatikanlah simulasi pada <MathInline>{`\\text{Objek 5}`}</MathInline> berikut.</Paragraph>
 
       <Viewer3D
         modelPath={MODELS.LIMAS_VOLUME_SCENE}
@@ -45,21 +53,74 @@ const VolumeLimasPage = () => {
         title="Objek 5. Volume Limas"
       />
 
-      <Paragraph>Pada simulasi <MathInline>{`\\text{Objek 5}`}</MathInline> terlihat bahwa sebuah kubus dapat dibagi menjadi tiga buah limas yang sama. Sehingga dapat disimpulkan bahwa volume limas yang memiliki luas alas dan tinggi yang sama dengan kubus adalah satu per tiga dari volume kubus.</Paragraph>
-      <MathBlock>{`V = \\frac{1}{3} \\times \\text{Volume Kubus}`}</MathBlock>
-      <Paragraph>Sehingga volume limas secara umum dapat dituliskan sebagai</Paragraph>
-      <MathBlock>{`V = \\frac{1}{3} \\times \\text{Luas Alas} \\times \\text{Tinggi.}`}</MathBlock>
-      <Heading3>Contoh Soal:</Heading3>
-      <Paragraph>Diketahui sebuah limas <MathInline>{`\\text{T.ABCD}`}</MathInline> dengan alas berbentuk persegi. Panjang <MathInline>{`\\text{AB}=\\text{BC}= \\text{5 cm}`}</MathInline>. Titik <MathInline>{`\\text{O}`}</MathInline> adalah perpotongan diagonal <MathInline>{`\\text{AC dengan BD}`}</MathInline>. Jika jarak titik <MathInline>{`\\text{O}`}</MathInline> ke titik <MathInline>{`\\text{T}`}</MathInline> adalah 6 cm, maka volume limas tersebut adalah ...</Paragraph>
-      <ImageDisplay src="limasabcdt.png" scale={1} />
-      <Paragraph>Pembahasan:</Paragraph>
-      <MathBlock>{`V= \\frac{1}{3} \\times \\text{Luas Alas} \\times \\text{Tinggi} \\\\ V= \\frac{1}{3} \\times (5 \\times 5) \\times 6 \\\\ V= \\frac{1}{3} \\times 25 \\times 6 \\\\ V= \\frac{150}{3} \\\\ V= 50`}</MathBlock>
-      <Paragraph>Jadi volume limas tersebut adalah <MathInline>{`50 \\text{ cm}^3`}</MathInline>.</Paragraph>
-      <Heading3>Latihan Soal:</Heading3>
-      <Paragraph>Sebuah limas dengan alas berbentuk persegi memiliki volume <MathInline>{`147 \\text{ cm}^3`}</MathInline>. Jika tinggi limas tersebut adalah 9 cm, maka panjang rusuk alasnya adalah ...</Paragraph>
-      <InputAnswer answerKey="7" placeholder="Panjang rusuk alas = ..." />
+      <Paragraph>Pada simulasi di atas, terlihat jelas bahwa sebuah kubus ternyata dapat dibagi secara tepat menjadi tiga buah limas segiempat yang ukurannya identik. Oleh karena itu, dapat disimpulkan bahwa volume satu buah limas yang alas dan tingginya sama dengan kubus, adalah sepertiga <MathInline>{`(1/3)`}</MathInline> dari volume kubus tersebut.</Paragraph>
       
-      <NavFooter prev="/volume/prisma" next="/quiz/volume" nextLabel="Quiz Volume" />
+      <MathBlock>{`V = \\frac{1}{3} \\times \\text{Volume Kubus (Prisma)}`}</MathBlock>
+      
+      <Paragraph>Sehingga volume limas secara umum, apapun bentuk alasnya, dapat dirumuskan sebagai:</Paragraph>
+      
+      <HighlightBox variant="formula">
+        <p className="text-foreground font-medium mb-2">Rumus Volume Limas:</p>
+        <MathBlock>{`V = \\frac{1}{3} \\times \\text{Luas Alas} \\times \\text{Tinggi}`}</MathBlock>
+      </HighlightBox>
+
+      <Heading3>Contoh Soal</Heading3>
+      <div className="bg-primary/5 p-5 rounded-xl border border-primary/20">
+        <Paragraph>Diketahui sebuah limas <MathInline>{`\\text{T.ABCD}`}</MathInline> dengan alas berbentuk persegi. Panjang <MathInline>{`\\text{AB}=\\text{BC}= 5 \\text{ cm}`}</MathInline>. Titik <MathInline>{`\\text{O}`}</MathInline> adalah perpotongan diagonal alas. Jika jarak titik <MathInline>{`\\text{O}`}</MathInline> ke titik puncak <MathInline>{`\\text{T}`}</MathInline> (tinggi limas) adalah 6 cm, berapakah volume limas tersebut?</Paragraph>
+        <ImageDisplay src="limasabcdt.png" scale={1} />
+        <p className="font-semibold text-primary mt-4 mb-2">Penyelesaian:</p>
+        <MathBlock>{`V = \\frac{1}{3} \\times \\text{Luas Alas} \\times \\text{Tinggi} \\\\ V = \\frac{1}{3} \\times (5 \\times 5) \\times 6 \\\\ V = \\frac{1}{3} \\times 25 \\times 6 \\\\ V = 25 \\times 2 \\\\ V = 50`}</MathBlock>
+        <Paragraph>Jadi, volume limas tersebut adalah <MathInline>{`50 \\text{ cm}^3`}</MathInline>.</Paragraph>
+      </div>
+
+      <Heading3>Latihan Soal</Heading3>
+      <Paragraph>Kerjakan soal-soal di bawah ini untuk menguji pemahamanmu! Soal disusun dari tingkat yang paling mudah hingga HOTS.</Paragraph>
+
+      <div className="space-y-6">
+        <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
+          <Paragraph className="mb-3">
+            <span className="inline-block bg-success/20 text-success px-2 py-1 rounded text-xs font-bold mb-2">Level 1: Mudah</span><br/>
+            <b>Soal 1:</b> Sebuah limas memiliki alas berbentuk segiempat dengan luas <MathInline>{`100 \\text{ cm}^2`}</MathInline>. Jika tinggi limas tersebut adalah <MathInline>{`12 \\text{ cm}`}</MathInline>, berapakah volumenya?
+          </Paragraph>
+          <InputAnswer answerKey="400" placeholder="Volume = ..." satuan="cm³" />
+        </div>
+
+        <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
+          <Paragraph className="mb-3">
+            <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 2: Sedang</span><br/>
+            <b>Soal 2:</b> Sebuah limas dengan alas berbentuk persegi memiliki volume <MathInline>{`400 \\text{ cm}^3`}</MathInline>. Jika panjang sisi alasnya adalah <MathInline>{`10 \\text{ cm}`}</MathInline>, berapakah tinggi limas tersebut?
+          </Paragraph>
+          <InputAnswer answerKey="12" placeholder="Tinggi = ..." satuan="cm" />
+        </div>
+
+        <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
+          <Paragraph className="mb-3">
+            <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 3: Sedang</span><br/>
+            <b>Soal 3:</b> Alas sebuah limas berbentuk segitiga siku-siku dengan panjang sisi penyikunya <MathInline>{`6 \\text{ cm}`}</MathInline> dan <MathInline>{`8 \\text{ cm}`}</MathInline>. Jika tinggi limas tersebut adalah <MathInline>{`15 \\text{ cm}`}</MathInline>, berapakah volumenya?
+          </Paragraph>
+          <InputAnswer answerKey="120" placeholder="Volume = ..." satuan="cm³" />
+        </div>
+
+        <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
+          <Paragraph className="mb-3">
+            <span className="inline-block bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold mb-2">Level 4: Sulit</span><br/>
+            <b>Soal 4:</b> Budi membuat miniatur piramida untuk tugas sekolah. Miniatur tersebut memiliki alas berbentuk persegi dengan panjang sisi <MathInline>{`15 \\text{ cm}`}</MathInline>. Jika miniatur piramida tersebut memiliki tinggi <MathInline>{`20 \\text{ cm}`}</MathInline>, berapakah taksiran volume ruang di dalam miniatur tersebut?
+          </Paragraph>
+          <InputAnswer answerKey="1500" placeholder="Volume miniatur = ..." satuan="cm³" />
+        </div>
+
+        <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
+          <Paragraph className="mb-3">
+            <span className="inline-block bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold mb-2">Level 5: HOTS</span><br/>
+            <b>Soal 5:</b> Ibu memiliki sebuah cetakan kue berbentuk limas segiempat dengan alas persegi (panjang sisi <MathInline>{`6 \\text{ cm}`}</MathInline>) dan tinggi cetakan <MathInline>{`10 \\text{ cm}`}</MathInline>. Jika ibu membuat adonan kue sebanyak <MathInline>{`1.200 \\text{ cm}^3`}</MathInline> dan seluruh adonan digunakan hingga habis tanpa sisa, berapa maksimal kue yang dapat dicetak oleh ibu?
+          </Paragraph>
+          <InputAnswer answerKey="10" placeholder="Banyak kue = ..." satuan="buah" />
+        </div>
+      </div>
+
+      <div className="pt-6">
+        <NavFooter prev="/volume/prisma" next="/quiz/volume" nextLabel="Quiz Volume" />
+      </div>
     </div>
   );
 };
