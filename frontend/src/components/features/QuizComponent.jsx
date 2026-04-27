@@ -141,6 +141,19 @@ const QuizComponent = ({ questions, title, onComplete }) => {
       <CardContent className="space-y-6">
         {/* Question */}
         <div className="p-4 bg-muted/50 rounded-xl">
+          {question.level && (
+            <div className="mb-3">
+              <span className={`inline-block px-2 py-1 rounded text-xs font-bold ${
+                question.difficulty === 'mudah' ? 'bg-success/20 text-success' :
+                question.difficulty === 'sedang' ? 'bg-primary/20 text-primary' :
+                question.difficulty === 'sulit' ? 'bg-warning/20 text-warning' :
+                question.difficulty === 'hots' ? 'bg-destructive/20 text-destructive' :
+                'bg-muted text-muted-foreground'
+              }`}>
+                {question.level}
+              </span>
+            </div>
+          )}
           <p className="text-lg text-foreground font-medium leading-relaxed">
             {question.question}
           </p>

@@ -66,75 +66,95 @@ export const QUIZ_DATA = {
   volume: [
     {
       id: 1,
-      question: 'Sebuah kubus memiliki rusuk 5 cm. Berapakah volume kubus tersebut?',
-      options: ['100 cm³', '125 cm³', '150 cm³', '175 cm³'],
+      difficulty: 'sedang',
+      level: 'Level 2: Sedang',
+      question: 'Sebuah kubus diketahui memiliki volume 512 cm³. Berapakah luas alas kubus tersebut?',
+      options: ['32 cm²', '64 cm²', '128 cm²', '256 cm²'],
       answer: 1,
-      explanation: 'V = s^{3} = 5^{3} = 125 \\text{ cm}^{3}'
+      explanation: 'V = r^3 = 512 \\implies r = 8 \\text{ cm}. \\\\ \\text{Luas alas} = r \\times r = 8 \\times 8 = 64 \\text{ cm}^2'
     },
     {
       id: 2,
-      question: 'Sebuah balok memiliki panjang 8 cm, lebar 5 cm, dan tinggi 4 cm. Hitunglah volume balok tersebut!',
-      options: ['120 cm³', '140 cm³', '160 cm³', '180 cm³'],
-      answer: 2,
-      explanation: 'V = p \\times l \\times t = 8 \\times 5 \\times 4 = 160 \\text{ cm}^{3}'
+      difficulty: 'sulit',
+      level: 'Level 4: Sulit',
+      question: 'Sebuah kolam renang berbentuk prisma dengan alas trapesium siku-siku memiliki ukuran sisi sejajar 10 m dan 6 m, tinggi trapesium 4 m, dan panjang kolam 15 m. Berapa liter air yang dibutuhkan untuk memenuhi kolam tersebut?',
+      options: ['480.000 liter', '320.000 liter', '240.000 liter', '180.000 liter'],
+      answer: 0,
+      explanation: '\\text{Luas alas trapesium} = \\frac{1}{2} \\times (10+6) \\times 4 = 32 \\text{ m}^2. \\\\ V = 32 \\times 15 = 480 \\text{ m}^3. \\\\ 1 \\text{ m}^3 = 1000 \\text{ liter}, \\text{ jadi } 480 \\times 1000 = 480.000 \\text{ liter}.'
     },
     {
       id: 3,
-      question: 'Sebuah prisma segitiga memiliki alas berbentuk segitiga siku-siku dengan panjang alas 6 cm dan tinggi segitiga 8 cm. Jika tinggi prisma 10 cm, hitunglah volume prisma!',
-      options: ['200 cm³', '220 cm³', '240 cm³', '260 cm³'],
-      answer: 2,
-      explanation: '\\text{Luas alas} = \\frac{1}{2} \\times 6 \\times 8 = 24 \\text{ cm}^{2}. V = 24 \\times 10 = 240 \\text{ cm}^{3}'
+      difficulty: 'sulit',
+      level: 'Level 4: Sulit',
+      question: 'Sebuah wadah berbentuk balok berukuran 20 cm × 15 cm × 12 cm terisi air setengahnya. Ke dalam wadah tersebut dimasukkan sebuah balok besi pejal berukuran 10 cm × 15 cm × 6 cm hingga tenggelam seluruhnya. Berapakah kenaikan tinggi air dalam wadah tersebut?',
+      options: ['2 cm', '3 cm', '4 cm', '5 cm'],
+      answer: 1,
+      explanation: '\\text{Volume besi} = 10 \\times 15 \\times 6 = 900 \\text{ cm}^3. \\\\ \\text{Luas alas wadah} = 20 \\times 15 = 300 \\text{ cm}^2. \\\\ \\text{Kenaikan tinggi} = \\frac{\\text{Volume benda yang dicelupkan}}{\\text{Luas alas wadah}} = \\frac{900}{300} = 3 \\text{ cm}.'
     },
     {
       id: 4,
-      question: 'Sebuah limas segiempat memiliki alas berbentuk persegi dengan sisi 9 cm dan tinggi limas 14 cm. Hitunglah volume limas tersebut!',
-      options: ['378 cm³', '398 cm³', '418 cm³', '438 cm³'],
-      answer: 0,
-      explanation: '\\text{Luas alas} = 9 \\times 9 = 81 \\text{ cm}^{2}. V = \\frac{1}{3} \\times 81 \\times 14 = 378 \\text{ cm}^{3}'
+      difficulty: 'hots',
+      level: 'Level 5: HOTS',
+      question: 'Budi memiliki kotak mainan berbentuk kubus besar. Ia ingin menyusun kubus-kubus kecil berukuran rusuk 3 cm ke dalamnya hingga penuh. Jika volume kotak besar adalah 3.375 cm³, berapa maksimal jumlah kubus kecil yang dapat dimasukkan?',
+      options: ['75 buah', '100 buah', '125 buah', '150 buah'],
+      answer: 2,
+      explanation: '\\text{Panjang rusuk kotak besar} = \\sqrt[3]{3375} = 15 \\text{ cm}. \\\\ \\text{Jumlah kubus tiap sisi} = 15 / 3 = 5. \\\\ \\text{Total kubus} = 5 \\times 5 \\times 5 = 125 \\text{ buah}.'
     },
     {
       id: 5,
-      question: 'Jika volume sebuah kubus adalah 512 cm³, berapakah panjang rusuk kubus tersebut?',
-      options: ['6 cm', '7 cm', '8 cm', '9 cm'],
+      difficulty: 'hots',
+      level: 'Level 5: HOTS',
+      question: 'Sebuah atap bangunan berbentuk limas segiempat beraturan. Panjang sisi alasnya 8 m dan tinggi limas 3 m. Udara di dalam atap tersebut harus disedot oleh kipas exhaust dengan kapasitas 16 m³ per menit. Berapa menit waktu minimum yang dibutuhkan untuk mengosongkan seluruh udara di dalamnya?',
+      options: ['2 menit', '3 menit', '4 menit', '5 menit'],
       answer: 2,
-      explanation: 's = \\sqrt[3]{512} = 8 \\text{ cm}'
+      explanation: '\\text{Volume udara (limas)} = \\frac{1}{3} \\times (8 \\times 8) \\times 3 = 64 \\text{ m}^3. \\\\ \\text{Waktu} = \\frac{\\text{Volume}}{\\text{Kapasitas exhaust}} = \\frac{64}{16} = 4 \\text{ menit}.'
     }
   ],
   surface: [
     {
       id: 1,
-      question: 'Sebuah kubus memiliki rusuk 7 cm. Hitunglah luas permukaan kubus tersebut!',
-      options: ['264 cm²', '284 cm²', '294 cm²', '304 cm²'],
-      answer: 2,
-      explanation: 'L = 6s^{2} = 6 \\times 7^{2} = 6 \\times 49 = 294 \\text{ cm}^{2}'
+      difficulty: 'sedang',
+      level: 'Level 3: Sedang',
+      question: 'Sebuah balok TANPA TUTUP memiliki ukuran panjang 12 cm, lebar 8 cm, dan tinggi 5 cm. Berapakah luas permukaan balok tersebut?',
+      options: ['276 cm²', '296 cm²', '316 cm²', '392 cm²'],
+      answer: 1,
+      explanation: 'L = (p \\times l) + 2(p \\times t) + 2(l \\times t) \\\\ L = (12 \\times 8) + 2(12 \\times 5) + 2(8 \\times 5) \\\\ L = 96 + 120 + 80 = 296 \\text{ cm}^2.'
     },
     {
       id: 2,
-      question: 'Sebuah balok memiliki panjang 10 cm, lebar 6 cm, dan tinggi 4 cm. Hitunglah luas permukaan balok tersebut!',
-      options: ['228 cm²', '238 cm²', '248 cm²', '258 cm²'],
-      answer: 2,
-      explanation: 'L = 2(pl + pt + lt) = 2(60 + 40 + 24) = 2(124) = 248 \\text{ cm}^{2}'
+      difficulty: 'sulit',
+      level: 'Level 4: Sulit',
+      question: 'Pak Budi akan membuat akuarium tanpa tutup berukuran 80 cm × 50 cm × 40 cm. Jika harga kaca adalah Rp 50.000,00 per meter persegi (m²), berapa biaya yang harus dikeluarkan untuk membeli kaca?',
+      options: ['Rp 64.000,00', 'Rp 72.000,00', 'Rp 80.000,00', 'Rp 92.000,00'],
+      answer: 1,
+      explanation: '\\text{Dalam meter: } p=0,8 \\text{ m}; l=0,5 \\text{ m}; t=0,4 \\text{ m}. \\\\ L = (0,8 \\times 0,5) + 2(0,8 \\times 0,4) + 2(0,5 \\times 0,4) = 0,4 + 0,64 + 0,4 = 1,44 \\text{ m}^2. \\\\ \\text{Biaya} = 1,44 \\times 50.000 = \\text{Rp } 72.000,00.'
     },
     {
       id: 3,
-      question: 'Luas permukaan sebuah kubus adalah 384 cm². Berapakah panjang rusuk kubus tersebut?',
-      options: ['6 cm', '7 cm', '8 cm', '9 cm'],
+      difficulty: 'sulit',
+      level: 'Level 4: Sulit',
+      question: 'Sebuah prisma alasnya berbentuk belah ketupat dengan panjang diagonal 12 cm dan 16 cm (panjang sisi belah ketupat = 10 cm). Jika luas permukaan prisma adalah 692 cm², berapakah tinggi prisma tersebut?',
+      options: ['10,5 cm', '11,5 cm', '12,5 cm', '13,5 cm'],
       answer: 2,
-      explanation: '6s^{2} = 384, s^{2} = 64, s = 8 \\text{ cm}'
+      explanation: '\\text{Luas alas} = \\frac{1}{2} \\times 12 \\times 16 = 96 \\text{ cm}^2. \\\\ \\text{Keliling} = 4 \\times 10 = 40 \\text{ cm}. \\\\ L = 2 \\times \\text{Luas Alas} + \\text{Keliling} \\times t \\implies 692 = 2(96) + 40t \\implies 692 = 192 + 40t \\implies 500 = 40t \\implies t = 12,5 \\text{ cm}.'
     },
     {
       id: 4,
-      question: 'Sebuah prisma segitiga dengan alas segitiga siku-siku (alas 3 cm, tinggi 4 cm, sisi miring 5 cm) dan tinggi prisma 10 cm. Hitunglah luas permukaannya!',
-      options: ['122 cm²', '132 cm²', '142 cm²', '152 cm²'],
-      answer: 1,
-      explanation: '\\text{Luas alas} = \\frac{1}{2} \\times 3 \\times 4 = 6 \\text{ cm}^{2}. L = 2(6) + (3+4+5) \\times 10 = 12 + 120 = 132 \\text{ cm}^{2}'
+      difficulty: 'hots',
+      level: 'Level 5: HOTS',
+      question: 'Budi ingin mengecat seluruh bagian LUAR dan DALAM kotak kado berbentuk kubus (termasuk tutupnya) yang memiliki panjang rusuk 15 cm. Satu kaleng cat kecil hanya bisa digunakan untuk mengecat area seluas 500 cm². Berapa kaleng cat minimal yang harus dibeli Budi?',
+      options: ['4 kaleng', '5 kaleng', '6 kaleng', '7 kaleng'],
+      answer: 2,
+      explanation: '\\text{Luas satu sisi kubus} = 15 \\times 15 = 225 \\text{ cm}^2. \\\\ \\text{Luas luar + dalam} = 2 \\times (6 \\times 225) = 2.700 \\text{ cm}^2. \\\\ \\text{Jumlah kaleng} = \\frac{2.700}{500} = 5,4 \\text{ (dibulatkan ke atas menjadi 6 kaleng)}.'
     },
     {
       id: 5,
-      question: 'Sebuah limas segiempat dengan alas persegi sisi 6 cm memiliki tinggi segitiga pada sisi tegak 5 cm. Hitunglah luas permukaan limas!',
-      options: ['86 cm²', '96 cm²', '106 cm²', '116 cm²'],
+      difficulty: 'hots',
+      level: 'Level 5: HOTS',
+      question: 'Sebuah tenda darurat berbentuk limas dengan alas persegi berukuran sisi 6 meter dan tinggi puncak tenda 4 meter. Tenda tersebut akan dipasangi terpal (tanpa terpal penutup lantai). Jika terpal dijual dalam gulungan (1 gulungan = 10 m²), berapa gulungan terpal minimal yang harus dibeli?',
+      options: ['5 gulungan', '6 gulungan', '7 gulungan', '8 gulungan'],
       answer: 1,
-      explanation: '\\text{Luas alas} = 36 \\text{ cm}^{2}. \\text{Luas sisi tegak} = 4 \\times (\\frac{1}{2} \\times 6 \\times 5) = 60 \\text{ cm}^{2}. L = 36 + 60 = 96 \\text{ cm}^{2}'
+      explanation: '\\text{Tinggi segitiga tegak (Phytagoras 3 dan 4)} = 5 \\text{ m}. \\\\ \\text{Luas selimut (4 segitiga)} = 4 \\times (\\frac{1}{2} \\times 6 \\times 5) = 60 \\text{ m}^2. \\\\ \\text{Jumlah gulungan} = \\frac{60}{10} = 6 \\text{ gulungan}.'
     }
   ]
 };
