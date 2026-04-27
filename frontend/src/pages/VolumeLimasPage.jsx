@@ -50,7 +50,7 @@ const VolumeLimasPage = () => {
       <Paragraph>Sehingga volume limas secara umum dapat dituliskan sebagai</Paragraph>
       <MathBlock>{`V = \\frac{1}{3} \\times \\text{Luas Alas} \\times \\text{Tinggi.}`}</MathBlock>
       <Heading3>Contoh Soal:</Heading3>
-      <Paragraph>Diketahui sebuah limas <MathInline>{`T.ABCD`}</MathInline> dengan alas berbentuk persegi. Panjang <MathInline>{`AB=BC= \\text{5 cm}`}</MathInline>. Titik <MathInline>{`O`}</MathInline> adalah perpotongan diagonal <MathInline>{`AC \\text{ dengan } BD`}</MathInline>. Jika jarak titik <MathInline>{`O`}</MathInline> ke titik <MathInline>{`T`}</MathInline> adalah 6 cm, maka volume limas tersebut adalah <MathInline>{`\\dots`}</MathInline></Paragraph>
+      <Paragraph>Diketahui sebuah limas <MathInline>{`\\text{T.ABCD}`}</MathInline> dengan alas berbentuk persegi. Panjang <MathInline>{`\\text{AB}=\\text{BC}= \\text{5 cm}`}</MathInline>. Titik <MathInline>{`\\text{O}`}</MathInline> adalah perpotongan diagonal <MathInline>{`\\text{AC dengan BD}`}</MathInline>. Jika jarak titik <MathInline>{`\\text{O}`}</MathInline> ke titik <MathInline>{`\\text{T}`}</MathInline> adalah 6 cm, maka volume limas tersebut adalah ...</Paragraph>
       <ImageDisplay src="limasabcdt.png" scale={1} />
       <Paragraph>Pembahasan:</Paragraph>
       <MathBlock>{`V= \\frac{1}{3} \\times \\text{Luas Alas} \\times \\text{Tinggi} \\\\ V= \\frac{1}{3} \\times (5 \\times 5) \\times 6 \\\\ V= \\frac{1}{3} \\times 25 \\times 6 \\\\ V= \\frac{150}{3} \\\\ V= 50`}</MathBlock>

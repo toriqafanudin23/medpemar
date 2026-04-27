@@ -6,7 +6,7 @@ export const SHAPES = [
     description: 'Bangun ruang tiga dimensi yang dibatasi oleh enam bidang sisi berbentuk persegi kongruen.',
     formula: {
       volume: 'V = r \\times r \\times r',
-      surface: 'L = 6r^{2}'
+      surface: 'L = 6 \\times r^{2}'
     },
     properties: [
       '6 sisi berbentuk persegi yang kongruen',
@@ -21,7 +21,7 @@ export const SHAPES = [
     description: 'Bangun ruang dengan 6 sisi berbentuk persegi panjang',
     formula: {
       volume: 'V = p \\times l \\times t',
-      surface: 'L = 2(pl + pt + lt)'
+      surface: 'L = 2(p \\times l + p \\times t + l \\times t)'
     },
     properties: [
       '6 sisi berbentuk persegi panjang',
