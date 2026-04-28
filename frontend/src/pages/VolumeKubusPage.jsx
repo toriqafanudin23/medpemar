@@ -63,10 +63,11 @@ const VolumeKubusPage = () => {
 
       <Viewer3D
         modelPath={MODELS.KUBUS_2X2}
-        urlAR={AR_URLS.KUBUS_2X2}
+        // urlAR={AR_URLS.KUBUS_2X2}
         scale={0.7}
         title="Objek 2. Kubus"
         showAnimation={false}
+        showARButton={false}
       />
 
       <Paragraph>Masukkan jumlah kubus satuan pada kubus <MathInline>{`2 \\times 2 \\times 2`}</MathInline>:</Paragraph>

@@ -29,7 +29,7 @@ const LuasBalokPage = () => {
 
       <StaticViewer
         models={MODEL_ARRAYS.JARING_BALOK}
-        urlAR={AR_URLS.BALOK_JARING}
+        // urlAR={AR_URLS.BALOK_JARING}
         scale={0.6}
         title="Objek 7. Jaring-jaring Balok"
       />
