@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
 import MenuCard from '@/components/ui/MenuCard';
+import { Button } from '@/components/ui/button';
 import { TbCube, TbCube3dSphere, TbLayoutGrid, TbClipboardList } from 'react-icons/tb';
-import { FiHelpCircle, FiBookOpen } from 'react-icons/fi';
+import { FiHelpCircle, FiBookOpen, FiDownload } from 'react-icons/fi';
 
 const HomePage = () => {
   const { setPageNumber } = useApp();
@@ -49,6 +50,16 @@ const HomePage = () => {
           Pilih topik pembelajaran di bawah ini untuk mulai belajar bangun ruang
           sisi datar dengan pengalaman Augmented Reality.
         </p>
+
+        <Button 
+          onClick={() => {
+            window.open('https://hmgdlcwzpmbgvfpaiylz.supabase.co/storage/v1/object/public/images/main.pdf', '_blank');
+          }}
+          className="mt-4"
+        >
+          <FiDownload className="w-4 h-4" />
+          Unduh Barcode
+        </Button>
       </header>
 
       {/* Menu Grid */}
