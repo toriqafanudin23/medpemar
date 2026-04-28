@@ -348,7 +348,16 @@ const Viewer3D = ({
             />
           </>
         ) : (
-          <ARViewer modelPath={modelUrl} scale={scale} />
+          // Tampilkan iframe MyWeBar jika mode AR
+          <iframe
+            src={urlAR}
+            frameBorder="0"
+            scrolling="yes"
+            seamless="seamless"
+            style={{ display: 'block', width: '100%', height: isFullscreen ? '100vh' : height }}
+            allow="camera;gyroscope;accelerometer;magnetometer;xr-spatial-tracking;microphone;"
+            title={title ? `${title} (AR)` : 'MyWeBar AR'}
+          />
         )}
 
         {/* Control buttons */}
