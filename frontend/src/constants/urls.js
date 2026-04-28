@@ -19,13 +19,13 @@ export const AR_URLS = {
   KUBUS_2X2: "https://mywebar.com/p/cumatambahan",
   PRISMA_JENIS: "https://mywebar.com/p/objek3jenisjenisprisma",
   LIMAS_JENIS: "https://mywebar.com/p/objek4jenisjenislimas",
-  LIMAS_VOLUME: "https://mywebar.com/p/objek5volumelimas",
+  LIMAS_VOLUME: "https://mywebar.com/p/Project_2_v8lk7iwxa7",
   
   // Luas Permukaan (Jaring-jaring)
   KUBUS_JARING: "https://mywebar.com/p/objek6jaringjaringkubus",
   BALOK_JARING: "https://mywebar.com/p/objek7jaringjaringbalok",
-  PRISMA_JARING: "https://mywebar.com/p/objek8jaringjaringprisma",
-  LIMAS_JARING: "https://mywebar.com/p/objek9jaringjaring limas",
+  PRISMA_JARING: "https://mywebar.com/p/Project_0_nmk6riitgu",
+  LIMAS_JARING: "https://mywebar.com/p/Project_1_9bl3xiq7km",
 };
 
 // 3D Model paths - VERIFIED working models from Supabase
