@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -258,12 +259,11 @@ const Viewer3D = ({
     }
   };
 
-  // Listen for fullscreen changes
+  // Listen for fullscreen changes (global, for iframe too)
   useEffect(() => {
     const handleFullscreenChange = () => {
       setIsFullscreen(!!document.fullscreenElement);
     };
-
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
@@ -361,23 +361,7 @@ const Viewer3D = ({
               allow="camera;gyroscope;accelerometer;magnetometer;xr-spatial-tracking;microphone;"
               title={title ? `${title} (AR)` : 'MyWeBar AR'}
             />
-            {/* Exit fullscreen button, only show if in fullscreen */}
-            {isFullscreen && (
-              <button
-                onClick={async () => {
-                  if (document.fullscreenElement) {
-                    await document.exitFullscreen();
-                  }
-                }}
-                className="viewer-button fixed bottom-3 right-3 z-50 bg-primary text-white"
-                style={{ minWidth: 40, minHeight: 40 }}
-                title="Keluar Fullscreen"
-                type="button"
-              >
-                <FiMinimize2 className="w-6 h-6" />
-              </button>
-            )}
-            {/* Fullscreen button for iframe */}
+            {/* Fullscreen button for iframe (not fullscreen) */}
             {!isFullscreen && (
               <button
                 onClick={async () => {
@@ -392,6 +376,23 @@ const Viewer3D = ({
               >
                 <FiMaximize2 className="w-5 h-5" />
               </button>
+            )}
+            {/* Exit fullscreen button, always show if in fullscreen (portal to body) */}
+            {isFullscreen && typeof window !== 'undefined' && createPortal(
+              <button
+                onClick={async () => {
+                  if (document.fullscreenElement) {
+                    await document.exitFullscreen();
+                  }
+                }}
+                className="viewer-button fixed bottom-3 right-3 z-[10000] bg-primary text-white"
+                style={{ minWidth: 48, minHeight: 48, borderRadius: 24, boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }}
+                title="Keluar Fullscreen"
+                type="button"
+              >
+                <FiMinimize2 className="w-7 h-7" />
+              </button>,
+              document.body
             )}
           </div>
         )}

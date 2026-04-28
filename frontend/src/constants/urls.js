@@ -16,7 +16,7 @@ export const SOUNDS = {
 export const AR_URLS = {
   // Volume
   KUBUS_VOLUME: "https://mywebar.com/p/objek1volumekubus",
-  KUBUS_2X2: "https://mywebar.com/p/objek2kubus",
+  KUBUS_2X2: "https://mywebar.com/p/cumatambahan",
   PRISMA_JENIS: "https://mywebar.com/p/objek3jenisjenisprisma",
   LIMAS_JENIS: "https://mywebar.com/p/objek4jenisjenislimas",
   LIMAS_VOLUME: "https://mywebar.com/p/objek5volumelimas",

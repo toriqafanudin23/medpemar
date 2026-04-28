@@ -27,7 +27,7 @@ const VolumePrismaPage = () => {
 
       <StaticViewer
         models={MODEL_ARRAYS.PRISMA_TYPES}
-        urlAR={AR_URLS.PRISMA_JENIS}
+        // urlAR={AR_URLS.PRISMA_JENIS}
         scale={2}
         title="Objek 3. Jenis-jenis Prisma"
       />

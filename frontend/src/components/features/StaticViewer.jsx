@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2, FiPlay, FiPause, FiRotateCcw, FiZoomIn, FiZoomOut, FiMove } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
-import ARViewer from '@/components/features/ARViewer';
 import { URL_ANIM } from '@/constants/urls';
 
 // Static Viewer with model switching using vanilla Three.js
@@ -465,25 +465,72 @@ const StaticViewer = ({
               style={{ display: 'block' }}
             />
           </>
-        ) : mode === 'AR' && currentModelUrl ? (
-          <ARViewer modelPath={currentModelUrl} scale={scale} />
+        ) : mode === 'AR' && urlAR ? (
+          <div className="relative w-full h-full" style={{ height: isFullscreen ? '100vh' : height }}>
+            <iframe
+              ref={el => { window._mywebar_iframe = el; }}
+              src={urlAR}
+              frameBorder="0"
+              scrolling="yes"
+              seamless="seamless"
+              allowFullScreen
+              style={{ display: 'block', width: '100%', height: '100%' }}
+              allow="camera;gyroscope;accelerometer;magnetometer;xr-spatial-tracking;microphone;"
+              title={title ? `${title} (AR)` : 'MyWeBar AR'}
+            />
+            {/* Fullscreen button for iframe (not fullscreen) */}
+            {!isFullscreen && (
+              <button
+                onClick={async () => {
+                  const iframe = window._mywebar_iframe;
+                  if (iframe && !document.fullscreenElement) {
+                    await iframe.requestFullscreen();
+                  }
+                }}
+                className="viewer-button absolute bottom-3 right-3 z-20"
+                title="Fullscreen"
+                type="button"
+              >
+                <FiMaximize2 className="w-5 h-5" />
+              </button>
+            )}
+            {/* Exit fullscreen button, always show if in fullscreen (portal to body) */}
+            {isFullscreen && typeof window !== 'undefined' && createPortal(
+              <button
+                onClick={async () => {
+                  if (document.fullscreenElement) {
+                    await document.exitFullscreen();
+                  }
+                }}
+                className="viewer-button fixed bottom-3 right-3 z-[10000] bg-primary text-white"
+                style={{ minWidth: 48, minHeight: 48, borderRadius: 24, boxShadow: '0 2px 8px rgba(0,0,0,0.2)' }}
+                title="Keluar Fullscreen"
+                type="button"
+              >
+                <FiMinimize2 className="w-7 h-7" />
+              </button>,
+              document.body
+            )}
+          </div>
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-muted">
             <p className="text-muted-foreground">Model tidak tersedia</p>
           </div>
         )}
 
-        {/* Fullscreen Button - Top Left */}
-        <button 
-          onClick={toggleFullscreen} 
-          className="viewer-button absolute top-3 left-3 z-10" 
-          title="Fullscreen"
-        >
-          {isFullscreen ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
-        </button>
+        {/* Fullscreen Button - Top Left (Only in 3D mode) */}
+        {mode === '3D' && (
+          <button 
+            onClick={toggleFullscreen} 
+            className="viewer-button absolute top-3 left-3 z-10" 
+            title="Fullscreen"
+          >
+            {isFullscreen ? <FiMinimize2 className="w-5 h-5" /> : <FiMaximize2 className="w-5 h-5" />}
+          </button>
+        )}
 
-        {/* Navigation Buttons - Side Centered */}
-        {models.length > 1 && (
+        {/* Navigation Buttons - Side Centered (Only in 3D mode) */}
+        {mode === '3D' && models.length > 1 && (
           <>
             <button 
               onClick={handlePrev} 
@@ -549,8 +596,8 @@ const StaticViewer = ({
           </div>
         )}
 
-        {/* Model indicator */}
-        {models.length > 1 && (
+        {/* Model indicator (Only in 3D mode) */}
+        {mode === '3D' && models.length > 1 && (
           <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 px-3 py-1.5 bg-card/90 backdrop-blur-sm rounded-lg border border-border">
             <span className="text-sm font-medium text-foreground">
               {currentIndex + 1} / {models.length}
@@ -558,12 +605,12 @@ const StaticViewer = ({
           </div>
         )}
 
-        {/* AR button - moved to top right for mobile */}
-        {showARButton && currentModelUrl && (
+        {/* AR button - toggle between 3D and MyWeBar AR mode */}
+        {showARButton && urlAR && (
           <button
             onClick={() => setMode(mode === '3D' ? 'AR' : '3D')}
             className="viewer-button absolute top-3 right-3 z-10"
-            title={mode === '3D' ? 'Mode AR' : 'Mode 3D'}
+            title={mode === '3D' ? 'Masuk Mode AR' : 'Kembali ke Mode 3D'}
           >
             {mode === '3D' ? <TbAugmentedReality className="w-6 h-6" /> : <TbCube className="w-6 h-6" />}
           </button>
