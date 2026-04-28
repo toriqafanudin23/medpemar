@@ -52,22 +52,7 @@ const VolumeKubusPage = () => {
         src="https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png" 
         nama="Hiro Marker - Arahkan kamera ke marker ini untuk melihat objek dalam AR"
       /> */}
-      
-      <div className="flex justify-center">
-        <Button 
-          onClick={() => {
-            const link = document.createElement('a');
-            link.href = 'https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png';
-            link.download = 'hiro-marker.png';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }}
-          className="bg-primary hover:bg-primary/90"
-        >
-          Download Hiro Marker
-        </Button>
-      </div>
+    
 
       <Paragraph>Setelah selesai menghitung banyak kubus satuan pada rubik tersebut, masukkan jawabanmu pada kolom berikut: </Paragraph>
       <InputAnswer answerKey="27" placeholder="Masukkan jawaban..." satuan="kubus" />

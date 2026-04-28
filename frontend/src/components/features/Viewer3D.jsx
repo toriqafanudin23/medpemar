@@ -349,15 +349,51 @@ const Viewer3D = ({
           </>
         ) : (
           // Tampilkan iframe MyWeBar jika mode AR
-          <iframe
-            src={urlAR}
-            frameBorder="0"
-            scrolling="yes"
-            seamless="seamless"
-            style={{ display: 'block', width: '100%', height: isFullscreen ? '100vh' : height }}
-            allow="camera;gyroscope;accelerometer;magnetometer;xr-spatial-tracking;microphone;"
-            title={title ? `${title} (AR)` : 'MyWeBar AR'}
-          />
+          <div className="relative w-full h-full" style={{ height: isFullscreen ? '100vh' : height }}>
+            <iframe
+              ref={el => { window._mywebar_iframe = el; }}
+              src={urlAR}
+              frameBorder="0"
+              scrolling="yes"
+              seamless="seamless"
+              allowFullScreen
+              style={{ display: 'block', width: '100%', height: '100%' }}
+              allow="camera;gyroscope;accelerometer;magnetometer;xr-spatial-tracking;microphone;"
+              title={title ? `${title} (AR)` : 'MyWeBar AR'}
+            />
+            {/* Exit fullscreen button, only show if in fullscreen */}
+            {isFullscreen && (
+              <button
+                onClick={async () => {
+                  if (document.fullscreenElement) {
+                    await document.exitFullscreen();
+                  }
+                }}
+                className="viewer-button fixed bottom-3 right-3 z-50 bg-primary text-white"
+                style={{ minWidth: 40, minHeight: 40 }}
+                title="Keluar Fullscreen"
+                type="button"
+              >
+                <FiMinimize2 className="w-6 h-6" />
+              </button>
+            )}
+            {/* Fullscreen button for iframe */}
+            {!isFullscreen && (
+              <button
+                onClick={async () => {
+                  const iframe = window._mywebar_iframe;
+                  if (iframe && !document.fullscreenElement) {
+                    await iframe.requestFullscreen();
+                  }
+                }}
+                className="viewer-button absolute bottom-3 right-3 z-20"
+                title="Fullscreen"
+                type="button"
+              >
+                <FiMaximize2 className="w-5 h-5" />
+              </button>
+            )}
+          </div>
         )}
 
         {/* Control buttons */}
