@@ -6,6 +6,7 @@ import { ARButton } from '@/components/features/ARViewer';
 import ImageDisplay from '@/components/ui/ImageDisplay';
 import InputAnswer from '@/components/ui/InputAnswer';
 import NavFooter from '@/components/layout/NavFooter';
+import { Button } from '@/components/ui/button';
 import { AR_URLS, MODELS, URL_ANIM } from '@/constants/urls';
 
 const VolumeKubusPage = () => {
@@ -43,12 +44,26 @@ const VolumeKubusPage = () => {
         title="Objek 1. Volume Kubus"
       />
 
-      {/* AR Button untuk melihat dengan marker */}
-      <div className="flex justify-center my-4">
-        <ARButton
-          modelPath={URL_ANIM + MODELS.KUBUS_WARNA_ANIM}
-          title="Volume Kubus AR"
-        />
+      {/* Hiro Marker untuk AR */}
+      {/* <ImageDisplay 
+        src="https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png" 
+        nama="Hiro Marker - Arahkan kamera ke marker ini untuk melihat objek dalam AR"
+      /> */}
+      
+      <div className="flex justify-center">
+        <Button 
+          onClick={() => {
+            const link = document.createElement('a');
+            link.href = 'https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png';
+            link.download = 'hiro-marker.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }}
+          className="bg-primary hover:bg-primary/90"
+        >
+          Download Hiro Marker
+        </Button>
       </div>
 
       <Paragraph>Setelah selesai menghitung banyak kubus satuan pada rubik tersebut, masukkan jawabanmu pada kolom berikut: </Paragraph>

@@ -143,9 +143,8 @@
       // Default to smaller scale (0.3) as requested
       let currentScale = parseFloat(urlParams.get("scale")) || 0.15;
       if (isNaN(currentScale)) currentScale = 0.15;
-      const markerType = urlParams.get("markerType") || "custom";
-      const markerPattern = urlParams.get("markerPattern") || "/barcode.patt";
-      const markerImage = urlParams.get("markerImage") || "/barcode.png";
+      // Use hiro marker only for better performance
+      const markerType = "hiro";
 
       let isPlaying = false;
       let markerEl = null;
@@ -214,15 +213,8 @@
 
         markerEl = document.createElement('a-marker');
         markerEl.setAttribute('id', 'marker');
-
-        if (markerType === 'custom' && markerPattern) {
-          markerEl.setAttribute('type', 'pattern');
-          markerEl.setAttribute('url', markerPattern);
-        } else if (markerType !== 'custom') {
-          markerEl.setAttribute('preset', markerType);
-        } else {
-          markerEl.setAttribute('preset', 'hiro');
-        }
+        // Use hiro preset marker for better performance
+        markerEl.setAttribute('preset', 'hiro');
 
         const modelEntity = document.createElement('a-entity');
         modelEntity.setAttribute('id', 'model');
