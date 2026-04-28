@@ -131,6 +131,7 @@
       arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
       vr-mode-ui="enabled: false"
       renderer="logarithmicDepthBuffer: true; precision: medium;"
+      id="ar-scene"
     >
       <a-entity camera></a-entity>
     </a-scene>
@@ -150,11 +151,48 @@
       let markerEl = null;
 
       // Handle loading state
+      const scene = document.querySelector('a-scene');
+      
+      function initMarkerWhenReady() {
+        if (!scene || !window.AFRAME) {
+          setTimeout(initMarkerWhenReady, 100);
+          return;
+        }
+        
+        createMarker();
+        
+        // Handle marker detection events
+        if (markerEl) {
+          markerEl.addEventListener('markerFound', () => {
+            console.log('Marker found');
+            const modelEl = document.getElementById('model');
+            if (modelEl && modelEl.object3D) {
+              modelEl.object3D.visible = true;
+            }
+          });
+
+          markerEl.addEventListener('markerLost', () => {
+            console.log('Marker lost');
+            const modelEl = document.getElementById('model');
+            if (modelEl && modelEl.object3D) {
+              modelEl.object3D.visible = false;
+            }
+          });
+        }
+      }
+      
       window.addEventListener("load", () => {
         setTimeout(() => {
           document.getElementById("loading").style.display = "none";
         }, 1500);
       });
+      
+      // Initialize marker after DOM ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMarkerWhenReady);
+      } else {
+        initMarkerWhenReady();
+      }
 
       // Register custom component to handle model loading errors
       AFRAME.registerComponent("model-loader", {
@@ -193,12 +231,15 @@
         modelEntity.setAttribute('scale', `${currentScale} ${currentScale} ${currentScale}`);
         modelEntity.setAttribute('animation-mixer', 'timeScale: 0');
         modelEntity.setAttribute('model-loader', '');
+        
+        // Set model URL if available at init time
+        if (modelUrl) {
+          modelEntity.setAttribute('gltf-model', modelUrl);
+        }
 
         markerEl.appendChild(modelEntity);
         scene.insertBefore(markerEl, scene.firstChild);
       }
-
-      createMarker();
 
       // Control functions
       function updateTransform() {
