@@ -5,19 +5,32 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 // Helper to construct AR URL
-// Helper to construct AR URL
-const getARViewerUrl = (modelUrl, scale = 1) => {
-  // Use current origin + public file path
-  // REMOVED cache buster to prevent reload
+const getARViewerUrl = (
+  modelUrl,
+  scale = 1,
+  markerType = 'hiro',
+  markerPattern = '',
+  markerImage = ''
+) => {
   const viewerPath = '/ar_viewer.html';
   const params = new URLSearchParams({
     model: modelUrl,
-    scale: scale
+    scale: scale,
+    markerType,
   });
+
+  if (markerPattern) {
+    params.set('markerPattern', markerPattern);
+  }
+
+  if (markerImage) {
+    params.set('markerImage', markerImage);
+  }
+
   return `${viewerPath}?${params.toString()}`;
 };
 
-const ARViewer = ({ modelPath, title, scale = 0.15, onClose }) => {
+const ARViewer = ({ modelPath, title, scale = 0.15, onClose, markerType = 'hiro', markerPattern = '', markerImage = '' }) => {
   const iframeRef = React.useRef(null);
   const previousModelRef = React.useRef(modelPath);
 
@@ -56,7 +69,7 @@ const ARViewer = ({ modelPath, title, scale = 0.15, onClose }) => {
       {/* Iframe to static AR HTML file */}
       <iframe
         ref={iframeRef}
-        src={getARViewerUrl(modelPath, scale)}
+        src={getARViewerUrl(modelPath, scale, markerType, markerPattern, markerImage)}
         className="w-full h-full border-none"
         allow="camera; gyroscope; accelerometer; magnetometer; xr-spatial-tracking; microphone; fullscreen"
         allowFullScreen
@@ -68,12 +81,16 @@ const ARViewer = ({ modelPath, title, scale = 0.15, onClose }) => {
 };
 
 // AR Button with Dialog
-export const ARButton = ({ modelPath, title, scale = 0.15 }) => {
+export const ARButton = ({
+  modelPath,
+  title,
+  scale = 0.15,
+  markerType = 'custom',
+  markerImage = '/barcode.png',
+  markerPattern = '/barcode.patt',
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showMarkerInfo, setShowMarkerInfo] = useState(false);
-  
-  // Official Hiro marker image
-  const markerImage = 'https://upload.wikimedia.org/wikipedia/commons/4/48/Hiro_marker_ARjs.png';
 
   return (
     <>
@@ -100,18 +117,18 @@ export const ARButton = ({ modelPath, title, scale = 0.15 }) => {
             <div className="p-4 bg-muted/50 rounded-lg text-center border-2 border-dashed border-muted-foreground/20">
               <img 
                 src={markerImage} 
-                alt="Hiro Marker"
+                alt={markerType === 'custom' ? 'Marker Kustom' : 'Marker HIRO'}
                 className="w-40 h-40 mx-auto rounded-sm"
               />
               <p className="text-xs text-muted-foreground mt-2 font-medium">
-                Marker tipe: HIRO
+                Marker tipe: Kustom
               </p>
             </div>
 
             <div className="space-y-2">
               <p className="text-sm font-medium">Cara menggunakan:</p>
               <ol className="text-sm text-muted-foreground space-y-1 list-decimal list-inside pl-1">
-                <li>Siapkan marker HIRO (download/cetak jika belum ada)</li>
+                <li>Siapkan marker kustom (download/cetak jika belum ada)</li>
                 <li>Atau buka gambar marker di HP lain</li>
                 <li>Klik tombol "Mulai Scan"</li>
                 <li>Arahkan kamera ke marker tersebut</li>
@@ -125,7 +142,7 @@ export const ARButton = ({ modelPath, title, scale = 0.15 }) => {
                 onClick={() => {
                   const link = document.createElement('a');
                   link.href = markerImage;
-                  link.download = 'hiro-marker.png';
+                  link.download = 'custom-marker.png';
                   link.click();
                 }}
               >
@@ -154,6 +171,9 @@ export const ARButton = ({ modelPath, title, scale = 0.15 }) => {
              modelPath={modelPath}
              title={title}
              scale={scale}
+             markerType={markerType}
+             markerPattern={markerPattern}
+             markerImage={markerImage}
              onClose={() => setIsOpen(false)}
            />
         </DialogContent>

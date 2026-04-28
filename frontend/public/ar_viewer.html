@@ -132,16 +132,6 @@
       vr-mode-ui="enabled: false"
       renderer="logarithmicDepthBuffer: true; precision: medium;"
     >
-      <a-marker preset="hiro">
-        <a-entity
-          id="model"
-          position="0 0 0"
-          rotation="0 0 0"
-          scale="0.15 0.15 0.15"
-          animation-mixer="timeScale: 0"
-          model-loader
-        ></a-entity>
-      </a-marker>
       <a-entity camera></a-entity>
     </a-scene>
 
@@ -152,8 +142,12 @@
       // Default to smaller scale (0.3) as requested
       let currentScale = parseFloat(urlParams.get("scale")) || 0.15;
       if (isNaN(currentScale)) currentScale = 0.15;
-      
+      const markerType = urlParams.get("markerType") || "custom";
+      const markerPattern = urlParams.get("markerPattern") || "/barcode.patt";
+      const markerImage = urlParams.get("markerImage") || "/barcode.png";
+
       let isPlaying = false;
+      let markerEl = null;
 
       // Handle loading state
       window.addEventListener("load", () => {
@@ -176,6 +170,36 @@
         },
       });
 
+      function createMarker() {
+        const scene = document.querySelector('a-scene');
+        if (!scene) return;
+
+        markerEl = document.createElement('a-marker');
+        markerEl.setAttribute('id', 'marker');
+
+        if (markerType === 'custom' && markerPattern) {
+          markerEl.setAttribute('type', 'pattern');
+          markerEl.setAttribute('url', markerPattern);
+        } else if (markerType !== 'custom') {
+          markerEl.setAttribute('preset', markerType);
+        } else {
+          markerEl.setAttribute('preset', 'hiro');
+        }
+
+        const modelEntity = document.createElement('a-entity');
+        modelEntity.setAttribute('id', 'model');
+        modelEntity.setAttribute('position', '0 0 0');
+        modelEntity.setAttribute('rotation', '0 0 0');
+        modelEntity.setAttribute('scale', `${currentScale} ${currentScale} ${currentScale}`);
+        modelEntity.setAttribute('animation-mixer', 'timeScale: 0');
+        modelEntity.setAttribute('model-loader', '');
+
+        markerEl.appendChild(modelEntity);
+        scene.insertBefore(markerEl, scene.firstChild);
+      }
+
+      createMarker();
+
       // Control functions
       function updateTransform() {
         const entity = document.getElementById("model");
@@ -190,7 +214,7 @@
         const oldEntity = document.getElementById("model");
         
         // Remove old entity if it exists
-        if (oldEntity) {
+        if (oldEntity && marker) {
           marker.removeChild(oldEntity);
         }
         
@@ -204,7 +228,7 @@
         newEntity.setAttribute("animation-mixer", "timeScale: 0");
         newEntity.setAttribute("model-loader", ""); // Attach our error handler
         
-        marker.appendChild(newEntity);
+        if (marker) marker.appendChild(newEntity);
         
         // Reset UI
         isPlaying = false;
@@ -235,15 +259,7 @@
 
       // Initial Load
       if (modelUrl) {
-         // We can use the existing one or replace it. 
-         // Since the hardcoded one is in HTML, let's just use setModel to be consistent if we want, 
-         // but the HTML one is fine for first load.
-         // Actually, let's use the HTML one for first load, but ensure we update it if needed.
-         const entity = document.getElementById("model");
-         if(entity) {
-            entity.setAttribute("gltf-model", modelUrl);
-            updateTransform();
-         }
+        setModel(modelUrl, currentScale);
       }
     </script>
   </body>

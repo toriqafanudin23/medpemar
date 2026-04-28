@@ -47,7 +47,6 @@ const VolumeKubusPage = () => {
       <div className="flex justify-center my-4">
         <ARButton
           modelPath={URL_ANIM + MODELS.KUBUS_WARNA_ANIM}
-          markerType="hiro"
           title="Volume Kubus AR"
         />
       </div>
