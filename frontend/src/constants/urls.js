@@ -22,7 +22,7 @@ export const AR_URLS = {
   LIMAS_VOLUME: "https://mywebar.com/p/Project_0_njlzyoaf8t",
   
   // Luas Permukaan (Jaring-jaring)
-  KUBUS_JARING: "https://mywebar.com/p/Project_1_ufbwjof86x",
+  KUBUS_JARING: "https://mywebar.com/p/Project_1_kl5vvosuhl",
   BALOK_JARING: "https://mywebar.com/p/objek7jaringjaringbalok",
   PRISMA_JARING: "https://mywebar.com/p/Project_0_nmk6riitgu",
   LIMAS_JARING: "https://mywebar.com/p/Project_1_9bl3xiq7km",
