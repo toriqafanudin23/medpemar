@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useApp } from '@/context/AppContext';
 import { Heading1, Heading2, Paragraph, HighlightBox, MathBlock, MathInline, Heading3 } from '@/components/ui/Typography';
 import Viewer3D from '@/components/features/Viewer3D';
@@ -11,6 +11,7 @@ import { AR_URLS, MODELS, URL_ANIM } from '@/constants/urls';
 
 const VolumeKubusPage = () => {
   const { setPageNumber } = useApp();
+  const [useMyWeBar, setUseMyWeBar] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -37,12 +38,47 @@ const VolumeKubusPage = () => {
         Simulasi interaktif berikut bisa kamu gunakan untuk membantu menghitung banyak kubus satuan pada rubik berukuran <MathInline>{`3 \\times 3 \\times 3.`}</MathInline>
       </Paragraph>
 
-      <Viewer3D
-        modelPath={MODELS.KUBUS_WARNA_ANIM}
-        urlAR={AR_URLS.KUBUS_VOLUME}
-        scale={0.5}
-        title="Objek 1. Volume Kubus"
-      />
+      {/* Switch Button untuk Objek 1 */}
+      <div className="flex gap-2 justify-center mb-4">
+        <Button 
+          onClick={() => setUseMyWeBar(true)}
+          className={useMyWeBar ? "bg-primary text-white" : "bg-gray-200 text-gray-800"}
+        >
+          MyWeBar AR
+        </Button>
+        <Button 
+          onClick={() => setUseMyWeBar(false)}
+          className={!useMyWeBar ? "bg-primary text-white" : "bg-gray-200 text-gray-800"}
+        >
+          Simulasi 3D
+        </Button>
+      </div>
+
+      {/* Objek 1. Volume Kubus - Pilihan MyWeBar atau 3D */}
+      {useMyWeBar ? (
+        <div className="w-full" style={{ height: '100vh' }}>
+          <iframe 
+            src="https://mywebar.com/pi/726212"
+            frameBorder="0"
+            scrolling="yes"
+            seamless="seamless"
+            style={{
+              display: 'block',
+              width: '100%',
+              height: '100%',
+            }}
+            allow="camera;gyroscope;accelerometer;magnetometer;xr-spatial-tracking;microphone;"
+            title="Objek 1. Volume Kubus"
+          />
+        </div>
+      ) : (
+        <Viewer3D
+          modelPath={MODELS.KUBUS_WARNA_ANIM}
+          urlAR={AR_URLS.KUBUS_VOLUME}
+          scale={0.5}
+          title="Objek 1. Volume Kubus"
+        />
+      )}
 
       {/* Hiro Marker untuk AR */}
       {/* <ImageDisplay 
