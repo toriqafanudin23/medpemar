@@ -15,11 +15,11 @@ export const SOUNDS = {
 // AR URLs (MyWebAR)
 export const AR_URLS = {
   // Volume
-  KUBUS_VOLUME: "https://mywebar.com/p/objek1volumekubus",
+  KUBUS_VOLUME: "https://mywebar.com/p/Project_3_dpzzwkz2rz",
   KUBUS_2X2: "https://mywebar.com/p/cumatambahan",
   PRISMA_JENIS: "https://mywebar.com/p/objek3jenisjenisprisma",
   LIMAS_JENIS: "https://mywebar.com/p/objek4jenisjenislimas",
-  LIMAS_VOLUME: "https://mywebar.com/p/objek5volumelimas",
+  LIMAS_VOLUME: "https://mywebar.com/p/Project_2_v8lk7iwxa7",
   
   // Luas Permukaan (Jaring-jaring)
   KUBUS_JARING: "https://mywebar.com/p/objek6jaringjaringkubus",
