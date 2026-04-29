@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { FiCheck, FiX, FiChevronRight, FiRefreshCw, FiAward } from 'react-icons/fi';
 import { SOUNDS } from '@/constants/urls';
 import { toast } from 'sonner';
-import { MathInline, MathBlock } from '@/components/ui/Typography';
+import { MathInline, MathBlock, Paragraph } from '@/components/ui/Typography';
 
 const QuizComponent = ({ questions, title, onComplete }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -97,9 +97,9 @@ const QuizComponent = ({ questions, title, onComplete }) => {
             {isPassed ? 'Selamat! 🎉' : 'Tetap Semangat! 💪'}
           </h2>
           
-          <p className="text-muted-foreground mb-6">
+          <Paragraph className="!mb-6 text-center">
             Kamu berhasil menjawab {finalScore} dari {questions.length} soal dengan benar
-          </p>
+          </Paragraph>
 
           <div className="flex items-center justify-center gap-4 mb-8">
             <div className="text-center">
@@ -154,9 +154,9 @@ const QuizComponent = ({ questions, title, onComplete }) => {
               </span>
             </div>
           )}
-          <p className="text-lg text-foreground font-medium leading-relaxed">
+          <Paragraph className="!mb-0 text-lg font-medium">
             {question.question}
-          </p>
+          </Paragraph>
         </div>
 
         {/* Options */}
@@ -196,7 +196,9 @@ const QuizComponent = ({ questions, title, onComplete }) => {
                   }`}>
                     {String.fromCharCode(65 + index)}
                   </div>
-                  <span className="text-foreground flex-1">{option}</span>
+                  <span className="text-foreground flex-1">
+                    <MathInline>{option}</MathInline>
+                  </span>
                   {isAnswered && index === question.answer && (
                     <FiCheck className="w-5 h-5 text-success" />
                   )}
@@ -212,7 +214,9 @@ const QuizComponent = ({ questions, title, onComplete }) => {
         {/* Explanation */}
         {isAnswered && question.explanation && (
           <div className="p-4 bg-primary/5 rounded-xl border border-primary/20">
-            <p className="text-sm font-medium text-primary mb-1">Penjelasan:</p>
+            <Paragraph className="!mb-2 text-sm font-medium text-primary">
+              Penjelasan:
+            </Paragraph>
             <MathBlock>{question.explanation}</MathBlock>
           </div>
         )}

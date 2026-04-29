@@ -23,7 +23,7 @@ const ImageDisplay = ({ src, nama, caption, alt, width, scale = 1, className = '
           <img
             src={imageSrc}
             alt={alt || nama || 'Gambar'}
-            className="w-full h-auto object-contain mx-auto p-4 image-zoom"
+            className="w-full h-auto object-contain mx-auto p-4 image-zoom rounded-xl"
             style={imageStyle}
             loading="lazy"
           />
@@ -47,14 +47,14 @@ const ImageDisplay = ({ src, nama, caption, alt, width, scale = 1, className = '
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="max-w-4xl p-0 overflow-hidden bg-background/95 backdrop-blur-sm">
           <DialogTitle className="sr-only">{nama || alt || 'Gambar'}</DialogTitle>
-          <div className="relative">
+          <div className="relative overflow-hidden rounded-xl">
             <DialogClose className="absolute top-4 right-4 z-10 p-2 rounded-full bg-card/90 backdrop-blur-sm hover:bg-card shadow-md">
               <FiX className="w-5 h-5" />
             </DialogClose>
             <img
               src={imageSrc}
               alt={alt || nama || 'Gambar'}
-              className="w-full h-auto max-h-[80vh] object-contain"
+              className="w-full h-auto max-h-[80vh] object-contain rounded-xl"
             />
             {caption ? (
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background/80 to-transparent">
