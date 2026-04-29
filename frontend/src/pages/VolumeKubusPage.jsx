@@ -45,14 +45,7 @@ const VolumeKubusPage = () => {
         urlAR={AR_URLS.KUBUS_VOLUME}
         scale={0.5}
         title="Objek 1. Volume Kubus"
-      />
-
-      {/* Hiro Marker untuk AR */}
-      {/* <ImageDisplay 
-        src="https://raw.githubusercontent.com/AR-js-org/AR.js/master/data/images/hiro.png" 
-        nama="Hiro Marker - Arahkan kamera ke marker ini untuk melihat objek dalam AR"
-      /> */}
-    
+      />   
 
       <Paragraph>Setelah selesai menghitung banyak kubus satuan pada rubik tersebut, masukkan jawabanmu pada kolom berikut: </Paragraph>
       <InputAnswer answerKey="27" placeholder="Masukkan jawaban..." satuan="kubus" />
