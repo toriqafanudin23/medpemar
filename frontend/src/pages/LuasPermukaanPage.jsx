@@ -24,20 +24,13 @@ const LuasPermukaanPage = () => {
 
   return (
     <div className="animate-fade-in">
-      <Heading1>Luas Permukaan Bangun Ruang Sisi Datar</Heading1>
+      <Heading1 className="text-center">Luas Permukaan Bangun Ruang</Heading1>
       
-      <Paragraph>
-        Luas permukaan adalah total luas seluruh sisi yang membatasi suatu bangun ruang. 
-        Untuk memahami konsep ini, kita perlu mengetahui jaring-jaring dari setiap bangun ruang.
+      <Paragraph className="text-center text-muted-foreground !mb-8">
+        Pilih salah satu bangun ruang di bawah ini untuk mulai mempelajari materi luas permukaannya!
       </Paragraph>
 
-      <Paragraph>
-        Jaring-jaring adalah bentuk dua dimensi yang dapat dilipat menjadi bangun ruang. 
-        Dengan memahami jaring-jaring, kita dapat menghitung luas permukaan dengan menjumlahkan 
-        luas seluruh sisinya.
-      </Paragraph>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {SHAPES.map((shape, index) => (
           <div 
             key={shape.id}

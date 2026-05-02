@@ -1,72 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { MathInline } from '@/components/ui/Typography';
 import { FiArrowRight, FiLock } from 'react-icons/fi';
 
 const ShapeCard = ({ 
   shape, 
   to, 
   icon, 
-  isLocked = false,
-  progress = 0 
+  isLocked = false
 }) => {
   const content = (
     <Card className={`card-interactive group h-full ${isLocked ? 'opacity-60' : ''}`}>
-      <CardContent className="p-5 sm:p-6">
-        <div className="flex flex-col h-full">
-          {/* Header */}
-          <div className="flex items-start justify-between mb-4">
-            <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-              {icon}
-            </div>
-            {progress > 0 && (
-              <Badge variant="secondary" className="text-xs">
-                {progress}% selesai
-              </Badge>
-            )}
+      <CardContent className="p-4 sm:p-5 flex items-center justify-between h-full">
+        <div className="flex items-center gap-4">
+          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+            {icon}
           </div>
-
-          {/* Title */}
-          <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors mb-2">
+          <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
             {shape.name}
           </h3>
-
-          {/* Description */}
-          <p className="text-sm text-muted-foreground mb-4 flex-1">
-            {shape.description}
-          </p>
-
-          {/* Formulas */}
-          <div className="space-y-2 mb-4">
-            <div className="flex items-center gap-2 text-xs">
-              <span className="text-muted-foreground">Volume:</span>
-              <MathInline className="px-2 py-0.5 bg-muted rounded text-foreground">
-                {shape.formula.volume}
-              </MathInline>
-            </div>
-            <div className="flex items-center gap-2 text-xs">
-              <span className="text-muted-foreground">Luas:</span>
-              <MathInline className="px-2 py-0.5 bg-muted rounded text-foreground">
-                {shape.formula.surface}
-              </MathInline>
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="flex items-center justify-between pt-3 border-t border-border">
-            <span className="text-sm text-primary font-medium">
-              {isLocked ? 'Terkunci' : 'Pelajari'}
-            </span>
-            <div className="text-primary group-hover:translate-x-1 transition-transform">
-              {isLocked ? (
-                <FiLock className="w-4 h-4" />
-              ) : (
-                <FiArrowRight className="w-4 h-4" />
-              )}
-            </div>
-          </div>
+        </div>
+        <div className="text-primary group-hover:translate-x-1 transition-transform">
+          {isLocked ? (
+            <FiLock className="w-5 h-5" />
+          ) : (
+            <FiArrowRight className="w-5 h-5" />
+          )}
         </div>
       </CardContent>
     </Card>

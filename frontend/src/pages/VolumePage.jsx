@@ -24,21 +24,14 @@ const VolumePage = () => {
 
   return (
     <div className="animate-fade-in">
-      <Heading1>Volume Bangun Ruang Sisi Datar</Heading1>
+      <Heading1 className="text-center">Volume Bangun Ruang</Heading1>
       
-      <Paragraph>
-        Volume adalah ukuran ruang yang ditempati oleh suatu bangun ruang. Pada halaman ini, 
-        kamu akan mempelajari cara menghitung volume dari empat jenis bangun ruang sisi datar: 
-        kubus, balok, prisma, dan limas.
-      </Paragraph>
-
-      <Paragraph>
-        Pilih salah satu bangun ruang di bawah ini untuk mulai mempelajari konsep volume 
-        dengan bantuan Simulasi 3D dan fitur Augmented Reality.
+      <Paragraph className="text-center text-muted-foreground !mb-8">
+        Pilih salah satu bangun ruang di bawah ini untuk mulai mempelajari materi volume!
       </Paragraph>
 
       {/* Shape Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {SHAPES.map((shape, index) => (
           <div 
             key={shape.id}

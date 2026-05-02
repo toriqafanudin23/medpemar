@@ -49,7 +49,7 @@ const LandingPage = () => {
               </div>
               <span className="font-bold text-lg text-foreground font-display">Bangun Ruang AR</span>
             </div>
-            <Button asChild>
+            <Button asChild className="hidden sm:flex">
               <Link to="/home" className="gap-2">
                 Mulai Belajar <FiArrowRight className="w-4 h-4" />
               </Link>

@@ -35,29 +35,32 @@ const DeveloperBioPage = () => {
                 <Card className="animate-slide-up">
                     <CardContent className="p-6 sm:p-8 space-y-6">
                         <div className="space-y-4">
-                            <h2 className="text-xl font-semibold text-foreground">Tentang Pengembang</h2>
-                            <p className="text-muted-foreground leading-relaxed">
-                                Halo! Saya adalah pengembang di balik media pembelajaran berbasis Simulasi 3D dan Augmented Reality ini.
-                                Fokus utama saya adalah menciptakan pengalaman belajar yang interaktif dan menyenangkan melalui teknologi web modern.
-                                Aplikasi ini dikembangkan sebagai bagian dari skripsi untuk membantu siswa SMP memahami konsep Bangun Ruang Sisi Datar.
-                            </p>
+                            <h2 className="text-xl font-semibold text-foreground">Profil Peneliti</h2>
+                            <ul className="text-muted-foreground leading-relaxed space-y-2">
+                                <li><strong>Nama:</strong> Toriq Afanudin</li>
+                                <li><strong>Tempat, Tanggal Lahir:</strong> Wonosobo, 18 Desember 1999</li>
+                                <li><strong>Fokus Penelitian:</strong> Media Pembelajaran Digital</li>
+                                <li><strong>Bekerja di:</strong> Bimbel CerMat Eduka Jogja</li>
+                            </ul>
                         </div>
 
                         <div className="space-y-4">
-                            <h2 className="text-xl font-semibold text-foreground">Teknologi yang Digunakan</h2>
-                            <div className="flex flex-wrap gap-2">
-                                {[
-                                    'React JS', 'Three.js', 'React Three Fiber',
-                                    'Tailwind CSS', 'Framer Motion', 'Vite'
-                                ].map((tech) => (
-                                    <span
-                                        key={tech}
-                                        className="px-3 py-1 bg-muted rounded-full text-sm text-foreground/80 font-medium"
-                                    >
-                                        {tech}
-                                    </span>
-                                ))}
-                            </div>
+                            <h2 className="text-xl font-semibold text-foreground">Riwayat Pendidikan</h2>
+                            <ul className="list-disc list-inside text-muted-foreground leading-relaxed space-y-1">
+                                <li>SDN 1 Kembaran</li>
+                                <li>SMPN 3 Kalikajar</li>
+                                <li>SMKN Jawa Tengah</li>
+                                <li>Universitas Ahmad Dahlan (S1 Pendidikan Matematika)</li>
+                            </ul>
+                        </div>
+
+                        <div className="space-y-4">
+                            <h2 className="text-xl font-semibold text-foreground">Tentang Aplikasi</h2>
+                            <p className="text-muted-foreground leading-relaxed">
+                                Media pembelajaran interaktif berbasis Simulasi 3D dan Augmented Reality ini 
+                                dikembangkan sebagai bagian dari penelitian pada program studi Pendidikan Matematika. 
+                                Aplikasi ini dirancang khusus untuk memfasilitasi siswa dalam memahami materi Bangun Ruang Sisi Datar.
+                            </p>
                         </div>
 
                         <div className="pt-6 border-t border-border">
