@@ -101,7 +101,12 @@ const LuasBalokPage = () => {
             <span className="inline-block bg-success/20 text-success px-2 py-1 rounded text-xs font-bold mb-2">Level 1: Mudah</span><br/>
             <b>Soal 1:</b> Sebuah balok memiliki panjang <MathInline>{`5 \\text{ cm}`}</MathInline>, lebar <MathInline>{`4 \\text{ cm}`}</MathInline>, dan tinggi <MathInline>{`3 \\text{ cm}`}</MathInline>. Berapakah luas permukaannya?
           </Paragraph>
-          <InputAnswer answerKey="94" placeholder="Luas = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="94" 
+            placeholder="Luas = ..." 
+            satuan="cm²" 
+            explanation={<MathBlock>{`L = 2(pl + pt + lt) \\\\ L = 2((5 \\times 4) + (5 \\times 3) + (4 \\times 3)) \\\\ L = 2(20 + 15 + 12) = 2(47) = 94 \\text{ cm}^2`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -109,7 +114,12 @@ const LuasBalokPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 2: Sedang</span><br/>
             <b>Soal 2:</b> Diketahui sebuah balok memiliki luas permukaan <MathInline>{`122 \\text{ cm}^2`}</MathInline>. Jika lebar balok <MathInline>{`4 \\text{ cm}`}</MathInline> dan tinggi balok <MathInline>{`3 \\text{ cm}`}</MathInline>, berapakah ukuran panjang balok tersebut?
           </Paragraph>
-          <InputAnswer answerKey="7" placeholder="Panjang = ..." satuan="cm" />
+          <InputAnswer 
+            answerKey="7" 
+            placeholder="Panjang = ..." 
+            satuan="cm" 
+            explanation={<MathBlock>{`L = 2(pl + pt + lt) \\\\ 122 = 2((p \\times 4) + (p \\times 3) + (4 \\times 3)) \\\\ 122 = 2(4p + 3p + 12) \\\\ 61 = 7p + 12 \\\\ 7p = 61 - 12 = 49 \\\\ p = 49 \\div 7 = 7 \\text{ cm}`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -117,7 +127,17 @@ const LuasBalokPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 3: Sedang</span><br/>
             <b>Soal 3:</b> Hitunglah luas permukaan sebuah balok <b>tanpa tutup</b> yang memiliki panjang <MathInline>{`10 \\text{ cm}`}</MathInline>, lebar <MathInline>{`5 \\text{ cm}`}</MathInline>, dan tinggi <MathInline>{`4 \\text{ cm}`}</MathInline>!
           </Paragraph>
-          <InputAnswer answerKey="170" placeholder="Luas = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="170" 
+            placeholder="Luas = ..." 
+            satuan="cm²" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Balok tanpa tutup artinya alasnya hanya dihitung satu kali (tidak dikali dua).</Paragraph>
+                <MathBlock>{`L = (p \\times l) + 2(pt + lt) \\\\ L = (10 \\times 5) + 2((10 \\times 4) + (5 \\times 4)) \\\\ L = 50 + 2(40 + 20) \\\\ L = 50 + 2(60) = 50 + 120 = 170 \\text{ cm}^2`}</MathBlock>
+              </>
+            }
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -125,7 +145,17 @@ const LuasBalokPage = () => {
             <span className="inline-block bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold mb-2">Level 4: Sulit</span><br/>
             <b>Soal 4:</b> Pak Anton ingin membuat sebuah akuarium berbentuk balok tanpa tutup dari kaca. Akuarium tersebut direncanakan memiliki panjang <MathInline>{`60 \\text{ cm}`}</MathInline>, lebar <MathInline>{`40 \\text{ cm}`}</MathInline>, dan tinggi <MathInline>{`50 \\text{ cm}`}</MathInline>. Berapa sentimeter persegi (<MathInline>{`\\text{cm}^2`}</MathInline>) luas kaca yang dibutuhkan Pak Anton?
           </Paragraph>
-          <InputAnswer answerKey="12400" placeholder="Luas kaca = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="12400" 
+            placeholder="Luas kaca = ..." 
+            satuan="cm²" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Sama seperti soal sebelumnya, luas alas hanya dihitung satu kali (karena tanpa tutup):</Paragraph>
+                <MathBlock>{`L = (p \\times l) + 2(pt + lt) \\\\ L = (60 \\times 40) + 2((60 \\times 50) + (40 \\times 50)) \\\\ L = 2.400 + 2(3.000 + 2.000) \\\\ L = 2.400 + 2(5.000) = 2.400 + 10.000 = 12.400 \\text{ cm}^2`}</MathBlock>
+              </>
+            }
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -133,7 +163,19 @@ const LuasBalokPage = () => {
             <span className="inline-block bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold mb-2">Level 5: HOTS</span><br/>
             <b>Soal 5:</b> Sebuah ruangan berbentuk balok memiliki ukuran panjang <MathInline>{`6 \\text{ m}`}</MathInline>, lebar <MathInline>{`5 \\text{ m}`}</MathInline>, dan tinggi <MathInline>{`4 \\text{ m}`}</MathInline>. Dinding ruangan tersebut akan dicat. Di ruangan tersebut terdapat satu pintu seluas <MathInline>{`2 \\text{ m}^2`}</MathInline> dan satu jendela seluas <MathInline>{`1 \\text{ m}^2`}</MathInline> yang tidak akan ikut dicat. Jika atap (plafon) dan lantai juga tidak dicat, berapakah luas dinding yang akan dicat?
           </Paragraph>
-          <InputAnswer answerKey="85" placeholder="Luas dicat = ..." satuan="m²" />
+          <InputAnswer 
+            answerKey="85" 
+            placeholder="Luas dicat = ..." 
+            satuan="m²" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Dinding ruangan adalah sisi tegak balok (tanpa alas dan atap):</Paragraph>
+                <MathBlock>{`L_{\\text{dinding}} = 2(pt + lt) \\\\ L = 2((6 \\times 4) + (5 \\times 4)) = 2(24 + 20) = 2(44) = 88 \\text{ m}^2`}</MathBlock>
+                <Paragraph className="!mb-2">Kurangi dengan luas area yang tidak dicat:</Paragraph>
+                <MathBlock>{`L_{\\text{dicat}} = 88 - 2 - 1 = 85 \\text{ m}^2`}</MathBlock>
+              </>
+            }
+          />
         </div>
       </div>
 

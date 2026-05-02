@@ -49,7 +49,7 @@ const GuidePage = () => {
       <Heading1>Petunjuk Penggunaan</Heading1>
       
       <Paragraph>
-        Selamat datang di Media Pembelajaran Bangun Ruang Sisi Datar berbasis Augmented Reality. 
+        Selamat datang di Media Pembelajaran Bangun Ruang Sisi Datar berbasis Simulasi 3D dan Augmented Reality (AR). 
         Berikut adalah panduan untuk menggunakan aplikasi ini.
       </Paragraph>
 

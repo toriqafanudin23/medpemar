@@ -22,7 +22,7 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Media pembelajaran interaktif berbasis Augmented Reality dan 3D untuk memahami konsep bangun ruang sisi datar.
+              Media pembelajaran interaktif berbasis Simulasi 3D (React.js & Blender) dengan dukungan fitur Augmented Reality untuk memahami konsep bangun ruang sisi datar.
             </p>
           </div>
 
@@ -72,7 +72,7 @@ const Footer = () => {
         {/* Bottom */}
         <div className="mt-8 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Media Pembelajaran AR. All rights reserved.
+            © {currentYear} Media Pembelajaran Berbasis Simulasi 3D. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground flex items-center gap-1">
             Dibuat dengan <FiHeart className="w-4 h-4 text-destructive" /> untuk Pendidikan Indonesia

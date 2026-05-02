@@ -104,7 +104,12 @@ const LuasLimasPage = () => {
             <span className="inline-block bg-success/20 text-success px-2 py-1 rounded text-xs font-bold mb-2">Level 1: Mudah</span><br/>
             <b>Soal 1:</b> Sebuah limas memiliki alas berbentuk persegi dengan panjang sisi <MathInline>{`8 \\text{ cm}`}</MathInline>. Jika tinggi segitiga pada sisi tegaknya adalah <MathInline>{`10 \\text{ cm}`}</MathInline>, berapakah luas permukaan limas tersebut?
           </Paragraph>
-          <InputAnswer answerKey="224" placeholder="Luas = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="224" 
+            placeholder="Luas = ..." 
+            satuan="cm²" 
+            explanation={<MathBlock>{`\\text{Luas Alas} = 8 \\times 8 = 64 \\text{ cm}^2 \\\\ \\text{Luas 4 Segitiga} = 4 \\times (\\frac{1}{2} \\times 8 \\times 10) = 4 \\times 40 = 160 \\text{ cm}^2 \\\\ L = 64 + 160 = 224 \\text{ cm}^2`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -112,7 +117,19 @@ const LuasLimasPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 2: Sedang</span><br/>
             <b>Soal 2:</b> Sebuah limas alasnya berbentuk persegi dengan panjang sisi <MathInline>{`6 \\text{ cm}`}</MathInline>. Diketahui <b>tinggi limas</b> tersebut adalah <MathInline>{`4 \\text{ cm}`}</MathInline>. Berapakah luas permukaannya? (Petunjuk: Cari tinggi segitiga sisi tegaknya terlebih dahulu dengan rumus Pythagoras!)
           </Paragraph>
-          <InputAnswer answerKey="96" placeholder="Luas = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="96" 
+            placeholder="Luas = ..." 
+            satuan="cm²" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Pertama, cari tinggi segitiga (sisi tegak) menggunakan Teorema Pythagoras:</Paragraph>
+                <MathBlock>{`t_{\\text{segitiga}} = \\sqrt{4^2 + 3^2} = \\sqrt{16 + 9} = \\sqrt{25} = 5 \\text{ cm}`}</MathBlock>
+                <Paragraph className="!mb-2">Kemudian hitung luas permukaan total:</Paragraph>
+                <MathBlock>{`\\text{Luas Alas} = 6 \\times 6 = 36 \\text{ cm}^2 \\\\ \\text{Luas 4 Segitiga} = 4 \\times (\\frac{1}{2} \\times 6 \\times 5) = 4 \\times 15 = 60 \\text{ cm}^2 \\\\ L = 36 + 60 = 96 \\text{ cm}^2`}</MathBlock>
+              </>
+            }
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -120,7 +137,12 @@ const LuasLimasPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 3: Sedang</span><br/>
             <b>Soal 3:</b> Sebuah limas segitiga sembarang diketahui memiliki luas alas <MathInline>{`25 \\text{ cm}^2`}</MathInline>. Jika luas masing-masing sisi tegaknya berturut-turut adalah <MathInline>{`10 \\text{ cm}^2`}</MathInline>, <MathInline>{`12 \\text{ cm}^2`}</MathInline>, dan <MathInline>{`18 \\text{ cm}^2`}</MathInline>, berapakah luas permukaan total limas tersebut?
           </Paragraph>
-          <InputAnswer answerKey="65" placeholder="Luas = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="65" 
+            placeholder="Luas = ..." 
+            satuan="cm²" 
+            explanation={<MathBlock>{`L = \\text{Luas Alas} + \\text{Jumlah Luas Sisi Tegak} \\\\ L = 25 + (10 + 12 + 18) = 25 + 40 = 65 \\text{ cm}^2`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -128,7 +150,17 @@ const LuasLimasPage = () => {
             <span className="inline-block bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold mb-2">Level 4: Sulit</span><br/>
             <b>Soal 4:</b> Atap sebuah menara berbentuk limas segiempat beraturan. Panjang sisi alas atap tersebut adalah <MathInline>{`8 \\text{ meter}`}</MathInline> dan tinggi segitiga pada sisi tegaknya adalah <MathInline>{`5 \\text{ meter}`}</MathInline>. Atap tersebut hanya akan dipasangi genteng pada bagian sisi tegaknya (selimutnya) saja. Berapa meter persegi (<MathInline>{`\\text{m}^2`}</MathInline>) luas atap yang akan dipasangi genteng?
           </Paragraph>
-          <InputAnswer answerKey="80" placeholder="Luas genteng = ..." satuan="m²" />
+          <InputAnswer 
+            answerKey="80" 
+            placeholder="Luas genteng = ..." 
+            satuan="m²" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Karena hanya memasang genteng pada selimut atap, maka luas alas tidak dihitung:</Paragraph>
+                <MathBlock>{`L_{\\text{selimut}} = 4 \\times (\\frac{1}{2} \\times \\text{alas} \\times \\text{tinggi segitiga}) \\\\ L = 4 \\times (\\frac{1}{2} \\times 8 \\times 5) = 4 \\times 20 = 80 \\text{ m}^2`}</MathBlock>
+              </>
+            }
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -136,7 +168,19 @@ const LuasLimasPage = () => {
             <span className="inline-block bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold mb-2">Level 5: HOTS</span><br/>
             <b>Soal 5:</b> Budi membuat miniatur piramida Mesir berbentuk limas segiempat beraturan. Alas miniatur tersebut berupa persegi dengan panjang sisi <MathInline>{`12 \\text{ cm}`}</MathInline> dan tinggi piramida adalah <MathInline>{`8 \\text{ cm}`}</MathInline>. Budi ingin melapisi <b>seluruh</b> permukaan piramida tersebut (termasuk bagian bawah alasnya) dengan kertas emas. Berapa sentimeter persegi (<MathInline>{`\\text{cm}^2`}</MathInline>) luas kertas emas yang dibutuhkan Budi?
           </Paragraph>
-          <InputAnswer answerKey="384" placeholder="Luas kertas = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="384" 
+            placeholder="Luas kertas = ..." 
+            satuan="cm²" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Cari tinggi segitiga (sisi tegak) menggunakan Teorema Pythagoras:</Paragraph>
+                <MathBlock>{`t_{\\text{segitiga}} = \\sqrt{8^2 + 6^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10 \\text{ cm}`}</MathBlock>
+                <Paragraph className="!mb-2">Hitung luas permukaan total:</Paragraph>
+                <MathBlock>{`\\text{Luas Alas} = 12 \\times 12 = 144 \\text{ cm}^2 \\\\ \\text{Luas 4 Segitiga} = 4 \\times (\\frac{1}{2} \\times 12 \\times 10) = 4 \\times 60 = 240 \\text{ cm}^2 \\\\ L = 144 + 240 = 384 \\text{ cm}^2`}</MathBlock>
+              </>
+            }
+          />
         </div>
       </div>
 

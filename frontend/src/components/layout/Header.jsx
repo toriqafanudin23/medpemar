@@ -49,7 +49,7 @@ const Header = () => {
               </div>
               <div className="hidden sm:block">
                 <h1 className="text-lg font-bold text-foreground font-display">Bangun Ruang</h1>
-                <p className="text-xs text-muted-foreground">Media Pembelajaran AR</p>
+                <p className="text-xs text-muted-foreground">Berbasis Simulasi 3D</p>
               </div>
             </Link>
           </div>
@@ -110,7 +110,7 @@ const Header = () => {
                     </div>
                     <div>
                       <h2 className="text-lg font-bold">Bangun Ruang</h2>
-                      <p className="text-xs text-muted-foreground">Media Pembelajaran AR</p>
+                      <p className="text-xs text-muted-foreground">Berbasis Simulasi 3D</p>
                     </div>
                   </div>
                 </SheetTitle>

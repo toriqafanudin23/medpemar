@@ -80,7 +80,12 @@ const VolumeBalokPage = () => {
             <b>Soal 1:</b> Hitunglah volume balok yang memiliki panjang <MathInline>{`4 \\text{ cm}`}</MathInline>, lebar <MathInline>{`3 \\text{ cm}`}</MathInline>, dan tinggi <MathInline>{`6 \\text{ cm}`}</MathInline>!
           </Paragraph>
           <ImageDisplay src="balok436.png" scale={1} />
-          <InputAnswer answerKey="72" placeholder="Volume = ..." satuan="cm³" />
+          <InputAnswer 
+            answerKey="72" 
+            placeholder="Volume = ..." 
+            satuan="cm³" 
+            explanation={<MathBlock>{`V = p \\times l \\times t \\\\ V = 4 \\times 3 \\times 6 = 72 \\text{ cm}^3`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -88,7 +93,12 @@ const VolumeBalokPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 2: Sedang</span><br/>
             <b>Soal 2:</b> Sebuah kotak pensil berbentuk balok memiliki volume <MathInline>{`120 \\text{ cm}^3`}</MathInline>. Jika panjangnya <MathInline>{`10 \\text{ cm}`}</MathInline> dan lebarnya <MathInline>{`4 \\text{ cm}`}</MathInline>, berapakah tinggi kotak pensil tersebut?
           </Paragraph>
-          <InputAnswer answerKey="3" placeholder="Tinggi = ..." satuan="cm" />
+          <InputAnswer 
+            answerKey="3" 
+            placeholder="Tinggi = ..." 
+            satuan="cm" 
+            explanation={<MathBlock>{`V = p \\times l \\times t \\\\ 120 = 10 \\times 4 \\times t \\\\ 120 = 40 \\times t \\\\ t = 120 \\div 40 = 3 \\text{ cm}`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -96,7 +106,12 @@ const VolumeBalokPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 3: Sedang</span><br/>
             <b>Soal 3:</b> Diketahui sebuah balok memiliki luas alas <MathInline>{`45 \\text{ cm}^2`}</MathInline>. Jika tinggi balok tersebut adalah <MathInline>{`8 \\text{ cm}`}</MathInline>, berapakah volume balok tersebut?
           </Paragraph>
-          <InputAnswer answerKey="360" placeholder="Volume = ..." satuan="cm³" />
+          <InputAnswer 
+            answerKey="360" 
+            placeholder="Volume = ..." 
+            satuan="cm³" 
+            explanation={<MathBlock>{`V = \\text{luas alas} \\times t \\\\ V = 45 \\times 8 = 360 \\text{ cm}^3`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -104,7 +119,19 @@ const VolumeBalokPage = () => {
             <span className="inline-block bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold mb-2">Level 4: Sulit</span><br/>
             <b>Soal 4:</b> Sebuah kemasan susu kotak berbentuk balok berukuran <MathInline>{`8 \\text{ cm} \\times 5 \\text{ cm} \\times 12 \\text{ cm}`}</MathInline> berisi penuh susu. Susu tersebut akan dituang ke dalam gelas-gelas kecil yang masing-masing berkapasitas <MathInline>{`120 \\text{ cm}^3`}</MathInline>. Berapa banyak gelas yang dibutuhkan untuk menampung seluruh susu tersebut?
           </Paragraph>
-          <InputAnswer answerKey="4" placeholder="Banyak gelas = ..." satuan="gelas" />
+          <InputAnswer 
+            answerKey="4" 
+            placeholder="Banyak gelas = ..." 
+            satuan="gelas" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Volume kemasan susu:</Paragraph>
+                <MathBlock>{`V_{\\text{susu}} = 8 \\times 5 \\times 12 = 480 \\text{ cm}^3`}</MathBlock>
+                <Paragraph className="!mb-2">Banyak gelas yang dibutuhkan:</Paragraph>
+                <MathBlock>{`\\text{Banyak gelas} = 480 \\div 120 = 4 \\text{ gelas}`}</MathBlock>
+              </>
+            }
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -113,7 +140,19 @@ const VolumeBalokPage = () => {
             <b>Soal 5:</b> Sebuah wadah besar berbentuk balok dengan ukuran bagian dalam <MathInline>{`24 \\text{ cm} \\times 18 \\text{ cm} \\times 12 \\text{ cm}`}</MathInline> akan diisi penuh dengan sabun batang. Jika masing-masing sabun batang juga berbentuk balok dengan ukuran <MathInline>{`6 \\text{ cm} \\times 3 \\text{ cm} \\times 2 \\text{ cm}`}</MathInline>, berapa maksimal banyak sabun batang yang dapat masuk ke dalam wadah besar tersebut?
           </Paragraph>
           <ImageDisplay src="wadahsabun.png" scale={1} />
-          <InputAnswer answerKey="144" placeholder="Banyak sabun = ..." satuan="buah" />
+          <InputAnswer 
+            answerKey="144" 
+            placeholder="Banyak sabun = ..." 
+            satuan="buah" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Cek apakah ukuran wadah memuat ukuran sabun tanpa sisa ruang:</Paragraph>
+                <MathBlock>{`24 \\div 6 = 4 \\text{ buah (panjang)} \\\\ 18 \\div 3 = 6 \\text{ buah (lebar)} \\\\ 12 \\div 2 = 6 \\text{ buah (tinggi)}`}</MathBlock>
+                <Paragraph className="!mb-2">Karena semua ukuran membagi habis, kita bisa menghitung banyak sabun dari hasil kali jumlahnya:</Paragraph>
+                <MathBlock>{`\\text{Banyak sabun} = 4 \\times 6 \\times 6 = 144 \\text{ buah}`}</MathBlock>
+              </>
+            }
+          />
         </div>
       </div>
 

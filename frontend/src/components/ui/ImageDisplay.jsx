@@ -15,9 +15,9 @@ const ImageDisplay = ({ src, nama, caption, alt, width, scale = 1, className = '
 
   return (
     <>
-      <figure className={`my-6 ${className}`}>
+      <figure className={`my-6 flex flex-col items-center ${className}`}>
         <div
-          className="relative group cursor-pointer overflow-hidden rounded-xl border border-border bg-muted/50"
+          className="relative group cursor-pointer overflow-hidden rounded-xl border border-border bg-muted/50 w-[80%] sm:w-[70%] md:w-[60%] lg:w-1/2 max-w-md mx-auto"
           onClick={() => setIsOpen(true)}
         >
           <img

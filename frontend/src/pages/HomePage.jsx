@@ -48,7 +48,7 @@ const HomePage = () => {
         </h1>
         <p className="body-text max-w-2xl mx-auto">
           Pilih topik pembelajaran di bawah ini untuk mulai belajar bangun ruang
-          sisi datar dengan pengalaman Augmented Reality.
+          sisi datar dengan pengalaman Simulasi 3D dan Augmented Reality.
         </p>
 
         <Button 

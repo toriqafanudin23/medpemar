@@ -159,7 +159,12 @@ const VolumeKubusPage = () => {
             <span className="inline-block bg-success/20 text-success px-2 py-1 rounded text-xs font-bold mb-2">Level 1: Mudah</span><br/>
             <b>Soal 1:</b> Sebuah kotak mainan berbentuk kubus memiliki panjang rusuk <MathInline>{`12 \\text{ cm}`}</MathInline>. Berapakah volume kotak mainan tersebut?
           </Paragraph>
-          <InputAnswer answerKey="1728" placeholder="Volume = ..." satuan="cm³" />
+          <InputAnswer 
+            answerKey="1728" 
+            placeholder="Volume = ..." 
+            satuan="cm³" 
+            explanation={<MathBlock>{`V = r^3 = 12^3 = 1.728 \\text{ cm}^3`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -167,7 +172,12 @@ const VolumeKubusPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 2: Sedang</span><br/>
             <b>Soal 2:</b> Sebuah akuarium berbentuk kubus dapat menampung air secara penuh sebanyak <MathInline>{`3.375 \\text{ cm}^3`}</MathInline>. Berapakah panjang rusuk akuarium tersebut?
           </Paragraph>
-          <InputAnswer answerKey="15" placeholder="Panjang rusuk = ..." satuan="cm" />
+          <InputAnswer 
+            answerKey="15" 
+            placeholder="Panjang rusuk = ..." 
+            satuan="cm" 
+            explanation={<MathBlock>{`V = r^3 \\\\ 3.375 = r^3 \\\\ r = \\sqrt[3]{3.375} = 15 \\text{ cm}`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -175,7 +185,17 @@ const VolumeKubusPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 3: Sedang</span><br/>
             <b>Soal 3:</b> Diketahui jumlah panjang seluruh rusuk sebuah kubus adalah <MathInline>{`108 \\text{ cm}`}</MathInline>. Berapakah volume dari kubus tersebut?
           </Paragraph>
-          <InputAnswer answerKey="729" placeholder="Volume = ..." satuan="cm³" />
+          <InputAnswer 
+            answerKey="729" 
+            placeholder="Volume = ..." 
+            satuan="cm³" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Sebuah kubus memiliki 12 rusuk yang sama panjang.</Paragraph>
+                <MathBlock>{`12 \\times r = 108 \\\\ r = 108 \\div 12 = 9 \\text{ cm} \\\\ V = r^3 = 9^3 = 729 \\text{ cm}^3`}</MathBlock>
+              </>
+            }
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -183,7 +203,12 @@ const VolumeKubusPage = () => {
             <span className="inline-block bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold mb-2">Level 4: Sulit</span><br/>
             <b>Soal 4:</b> Terdapat dua buah kubus. Kubus pertama memiliki panjang rusuk <MathInline>{`6 \\text{ cm}`}</MathInline> dan kubus kedua memiliki panjang rusuk <MathInline>{`10 \\text{ cm}`}</MathInline>. Berapakah selisih volume kedua kubus tersebut?
           </Paragraph>
-          <InputAnswer answerKey="784" placeholder="Selisih volume = ..." satuan="cm³" />
+          <InputAnswer 
+            answerKey="784" 
+            placeholder="Selisih volume = ..." 
+            satuan="cm³" 
+            explanation={<MathBlock>{`V_1 = 6^3 = 216 \\text{ cm}^3 \\\\ V_2 = 10^3 = 1.000 \\text{ cm}^3 \\\\ \\text{Selisih} = 1.000 - 216 = 784 \\text{ cm}^3`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -192,7 +217,21 @@ const VolumeKubusPage = () => {
             <b>Soal 5:</b> Sebuah bak mandi berbentuk kubus memiliki ukuran panjang rusuk bagian dalam <MathInline>{`80 \\text{ cm}`}</MathInline> dan sedang terisi air penuh. Jika Andi menggunakan air dari bak mandi tersebut sebanyak <MathInline>{`128.000 \\text{ cm}^3`}</MathInline>, berapakah tinggi sisa air di dalam bak mandi tersebut sekarang?
           </Paragraph>
           <ImageDisplay src="bakmandi60.png" scale={1} />
-          <InputAnswer answerKey="60" placeholder="Tinggi air sekarang = ..." satuan="cm" />
+          <InputAnswer 
+            answerKey="60" 
+            placeholder="Tinggi air sekarang = ..." 
+            satuan="cm" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Volume awal bak penuh:</Paragraph>
+                <MathBlock>{`V_{\\text{awal}} = 80^3 = 512.000 \\text{ cm}^3`}</MathBlock>
+                <Paragraph className="!mb-2">Volume sisa setelah dipakai:</Paragraph>
+                <MathBlock>{`V_{\\text{sisa}} = 512.000 - 128.000 = 384.000 \\text{ cm}^3`}</MathBlock>
+                <Paragraph className="!mb-2">Mencari tinggi air sekarang (<MathInline>{`t`}</MathInline>):</Paragraph>
+                <MathBlock>{`V_{\\text{sisa}} = \\text{Luas alas} \\times t \\\\ 384.000 = (80 \\times 80) \\times t \\\\ 384.000 = 6.400 \\times t \\\\ t = 384.000 \\div 6.400 = 60 \\text{ cm}`}</MathBlock>
+              </>
+            }
+          />
         </div>
       </div>
 

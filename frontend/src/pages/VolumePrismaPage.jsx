@@ -99,7 +99,12 @@ const VolumePrismaPage = () => {
             <span className="inline-block bg-success/20 text-success px-2 py-1 rounded text-xs font-bold mb-2">Level 1: Mudah</span><br/>
             <b>Soal 1:</b> Sebuah prisma memiliki alas berbentuk segitiga siku-siku dengan panjang alas <MathInline>{`3 \\text{ cm}`}</MathInline> dan tinggi segitiga <MathInline>{`4 \\text{ cm}`}</MathInline>. Jika tinggi prisma adalah <MathInline>{`10 \\text{ cm}`}</MathInline>, berapakah volume prisma tersebut?
           </Paragraph>
-          <InputAnswer answerKey="60" placeholder="Volume = ..." satuan="cm³" />
+          <InputAnswer 
+            answerKey="60" 
+            placeholder="Volume = ..." 
+            satuan="cm³" 
+            explanation={<MathBlock>{`V = \\text{Luas Alas} \\times t \\\\ V = \\left(\\frac{1}{2} \\times 3 \\times 4\\right) \\times 10 = 6 \\times 10 = 60 \\text{ cm}^3`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -107,7 +112,12 @@ const VolumePrismaPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 2: Sedang</span><br/>
             <b>Soal 2:</b> Sebuah prisma segiempat (balok) memiliki volume <MathInline>{`200 \\text{ cm}^3`}</MathInline>. Jika ukuran alas prisma tersebut adalah <MathInline>{`5 \\text{ cm} \\times 4 \\text{ cm}`}</MathInline>, berapakah tinggi prisma tersebut?
           </Paragraph>
-          <InputAnswer answerKey="10" placeholder="Tinggi = ..." satuan="cm" />
+          <InputAnswer 
+            answerKey="10" 
+            placeholder="Tinggi = ..." 
+            satuan="cm" 
+            explanation={<MathBlock>{`V = \\text{Luas Alas} \\times t \\\\ 200 = (5 \\times 4) \\times t \\\\ 200 = 20 \\times t \\\\ t = 200 \\div 20 = 10 \\text{ cm}`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -115,7 +125,12 @@ const VolumePrismaPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 3: Sedang</span><br/>
             <b>Soal 3:</b> Alas sebuah prisma berbentuk trapesium siku-siku dengan panjang sisi sejajar <MathInline>{`10 \\text{ cm}`}</MathInline> dan <MathInline>{`6 \\text{ cm}`}</MathInline>, serta tinggi trapesium <MathInline>{`4 \\text{ cm}`}</MathInline>. Jika tinggi prisma adalah <MathInline>{`15 \\text{ cm}`}</MathInline>, berapakah volume prisma tersebut?
           </Paragraph>
-          <InputAnswer answerKey="480" placeholder="Volume = ..." satuan="cm³" />
+          <InputAnswer 
+            answerKey="480" 
+            placeholder="Volume = ..." 
+            satuan="cm³" 
+            explanation={<MathBlock>{`\\text{Luas Alas} = \\frac{1}{2} \\times (10 + 6) \\times 4 = 32 \\text{ cm}^2 \\\\ V = \\text{Luas Alas} \\times t \\\\ V = 32 \\times 15 = 480 \\text{ cm}^3`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -123,7 +138,12 @@ const VolumePrismaPage = () => {
             <span className="inline-block bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold mb-2">Level 4: Sulit</span><br/>
             <b>Soal 4:</b> Sebuah tenda pramuka berbentuk prisma segitiga memiliki pintu masuk berupa segitiga dengan panjang alas <MathInline>{`2 \\text{ meter}`}</MathInline> dan tinggi <MathInline>{`1,5 \\text{ meter}`}</MathInline>. Jika panjang ke belakang tenda tersebut adalah <MathInline>{`3 \\text{ meter}`}</MathInline>, berapakah kapasitas ruang (volume) udara maksimal di dalam tenda tersebut?
           </Paragraph>
-          <InputAnswer answerKey="4.5" placeholder="Volume udara = ..." satuan="m³" />
+          <InputAnswer 
+            answerKey="4.5" 
+            placeholder="Volume udara = ..." 
+            satuan="m³" 
+            explanation={<MathBlock>{`V = \\text{Luas Alas} \\times t \\\\ V = \\left(\\frac{1}{2} \\times 2 \\times 1,5\\right) \\times 3 = 1,5 \\times 3 = 4,5 \\text{ m}^3`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -131,7 +151,19 @@ const VolumePrismaPage = () => {
             <span className="inline-block bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold mb-2">Level 5: HOTS</span><br/>
             <b>Soal 5:</b> Sebuah wadah cantik berbentuk prisma segienam beraturan memiliki luas alas <MathInline>{`120 \\text{ cm}^2`}</MathInline>. Saat ini, wadah tersebut hanya berisi air sepertiga <MathInline>{`(1/3)`}</MathInline> bagian dari kapasitas totalnya. Jika volume air di dalam wadah saat ini terukur sebanyak <MathInline>{`400 \\text{ cm}^3`}</MathInline>, berapakah tinggi wadah tersebut?
           </Paragraph>
-          <InputAnswer answerKey="10" placeholder="Tinggi wadah = ..." satuan="cm" />
+          <InputAnswer 
+            answerKey="10" 
+            placeholder="Tinggi wadah = ..." 
+            satuan="cm" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Volume terisi adalah sepertiga dari total:</Paragraph>
+                <MathBlock>{`\\frac{1}{3} V = 400 \\implies V = 400 \\times 3 = 1.200 \\text{ cm}^3`}</MathBlock>
+                <Paragraph className="!mb-2">Mencari tinggi wadah:</Paragraph>
+                <MathBlock>{`V = \\text{Luas Alas} \\times t \\\\ 1.200 = 120 \\times t \\\\ t = 1.200 \\div 120 = 10 \\text{ cm}`}</MathBlock>
+              </>
+            }
+          />
         </div>
       </div>
 

@@ -15,7 +15,7 @@ const LandingPage = () => {
     },
     {
       icon: <TbAugmentedReality className="w-8 h-8" />,
-      title: 'Augmented Reality',
+      title: 'Simulasi 3D & AR',
       description: 'Lihat bangun ruang di dunia nyata melalui kamera smartphone'
     },
     {
@@ -80,7 +80,7 @@ const LandingPage = () => {
                 </h1>
                 <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
                   Pelajari konsep volume dan luas permukaan bangun ruang dengan teknologi
-                  Augmented Reality dan visualisasi 3D yang interaktif.
+                  Simulasi 3D yang interaktif, serta dukungan fitur Augmented Reality (AR).
                 </p>
               </div>
 
@@ -216,7 +216,7 @@ const LandingPage = () => {
                     materi Bangun Ruang Sisi Datar yang meliputi Kubus, Balok, Prisma, dan Limas.
                   </p>
                   <p>
-                    Dengan memanfaatkan teknologi Augmented Reality (AR) dan visualisasi 3D,
+                    Dengan memanfaatkan Simulasi 3D yang dikembangkan menggunakan React.js dan Blender, serta dukungan fitur Augmented Reality (AR),
                     siswa dapat memahami konsep matematika dengan cara yang lebih menyenangkan dan interaktif.
                   </p>
                 </div>
@@ -301,7 +301,7 @@ const LandingPage = () => {
       <footer className="py-8 px-4 sm:px-6 lg:px-8 border-t border-border">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Media Pembelajaran AR - Bangun Ruang Sisi Datar.
+            © {new Date().getFullYear()} Media Pembelajaran Berbasis Simulasi 3D - Bangun Ruang Sisi Datar.
             Dibuat untuk Pendidikan Indonesia oleh <Link to="/developer-bio" className="text-primary hover:underline">Toriq Afanudin</Link>.
           </p>
         </div>

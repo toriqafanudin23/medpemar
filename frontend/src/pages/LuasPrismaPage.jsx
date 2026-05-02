@@ -104,7 +104,12 @@ const LuasPrismaPage = () => {
             <span className="inline-block bg-success/20 text-success px-2 py-1 rounded text-xs font-bold mb-2">Level 1: Mudah</span><br/>
             <b>Soal 1:</b> Sebuah prisma memiliki alas berbentuk segitiga siku-siku dengan panjang sisi penyiku <MathInline>{`3 \\text{ cm}`}</MathInline> dan <MathInline>{`4 \\text{ cm}`}</MathInline>, serta sisi miring <MathInline>{`5 \\text{ cm}`}</MathInline>. Jika tinggi prisma tersebut <MathInline>{`10 \\text{ cm}`}</MathInline>, berapakah luas permukaannya?
           </Paragraph>
-          <InputAnswer answerKey="132" placeholder="Luas = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="132" 
+            placeholder="Luas = ..." 
+            satuan="cm²" 
+            explanation={<MathBlock>{`\\text{Luas Alas} = \\frac{1}{2} \\times 3 \\times 4 = 6 \\text{ cm}^2 \\\\ \\text{Keliling Alas} = 3 + 4 + 5 = 12 \\text{ cm} \\\\ L = 2 \\times \\text{Luas Alas} + (\\text{Keliling} \\times t) \\\\ L = 2(6) + (12 \\times 10) = 12 + 120 = 132 \\text{ cm}^2`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -112,7 +117,12 @@ const LuasPrismaPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 2: Sedang</span><br/>
             <b>Soal 2:</b> Sebuah prisma alasnya berbentuk belah ketupat dengan panjang diagonal masing-masing <MathInline>{`12 \\text{ cm}`}</MathInline> dan <MathInline>{`16 \\text{ cm}`}</MathInline>. Panjang sisi belah ketupat tersebut adalah <MathInline>{`10 \\text{ cm}`}</MathInline>. Jika tinggi prisma adalah <MathInline>{`10 \\text{ cm}`}</MathInline>, berapakah luas permukaannya?
           </Paragraph>
-          <InputAnswer answerKey="592" placeholder="Luas = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="592" 
+            placeholder="Luas = ..." 
+            satuan="cm²" 
+            explanation={<MathBlock>{`\\text{Luas Alas} = \\frac{1}{2} \\times d_1 \\times d_2 = \\frac{1}{2} \\times 12 \\times 16 = 96 \\text{ cm}^2 \\\\ \\text{Keliling Alas} = 4 \\times s = 4 \\times 10 = 40 \\text{ cm} \\\\ L = 2 \\times \\text{Luas Alas} + (\\text{Keliling} \\times t) \\\\ L = 2(96) + (40 \\times 10) = 192 + 400 = 592 \\text{ cm}^2`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -120,7 +130,12 @@ const LuasPrismaPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 3: Sedang</span><br/>
             <b>Soal 3:</b> Alas sebuah prisma berbentuk persegi (balok) dengan panjang sisi alas <MathInline>{`5 \\text{ cm}`}</MathInline>. Jika tinggi prisma tersebut adalah <MathInline>{`8 \\text{ cm}`}</MathInline>, berapakah luas permukaannya?
           </Paragraph>
-          <InputAnswer answerKey="210" placeholder="Luas = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="210" 
+            placeholder="Luas = ..." 
+            satuan="cm²" 
+            explanation={<MathBlock>{`\\text{Luas Alas} = 5 \\times 5 = 25 \\text{ cm}^2 \\\\ \\text{Keliling Alas} = 4 \\times 5 = 20 \\text{ cm} \\\\ L = 2 \\times \\text{Luas Alas} + (\\text{Keliling} \\times t) \\\\ L = 2(25) + (20 \\times 8) = 50 + 160 = 210 \\text{ cm}^2`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -128,7 +143,12 @@ const LuasPrismaPage = () => {
             <span className="inline-block bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold mb-2">Level 4: Sulit</span><br/>
             <b>Soal 4:</b> Pak Budi membuat sebuah papan nama meja yang berbentuk prisma segitiga siku-siku dari karton utuh (tertutup di semua sisi). Sisi siku-siku alasnya <MathInline>{`6 \\text{ cm}`}</MathInline> dan <MathInline>{`8 \\text{ cm}`}</MathInline> (sisi miringnya <MathInline>{`10 \\text{ cm}`}</MathInline>). Panjang papan nama tersebut (<MathInline>{`\\text{tinggi prisma}`}</MathInline>) adalah <MathInline>{`20 \\text{ cm}`}</MathInline>. Berapakah luas minimal karton yang dibutuhkan Pak Budi?
           </Paragraph>
-          <InputAnswer answerKey="528" placeholder="Luas karton = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="528" 
+            placeholder="Luas karton = ..." 
+            satuan="cm²" 
+            explanation={<MathBlock>{`\\text{Luas Alas} = \\frac{1}{2} \\times 6 \\times 8 = 24 \\text{ cm}^2 \\\\ \\text{Keliling Alas} = 6 + 8 + 10 = 24 \\text{ cm} \\\\ L = 2 \\times \\text{Luas Alas} + (\\text{Keliling} \\times t) \\\\ L = 2(24) + (24 \\times 20) = 48 + 480 = 528 \\text{ cm}^2`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -136,7 +156,17 @@ const LuasPrismaPage = () => {
             <span className="inline-block bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold mb-2">Level 5: HOTS</span><br/>
             <b>Soal 5:</b> Sebuah tenda pramuka berbentuk prisma segitiga memiliki pintu masuk berupa segitiga sama kaki. Lebar pintu tenda di bagian bawah adalah <MathInline>{`3 \\text{ meter}`}</MathInline>, tinggi pintu <MathInline>{`2 \\text{ meter}`}</MathInline>, dan panjang kain atap miringnya (sisi miring segitiga) adalah <MathInline>{`2,5 \\text{ meter}`}</MathInline>. Panjang tenda ke belakang adalah <MathInline>{`4 \\text{ meter}`}</MathInline>. Jika alas tenda yang menyentuh tanah tidak menggunakan kain, berapakah luas total kain yang digunakan untuk membuat tenda tersebut? (petunjuk: hanya terdiri dari 2 segitiga depan-belakang dan 2 persegi panjang atap miring)
           </Paragraph>
-          <InputAnswer answerKey="26" placeholder="Luas kain = ..." satuan="m²" />
+          <InputAnswer 
+            answerKey="26" 
+            placeholder="Luas kain = ..." 
+            satuan="m²" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Luas kain hanya terdiri dari sisi depan-belakang dan atap miring (tanpa lantai):</Paragraph>
+                <MathBlock>{`L_{\\text{depan-belakang}} = 2 \\times \\left(\\frac{1}{2} \\times 3 \\times 2\\right) = 2 \\times 3 = 6 \\text{ m}^2 \\\\ L_{\\text{atap}} = 2 \\times (2,5 \\times 4) = 2 \\times 10 = 20 \\text{ m}^2 \\\\ L_{\\text{total}} = 6 + 20 = 26 \\text{ m}^2`}</MathBlock>
+              </>
+            }
+          />
         </div>
       </div>
 

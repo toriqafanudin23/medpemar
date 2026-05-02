@@ -110,7 +110,12 @@ const VolumeLimasPage = () => {
             <span className="inline-block bg-success/20 text-success px-2 py-1 rounded text-xs font-bold mb-2">Level 1: Mudah</span><br/>
             <b>Soal 1:</b> Sebuah limas memiliki alas berbentuk segiempat dengan luas <MathInline>{`100 \\text{ cm}^2`}</MathInline>. Jika tinggi limas tersebut adalah <MathInline>{`12 \\text{ cm}`}</MathInline>, berapakah volumenya?
           </Paragraph>
-          <InputAnswer answerKey="400" placeholder="Volume = ..." satuan="cm³" />
+          <InputAnswer 
+            answerKey="400" 
+            placeholder="Volume = ..." 
+            satuan="cm³" 
+            explanation={<MathBlock>{`V = \\frac{1}{3} \\times \\text{Luas Alas} \\times t \\\\ V = \\frac{1}{3} \\times 100 \\times 12 = 400 \\text{ cm}^3`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -118,7 +123,12 @@ const VolumeLimasPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 2: Sedang</span><br/>
             <b>Soal 2:</b> Sebuah limas dengan alas berbentuk persegi memiliki volume <MathInline>{`400 \\text{ cm}^3`}</MathInline>. Jika panjang sisi alasnya adalah <MathInline>{`10 \\text{ cm}`}</MathInline>, berapakah tinggi limas tersebut?
           </Paragraph>
-          <InputAnswer answerKey="12" placeholder="Tinggi = ..." satuan="cm" />
+          <InputAnswer 
+            answerKey="12" 
+            placeholder="Tinggi = ..." 
+            satuan="cm" 
+            explanation={<MathBlock>{`V = \\frac{1}{3} \\times \\text{Luas Alas} \\times t \\\\ 400 = \\frac{1}{3} \\times (10 \\times 10) \\times t \\\\ 400 = \\frac{100}{3} \\times t \\\\ t = \\frac{400 \\times 3}{100} = 12 \\text{ cm}`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -126,7 +136,12 @@ const VolumeLimasPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 3: Sedang</span><br/>
             <b>Soal 3:</b> Alas sebuah limas berbentuk segitiga siku-siku dengan panjang sisi penyikunya <MathInline>{`6 \\text{ cm}`}</MathInline> dan <MathInline>{`8 \\text{ cm}`}</MathInline>. Jika tinggi limas tersebut adalah <MathInline>{`15 \\text{ cm}`}</MathInline>, berapakah volumenya?
           </Paragraph>
-          <InputAnswer answerKey="120" placeholder="Volume = ..." satuan="cm³" />
+          <InputAnswer 
+            answerKey="120" 
+            placeholder="Volume = ..." 
+            satuan="cm³" 
+            explanation={<MathBlock>{`\\text{Luas Alas} = \\frac{1}{2} \\times 6 \\times 8 = 24 \\text{ cm}^2 \\\\ V = \\frac{1}{3} \\times \\text{Luas Alas} \\times t \\\\ V = \\frac{1}{3} \\times 24 \\times 15 = 8 \\times 15 = 120 \\text{ cm}^3`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -134,7 +149,12 @@ const VolumeLimasPage = () => {
             <span className="inline-block bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold mb-2">Level 4: Sulit</span><br/>
             <b>Soal 4:</b> Budi membuat miniatur piramida untuk tugas sekolah. Miniatur tersebut memiliki alas berbentuk persegi dengan panjang sisi <MathInline>{`15 \\text{ cm}`}</MathInline>. Jika miniatur piramida tersebut memiliki tinggi <MathInline>{`20 \\text{ cm}`}</MathInline>, berapakah taksiran volume ruang di dalam miniatur tersebut?
           </Paragraph>
-          <InputAnswer answerKey="1500" placeholder="Volume miniatur = ..." satuan="cm³" />
+          <InputAnswer 
+            answerKey="1500" 
+            placeholder="Volume miniatur = ..." 
+            satuan="cm³" 
+            explanation={<MathBlock>{`V = \\frac{1}{3} \\times \\text{Luas Alas} \\times t \\\\ V = \\frac{1}{3} \\times (15 \\times 15) \\times 20 \\\\ V = \\frac{1}{3} \\times 225 \\times 20 = 75 \\times 20 = 1.500 \\text{ cm}^3`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -142,7 +162,19 @@ const VolumeLimasPage = () => {
             <span className="inline-block bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold mb-2">Level 5: HOTS</span><br/>
             <b>Soal 5:</b> Ibu memiliki sebuah cetakan kue berbentuk limas segiempat dengan alas persegi (panjang sisi <MathInline>{`6 \\text{ cm}`}</MathInline>) dan tinggi cetakan <MathInline>{`10 \\text{ cm}`}</MathInline>. Jika ibu membuat adonan kue sebanyak <MathInline>{`1.200 \\text{ cm}^3`}</MathInline> dan seluruh adonan digunakan hingga habis tanpa sisa, berapa maksimal kue yang dapat dicetak oleh ibu?
           </Paragraph>
-          <InputAnswer answerKey="10" placeholder="Banyak kue = ..." satuan="buah" />
+          <InputAnswer 
+            answerKey="10" 
+            placeholder="Banyak kue = ..." 
+            satuan="buah" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Volume 1 kue:</Paragraph>
+                <MathBlock>{`V_{\\text{kue}} = \\frac{1}{3} \\times (6 \\times 6) \\times 10 = 120 \\text{ cm}^3`}</MathBlock>
+                <Paragraph className="!mb-2">Banyak kue yang dapat dibuat:</Paragraph>
+                <MathBlock>{`\\text{Jumlah kue} = 1.200 \\div 120 = 10 \\text{ buah}`}</MathBlock>
+              </>
+            }
+          />
         </div>
       </div>
 

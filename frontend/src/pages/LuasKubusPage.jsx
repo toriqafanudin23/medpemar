@@ -102,7 +102,12 @@ const LuasKubusPage = () => {
             <span className="inline-block bg-success/20 text-success px-2 py-1 rounded text-xs font-bold mb-2">Level 1: Mudah</span><br/>
             <b>Soal 1:</b> Sebuah kubus memiliki panjang rusuk <MathInline>{`5 \\text{ cm}`}</MathInline>. Berapakah luas permukaan kubus tersebut?
           </Paragraph>
-          <InputAnswer answerKey="150" placeholder="Luas permukaan = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="150" 
+            placeholder="Luas permukaan = ..." 
+            satuan="cm²" 
+            explanation={<MathBlock>{`L = 6 \\times r^2 \\\\ L = 6 \\times 5^2 = 6 \\times 25 = 150 \\text{ cm}^2`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -110,7 +115,12 @@ const LuasKubusPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 2: Sedang</span><br/>
             <b>Soal 2:</b> Diketahui sebuah kubus memiliki luas permukaan total sebesar <MathInline>{`600 \\text{ cm}^2`}</MathInline>. Berapakah panjang rusuk kubus tersebut?
           </Paragraph>
-          <InputAnswer answerKey="10" placeholder="Panjang rusuk = ..." satuan="cm" />
+          <InputAnswer 
+            answerKey="10" 
+            placeholder="Panjang rusuk = ..." 
+            satuan="cm" 
+            explanation={<MathBlock>{`L = 6 \\times r^2 \\\\ 600 = 6 \\times r^2 \\\\ r^2 = 600 \\div 6 = 100 \\\\ r = \\sqrt{100} = 10 \\text{ cm}`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -118,7 +128,17 @@ const LuasKubusPage = () => {
             <span className="inline-block bg-primary/20 text-primary px-2 py-1 rounded text-xs font-bold mb-2">Level 3: Sedang</span><br/>
             <b>Soal 3:</b> Anton membuat sebuah kotak berbentuk kubus tanpa tutup (hanya terdiri dari 5 sisi). Jika panjang rusuk kotak tersebut adalah <MathInline>{`8 \\text{ cm}`}</MathInline>, berapakah luas permukaannya?
           </Paragraph>
-          <InputAnswer answerKey="320" placeholder="Luas = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="320" 
+            placeholder="Luas = ..." 
+            satuan="cm²" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Kubus tanpa tutup hanya memiliki 5 buah sisi persegi.</Paragraph>
+                <MathBlock>{`L = 5 \\times r^2 \\\\ L = 5 \\times 8^2 = 5 \\times 64 = 320 \\text{ cm}^2`}</MathBlock>
+              </>
+            }
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -126,7 +146,12 @@ const LuasKubusPage = () => {
             <span className="inline-block bg-warning/20 text-warning px-2 py-1 rounded text-xs font-bold mb-2">Level 4: Sulit</span><br/>
             <b>Soal 4:</b> Budi ingin membungkus kado berbentuk kubus sempurna yang memiliki panjang rusuk <MathInline>{`20 \\text{ cm}`}</MathInline>. Berapakah luas kertas kado minimal yang dibutuhkan Budi untuk menutupi seluruh permukaan kado tersebut tanpa tumpang tindih?
           </Paragraph>
-          <InputAnswer answerKey="2400" placeholder="Luas kertas = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="2400" 
+            placeholder="Luas kertas = ..." 
+            satuan="cm²" 
+            explanation={<MathBlock>{`L = 6 \\times r^2 \\\\ L = 6 \\times 20^2 = 6 \\times 400 = 2.400 \\text{ cm}^2`}</MathBlock>}
+          />
         </div>
 
         <div className="bg-muted/30 p-5 rounded-xl border border-border shadow-sm">
@@ -134,7 +159,17 @@ const LuasKubusPage = () => {
             <span className="inline-block bg-destructive/20 text-destructive px-2 py-1 rounded text-xs font-bold mb-2">Level 5: HOTS</span><br/>
             <b>Soal 5:</b> Ayah membangun sebuah bak air berbentuk kubus tanpa tutup. Panjang rusuk <b>bagian dalam</b> bak tersebut adalah <MathInline>{`100 \\text{ cm}`}</MathInline>. Jika ayah ingin mengecat seluruh dinding bagian dalam beserta dasar bak air tersebut dengan cat pelapis anti bocor, berapakah luas area yang harus dicat?
           </Paragraph>
-          <InputAnswer answerKey="50000" placeholder="Luas area = ..." satuan="cm²" />
+          <InputAnswer 
+            answerKey="50000" 
+            placeholder="Luas area = ..." 
+            satuan="cm²" 
+            explanation={
+              <>
+                <Paragraph className="!mb-2">Bak tanpa tutup (hanya dinding dan alas) berarti terdiri dari 5 buah bidang persegi yang dicat.</Paragraph>
+                <MathBlock>{`L = 5 \\times r^2 \\\\ L = 5 \\times 100^2 = 5 \\times 10.000 = 50.000 \\text{ cm}^2`}</MathBlock>
+              </>
+            }
+          />
         </div>
       </div>
 

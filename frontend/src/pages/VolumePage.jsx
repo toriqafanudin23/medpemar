@@ -34,7 +34,7 @@ const VolumePage = () => {
 
       <Paragraph>
         Pilih salah satu bangun ruang di bawah ini untuk mulai mempelajari konsep volume 
-        dengan bantuan model 3D dan Augmented Reality.
+        dengan bantuan Simulasi 3D dan fitur Augmented Reality.
       </Paragraph>
 
       {/* Shape Grid */}

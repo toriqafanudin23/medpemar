@@ -26,7 +26,7 @@ const DeveloperBioPage = () => {
                             Toriq Afanudin
                         </h1>
                         <p className="text-lg text-muted-foreground">
-                            Pengembang Media Pembelajaran AR
+                            Pengembang Media Pembelajaran
                         </p>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ const DeveloperBioPage = () => {
                         <div className="space-y-4">
                             <h2 className="text-xl font-semibold text-foreground">Tentang Pengembang</h2>
                             <p className="text-muted-foreground leading-relaxed">
-                                Halo! Saya adalah pengembang dibalik media pembelajaran berbasis Augmented Reality ini.
+                                Halo! Saya adalah pengembang di balik media pembelajaran berbasis Simulasi 3D dan Augmented Reality ini.
                                 Fokus utama saya adalah menciptakan pengalaman belajar yang interaktif dan menyenangkan melalui teknologi web modern.
                                 Aplikasi ini dikembangkan sebagai bagian dari skripsi untuk membantu siswa SMP memahami konsep Bangun Ruang Sisi Datar.
                             </p>
