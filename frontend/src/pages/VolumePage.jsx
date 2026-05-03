@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
 import { SHAPES } from '@/constants/content';
 import ShapeCard from '@/components/ui/ShapeCard';
-import { Heading1, Paragraph } from '@/components/ui/Typography';
+import { Heading1, Heading2, Paragraph } from '@/components/ui/Typography';
 import NavFooter from '@/components/layout/NavFooter';
 import { TbCube } from 'react-icons/tb';
 import { FiBox, FiTriangle, FiSquare } from 'react-icons/fi';
@@ -26,8 +26,16 @@ const VolumePage = () => {
     <div className="animate-fade-in">
       <Heading1 className="text-center">Volume Bangun Ruang</Heading1>
       
-      <Paragraph className="text-center text-muted-foreground !mb-8">
-        Pilih salah satu bangun ruang di bawah ini untuk mulai mempelajari materi volume!
+      <div className="bg-primary/5 border border-primary/20 p-5 rounded-xl mb-8 mt-6">
+        <h3 className="font-semibold text-primary mb-2 text-lg">Definisi Volume</h3>
+        <Paragraph className="!mb-0 text-foreground">
+          <b>Volume</b> (atau kapasitas) adalah ukuran yang menyatakan seberapa banyak ruang yang dapat ditempati dalam suatu objek tiga dimensi. Pada bangun ruang, volume menunjukkan kapasitas atau isi maksimal yang dapat ditampung oleh bangun tersebut.
+        </Paragraph>
+      </div>
+
+      <Heading2>Pilih Materi Volume</Heading2>
+      <Paragraph className="text-muted-foreground mb-6">
+        Pilih salah satu bangun ruang di bawah ini untuk mulai mempelajari materi dan rumusnya!
       </Paragraph>
 
       {/* Shape Grid */}
