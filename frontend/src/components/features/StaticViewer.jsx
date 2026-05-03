@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2, FiPlay, FiPause, FiRotateCcw, FiZoomIn, FiZoomOut, FiMove } from 'react-icons/fi';
+import { FiChevronLeft, FiChevronRight, FiMaximize2, FiMinimize2, FiPlay, FiPause, FiSkipBack, FiZoomIn, FiZoomOut, FiMove, FiRotateCw } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube } from 'react-icons/tb';
 import { URL_ANIM } from '@/constants/urls';
 
@@ -39,6 +39,7 @@ const StaticViewer = ({
   const [hasAnimation, setHasAnimation] = useState(false);
   const [error, setError] = useState(null);
   const [isPanMode, setIsPanMode] = useState(false);
+  const [isAutoRotate, setIsAutoRotate] = useState(false);
 
   const currentModelUrl = models.length > 0 
     ? (models[currentIndex].startsWith('http') ? models[currentIndex] : URL_ANIM + models[currentIndex])
@@ -347,6 +348,13 @@ const StaticViewer = ({
 
   // Reset animation
   const handleReset = () => {
+    // Reset camera position
+    if (cameraRef.current && controlsRef.current) {
+      cameraRef.current.position.set(5, 5, 5);
+      controlsRef.current.target.set(0, 0, 0);
+      controlsRef.current.update();
+    }
+
     if (!mixerRef.current || actionsRef.current.length === 0) return;
 
     actionsRef.current.forEach(action => {
@@ -356,6 +364,15 @@ const StaticViewer = ({
     setIsPlaying(false);
     
 
+  };
+
+  // Toggle auto-rotate
+  const toggleAutoRotate = () => {
+    if (!controlsRef.current) return;
+    const newAutoRotate = !isAutoRotate;
+    setIsAutoRotate(newAutoRotate);
+    controlsRef.current.autoRotate = newAutoRotate;
+    controlsRef.current.autoRotateSpeed = 2.0;
   };
 
   const handleNext = () => {
@@ -555,9 +572,9 @@ const StaticViewer = ({
             <button 
               onClick={handleReset} 
               className="viewer-button" 
-              title="Reset Animasi"
+              title="Reset Animasi & Tampilan"
             >
-              <FiRotateCcw className="w-5 h-5" />
+              <FiSkipBack className="w-5 h-5" />
             </button>
             <button 
               onClick={handlePlayPause} 
@@ -585,6 +602,13 @@ const StaticViewer = ({
               title="Zoom Out"
             >
               <FiZoomOut className="w-5 h-5" />
+            </button>
+            <button 
+              onClick={toggleAutoRotate} 
+              className={`viewer-button ${isAutoRotate ? 'bg-primary text-primary-foreground' : ''}`}
+              title={isAutoRotate ? 'Hentikan Putaran' : 'Putar Otomatis'}
+            >
+              <FiRotateCw className="w-5 h-5" />
             </button>
             <button 
               onClick={togglePanMode} 

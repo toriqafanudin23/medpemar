@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useApp } from '@/context/AppContext';
 import { Heading1, Heading2, Paragraph, HighlightBox } from '@/components/ui/Typography';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import NavFooter from '@/components/layout/NavFooter';
-import { FiSmartphone, FiMonitor, FiRotateCw, FiMaximize, FiZoomIn, FiZoomOut, FiCamera, FiMove, FiPlay, FiPause, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FiSmartphone, FiMonitor, FiRotateCw, FiMaximize, FiZoomIn, FiZoomOut, FiCamera, FiMove, FiPlay, FiPause, FiChevronLeft, FiChevronRight, FiDownload } from 'react-icons/fi';
 import { TbAugmentedReality, TbCube, TbCube3dSphere, TbRotateClockwise } from 'react-icons/tb';
 
 const GuidePage = () => {
@@ -107,11 +108,25 @@ const GuidePage = () => {
 
       <Heading2>Tips Penggunaan AR</Heading2>
 
-      <div className="space-y-2">
+      <div className="space-y-2 mb-8">
         <Paragraph>1. Pastikan ruangan memiliki pencahayaan yang cukup</Paragraph>
         <Paragraph>2. Arahkan kamera ke permukaan datar seperti meja atau lantai</Paragraph>
         <Paragraph>3. Gerakkan kamera perlahan agar objek dapat terdeteksi</Paragraph>
         <Paragraph>4. Jaga jarak yang cukup antara kamera dengan objek AR</Paragraph>
+      </div>
+
+      <Heading2>Marker / Barcode AR</Heading2>
+      <Paragraph className="mb-4">
+        Media pembelajaran ini menggunakan sistem pelacakan marker untuk memunculkan objek 3D pada mode Augmented Reality. Silakan unduh dan cetak barcode berikut untuk digunakan saat mode AR aktif.
+      </Paragraph>
+      
+      <div className="mb-8">
+        <Button asChild className="w-fit flex items-center gap-2">
+          <a href="/barcode.png" download="Barcode_AR_Bangun_Ruang.png">
+            <FiDownload className="w-4 h-4" />
+            Unduh Barcode
+          </a>
+        </Button>
       </div>
 
       <NavFooter prev="/home" />
