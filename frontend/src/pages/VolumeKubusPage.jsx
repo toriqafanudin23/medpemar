@@ -8,6 +8,7 @@ import InputAnswer from '@/components/ui/InputAnswer';
 import NavFooter from '@/components/layout/NavFooter';
 import { Button } from '@/components/ui/button';
 import { AR_URLS, MODELS, URL_ANIM } from '@/constants/urls';
+import ARInfoModal from '@/components/ui/ARInfoModal';
 
 const VolumeKubusPage = () => {
   const { setPageNumber } = useApp();
@@ -20,6 +21,7 @@ const VolumeKubusPage = () => {
 
   return (
     <div className="max-w-3xl mx-auto animate-fade-in space-y-6 pb-8">
+      <ARInfoModal />
       <div>
         <Heading1>Volume Bangun Ruang Sisi Datar</Heading1>
         <Heading2>A. Volume Kubus</Heading2>

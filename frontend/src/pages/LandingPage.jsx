@@ -40,17 +40,17 @@ const LandingPage = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-primary border-b border-primary/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center gap-4">
               <img src="/logo-uad-1.png" alt="Logo UAD" className="h-12 sm:h-14 w-auto object-contain drop-shadow-sm" />
-              <div className="flex flex-col border-l-2 border-primary/30 pl-4 py-0.5">
-                <span className="text-sm sm:text-base font-bold text-foreground tracking-wide leading-tight">Universitas Ahmad Dahlan</span>
-                <span className="text-xs sm:text-sm text-muted-foreground font-medium">Pendidikan Matematika</span>
+              <div className="flex flex-col border-l-2 border-white/30 pl-4 py-0.5">
+                <span className="text-sm sm:text-base font-bold text-white tracking-wide leading-tight">Universitas Ahmad Dahlan</span>
+                <span className="text-xs sm:text-sm text-primary-foreground/70 font-medium">Pendidikan Matematika</span>
               </div>
             </div>
-            <Button asChild className="hidden sm:flex">
+            <Button asChild variant="secondary" className="hidden sm:flex">
               <Link to="/home" className="gap-2">
                 Mulai Belajar <FiArrowRight className="w-4 h-4" />
               </Link>

@@ -28,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
+    <header className="sticky top-0 z-50 w-full border-b border-primary/30 bg-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Left section - Logo and Back button */}
@@ -38,18 +38,18 @@ const Header = () => {
                 variant="ghost"
                 size="icon"
                 onClick={handleBack}
-                className="h-9 w-9 text-muted-foreground hover:text-foreground"
+                className="h-9 w-9 text-primary-foreground/80 hover:text-primary-foreground hover:bg-white/10"
               >
                 <FiArrowLeft className="h-5 w-5" />
               </Button>
             )}
             <Link to="/home" className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-sm">
-                <TbCube className="w-6 h-6 text-primary-foreground" />
+              <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center shadow-sm">
+                <TbCube className="w-6 h-6 text-white" />
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-lg font-bold text-foreground font-display">Bangun Ruang</h1>
-                <p className="text-xs text-muted-foreground">Berbasis Simulasi 3D</p>
+                <h1 className="text-lg font-bold text-white font-display">Bangun Ruang</h1>
+                <p className="text-xs text-primary-foreground/70">Berbasis Simulasi 3D</p>
               </div>
             </Link>
           </div>
@@ -62,8 +62,8 @@ const Header = () => {
                 to={item.path}
                 className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                   isActive(item.path)
-                    ? 'bg-primary/10 text-primary'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted'
+                    ? 'bg-white/20 text-white'
+                    : 'text-primary-foreground/80 hover:text-white hover:bg-white/10'
                 }`}
               >
                 {item.label}
@@ -75,9 +75,9 @@ const Header = () => {
           <div className="flex items-center gap-2">
             {/* Page number indicator */}
             {pageNumber && (
-              <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-muted rounded-lg">
-                <span className="text-xs text-muted-foreground">Halaman</span>
-                <span className="text-sm font-semibold text-primary">{pageNumber}</span>
+              <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-white/15 rounded-lg">
+                <span className="text-xs text-primary-foreground/70">Halaman</span>
+                <span className="text-sm font-semibold text-white">{pageNumber}</span>
               </div>
             )}
 
@@ -86,19 +86,19 @@ const Header = () => {
               variant="ghost"
               size="icon"
               onClick={toggleDarkMode}
-              className="h-9 w-9"
+              className="h-9 w-9 text-primary-foreground/80 hover:text-white hover:bg-white/10"
             >
               {isDarkMode ? (
-                <FiSun className="h-5 w-5 text-muted-foreground" />
+                <FiSun className="h-5 w-5" />
               ) : (
-                <FiMoon className="h-5 w-5 text-muted-foreground" />
+                <FiMoon className="h-5 w-5" />
               )}
             </Button>
 
             {/* Mobile menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className="lg:hidden h-9 w-9">
+                <Button variant="ghost" size="icon" className="lg:hidden h-9 w-9 text-primary-foreground/80 hover:text-white hover:bg-white/10">
                   <FiMenu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
