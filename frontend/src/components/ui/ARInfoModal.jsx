@@ -87,15 +87,15 @@ const ARInfoModal = () => {
         </div>
 
         {/* Actions */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          <Button asChild variant="outline" className="flex-1 gap-2" size="sm">
+        <div className="flex flex-col gap-3">
+          <Button onClick={handleClose} className="w-full h-12 text-base font-semibold">
+            Mengerti!
+          </Button>
+          <Button asChild variant="outline" className="w-full h-12 text-base gap-2">
             <a href="/barcode.png" download="Barcode_AR_Bangun_Ruang.png">
-              <FiDownload className="w-4 h-4" />
+              <FiDownload className="w-5 h-5" />
               Unduh Barcode
             </a>
-          </Button>
-          <Button onClick={handleClose} className="flex-1" size="sm">
-            Mengerti!
           </Button>
         </div>
       </div>
