@@ -42,12 +42,13 @@ const LandingPage = () => {
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-md border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
-                <TbCube className="w-6 h-6 text-primary-foreground" />
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center gap-4">
+              <img src="/logo-uad-1.png" alt="Logo UAD" className="h-12 sm:h-14 w-auto object-contain drop-shadow-sm" />
+              <div className="flex flex-col border-l-2 border-primary/30 pl-4 py-0.5">
+                <span className="text-sm sm:text-base font-bold text-foreground tracking-wide leading-tight">Universitas Ahmad Dahlan</span>
+                <span className="text-xs sm:text-sm text-muted-foreground font-medium">Pendidikan Matematika</span>
               </div>
-              <span className="font-bold text-lg text-foreground font-display">Bangun Ruang AR</span>
             </div>
             <Button asChild className="hidden sm:flex">
               <Link to="/home" className="gap-2">
