@@ -23,7 +23,7 @@ const LuasLimasPage = () => {
       </div>
 
       <Heading3>Jaring-jaring Limas</Heading3>
-      <Paragraph>Sama seperti bangun ruang lainnya, limas juga memiliki jaring-jaring yang jika dilipat akan membentuk limas utuh. Limas terdiri dari satu buah bidang alas (segi-n) dan sisi-sisi tegak yang semuanya berbentuk segitiga yang saling bertemu di satu titik puncak. Perhatikan simulasi jaring-jaring limas pada <MathInline>{`\\text{Objek 9}`}</MathInline> berikut!</Paragraph>
+      <Paragraph>Sama seperti bangun ruang lainnya, limas juga memiliki jaring-jaring yang jika dilipat akan membentuk limas utuh. Limas terdiri dari satu buah bidang alas (segi-n) dan sisi-sisi tegak yang semuanya berbentuk segitiga yang saling bertemu di satu titik puncak. Perhatikan simulasi jaring-jaring limas pada Objek 9 berikut!</Paragraph>
 
       <Viewer3D
         modelPath={MODELS.JARING_LIMAS}
@@ -33,17 +33,17 @@ const LuasLimasPage = () => {
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <ImageDisplay src="jaringlimassegi4.png" scale={1} nama="Gambar 25. Jaring-jaring Limas Segiempat" />
-        <ImageDisplay src="jaringlimassegi3.png" scale={1} nama="Gambar 26. Jaring-jaring Limas Segitiga" />
+        <ImageDisplay src="jaringlimassegi4.png" scale={1} nama="Gambar 27. Jaring-jaring Limas Segiempat" />
+        <ImageDisplay src="jaringlimassegi3.png" scale={1} nama="Gambar 28. Jaring-jaring Limas Segitiga" />
       </div>
 
       <Paragraph>Coba perhatikan baik-baik bentuk segitiga pada sisi-sisi tegak limas. Jika alas limas berbentuk poligon beraturan (misal: persegi atau segitiga sama sisi) dan puncak limas tepat berada di tengah, maka semua segitiga tegaknya akan memiliki ukuran yang sama persis (kongruen).</Paragraph>
 
       <Heading3>Menghitung Luas Permukaan Limas</Heading3>
       <Paragraph>Mencari luas permukaan limas pada dasarnya adalah menjumlahkan luas alas dengan luas seluruh sisi tegak (selimut) limas tersebut.</Paragraph>
-      <ImageDisplay src="jaringlimassegi4.png" nama="Gambar 27. Ilustrasi Luas Permukaan Limas" />
+      <ImageDisplay src="jaringlimassegi4.png" nama="Gambar 29. Ilustrasi Luas Permukaan Limas" />
       
-      <Paragraph>Berdasarkan <MathInline>{`\\text{Gambar 27}`}</MathInline>, luas permukaan limas dirumuskan sebagai berikut:</Paragraph>
+      <Paragraph>Berdasarkan Gambar 29, luas permukaan limas dirumuskan sebagai berikut:</Paragraph>
       
       <HighlightBox variant="formula">
         <p className="text-foreground font-medium mb-2">Rumus Luas Permukaan Limas:</p>

@@ -32,7 +32,7 @@ const VolumeKubusPage = () => {
       <Heading3>Menghitung Kubus Satuan</Heading3>
       <Paragraph>
         Pernahkah kamu bermain rubik? Rubik merupakan permainan <i>puzzle</i> warna berbentuk kubus
-        dengan ukuran tertentu. Rubik adalah objek paling sederhana yang dapat digunakan untuk menjelaskan konsep volume bangun kubus. Perhatikan <MathInline>{`\\text{Gambar 1}`}</MathInline>! Jika rubik pada <MathInline>{`\\text{Gambar 1}`}</MathInline> tersusun dari kubus-kubus satuan,
+        dengan ukuran tertentu. Rubik adalah objek paling sederhana yang dapat digunakan untuk menjelaskan konsep volume bangun kubus. Perhatikan Gambar 1! Jika rubik pada Gambar 1 tersusun dari kubus-kubus satuan,
         berapakah banyak kubus satuan yang menyusun rubik tersebut?
       </Paragraph>
 
@@ -50,10 +50,10 @@ const VolumeKubusPage = () => {
       />   
 
       <Paragraph>Setelah selesai menghitung banyak kubus satuan pada rubik tersebut, masukkan jawabanmu pada kolom berikut: </Paragraph>
-      <InputAnswer answerKey="27" placeholder="Masukkan jawaban..." satuan="kubus" />
+      <InputAnswer answerKey="27" placeholder="..." satuan="kubus satuan" />
 
       <Paragraph>
-        Selanjutnya, mari kita hitung banyak kubus satuan pada <MathInline>{`\\text{Objek 2}`}</MathInline>, di mana ukuran kubusnya adalah <MathInline>{`2 \\times 2 \\times 2.`}</MathInline>
+        Selanjutnya, mari kita hitung banyak kubus satuan pada Objek 2, di mana ukuran kubusnya adalah <MathInline>{`2 \\times 2 \\times 2.`}</MathInline>
       </Paragraph>
 
       <Viewer3D
@@ -66,40 +66,40 @@ const VolumeKubusPage = () => {
       />
 
       <Paragraph>Masukkan jumlah kubus satuan pada kubus <MathInline>{`2 \\times 2 \\times 2`}</MathInline>:</Paragraph>
-      <InputAnswer answerKey="8" placeholder="Masukkan jawaban..." satuan="kubus" />
+      <InputAnswer answerKey="8" placeholder="..." satuan="kubus satuan" />
 
       <Paragraph>
-        Wah, sepertinya kamu sudah mulai mahir! Sekarang coba kamu hitung banyak kubus satuan yang menyusun rubik pada <MathInline>{`\\text{Gambar 2}`}</MathInline>, yaitu rubik dengan ukuran <MathInline>{`4 \\times 4 \\times 4.`}</MathInline>
+        Wah, sepertinya kamu sudah mulai mahir! Sekarang coba kamu hitung banyak kubus satuan yang menyusun rubik pada Gambar 2, yaitu rubik dengan ukuran <MathInline>{`4 \\times 4 \\times 4.`}</MathInline>
       </Paragraph>
 
       <ImageDisplay src="rubik4444.png" nama="Gambar 2. Kubus" scale={1}/>
 
-      <Paragraph>Jumlah kubus satuan pada <MathInline>{`\\text{Gambar 2}`}</MathInline>:</Paragraph>
-      <InputAnswer answerKey="64" placeholder="Masukkan jawaban..." satuan="kubus" />
+      <Paragraph>Jumlah kubus satuan pada Gambar 2:</Paragraph>
+      <InputAnswer answerKey="64" placeholder="..." satuan="kubus satuan" />
 
       <Paragraph>
         Dari perhitungan yang telah kamu lakukan, dapat disimpulkan bahwa kubus yang tersusun
         dari 27 kubus satuan memiliki volume sebesar 27 satuan kubik. Sementara itu,
-        kubus yang tersusun dari 64 kubus satuan memiliki volume sebesar 64 satuan kubik. Dengan demikian, <b>banyaknya kubus satuan penyusun suatu kubus merupakan representasi dari volume kubus itu sendiri.</b>
+        kubus yang tersusun dari 64 kubus satuan memiliki volume sebesar 64 satuan kubik. Dengan demikian, <b>banyaknya kubus satuan yang menyusun suatu kubus menunjukan volume kubus tersebut.</b>
       </Paragraph>
 
       <Heading3>Menghitung Volume Berdasarkan Panjang Rusuk</Heading3>
 
-      <Paragraph>Sebelumnya kamu telah memahami konsep volume kubus dengan menghitung jumlah kubus satuannya. Namun, bagaimana jika kubus tersebut tidak terbentuk dari kubus satuan dan memiliki ukuran panjang tertentu, seperti sentimeter, milimeter, atau desimeter? Perhatikan <MathInline>{`\\text{Gambar 3}`}</MathInline>, yaitu kubus dengan ukuran rusuk <MathInline>{`\\text{1 cm}.`}</MathInline></Paragraph>
+      <Paragraph>Sebelumnya kamu telah memahami konsep volume kubus dengan menghitung jumlah kubus-kubus satuannya. Namun, bagaimana jika kubus tersebut tidak ditampilkan sebagai kumpulan kubus satuan, melainkan memiliki panjang rusuk tertentu, seperti 1 cm, 1 mm, atau 1 dm? Perhatikan Gambar 3, yaitu kubus dengan panjang rusuk <MathInline>{`\\text{1 cm}.`}</MathInline></Paragraph>
 
       <ImageDisplay src="1cm.png" nama="Gambar 3. Kubus rusuk 1 cm" scale={1} />
 
       <Paragraph>
-        Pada <MathInline>{`\\text{Gambar 3}`}</MathInline>, volume kubus dapat dihitung dengan cara <MathBlock>{`V = \\text{1 cm} \\times \\text{1 cm} \\times \\text{1 cm} = \\text{1 cm}^3.`}</MathBlock>Sedangkan pada <MathInline>{`\\text{Gambar 4}`}</MathInline>, volume kubus dapat dicari dengan cara <MathBlock>{`V = \\text{2 cm} \\times \\text{2 cm} \\times \\text{2 cm} = \\text{8 cm}^3.`}</MathBlock>
+        Pada Gambar 3, volume kubus dapat dihitung dengan cara <MathBlock>{`V = \\text{1 cm} \\times \\text{1 cm} \\times \\text{1 cm} = \\text{1 cm}^3.`}</MathBlock>Sedangkan pada Gambar 4, volume kubus dapat dicari dengan cara <MathBlock>{`V = \\text{2 cm} \\times \\text{2 cm} \\times \\text{2 cm} = \\text{8 cm}^3.`}</MathBlock>
       </Paragraph>
 
       <ImageDisplay src="2cm.png" nama="Gambar 4. Kubus rusuk 2 cm" scale={1} />
       
-      <Paragraph>Sebagai latihan, cobalah hitung volume kubus pada <MathInline>{`\\text{Gambar 5}`}</MathInline> berikut ini.</Paragraph>
+      <Paragraph>Sebagai latihan, cobalah hitung volume kubus pada Gambar 5 berikut ini.</Paragraph>
       
       <ImageDisplay src="9cm.png" nama="Gambar 5. Kubus rusuk 9 cm" scale={1} />
       
-      <Paragraph>Volume kubus pada <MathInline>{`\\text{Gambar 5}`}</MathInline>:</Paragraph>
+      <Paragraph>Volume kubus pada Gambar 5:</Paragraph>
       <InputAnswer answerKey="729" placeholder="Volume kubus = ..." satuan="cm³" />
       
       <Paragraph>Secara umum, jika sebuah kubus memiliki panjang rusuk <MathInline>{`r,`}</MathInline> maka volumenya dapat dihitung dengan rumus:</Paragraph>

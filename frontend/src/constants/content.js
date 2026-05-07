@@ -33,7 +33,7 @@ export const SHAPES = [
   {
     id: 'prisma',
     name: 'Prisma',
-    description: 'Bangun ruang yang memiliki dua alas berbentuk segi-n yang kongruen dan sejajar yang dihubungkan oleh sisi-sisi tegak berbentuk persegi panjang.',
+    description: 'Prisma adalah bangun ruang yang memiliki dua bidang sejajar dan kongruen sebagai alas dan tutup, serta sisi-sisi tegak yang menghubungkan keduanya berbentuk jajar genjang.',
     formula: {
       volume: 'V = \\text{Luas alas} \\times \\text{tinggi}',
       surface: 'L = 2 \\times \\text{Luas alas} + \\text{Keliling alas} \\times \\text{tinggi}'

@@ -25,10 +25,11 @@ const LuasKubusPage = () => {
       <ImageDisplay src="kardus-img.png" nama="Gambar 18. Kardus" />
 
       <Heading3>Jaring-jaring Kubus</Heading3>
+      <Paragraph>Perhatikan kardus pada Gambar 18. Kardus tersebut berbentuk kubus. Untuk menghitung luas permukaan kubus, kita perlu mengetahui luas seluruh sisinya. Salah satu cara untuk melihat semua sisi kubus adalah dengan membukanya menjadi jaring-jaring kubus.</Paragraph>
       <Paragraph>Jaring-jaring adalah gabungan bangun datar (seperti persegi, persegi panjang, segitiga) yang menyusun
         sebuah bangun ruang. Jika sisi-sisi bangun ruang direntangkan atau "dibuka" pada rusuk-rusuknya, akan terlihat rangkaian
         bidang datar yang membentuk jaring-jaring tersebut. Misalnya pada kubus, enam buah persegi yang disusun
-        secara tepat akan membentuk sebuah jaring-jaring kubus. Perhatikan beberapa variasi jaring-jaring kubus pada simulasi <MathInline>{`\\text{Objek 6}`}</MathInline> berikut.</Paragraph>
+        secara tepat akan membentuk sebuah jaring-jaring kubus. Perhatikan beberapa variasi jaring-jaring kubus pada simulasi Objek 6 berikut.</Paragraph>
 
       <StaticViewer
         models={MODEL_ARRAYS.JARING_KUBUS}

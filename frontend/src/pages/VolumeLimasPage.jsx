@@ -26,7 +26,7 @@ const VolumeLimasPage = () => {
       <ImageDisplay src="bangunanlimas.webp" scale={1} nama="Gambar 13. Bangunan Berbentuk Limas" />
       
       <Heading3>Jenis-jenis Limas</Heading3>
-      <Paragraph>Limas adalah bangun ruang yang dibatasi oleh alas berbentuk segi-n (segitiga, segiempat, segilima, dll) dan sisi-sisi tegak berbentuk segitiga yang semuanya bertemu pada satu titik puncak. Coba perhatikan beberapa jenis limas pada <MathInline>{`\\text{Objek 4}`}</MathInline> berikut ini.</Paragraph>
+      <Paragraph>Limas adalah bangun ruang yang dibatasi oleh alas berbentuk segi-n (segitiga, segiempat, segilima, dll) dan sisi-sisi tegak berbentuk segitiga yang semuanya bertemu pada satu titik puncak. Coba perhatikan beberapa jenis limas pada Objek 4 berikut ini.</Paragraph>
 
       <StaticViewer
         models={MODEL_ARRAYS.LIMAS_TYPES}
@@ -40,11 +40,11 @@ const VolumeLimasPage = () => {
         <ImageDisplay src="limassegilima.png" scale={1} nama="Gambar 16. Limas Segilima" />
       </div>
 
-      <Paragraph>Dari jenis-jenis limas di atas, semuanya memiliki kesamaan yaitu titik puncaknya berada di tengah tepat di atas pusat alas. Namun, apakah titik puncak limas selalu berada di tengah? Bagaimana dengan bangun pada <MathInline>{`\\text{Gambar 17}`}</MathInline>, apakah tetap bisa disebut sebagai limas? Pada bangun tersebut diketahui <MathInline>{`\\angle BAT = \\angle DAT = 90^{\\circ}`}</MathInline>.</Paragraph>
+      <Paragraph>Dari jenis-jenis limas di atas, semuanya memiliki kesamaan yaitu titik puncaknya berada di tengah tepat di atas pusat alas. Namun, apakah titik puncak limas selalu berada di tengah? Bagaimana dengan bangun pada Gambar 17, apakah tetap bisa disebut sebagai limas? Pada bangun tersebut diketahui <MathInline>{`\\angle BAT = \\angle DAT = 90^{\\circ}`}</MathInline>.</Paragraph>
       <ImageDisplay src="limasaneh.png" scale={1} nama="Gambar 17. Limas dengan Puncak di Sudut" />
 
       <Heading3>Simulasi Volume Limas</Heading3>
-      <Paragraph>Volume limas tentu berbeda dengan volume prisma atau balok yang telah kamu pelajari sebelumnya, karena limas tidak memiliki tutup yang kongruen dengan alasnya. Limas meruncing ke satu titik puncak. Untuk memahami darimana rumus volume limas berasal, perhatikanlah simulasi pada <MathInline>{`\\text{Objek 5}`}</MathInline> berikut.</Paragraph>
+      <Paragraph>Volume limas tentu berbeda dengan volume prisma atau balok yang telah kamu pelajari sebelumnya, karena limas tidak memiliki tutup yang kongruen dengan alasnya. Limas meruncing ke satu titik puncak. Untuk memahami darimana rumus volume limas berasal, perhatikanlah simulasi pada Objek 5 berikut.</Paragraph>
 
       <Viewer3D
         modelPath={MODELS.LIMAS_VOLUME_SCENE}

@@ -23,7 +23,7 @@ const VolumePrismaPage = () => {
       </div>
 
       <Heading3>Prisma dan Jenis-jenisnya</Heading3>
-      <Paragraph>Prisma adalah bangun ruang yang memiliki dua sisi yang kongruen dan sejajar (sebagai alas dan tutup), serta sisi-sisi tegak yang berbentuk persegi panjang. Kamu dapat melihat beberapa contoh prisma pada simulasi <MathInline>{`\\text{Objek 3}`}</MathInline> berikut.</Paragraph>
+      <Paragraph>Prisma adalah bangun ruang yang memiliki dua bidang sejajar dan kongruen sebagai alas dan tutup, serta sisi-sisi tegak yang menghubungkan keduanya berbentuk jajar genjang. Kamu dapat melihat beberapa contoh prisma pada simulasi Objek 3 berikut.</Paragraph>
 
       <StaticViewer
         models={MODEL_ARRAYS.PRISMA_TYPES}
@@ -38,7 +38,7 @@ const VolumePrismaPage = () => {
         <ImageDisplay src="prismasegi8.png" scale={1} nama="Gambar 11. Prisma Segidelapan" />
       </div>
 
-      <Paragraph>Tentu masih banyak jenis prisma lainnya. Bayangkan setiap bangun yang memiliki alas dan tutup yang sama bentuknya, kemudian dihubungkan oleh sisi-sisi tegak berbentuk persegi panjang, maka bangun tersebut bisa kita sebut sebagai prisma. Nah, sekarang coba kamu perhatikan bangun pada <MathInline>{`\\text{Gambar 12}`}</MathInline>, apakah tabung bisa disebut sebagai prisma?</Paragraph>
+      <Paragraph>Tentu masih banyak jenis prisma lainnya. Bayangkan setiap bangun yang memiliki alas dan tutup yang sama bentuknya, kemudian dihubungkan oleh sisi-sisi tegak berbentuk persegi panjang, maka bangun tersebut bisa kita sebut sebagai prisma. Nah, sekarang coba kamu perhatikan bangun pada Gambar 12, apakah tabung bisa disebut sebagai prisma?</Paragraph>
       <ImageDisplay src="tabung.png" scale={1} nama="Gambar 12. Tabung" />
 
       <Heading3>Menghitung Volume Prisma</Heading3>

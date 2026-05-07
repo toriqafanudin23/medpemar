@@ -44,10 +44,10 @@ const LuasBalokPage = () => {
         dengan ukuran panjang 4 cm, lebar 3 cm, dan tinggi 2 cm di atas kertas!</Paragraph>
 
       <Heading3>Menghitung Luas Permukaan Balok</Heading3>
-      <Paragraph>Untuk memahami cara mencari luas permukaan balok, coba kamu perhatikan ilustrasi pada <MathInline>{`\\text{Gambar 22}`}</MathInline> berikut.</Paragraph>
+      <Paragraph>Untuk memahami cara mencari luas permukaan balok, coba kamu perhatikan ilustrasi pada Gambar 22 berikut.</Paragraph>
       <ImageDisplay src="ilustrasiluasbalok.png" nama="Gambar 22. Ilustrasi Luas Permukaan Balok" />
       
-      <Paragraph>Dari <MathInline>{`\\text{Gambar 22}`}</MathInline> terlihat bahwa sebuah balok memiliki 3 pasang sisi yang masing-masing berukuran kongruen (sama dan sebangun). Pertama, ada pasangan sisi bawah dan atas dengan luas <MathInline>{`p \\times l`}</MathInline>. Kedua, ada pasangan sisi depan dan belakang dengan luas <MathInline>{`p \\times t`}</MathInline>. Ketiga, ada pasangan sisi samping kiri dan kanan dengan luas <MathInline>{`l \\times t`}</MathInline>. Karena masing-masing pasangan terdiri dari 2 sisi, maka luas permukaan balok dapat dituliskan sebagai:</Paragraph>
+      <Paragraph>Dari Gambar 22 terlihat bahwa sebuah balok memiliki 3 pasang sisi yang masing-masing berukuran kongruen (sama dan sebangun). Pertama, ada pasangan sisi bawah dan atas dengan luas <MathInline>{`p \\times l`}</MathInline>. Kedua, ada pasangan sisi depan dan belakang dengan luas <MathInline>{`p \\times t`}</MathInline>. Ketiga, ada pasangan sisi samping kiri dan kanan dengan luas <MathInline>{`l \\times t`}</MathInline>. Karena masing-masing pasangan terdiri dari 2 sisi, maka luas permukaan balok dapat dituliskan sebagai:</Paragraph>
        
        <HighlightBox variant="formula">
         <p className="text-foreground font-medium mb-2">Rumus Luas Permukaan Balok:</p>

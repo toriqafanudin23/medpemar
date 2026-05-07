@@ -51,7 +51,7 @@ const LandingPage = () => {
               </div>
             </div>
             <Button asChild variant="secondary" className="hidden sm:flex">
-              <Link to="/home" className="gap-2">
+              <Link to="/pendahuluan" className="gap-2">
                 Mulai Belajar <FiArrowRight className="w-4 h-4" />
               </Link>
             </Button>
@@ -87,7 +87,7 @@ const LandingPage = () => {
 
               <div className="flex flex-wrap gap-4">
                 <Button asChild size="lg" className="gap-2">
-                  <Link to="/home">
+                  <Link to="/pendahuluan">
                     <FiPlay className="w-5 h-5" />
                     Mulai Belajar
                   </Link>
@@ -290,7 +290,7 @@ const LandingPage = () => {
               Mulai perjalanan belajarmu sekarang!
             </p>
             <Button asChild size="lg" variant="secondary" className="gap-2">
-              <Link to="/home">
+              <Link to="/pendahuluan">
                 Mulai Sekarang <FiArrowRight className="w-5 h-5" />
               </Link>
             </Button>

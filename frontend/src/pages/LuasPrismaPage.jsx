@@ -25,7 +25,7 @@ const LuasPrismaPage = () => {
       <Heading3>Jaring-jaring Prisma</Heading3>
       <Paragraph>Variasi jaring-jaring prisma tentu lebih banyak daripada kubus ataupun balok. Hal ini dikarenakan 
         bentuk alas prisma yang bermacam-macam, mulai dari segi-n beraturan, trapesium, hingga segi-n tidak beraturan. Sebagai contoh, 
-        simulasi jaring-jaring prisma segitiga tersaji pada <MathInline>{`\\text{Objek 8}`}</MathInline> berikut.</Paragraph>
+        simulasi jaring-jaring prisma segitiga tersaji pada Objek 8 berikut.</Paragraph>
 
       <Viewer3D
         modelPath={MODELS.JARING_PRISMA}
@@ -38,6 +38,10 @@ const LuasPrismaPage = () => {
         <ImageDisplay src="jaringprismasegi3ke2.png" scale={1} />
         <ImageDisplay src="jaringprismasegi3.png" scale={1} nama="Gambar 22. Prisma Segitiga" />
         <ImageDisplay src="jaringprismasegi5.png" scale={1} nama="Gambar 23. Prisma Segilima" />
+        <ImageDisplay src="prisma-trapesium.png" scale={1} nama="Gambar 24. Prisma Trapesium" />
+        <ImageDisplay src="prisma-layang.png" scale={1} nama="Gambar 25. Prisma Layang-layang" />
+
+
       </div>
 
       <Paragraph>Tentu semakin rumit bentuk alas prisma, semakin rumit pula jaring-jaring yang terbentuk. Sebagai tantangan, cobalah kamu gambar 
@@ -45,8 +49,8 @@ const LuasPrismaPage = () => {
 
       <Heading3>Menghitung Luas Permukaan Prisma</Heading3>
       <Paragraph>Untuk memahami cara mencari luas permukaan prisma secara umum, perhatikanlah ilustrasi jaring-jaring prisma berikut!</Paragraph>
-      <ImageDisplay src="ilustrasiluasprisma.png" nama="Gambar 24. Ilustrasi Luas Permukaan Prisma" />
-      <Paragraph>Dari <MathInline>{`\\text{Gambar 24}`}</MathInline> terlihat bahwa alas dan tutup prisma memiliki bentuk dan luas yang kongruen (kembar). Selain itu, panjang gabungan dari persegi panjang yang merupakan sisi tegak <MathInline>{`(a+b+c)`}</MathInline> sebenarnya persis sama dengan keliling alas prisma. 
+      <ImageDisplay src="ilustrasiluasprisma.png" nama="Gambar 26. Ilustrasi Luas Permukaan Prisma" />
+      <Paragraph>Dari Gambar 26 terlihat bahwa alas dan tutup prisma memiliki bentuk dan luas yang kongruen (kembar). Selain itu, panjang gabungan dari persegi panjang yang merupakan sisi tegak <MathInline>{`(a+b+c)`}</MathInline> sebenarnya persis sama dengan keliling alas prisma. 
         Oleh karena itu, luas permukaan prisma dapat dirumuskan secara elegan sebagai berikut:</Paragraph>
       
       <HighlightBox variant="formula">
