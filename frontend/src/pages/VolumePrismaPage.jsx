@@ -23,7 +23,7 @@ const VolumePrismaPage = () => {
       </div>
 
       <Heading3>Prisma dan Jenis-jenisnya</Heading3>
-      <Paragraph>Prisma adalah bangun ruang yang memiliki dua bidang sejajar dan kongruen berbentuk segi-n sebagai alas dan tutup, serta sisi-sisi tegak yang menghubungkan keduanya berbentuk jajar genjang. Kamu dapat melihat beberapa contoh prisma pada simulasi Objek 3 berikut.</Paragraph>
+      <Paragraph>Prisma adalah bangun ruang yang memiliki dua bidang sejajar dan kongruen berbentuk segi-n sebagai alas dan tutup, serta sisi-sisi tegak yang menghubungkan keduanya berbentuk persegi panjang. Kamu dapat melihat beberapa contoh prisma pada simulasi Objek 3 berikut.</Paragraph>
 
       <StaticViewer
         models={MODEL_ARRAYS.PRISMA_TYPES}
